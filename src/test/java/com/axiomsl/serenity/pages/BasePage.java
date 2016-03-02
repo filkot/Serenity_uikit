@@ -1,19 +1,19 @@
 package com.axiomsl.serenity.pages;
 
-import com.axiomsl.serenity.elements.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
 //@DefaultUrl("http://192.168.11.176:8080/axiom/tests")
 public class BasePage extends PageObject {
 
-    private String dashboardLocator = "//div[contains (@class, 'v-tree')]//span[text() = '%s']";
+    private String itemInTreeLocator = "//div[contains (@class, 'v-tree')]//span[text() = '%s']";
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
@@ -34,19 +34,25 @@ public class BasePage extends PageObject {
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
     }
 
+    public void clickByCoordinate(WebElementFacade element, int x, int y){
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(element, x, y).click().build().perform();
+    }
 
 
     //_________________________________________________________________________________________
 
     public void open_dashboard(String dashboardName) {
-        WebElementFacade dashboard = find(By.xpath(String.format(dashboardLocator, dashboardName)));
+        WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();
     }
-    public void select_item_in_tree(String item){
-        
-        WebElementFacade treeNode = find(By.xpath(String.format(treeNodeLocator, item)));
-        treeNode.click();
-    }
+//    public void select_item_in_tree(String item){
+//
+//        WebElementFacade treeNode = find(By.xpath(String.format(treeNodeLocator, item)));
+//        treeNode.click();
+//    }
+
+
 
 
 

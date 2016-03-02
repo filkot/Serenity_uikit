@@ -23,14 +23,14 @@ public class DashboardSteps {
         endUser.is_the_example_page();
     }
 
+    @Given("the user refresh the Example page")
+    public void givenTheUserIRefreshTheExamplePage() {
+        endUser.refresh_example_page();
+    }
+
     @When("the user login in system")
     public void login() {
         endUser.login();
-    }
-
-    @When("the user select '$item' in tree")
-    public void whenTheUserSelectItemInTree(String item) {
-        endUser.select_item_in_tree(item);
     }
 
     //WHEN

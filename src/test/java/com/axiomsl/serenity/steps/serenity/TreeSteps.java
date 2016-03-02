@@ -11,8 +11,10 @@ public class TreeSteps extends ScenarioSteps {
     TreeAction action;
 
 
-
-
+    @Step
+    public void select_item_in_tree(String item) {
+        action.select_item_in_tree(item);
+    }
 
 
 }

@@ -29,13 +29,15 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void login() {
-        basePage.login();
+    public void refresh_example_page() {
+        examplePage.getDriver().navigate().refresh();
+        examplePage.getDriver().switchTo().alert().accept();
     }
 
+
     @Step
-    public void select_item_in_tree(String item) {
-        basePage.select_item_in_tree(item);
+    public void login() {
+        basePage.login();
     }
 
     @Step
