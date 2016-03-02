@@ -20,9 +20,6 @@ public class BasePage extends PageObject {
     private String passwordLocator = "//input[@type = 'password']";
 
 
-
-
-
     public void login() {
         find(By.xpath(passwordLocator)).waitUntilEnabled();
         WebElementFacade login = find(By.xpath(textFieldLocator));
@@ -34,7 +31,7 @@ public class BasePage extends PageObject {
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
     }
 
-    public void clickByCoordinate(WebElementFacade element, int x, int y){
+    public void clickByCoordinate(WebElementFacade element, int x, int y) {
         Actions actions = new Actions(getDriver());
         actions.moveToElement(element, x, y).click().build().perform();
     }
@@ -53,14 +50,9 @@ public class BasePage extends PageObject {
 //    }
 
 
-
-
-
-
-
 //______________________________________________________________________________________________________________________
 
-    public boolean VisibilityOfElement(WebElementFacade element){
+    public boolean VisibilityOfElement(WebElementFacade element) {
         try {
             return element.isCurrentlyVisible();
         } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
@@ -84,7 +76,7 @@ public class BasePage extends PageObject {
         }
     }
 
-    public boolean InvisibilityOfElement(WebElementFacade element){
+    public boolean InvisibilityOfElement(WebElementFacade element) {
         try {
             return !element.isCurrentlyVisible();
         } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
@@ -94,7 +86,7 @@ public class BasePage extends PageObject {
         }
     }
 
-    public boolean InvisibilityOfElementLocated(By locator){
+    public boolean InvisibilityOfElementLocated(By locator) {
         try {
             List<WebElementFacade> elements = findAll(locator);
             if (elements.isEmpty()) {

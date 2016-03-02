@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.steps.serenity.CheckBoxSteps;
 import com.axiomsl.serenity.steps.serenity.ComboBoxSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.When;

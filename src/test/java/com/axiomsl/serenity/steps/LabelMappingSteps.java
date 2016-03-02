@@ -1,10 +1,8 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.steps.serenity.CheckBoxSteps;
 import com.axiomsl.serenity.steps.serenity.LabelSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
 
 
 public class LabelMappingSteps {

@@ -6,11 +6,6 @@ import com.axiomsl.serenity.pages.ExamplePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-
 
 public class EndUserSteps extends ScenarioSteps {
 
@@ -34,7 +29,6 @@ public class EndUserSteps extends ScenarioSteps {
         examplePage.getDriver().switchTo().alert().accept();
     }
 
-
     @Step
     public void login() {
         basePage.login();
@@ -44,13 +38,6 @@ public class EndUserSteps extends ScenarioSteps {
     public void open_dashboard(String dashboardName) {
         basePage.open_dashboard(dashboardName);
     }
-
-
-
-
-
-
-
 
 
 }

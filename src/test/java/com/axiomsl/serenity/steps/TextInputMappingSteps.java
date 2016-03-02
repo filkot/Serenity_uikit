@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.steps.serenity.CheckBoxSteps;
 import com.axiomsl.serenity.steps.serenity.TextInputSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
@@ -28,7 +27,6 @@ public class TextInputMappingSteps {
     public void thenTheyShouldNotSeeATextField() {
         step.should_not_see_text_field();
     }
-
 
 
 }

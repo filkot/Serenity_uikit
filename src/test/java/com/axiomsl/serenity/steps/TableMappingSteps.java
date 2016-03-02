@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.steps.serenity.CheckBoxSteps;
 import com.axiomsl.serenity.steps.serenity.TableSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
@@ -21,7 +20,7 @@ public class TableMappingSteps {
     //THEN
     @Then("they should see the item list '$items' in table at '$numberColumn'")
     public void thenTheyShouldSeeItemListInRightCol(String items, int i) {
-        step.should_see_items_in_table(items, (i-1));
+        step.should_see_items_in_table(items, (i - 1));
     }
 
     @Then("they should see column '$nameColumn' in table")

@@ -20,7 +20,7 @@ public class Button extends PageObject {
         wrappedElement.click();
     }
 
-    public String getText(){
+    public String getText() {
         return wrappedElement.getText();
     }
 }

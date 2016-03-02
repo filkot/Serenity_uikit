@@ -1,7 +1,6 @@
 package com.axiomsl.serenity.actions;
 
 import com.axiomsl.serenity.elements.Button;
-import com.axiomsl.serenity.elements.CheckBox;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
 
@@ -16,12 +15,11 @@ public class ButtonAction extends BasePage {
         Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.click();
     }
-    public String get_button_text(){
+
+    public String get_button_text() {
         Button button = new Button(find(By.xpath(buttonLocator)));
         return button.getText();
     }
-
-
 
 
 }

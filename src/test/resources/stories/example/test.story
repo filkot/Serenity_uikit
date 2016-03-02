@@ -16,4 +16,4 @@ When the user transferred 'second row' from left to right
 When the user transferred 'first row' from left to right
 When the user transferred 'third row' from left to right
 When the user transferred 'third row' from right to left
-Then they should see the item list 'first row, second row' in left col
+Then they should see the item list 'third row' in left col

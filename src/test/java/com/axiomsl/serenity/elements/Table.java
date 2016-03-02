@@ -1,12 +1,10 @@
 package com.axiomsl.serenity.elements;
 
+import ch.lambdaj.Lambda;
+import ch.lambdaj.function.convert.Converter;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-
-import ch.lambdaj.Lambda;
-import ch.lambdaj.function.convert.Converter;
-
 
 import java.util.*;
 
@@ -48,17 +46,17 @@ public class Table extends PageObject {
     public List<List<WebElementFacade>> getColumns() {
         ArrayList columns = new ArrayList();
         List rows = this.getRows();
-        if(rows.isEmpty()) {
+        if (rows.isEmpty()) {
             return columns;
         } else {
-            int columnsNumber = ((List)rows.get(0)).size();
+            int columnsNumber = ((List) rows.get(0)).size();
 
-            for(int i = 0; i < columnsNumber; ++i) {
+            for (int i = 0; i < columnsNumber; ++i) {
                 ArrayList column = new ArrayList();
                 Iterator i$ = rows.iterator();
 
-                while(i$.hasNext()) {
-                    List row = (List)i$.next();
+                while (i$.hasNext()) {
+                    List row = (List) i$.next();
                     column.add(row.get(i));
                 }
 
@@ -68,6 +66,7 @@ public class Table extends PageObject {
             return columns;
         }
     }
+
     public List<List<String>> getColumnsAsString() {
         return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
@@ -77,7 +76,7 @@ public class Table extends PageObject {
     }
 
     public WebElementFacade getCellAt(int i, int j) {
-        return (WebElementFacade)((List)this.getRows().get(i)).get(j);
+        return (WebElementFacade) ((List) this.getRows().get(i)).get(j);
     }
 
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings() {
@@ -87,14 +86,14 @@ public class Table extends PageObject {
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings(List<String> headings) {
         ArrayList rowsMappedToHeadings = new ArrayList();
         List rows = this.getRows();
-        if(rows.isEmpty()) {
+        if (rows.isEmpty()) {
             return rowsMappedToHeadings;
         } else {
             Iterator i$ = rows.iterator();
 
-            while(i$.hasNext()) {
-                List row = (List)i$.next();
-                if(row.size() != headings.size()) {
+            while (i$.hasNext()) {
+                List row = (List) i$.next();
+                if (row.size() != headings.size()) {
                     try {
                         throw new Exception("Headings count is not equal to number of cells in row");
                     } catch (Exception e) {
@@ -105,8 +104,8 @@ public class Table extends PageObject {
                 HashMap rowToHeadingsMap = new HashMap();
                 int cellNumber = 0;
 
-                for(Iterator i$1 = headings.iterator(); i$1.hasNext(); ++cellNumber) {
-                    String heading = (String)i$1.next();
+                for (Iterator i$1 = headings.iterator(); i$1.hasNext(); ++cellNumber) {
+                    String heading = (String) i$1.next();
                     rowToHeadingsMap.put(heading, row.get(cellNumber));
                 }
 

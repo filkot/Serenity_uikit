@@ -9,7 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 /**
  * Created by kfilippov on 11.02.2016.
  */
-public class CheckBox extends PageObject{
+public class CheckBox extends PageObject {
     private final WebElementFacade wrappedElement;
     private String checkboxLocator = ".//input[@type = 'checkbox']";
     private String captionLocator = "./div/span";
@@ -37,7 +37,7 @@ public class CheckBox extends PageObject{
 
     public String getCaptionText() {
         WebElementFacade caption = this.getCaption();
-        return caption == null?null:caption.getText();
+        return caption == null ? null : caption.getText();
     }
 
     public String getText() {
@@ -46,7 +46,7 @@ public class CheckBox extends PageObject{
 
     public void select() {
         WebElementFacade checkbox = this.getCheckBox();
-        if(!checkbox.isSelected()) {
+        if (!checkbox.isSelected()) {
             checkbox.click();
         }
 
@@ -54,14 +54,14 @@ public class CheckBox extends PageObject{
 
     public void deselect() {
         WebElementFacade checkbox = this.getCheckBox();
-        if(checkbox.isSelected()) {
+        if (checkbox.isSelected()) {
             checkbox.click();
         }
 
     }
 
     public void set(boolean value) {
-        if(value) {
+        if (value) {
             this.select();
         } else {
             this.deselect();

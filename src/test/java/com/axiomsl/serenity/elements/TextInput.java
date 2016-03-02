@@ -21,13 +21,12 @@ public class TextInput {
     }
 
 
-
     public String getText() {
-        if("textarea".equals(this.wrappedElement.getTagName())) {
+        if ("textarea".equals(this.wrappedElement.getTagName())) {
             return this.wrappedElement.getText();
         } else {
             String enteredText = this.wrappedElement.getAttribute("value");
-            return enteredText == null?"":enteredText;
+            return enteredText == null ? "" : enteredText;
         }
     }
 }

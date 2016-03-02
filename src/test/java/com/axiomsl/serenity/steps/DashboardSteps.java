@@ -3,9 +3,7 @@ package com.axiomsl.serenity.steps;
 import com.axiomsl.serenity.steps.serenity.EndUserSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
 
 
 public class DashboardSteps {
@@ -38,10 +36,6 @@ public class DashboardSteps {
     public void whenTheUserOpenTheDashboard(String dashboardName) {
         endUser.open_dashboard(dashboardName);
     }
-
-
-
-
 
 
 }

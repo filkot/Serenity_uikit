@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.actions;
 
-import com.axiomsl.serenity.elements.CheckBox;
 import com.axiomsl.serenity.elements.Table;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;

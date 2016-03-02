@@ -28,7 +28,7 @@ public class ComboBox extends PageObject {
         openChoicesButton.click();
     }
 
-    public void select(String item){
+    public void select(String item) {
         WebElementFacade choice = wrappedElement.then(By.xpath(String.format(filterSelectSuggestMenuLocator, item)));
         choice.click();
     }

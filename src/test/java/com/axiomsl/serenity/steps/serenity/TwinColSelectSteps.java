@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.steps.serenity;
 
-import com.axiomsl.serenity.actions.CheckBoxAction;
 import com.axiomsl.serenity.actions.TwinColSelectAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -9,10 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 
 public class TwinColSelectSteps extends ScenarioSteps {
@@ -41,7 +38,6 @@ public class TwinColSelectSteps extends ScenarioSteps {
         List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
         assertThat(action.get_right_col_items_list(), is(equalTo(itemsList)));
     }
-
 
 
 }

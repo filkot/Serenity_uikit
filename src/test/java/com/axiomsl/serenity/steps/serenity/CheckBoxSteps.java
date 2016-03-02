@@ -4,8 +4,6 @@ import com.axiomsl.serenity.actions.CheckBoxAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
 
 public class CheckBoxSteps extends ScenarioSteps {
 
@@ -21,8 +19,6 @@ public class CheckBoxSteps extends ScenarioSteps {
     public void deselect_checkbox(String checkBoxName) {
         action.deselect_checkbox(checkBoxName);
     }
-
-
 
 
 }

@@ -22,29 +22,29 @@ public class TwinColSelect extends PageObject {
         this.wrappedElement = wrappedElement;
     }
 
-    public void oneFromLeftToRight(String item){
+    public void oneFromLeftToRight(String item) {
         wrappedElement.then(By.xpath(leftColLocator)).selectByVisibleText(item);
         this.clickForwardButton();
     }
 
-    public void oneFromRightToLeft(String item){
+    public void oneFromRightToLeft(String item) {
         wrappedElement.then(By.xpath(rightColLocator)).selectByVisibleText(item);
         this.clickBackButton();
     }
 
-    public List<String> getLeftCoItemsList(){
+    public List<String> getLeftCoItemsList() {
         return wrappedElement.then(By.xpath(leftColLocator)).getSelectOptions();
     }
 
-    public List<String> getRightColItemsList(){
+    public List<String> getRightColItemsList() {
         return wrappedElement.then(By.xpath(rightColLocator)).getSelectOptions();
     }
 
-    public void clickForwardButton(){
+    public void clickForwardButton() {
         wrappedElement.then(By.xpath(forwardButtonLocator)).click();
     }
 
-    public void clickBackButton(){
+    public void clickBackButton() {
         wrappedElement.then(By.xpath(backButtonLocator)).click();
     }
 

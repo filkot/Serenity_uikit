@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.actions;
 
-import com.axiomsl.serenity.elements.CheckBox;
 import com.axiomsl.serenity.elements.ComboBox;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
@@ -15,8 +14,6 @@ public class ComboBoxAction extends BasePage {
         ComboBox comboBox = new ComboBox(find(By.xpath(comBoxLocator)));
         comboBox.selectItem(item);
     }
-
-
 
 
 }
