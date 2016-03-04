@@ -2,10 +2,7 @@ package com.axiomsl.serenity.pages;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -36,8 +33,8 @@ public class BasePage extends PageObject {
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
-    public void dbCLick(WebElementFacade element){
-        Actions actions = new Actions(getDriver());
+    public void dbCLick1(WebDriver driver, WebElementFacade element){
+        Actions actions = new Actions(driver);
         actions.moveToElement(element, 1, 1).doubleClick().build().perform();
         actions.moveToElement(element).click().build().perform();
         actions.moveToElement(element).click().click().build().perform();

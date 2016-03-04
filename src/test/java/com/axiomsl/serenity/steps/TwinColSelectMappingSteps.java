@@ -58,7 +58,7 @@ public class TwinColSelectMappingSteps {
         step.transfer_item_from_left_to_right_by_dbclick(item);
     }
 
-    @When("the user transferred '$item' from right to left by double clicking on item")
+    @When("the user transfer '$item' from right to left by double clicking on item")
     public void whenTheUserDoubleClickOnItemInRightCol(String item) {
         step.transfer_item_from_right_to_left_by_dbclick(item);
     }
