@@ -20,6 +20,4 @@ public class ButtonAction extends BasePage {
         Button button = new Button(find(By.xpath(buttonLocator)));
         return button.getText();
     }
-
-
 }
