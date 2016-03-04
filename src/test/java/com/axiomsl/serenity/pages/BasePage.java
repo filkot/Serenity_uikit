@@ -25,8 +25,8 @@ public class BasePage extends PageObject {
         WebElementFacade login = find(By.xpath(textFieldLocator));
         WebElementFacade password = find(By.xpath(passwordLocator));
         WebElementFacade button = find(By.xpath(buttonLocator));
-        login.type("axiom");
-        password.type("axiom123$");
+        login.type(System.getProperty("axiom.login"));
+        password.type(System.getProperty("axiom.password"));
         button.click();
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
     }

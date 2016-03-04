@@ -45,6 +45,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <axiom.login>axiom</axiom.login>
+                <axiom.password>axiom123$</axiom.password>
                 <webdriver.base.url>http://localhost:8888/ui_kit</webdriver.base.url>
             </properties>
         </profile>
@@ -112,6 +114,8 @@
                     </includes>
                     <argLine>-Xmx512m</argLine>
                     <systemPropertyVariables>
+                        <axiom.login>${axiom.login}</axiom.login>
+                        <axiom.password>${axiom.password}</axiom.password>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                     </systemPropertyVariables>
