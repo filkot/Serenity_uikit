@@ -46,6 +46,16 @@ public class TwinColSelectAction extends BasePage {
         twinCol.selectItemInRightCol(item);
     }
 
+    public void select_all_items_in_left_col() {
+        TwinColSelect twinCol =  new TwinColSelect(getDriver(), find(By.xpath(twinColSelectLocator)));
+        twinCol.selectAllItemsInLeftCol();
+    }
+
+    public void select_all_items_in_right_col() {
+        TwinColSelect twinCol =  new TwinColSelect(getDriver(), find(By.xpath(twinColSelectLocator)));
+        twinCol.selectAllItemsInRightCol();
+    }
+
     public void transfer_item_from_left_to_right(String item) {
         TwinColSelect twinCol =  new TwinColSelect(getDriver(), find(By.xpath(twinColSelectLocator)));
         twinCol.transferItemFromLeftToRight(item);

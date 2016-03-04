@@ -43,6 +43,16 @@ public class TwinColSelectMappingSteps {
         step.select_item_in_right_col(item);
     }
 
+    @When("the user select all items in left column")
+    public void whenTheUserSelectAllItemsInLeftCol() {
+        step.select_all_items_in_left_col();
+    }
+
+    @When("the user select all items in right column")
+    public void whenTheUserSelectAllItemsInRightCol() {
+        step.select_all_items_in_right_col();
+    }
+
     @When("the user transfer '$item' from left to right")
     public void whenTheUserTransferItemFromLeftToRight(String item) {
         step.transfer_item_from_left_to_right(item);

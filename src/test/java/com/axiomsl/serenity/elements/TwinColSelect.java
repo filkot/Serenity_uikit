@@ -36,6 +36,26 @@ public class TwinColSelect extends BasePage {
         wrappedElement.then(By.xpath(rightColLocator)).selectByVisibleText(item);
     }
 
+    public void selectAllItemsInLeftCol() {
+        WebElementFacade select = wrappedElement.then(By.xpath(leftColLocator));
+        List<String> items = select.getSelectOptions();
+
+        select.selectByIndex(0);
+        for(int i = 0; i<items.size(); i++){
+            select.sendKeys(Keys.chord(Keys.SHIFT, Keys.DOWN));
+        }
+    }
+
+    public void selectAllItemsInRightCol() {
+        WebElementFacade select = wrappedElement.then(By.xpath(rightColLocator));
+        List<String> items = select.getSelectOptions();
+
+        select.selectByIndex(0);
+        for(int i = 0; i<items.size(); i++){
+            select.sendKeys(Keys.chord(Keys.SHIFT, Keys.DOWN));
+        }
+    }
+
     public void selectLeftCol() {
         wrappedElement.then(By.xpath(leftColLocator)).click();
     }

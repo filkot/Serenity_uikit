@@ -48,6 +48,16 @@ public class TwinColSelectSteps extends ScenarioSteps {
     }
 
     @Step
+    public void select_all_items_in_left_col() {
+        action.select_all_items_in_left_col();
+    }
+
+    @Step
+    public void select_all_items_in_right_col() {
+        action.select_all_items_in_right_col();
+    }
+
+    @Step
     public void transfer_item_from_left_to_right(String item) {
         action.transfer_item_from_left_to_right(item);
     }
