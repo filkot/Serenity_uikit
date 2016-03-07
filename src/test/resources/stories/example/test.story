@@ -7,12 +7,21 @@ Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 
 When the user click menu item with name 'child 0'
-Then they should see the item list 'child 0-0, child 0-1' for 'child 0'
+When the user moves a cursos on menu item with name  'child 1'
+When the user moves a cursos on menu item with name  'child 2'
+When the user moves a cursos on menu item with name  'child 3'
+Then they should not see menu sub item with name 'child 0-2' for 'child 0'
 
 Scenario: On 'TwinColumn Selection' select 3 items and 2 back
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 
+When the user click menu item with name 'child 0'
+Then they should not see menu sub item with name 'child 0-2' for 'child 0'
+
+Scenario: On 'TwinColumn Selection' select 3 items and 2 back
+Given the user refresh the Example page
+When the user select 'Interaction->Menu' in tree
 When the user click menu item with name 'child 0->child 0-1'
 When the user close popup
 When the user click menu item with name 'child 1->child 1-0'

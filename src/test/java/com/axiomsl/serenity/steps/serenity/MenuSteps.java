@@ -24,6 +24,11 @@ public class MenuSteps extends ScenarioSteps {
     }
 
     @Step
+    public void move_mouse_on_menu_item_by_name(String menuItem) {
+        action.move_mouse_on_menu_item_by_name(menuItem);
+    }
+
+    @Step
     public void double_click_menu_item_by_name(String menuItem) {
         action.double_click_menu_item_by_name(menuItem);
     }
@@ -32,5 +37,10 @@ public class MenuSteps extends ScenarioSteps {
     public void should_see_items_in_sub_menu(String itemsList, String item) {
         List<String> items = Arrays.asList(itemsList.split("\\s*,\\s*"));
         assertThat(action.get_sub_menu_items_list(item), is(equalTo(items)));
+    }
+
+    @Step
+    public void should_not_see_item_in_sub_menu(String subItem, String item) {
+        assertThat(action.get_sub_menu_items_list(item), is(not(hasItem(subItem))));
     }
 }

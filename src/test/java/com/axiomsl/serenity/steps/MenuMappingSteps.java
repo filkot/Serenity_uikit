@@ -21,6 +21,11 @@ public class MenuMappingSteps {
         step.click_menu_item_by_name(menuItem);
     }
 
+    @When("the user moves a cursos on menu item with name '$menuItem'")
+    public void whenTheUserMoveMouseOnMenuItem(String menuItem) {
+        step.move_mouse_on_menu_item_by_name(menuItem);
+    }
+
     @When("the user double click menu item with name '$menuItem'")
     public void whenTheUserDbClickOnMenuItem(String menuItem) {
         step.double_click_menu_item_by_name(menuItem);
@@ -28,7 +33,12 @@ public class MenuMappingSteps {
 
     //THEN
     @Then("they should see the item list '$itemsList' for '$item'")
-    public void thenTheyShouldSeeItemListInRightCol(String itemsList, String item) {
+    public void thenTheyShouldSeeItemList(String itemsList, String item) {
         step.should_see_items_in_sub_menu(itemsList, item);
+    }
+
+    @Then("they should not see menu sub item with name '$name' for '$item'")
+    public void thenTheyShouldNotSeeSubItem(String subItem, String item) {
+        step.should_not_see_item_in_sub_menu(subItem, item);
     }
 }

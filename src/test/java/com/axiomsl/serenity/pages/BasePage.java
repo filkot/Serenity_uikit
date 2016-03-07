@@ -41,6 +41,11 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).doubleClick().build().perform();
     }
 
+    public void moveToElement(WebDriver driver, WebElementFacade element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).build().perform();
+    }
+
 
     //_________________________________________________________________________________________
 
@@ -61,7 +66,7 @@ public class BasePage extends PageObject {
         private final Converter<F, T> valueConverter;
 
         public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
-            return new BasePage.MapConverter(valueConverter);
+            return new MapConverter(valueConverter);
         }
 
         private MapConverter(Converter<F, T> valueConverter) {
@@ -78,7 +83,7 @@ public class BasePage extends PageObject {
         private final Converter<F, T> itemsConverter;
 
         public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
-            return new BasePage.ListConverter(itemsConverter);
+            return new ListConverter(itemsConverter);
         }
 
         private ListConverter(Converter<F, T> itemsConverter) {
@@ -92,11 +97,11 @@ public class BasePage extends PageObject {
 
     protected static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
         public static Converter<WebElementFacade, String> toText() {
-            return new BasePage.WebElementToTextConverter();
+            return new WebElementToTextConverter();
         }
 
         public static Converter<WebElementFacade, String> toTextValues() {
-            return new BasePage.WebElementToTextConverter();
+            return new WebElementToTextConverter();
         }
 
         private WebElementToTextConverter() {
