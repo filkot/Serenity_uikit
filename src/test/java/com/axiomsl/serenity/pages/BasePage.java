@@ -1,11 +1,14 @@
 package com.axiomsl.serenity.pages;
 
+import ch.lambdaj.Lambda;
+import ch.lambdaj.function.convert.Converter;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
+import java.util.Map;
 
 //@DefaultUrl("http://192.168.11.176:8080/axiom/tests")
 public class BasePage extends PageObject {
@@ -33,14 +36,9 @@ public class BasePage extends PageObject {
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
-    public void dbCLick1(WebDriver driver, WebElementFacade element){
+    public void dbCLick(WebDriver driver, WebElementFacade element){
         Actions actions = new Actions(driver);
-        actions.moveToElement(element, 1, 1).doubleClick().build().perform();
-        actions.moveToElement(element).click().build().perform();
-        actions.moveToElement(element).click().click().build().perform();
-        actions.moveToElement(element).doubleClick().doubleClick().release().build().perform();
         actions.moveToElement(element).doubleClick().build().perform();
-
     }
 
 
@@ -58,6 +56,58 @@ public class BasePage extends PageObject {
 
 
 //______________________________________________________________________________________________________________________
+
+    protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
+        private final Converter<F, T> valueConverter;
+
+        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
+            return new BasePage.MapConverter(valueConverter);
+        }
+
+        private MapConverter(Converter<F, T> valueConverter) {
+            this.valueConverter = valueConverter;
+        }
+
+        public Map<K, T> convert(Map<K, F> map) {
+            return Lambda.convertMap(map, this.valueConverter);
+        }
+    }
+
+
+    protected static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
+        private final Converter<F, T> itemsConverter;
+
+        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
+            return new BasePage.ListConverter(itemsConverter);
+        }
+
+        private ListConverter(Converter<F, T> itemsConverter) {
+            this.itemsConverter = itemsConverter;
+        }
+
+        public List<T> convert(List<F> list) {
+            return Lambda.convert(list, this.itemsConverter);
+        }
+    }
+
+    protected static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
+        public static Converter<WebElementFacade, String> toText() {
+            return new BasePage.WebElementToTextConverter();
+        }
+
+        public static Converter<WebElementFacade, String> toTextValues() {
+            return new BasePage.WebElementToTextConverter();
+        }
+
+        private WebElementToTextConverter() {
+        }
+
+        public String convert(WebElementFacade element) {
+            return element.getText();
+        }
+    }
+//______________________________________________________________________________________________________________________
+
 
     public boolean VisibilityOfElement(WebElementFacade element) {
         try {

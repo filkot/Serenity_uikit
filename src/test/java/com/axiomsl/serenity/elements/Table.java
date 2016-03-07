@@ -2,6 +2,7 @@ package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
 import ch.lambdaj.function.convert.Converter;
+import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -11,7 +12,7 @@ import java.util.*;
 /**
  * Created by kfilippov on 10.02.2016.
  */
-public class Table extends PageObject {
+public class Table extends BasePage {
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
@@ -27,7 +28,7 @@ public class Table extends PageObject {
     }
 
     public List<String> getHeadingsAsString() {
-        return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
+        return Lambda.convert(this.getHeadings(), BasePage.WebElementToTextConverter.toTextValues());
     }
 
     public List<List<WebElementFacade>> getRows() {
@@ -40,7 +41,7 @@ public class Table extends PageObject {
     }
 
     public List<List<String>> getRowsAsString() {
-        return Lambda.convert(this.getRows(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
+        return Lambda.convert(this.getRows(), BasePage.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
     public List<List<WebElementFacade>> getColumns() {
@@ -68,7 +69,7 @@ public class Table extends PageObject {
     }
 
     public List<List<String>> getColumnsAsString() {
-        return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
+        return Lambda.convert(this.getColumns(), BasePage.ListConverter.toListsConvertingEachItem(BasePage.WebElementToTextConverter.toTextValues()));
     }
 
     public List<String> getColumnAsStringByIndex(int index) {
@@ -121,59 +122,59 @@ public class Table extends PageObject {
     }
 
     public List<Map<String, String>> getRowsAsStringMappedToHeadings(List<String> headings) {
-        return Lambda.convert(this.getRowsMappedToHeadings(headings), Table.MapConverter.toMapsConvertingEachValue(Table.WebElementToTextConverter.toText()));
+        return Lambda.convert(this.getRowsMappedToHeadings(headings), BasePage.MapConverter.toMapsConvertingEachValue(BasePage.WebElementToTextConverter.toText()));
     }
 
 
-    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
-        private final Converter<F, T> valueConverter;
-
-        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
-            return new Table.MapConverter(valueConverter);
-        }
-
-        private MapConverter(Converter<F, T> valueConverter) {
-            this.valueConverter = valueConverter;
-        }
-
-        public Map<K, T> convert(Map<K, F> map) {
-            return Lambda.convertMap(map, this.valueConverter);
-        }
-    }
-
-
-    static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
-        private final Converter<F, T> itemsConverter;
-
-        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
-            return new Table.ListConverter(itemsConverter);
-        }
-
-        private ListConverter(Converter<F, T> itemsConverter) {
-            this.itemsConverter = itemsConverter;
-        }
-
-        public List<T> convert(List<F> list) {
-            return Lambda.convert(list, this.itemsConverter);
-        }
-    }
-
-    static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
-        public static Converter<WebElementFacade, String> toText() {
-            return new Table.WebElementToTextConverter();
-        }
-
-        public static Converter<WebElementFacade, String> toTextValues() {
-            return new Table.WebElementToTextConverter();
-        }
-
-        private WebElementToTextConverter() {
-        }
-
-        public String convert(WebElementFacade element) {
-            return element.getText();
-        }
-    }
+//    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
+//        private final Converter<F, T> valueConverter;
+//
+//        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
+//            return new Table.MapConverter(valueConverter);
+//        }
+//
+//        private MapConverter(Converter<F, T> valueConverter) {
+//            this.valueConverter = valueConverter;
+//        }
+//
+//        public Map<K, T> convert(Map<K, F> map) {
+//            return Lambda.convertMap(map, this.valueConverter);
+//        }
+//    }
+//
+//
+//    static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
+//        private final Converter<F, T> itemsConverter;
+//
+//        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
+//            return new Table.ListConverter(itemsConverter);
+//        }
+//
+//        private ListConverter(Converter<F, T> itemsConverter) {
+//            this.itemsConverter = itemsConverter;
+//        }
+//
+//        public List<T> convert(List<F> list) {
+//            return Lambda.convert(list, this.itemsConverter);
+//        }
+//    }
+//
+//    static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
+//        public static Converter<WebElementFacade, String> toText() {
+//            return new Table.WebElementToTextConverter();
+//        }
+//
+//        public static Converter<WebElementFacade, String> toTextValues() {
+//            return new Table.WebElementToTextConverter();
+//        }
+//
+//        private WebElementToTextConverter() {
+//        }
+//
+//        public String convert(WebElementFacade element) {
+//            return element.getText();
+//        }
+//    }
 
 
 }
