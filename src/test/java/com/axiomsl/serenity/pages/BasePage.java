@@ -36,12 +36,12 @@ public class BasePage extends PageObject {
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
-    public void dbCLick(WebDriver driver, WebElementFacade element){
+    public void dbCLick(WebDriver driver, WebElementFacade element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).doubleClick().build().perform();
     }
 
-    public void moveToElement(WebDriver driver, WebElementFacade element){
+    public void moveToElement(WebDriver driver, WebElementFacade element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
     }

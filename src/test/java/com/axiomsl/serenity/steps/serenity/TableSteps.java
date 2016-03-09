@@ -23,13 +23,13 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_column_with_name_in_table(String nameColumn) {
-        assertThat(action.get_header_list(), hasItem(nameColumn));
+    public void should_see_column_with_name_in_table(String columnName) {
+        assertThat(action.get_header_list(), hasItem(columnName));
     }
 
     @Step
-    public void should_not_see_column_with_name_in_table(String nameColumn) {
-        assertThat(action.get_header_list(), is(not(hasItem(nameColumn))));
+    public void should_not_see_column_with_name_in_table(String columnName) {
+        assertThat(action.get_header_list(), is(not(hasItem(columnName))));
     }
 
     @Step
@@ -38,4 +38,23 @@ public class TableSteps extends ScenarioSteps {
     }
 
 
+    @Step
+    public void make_visible_column(String tableCaption, String columnName) {
+        action.getTableByCaption(tableCaption).makeVisibleColumn(columnName);
+    }
+
+    @Step
+    public void make_invisible_column(String tableCaption, String columnName) {
+        action.getTableByCaption(tableCaption).makeInvisibleColumn(columnName);
+    }
+
+    @Step
+    public void should_see_column_with_name_in_table_with_caption(String tableCaption, String columnName) {
+        assertThat(action.getTableByCaption(tableCaption).getHeadingsAsString(), hasItem(columnName));
+    }
+
+    @Step
+    public void should_not_see_column_with_name_in_table_with_caption(String tableCaption, String columnName) {
+        assertThat(action.getTableByCaption(tableCaption).getHeadingsAsString(), is(not(hasItem(columnName))));
+    }
 }

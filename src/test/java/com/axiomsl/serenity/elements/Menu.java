@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by kfilippov on 04.03.2016.
  */
-public class Menu extends BasePage{
+public class Menu extends BasePage {
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
 
@@ -24,7 +24,7 @@ public class Menu extends BasePage{
         this.wrappedElement = wrappedElement;
     }
 
-    public void click(String item){
+    public void click(String item) {
         String[] itemList = item.split("->");
         System.out.println("click in menu " + itemList[0]);
         String rootPath = String.format(menuItemLocator, itemList[0]);
@@ -38,23 +38,23 @@ public class Menu extends BasePage{
         }
     }
 
-    public void hoverOn(String menuItem){
+    public void hoverOn(String menuItem) {
         String[] itemList = menuItem.split("->");
         String rootPath = String.format(menuItemLocator, itemList[0]);
         WebElementFacade menuItemRoot = wrappedElement.then(By.xpath(rootPath));
-        if(itemList.length==1){
+        if (itemList.length == 1) {
             System.out.println("hoverOn menu " + itemList[0]);
             moveToElement(driver, menuItemRoot);
             return;
-        }else{
+        } else {
             menuItemRoot.click();
         }
         for (int i = 1; i < itemList.length; i++) {
             System.out.println("hoverOn menu " + itemList[i]);
             String path = menuBarPopupLocator + String.format(menuItemLocator, itemList[i]);
-            if(i == itemList.length -1){
+            if (i == itemList.length - 1) {
                 moveToElement(driver, wrappedElement.then(By.xpath(path)));
-            }else{
+            } else {
                 wrappedElement.then(By.xpath(path)).click();
             }
         }
@@ -64,29 +64,29 @@ public class Menu extends BasePage{
         String[] itemList = menuItem.split("->");
         String rootPath = String.format(menuItemLocator, itemList[0]);
         WebElementFacade menuItemRoot = wrappedElement.then(By.xpath(rootPath));
-        if(itemList.length==1){
+        if (itemList.length == 1) {
             System.out.println("click in menu " + itemList[0]);
-            dbCLick(driver,menuItemRoot);
+            dbCLick(driver, menuItemRoot);
             return;
-        }else{
+        } else {
             menuItemRoot.click();
         }
         for (int i = 1; i < itemList.length; i++) {
             System.out.println("click in menu " + itemList[i]);
             String path = menuBarPopupLocator + String.format(menuItemLocator, itemList[i]);
-            if(i == itemList.length -1){
+            if (i == itemList.length - 1) {
                 dbCLick(driver, wrappedElement.then(By.xpath(path)));
-            }else{
+            } else {
                 wrappedElement.then(By.xpath(path)).click();
             }
         }
     }
 
-    public List<WebElementFacade> getSubItemsList(){
+    public List<WebElementFacade> getSubItemsList() {
         return wrappedElement.thenFindAll(By.xpath(subItemLocator));
     }
 
-    public List<String> getSubItemsListAsString(){
+    public List<String> getSubItemsListAsString() {
         return Lambda.convert(this.getSubItemsList(), WebElementToTextConverter.toTextValues());
     }
 }

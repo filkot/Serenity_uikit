@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by kfilippov on 04.03.2016.
  */
-public class MenuAction extends BasePage{
+public class MenuAction extends BasePage {
     private String menuBarLocator = "/ancestor::div[contains(@class, 'v-menubar v-widget')]";
     private String menuItemLocator = "//span[contains(@class, 'v-menubar-menuitem')]//span[text()='%s']";
 
@@ -35,7 +35,7 @@ public class MenuAction extends BasePage{
         menu.doubleClick(menuItem);
     }
 
-    public List<String> get_sub_menu_items_list(String item){
+    public List<String> get_sub_menu_items_list(String item) {
         String path = String.format(menuItemLocator, item) + menuBarLocator;
         Menu menu = new Menu(getDriver(), find(By.xpath(path)));
         return menu.getSubItemsListAsString();

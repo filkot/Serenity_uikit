@@ -1,7 +1,5 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.elements.Menu;
-import com.axiomsl.serenity.steps.serenity.LabelSteps;
 import com.axiomsl.serenity.steps.serenity.MenuSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;

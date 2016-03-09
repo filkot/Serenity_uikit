@@ -46,7 +46,7 @@
             </activation>
             <properties>
                 <axiom.login>axiom</axiom.login>
-                <axiom.password>axiom123$</axiom.password>
+                <axiom.password>Axiom123$</axiom.password>
                 <webdriver.base.url>http://localhost:8888/ui_kit</webdriver.base.url>
             </properties>
         </profile>

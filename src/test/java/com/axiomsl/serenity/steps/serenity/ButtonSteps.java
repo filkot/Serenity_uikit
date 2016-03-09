@@ -13,11 +13,11 @@ public class ButtonSteps extends ScenarioSteps {
     ButtonAction action;
 
 
-
     @Step
     public void click_button_by_name(String buttonName) {
         action.click_button_by_name(buttonName);
     }
+
     @Step
     public void hover_on_button_by_name(String buttonName) {
         action.hover_on_button_by_name(buttonName);

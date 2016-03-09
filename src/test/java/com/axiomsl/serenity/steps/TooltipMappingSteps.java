@@ -1,6 +1,5 @@
 package com.axiomsl.serenity.steps;
 
-import com.axiomsl.serenity.elements.Tooltip;
 import com.axiomsl.serenity.steps.serenity.TooltipSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;

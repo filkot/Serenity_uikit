@@ -1,24 +1,20 @@
 package com.axiomsl.serenity.steps.serenity;
 
 import com.axiomsl.serenity.actions.PopupAction;
-import com.axiomsl.serenity.elements.Popup;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.openqa.selenium.By;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 
 /**
  * Created by kfilippov on 04.03.2016.
  */
-public class PopupSteps  extends ScenarioSteps {
+public class PopupSteps extends ScenarioSteps {
     PopupAction action;
 
     @Step
-    public void close(){
+    public void close() {
         action.close();
     }
 
@@ -26,18 +22,19 @@ public class PopupSteps  extends ScenarioSteps {
     public void maximize() {
         action.maximize();
     }
+
     @Step
-    public void restore(){
+    public void restore() {
         action.restore();
     }
 
     @Step
-    public String get_label_text(){
+    public String get_label_text() {
         return action.get_label_text();
     }
 
     @Step
-    public String get_header_text(){
+    public String get_header_text() {
         return action.get_header_text();
     }
 

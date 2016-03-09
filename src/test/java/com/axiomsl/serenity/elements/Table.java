@@ -1,11 +1,9 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
-import ch.lambdaj.function.convert.Converter;
 import com.axiomsl.serenity.pages.BasePage;
-import net.serenitybdd.core.annotations.findby.By;
+import org.openqa.selenium.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 
 import java.util.*;
@@ -19,6 +17,8 @@ public class Table extends BasePage {
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
+    private String settingsLocator = ".//div[@class='v-table-column-selector']";
+    private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
 
 
     public Table(WebDriver driver, WebElementFacade wrappedElement) {
@@ -127,6 +127,28 @@ public class Table extends BasePage {
     public List<Map<String, String>> getRowsAsStringMappedToHeadings(List<String> headings) {
         return Lambda.convert(this.getRowsMappedToHeadings(headings), BasePage.MapConverter.toMapsConvertingEachValue(BasePage.WebElementToTextConverter.toText()));
     }
+
+    public void makeVisibleColumn(String item){
+        wrappedElement.then(By.xpath(settingsLocator)).click();
+        String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
+        if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("off")){
+            driver.findElement(By.xpath(String.format(menuVisibilityLocator, item))).click();
+        }else{
+            System.out.println("Column already on");
+        }
+    }
+
+    public void makeInvisibleColumn(String item){
+        wrappedElement.then(By.xpath(settingsLocator)).click();
+        String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
+        if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("on")){
+            driver.findElement(By.xpath(String.format(menuVisibilityLocator, item))).click();
+        }else{
+            System.out.println("Column already off");
+        }
+    }
+
+
 
 
 //    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {

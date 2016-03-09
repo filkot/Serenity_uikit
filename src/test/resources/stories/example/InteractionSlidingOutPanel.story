@@ -8,8 +8,15 @@ Narrative:
 Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
-When the user select 'Interaction->Buttons' in tree
 
-Narrative: Scenario: Active
-Narrative: Scenario: Unactive
-Narrative: Scenario: Enter a text
+Scenario: Active
+Given the user refresh the Example page
+When the user select 'Interaction->SlidingOut panel' in tree
+When the user moves a cursor on sliding panel
+Then they should see active sliding panel
+
+Scenario: Inactive
+Given the user refresh the Example page
+When the user select 'Interaction->SlidingOut panel' in tree
+When the user moves cursor on example class path area
+Then they should see inactive sliding panel
