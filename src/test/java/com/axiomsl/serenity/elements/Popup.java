@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by kfilippov on 04.03.2016.
  */
-public class Popup extends BasePage{
+public class Popup extends BasePage {
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
 
@@ -23,22 +23,23 @@ public class Popup extends BasePage{
         this.wrappedElement = wrappedElement;
     }
 
-    public void close(){
+    public void close() {
         wrappedElement.then(By.xpath(closeLocator)).click();
     }
 
-    public void maximize(){
+    public void maximize() {
         wrappedElement.then(By.xpath(maximizeLocator)).click();
     }
 
-    public void restore(){
+    public void restore() {
         wrappedElement.then(By.xpath(restoreLocator)).click();
     }
 
-    public String getHeaderText(){
+    public String getHeaderText() {
         return wrappedElement.then(By.xpath(headerLocator)).getText();
     }
-    public String getLabelText(){
+
+    public String getLabelText() {
         return wrappedElement.then(By.xpath(labelLocator)).getText();
     }
 

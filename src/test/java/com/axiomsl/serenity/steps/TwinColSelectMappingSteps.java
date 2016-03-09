@@ -72,6 +72,7 @@ public class TwinColSelectMappingSteps {
     public void whenTheUserDoubleClickOnItemInRightCol(String item) {
         step.transfer_item_from_right_to_left_by_dbclick(item);
     }
+
     //THEN
     @Then("they should see the item list '$items' in right col")
     public void thenTheyShouldSeeItemListInRightCol(String items) {

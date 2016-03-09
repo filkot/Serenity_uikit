@@ -1,12 +1,10 @@
 package com.axiomsl.serenity.elements;
 
 import com.axiomsl.serenity.pages.BasePage;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class TwinColSelect extends BasePage {
         List<String> items = select.getSelectOptions();
 
         select.selectByIndex(0);
-        for(int i = 0; i<items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
             select.sendKeys(Keys.chord(Keys.SHIFT, Keys.DOWN));
         }
     }
@@ -51,7 +49,7 @@ public class TwinColSelect extends BasePage {
         List<String> items = select.getSelectOptions();
 
         select.selectByIndex(0);
-        for(int i = 0; i<items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
             select.sendKeys(Keys.chord(Keys.SHIFT, Keys.DOWN));
         }
     }
@@ -100,11 +98,9 @@ public class TwinColSelect extends BasePage {
         return wrappedElement.then(By.xpath(rightColLocator)).getSelectOptions();
     }
 
-    public WebElementFacade getItem(String item){
+    public WebElementFacade getItem(String item) {
         return wrappedElement.then(By.xpath(leftColLocator + String.format(itemLocator, item)));
     }
-
-
 
 
 }
