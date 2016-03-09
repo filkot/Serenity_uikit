@@ -11,7 +11,7 @@ public class ComboBoxAction extends BasePage {
     private String comBoxLocator = "//div[contains(@class, 'v-filterselect-prompt')]";
 
     public void select_item_in_comboBox(String item) {
-        ComboBox comboBox = new ComboBox(find(By.xpath(comBoxLocator)));
+        ComboBox comboBox = new ComboBox(getDriver(), find(By.xpath(comBoxLocator)));
         comboBox.selectItem(item);
     }
 

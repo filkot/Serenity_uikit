@@ -12,12 +12,17 @@ public class ButtonAction extends BasePage {
     private String buttonLocator = "//div[@role = 'button']//span";
 
     public void click_button_by_name(String buttonName) {
-        Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
+        Button button = new Button(getDriver(), find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.click();
     }
 
+    public void hover_on_button_by_name(String buttonName) {
+        Button button = new Button(getDriver(), find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
+        button.hoverOn();
+    }
+
     public String get_button_text() {
-        Button button = new Button(find(By.xpath(buttonLocator)));
+        Button button = new Button(getDriver(), find(By.xpath(buttonLocator)));
         return button.getText();
     }
 }

@@ -11,7 +11,7 @@ public class TextInputAction extends BasePage {
     private String textFieldLocator = "//input[@type = 'text']";
 
     public boolean isTextFieldDisplayed() {
-        TextInput textInput = new TextInput(find(By.xpath(textFieldLocator)));
+        TextInput textInput = new TextInput(getDriver(), find(By.xpath(textFieldLocator)));
         return VisibilityOfElementLocated(By.xpath(textFieldLocator));
     }
 
@@ -20,7 +20,7 @@ public class TextInputAction extends BasePage {
     }
 
     public void type_in_text_field(String text) {
-        TextInput textInput = new TextInput(find(By.xpath(textFieldLocator)));
+        TextInput textInput = new TextInput(getDriver(), find(By.xpath(textFieldLocator)));
         textInput.sendKeys(text);
     }
 

@@ -11,12 +11,12 @@ public class CheckBoxAction extends BasePage {
     private String checkBoxLocator = "//span[text() = '%s']/parent::div/parent::div";
 
     public void select_checkbox(String checkBoxName) {
-        CheckBox checkBox = new CheckBox(find(By.xpath(String.format(checkBoxLocator, checkBoxName))));
+        CheckBox checkBox = new CheckBox(getDriver(), find(By.xpath(String.format(checkBoxLocator, checkBoxName))));
         checkBox.select();
     }
 
     public void deselect_checkbox(String checkBoxName) {
-        CheckBox checkBox = new CheckBox(find(By.xpath(String.format(checkBoxLocator, checkBoxName))));
+        CheckBox checkBox = new CheckBox(getDriver(), find(By.xpath(String.format(checkBoxLocator, checkBoxName))));
         checkBox.deselect();
     }
 

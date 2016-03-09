@@ -25,7 +25,7 @@ public class MenuAction extends BasePage{
         String[] itemList = menuItem.split("->");
         String path = String.format(menuItemLocator, itemList[0]) + menuBarLocator;
         Menu menu = new Menu(getDriver(), find(By.xpath(path)));
-        menu.mouseOn(menuItem);
+        menu.hoverOn(menuItem);
     }
 
     public void double_click_menu_item_by_name(String menuItem) {

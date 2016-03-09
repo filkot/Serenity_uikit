@@ -1,14 +1,18 @@
 package com.axiomsl.serenity.elements;
 
+import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by kfilippov on 13.02.2016.
  */
-public class TextInput {
+public class TextInput extends BasePage {
+    private final WebDriver driver;
     private final WebElementFacade wrappedElement;
 
-    public TextInput(WebElementFacade wrappedElement) {
+    public TextInput(WebDriver driver, WebElementFacade wrappedElement) {
+        this.driver = driver;
         this.wrappedElement = wrappedElement;
     }
 

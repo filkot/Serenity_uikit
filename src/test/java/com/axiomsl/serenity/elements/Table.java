@@ -6,6 +6,7 @@ import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 
 import java.util.*;
 
@@ -13,13 +14,15 @@ import java.util.*;
  * Created by kfilippov on 10.02.2016.
  */
 public class Table extends BasePage {
+    private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
 
 
-    public Table(WebElementFacade wrappedElement) {
+    public Table(WebDriver driver, WebElementFacade wrappedElement) {
+        this.driver = driver;
         this.wrappedElement = wrappedElement;
     }
 

@@ -2,6 +2,17 @@ Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
 
+
+Scenario: On 'TwinColumn Selection' select 3 items and 2 back
+Given the user refresh the Example page
+When the user select 'Interaction->Buttons' in tree
+When the user hover on button with name 'Simple button with icon'
+Then they should see a tooltip with text 'Click on the button.'
+
+
+
+
+
 Scenario: On 'TwinColumn Selection' select 3 items and 2 back
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree

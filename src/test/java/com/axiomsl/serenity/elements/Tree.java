@@ -1,14 +1,17 @@
 package com.axiomsl.serenity.elements;
 
+import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 /**
  * Created by kfilippov on 11.02.2016.
  */
-public class Tree extends PageObject {
+public class Tree extends BasePage {
+    private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     //    private String treeNodeLocator = ".//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
 //    private String treeNodeLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-leaf') or contains(@class, 'v-tree-node-last')]";
@@ -16,7 +19,8 @@ public class Tree extends PageObject {
     private String treeNodeLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-leaf') or contains(@class, 'v-tree-node-last')]";
     private String treeRootLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-root')]";
 
-    public Tree(WebElementFacade wrappedElement) {
+    public Tree(WebDriver driver, WebElementFacade wrappedElement) {
+        this.driver = driver;
         this.wrappedElement = wrappedElement;
     }
 

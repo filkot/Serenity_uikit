@@ -38,19 +38,19 @@ public class Menu extends BasePage{
         }
     }
 
-    public void mouseOn(String menuItem){
+    public void hoverOn(String menuItem){
         String[] itemList = menuItem.split("->");
         String rootPath = String.format(menuItemLocator, itemList[0]);
         WebElementFacade menuItemRoot = wrappedElement.then(By.xpath(rootPath));
         if(itemList.length==1){
-            System.out.println("click in menu " + itemList[0]);
+            System.out.println("hoverOn menu " + itemList[0]);
             moveToElement(driver, menuItemRoot);
             return;
         }else{
             menuItemRoot.click();
         }
         for (int i = 1; i < itemList.length; i++) {
-            System.out.println("click in menu " + itemList[i]);
+            System.out.println("hoverOn menu " + itemList[i]);
             String path = menuBarPopupLocator + String.format(menuItemLocator, itemList[i]);
             if(i == itemList.length -1){
                 moveToElement(driver, wrappedElement.then(By.xpath(path)));
