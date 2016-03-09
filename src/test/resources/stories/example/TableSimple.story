@@ -1,7 +1,9 @@
-Scenario: Check the checkbox with caption 'id' only for SIMPLE table
+Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
-And the user select 'Trees and Tables->Table' in tree
+
+Scenario: Check the checkbox with caption 'id' only for SIMPLE table
+When the user select 'Trees and Tables->Table' in tree
 And the user select checkbox with caption 'id'
 Then they should see column 'Id' in table
 And they should not see column 'Name' in table

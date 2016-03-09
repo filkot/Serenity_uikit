@@ -1,11 +1,10 @@
-Scenario: Login in system
+Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
 
 Scenario: Make not visible all columns except column 'id' from the settings wheel for MULTI-SELECTION table
-Given the user is on the Example page
-When the user login in system
-And the user select 'Trees and Tables->Table' in tree
+Given the user refresh the Example page
+When the user select 'Trees and Tables->Table' in tree
 And the user makes not visible column 'Description' from the wheel for 'multi-selection' table
 And the user makes not visible column 'Active' from the wheel for 'multi-selection' table
 And the user makes not visible column 'Date' from the wheel for 'multi-selection' table

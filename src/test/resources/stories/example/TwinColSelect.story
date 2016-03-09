@@ -1,7 +1,10 @@
-Scenario: User transfers all items starting from the first in 'TwinColumn Selection' section
+Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
-And the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
+
+Scenario: User transfers all items starting from the first in 'TwinColumn Selection' section
+Given the user refresh the Example page
+When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
 And the user transfer 'first row' from left to right
 Then they should see the item list 'first row' in right col
 When the user transfer 'second row' from left to right
