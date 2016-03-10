@@ -1,6 +1,7 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
+import ch.lambdaj.function.convert.Converter;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -32,6 +33,7 @@ public class Table extends BasePage {
 
     public List<String> getHeadingsAsString() {
         return Lambda.convert(this.getHeadings(), BasePage.WebElementToTextConverter.toTextValues());
+//        return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
     }
 
     public List<List<WebElementFacade>> getRows() {
@@ -45,6 +47,7 @@ public class Table extends BasePage {
 
     public List<List<String>> getRowsAsString() {
         return Lambda.convert(this.getRows(), BasePage.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
+//        return Lambda.convert(this.getRows(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
     public List<List<WebElementFacade>> getColumns() {
@@ -73,6 +76,7 @@ public class Table extends BasePage {
 
     public List<List<String>> getColumnsAsString() {
         return Lambda.convert(this.getColumns(), BasePage.ListConverter.toListsConvertingEachItem(BasePage.WebElementToTextConverter.toTextValues()));
+//        return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
     public List<String> getColumnAsStringByIndex(int index) {
