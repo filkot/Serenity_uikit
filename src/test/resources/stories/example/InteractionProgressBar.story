@@ -11,4 +11,3 @@ When the user login in system
 When the user select 'Interaction->ProgressBar' in tree
 When the user click button with name 'Load'
 Then they should see the progress bar with text '100%'
-Narrative: Then they should see the item list 'second row' in left col

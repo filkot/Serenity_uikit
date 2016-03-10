@@ -10,4 +10,3 @@ Narrative:
 Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
-When the user select 'Interaction->Buttons' in tree
