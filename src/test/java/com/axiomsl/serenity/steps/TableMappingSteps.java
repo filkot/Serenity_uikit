@@ -21,7 +21,7 @@ public class TableMappingSteps {
 
     @When("the user makes visible column '$columnName' from the settings wheel for '$tableCaption' table")
     @Alias("the user makes visible column <columnName> from the settings wheel for <tableCaption> table")
-     public void whenTheUserMakesVisibleColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
+    public void whenTheUserMakesVisibleColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.make_visible_column(tableCaption, columnName);
     }
 
@@ -49,16 +49,14 @@ public class TableMappingSteps {
     }
 
     @Then("they should see column '$columnName' in '$tableCaption' table")
-    @Alias("they should see column <columnName> in <tableCaption> table")
+    @Alias("they should see column '$columnName' in <tableCaption> table")
     public void thenTheyShouldSeeColumnInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.should_see_column_with_name_in_table_with_caption(tableCaption, columnName);
     }
 
     @Then("they should not see column '$columnName' in '$tableCaption' table")
-    @Alias("they should not see column <columnName> in <tableCaption> table")
+    @Alias("they should not see column '$columnName' in <tableCaption> table")
     public void thenTheyShouldNotSeeColumnInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.should_not_see_column_with_name_in_table_with_caption(tableCaption, columnName);
     }
-
-
 }

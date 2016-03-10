@@ -21,33 +21,39 @@ And the user makes not visible column 'Active' from the wheel for 'multi-selecti
 And the user makes not visible column 'Date' from the wheel for 'multi-selection' table
 And the user makes not visible column 'Password' from the wheel for 'multi-selection' table
 And the user makes not visible column 'Name' from the wheel for 'multi-selection' table
-Then they should see column 'Id' in 'multi-selection' table
-And they should not see column 'Name' in 'multi-selection' table
-And they should not see column 'Password' in 'multi-selection' table
-And they should not see column 'Date' in 'multi-selection' table
-And they should not see column 'Active' in 'multi-selection' table
-And they should not see column 'Description' in 'multi-selection' table
+Then they should see column 'Id' in <tableCaption> table
+And they should not see column 'Name' in <tableCaption> table
+And they should not see column 'Password' in <tableCaption> table
+And they should not see column 'Date' in <tableCaption> table
+And they should not see column 'Active' in <tableCaption> table
+And they should not see column 'Description' in <tableCaption> table
 And they should see checked 'Id' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Name' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Password' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Date' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Active' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Description' item in the wheel in 'multi-selection' table
+Examples:
+|tableCaption|
+|Table with different components in columns and multi selection mode|
 
 Scenario: Make not visible all columns from the settings wheel for MULTI-SELECTION table
 When the user makes not visible column 'Id' from the wheel for 'multi-selection' table
-Then they should not see column 'Id' in 'multi-selection' table
-And they should not see column 'Name' in 'multi-selection' table
-And they should not see column 'Password' in 'multi-selection' table
-And they should not see column 'Date' in 'multi-selection' table
-And they should not see column 'Active' in 'multi-selection' table
-And they should not see column 'Description' in 'multi-selection' table
+Then they should not see column 'Id' in <tableCaption> table
+And they should not see column 'Name' in <tableCaption> table
+And they should not see column 'Password' in <tableCaption> table
+And they should not see column 'Date' in <tableCaption> table
+And they should not see column 'Active' in <tableCaption> table
+And they should not see column 'Description' in <tableCaption> table
 And they should see unchecked 'Id' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Name' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Password' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Date' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Active' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Description' item in the wheel in 'multi-selection' table
+Examples:
+|tableCaption|
+|Table with different components in columns and multi selection mode|
 
 Scenario: Make visible all columns except column 'Description' from the settings wheel for MULTI-SELECTION table
 When the user makes visible column 'Id' from the wheel for 'multi-selection' table
@@ -55,18 +61,21 @@ And the user makes visible column 'Name' from the wheel for 'multi-selection' ta
 And the user makes visible column 'Password' from the wheel for 'multi-selection' table
 And the user makes visible column 'Date' from the wheel for 'multi-selection' table
 And the user makes visible column 'Active' from the wheel for 'multi-selection' table
-Then they should see column 'Id' in 'multi-selection' table
-And they should see column 'Name' in 'multi-selection' table
-And they should see column 'Password' in 'multi-selection' table
-And they should see column 'Date' in 'multi-selection' table
-And they should see column 'Active' in 'multi-selection' table
-And they should not see column 'Description' in 'multi-selection' table
+Then they should see column 'Id' in <tableCaption> table
+And they should see column 'Name' in <tableCaption> table
+And they should see column 'Password' in <tableCaption> table
+And they should see column 'Date' in <tableCaption> table
+And they should see column 'Active' in <tableCaption> table
+And they should not see column 'Description' in <tableCaption> table
 And they should see checked 'Id' item in the wheel in 'multi-selection' table
 And they should see checked 'Name' item in the wheel in 'multi-selection' table
 And they should see checked 'Password' item in the wheel in 'multi-selection' table
 And they should see checked 'Date' item in the wheel in 'multi-selection' table
 And they should see checked 'Active' item in the wheel in 'multi-selection' table
 And they should see unchecked 'Description' item in the wheel in 'multi-selection' table
+Examples:
+|tableCaption|
+|Table with different components in columns and multi selection mode|
 
 Scenario: Make visible all columns from the settings wheel for MULTI-SELECTION table
 When the user makes visible column 'Id' from the wheel for 'multi-selection' table
@@ -75,18 +84,21 @@ And the user makes visible column 'Password' from the wheel for 'multi-selection
 And the user makes visible column 'Date' from the wheel for 'multi-selection' table
 And the user makes visible column 'Active' from the wheel for 'multi-selection' table
 And the user makes visible column 'Description' from the wheel for 'multi-selection' table
-Then they should see column 'Id' in 'multi-selection' table
-And they should see column 'Name' in 'multi-selection' table
-And they should see column 'Password' in 'multi-selection' table
-And they should see column 'Date' in 'multi-selection' table
-And they should see column 'Active' in 'multi-selection' table
-And they should see column 'Description' in 'multi-selection' table
+Then they should see column 'Id' in <tableCaption> table
+And they should see column 'Name' in <tableCaption> table
+And they should see column 'Password' in <tableCaption> table
+And they should see column 'Date' in <tableCaption> table
+And they should see column 'Active' in <tableCaption> table
+And they should see column 'Description' in <tableCaption> table
 And they should see checked 'Id' item in the wheel in 'multi-selection' table
 And they should see checked 'Name' item in the wheel in 'multi-selection' table
 And they should see checked 'Password' item in the wheel in 'multi-selection' table
 And they should see checked 'Date' item in the wheel in 'multi-selection' table
 And they should see checked 'Active' item in the wheel in 'multi-selection' table
 And they should see checked 'Description' item in the wheel in 'multi-selection' table
+Examples:
+|tableCaption|
+|Table with different components in columns and multi selection mode|
 
 Scenario: Select the first column in MULTI-SELECTION table
 Given the user refresh the Example page
