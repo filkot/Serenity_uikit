@@ -1,3 +1,14 @@
+Narrative:
+*-----------------------------------------------------------------------------------------------------------------------
+* Tested application: vaadin_example
+*
+* UI element: Trees and Tables -> Table (Simple)
+*-----------------------------------------------------------------------------------------------------------------------
+
+Meta:
+@author Maksim Zhelezko
+@date: 04.03.2016
+
 Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
@@ -170,11 +181,12 @@ When the user makes not visible column 'Name' from the wheel for 'simple' table
 Then they should see row with column 'Id' and value '1' is selected in 'simple' table
 And they should see label 'name' contains 'user1' text
 
-Scenario: Selection is not disabling when all rows are not visible in 'simple' table
+Scenario: Selection is not disabling when all columns are not visible in SIMPLE table
 When the user makes not visible column 'Id' from the wheel for 'simple' table
+Then they should see row with column 'Name' and value 'user1' is selected in 'simple' table
+When the user makes not visible column 'Name' from the wheel for 'simple' table
+And the user makes visible column 'Id' from the wheel for 'simple' table
 Then they should see row with column 'Id' and value '1' is selected in 'simple' table
-When the user makes visible column 'Name' from the wheel for 'simple' table
-Then they should see row with name 'user1' is selected in 'simple' table
 
 Scenario: Select 'NONE' item from 'RowHeadeMode' Combo-Box in SIMPLE table
 Given the user refresh the Example page

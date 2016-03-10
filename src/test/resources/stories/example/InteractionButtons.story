@@ -60,6 +60,5 @@ When the user hovers on button with name 'Simple button with icon'
 When the user moves cursor on example class path area
 Then they should not see a tooltip with text 'Click on the button.'
 
-
 Narrative: Scenario: Select
 Narrative: Scenario: Icons
