@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -87,6 +88,16 @@ public class TwinColSelectSteps extends ScenarioSteps {
     public void should_see_items_in_right_col(String items) {
         List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
         assertThat(action.get_right_col_items_list(), is(equalTo(itemsList)));
+    }
+
+    @Step
+    public void should_see_empty_left_col() {
+        assertThat(action.get_left_col_items_list(), is(empty()));
+    }
+
+    @Step
+    public void should_see_empty_right_col() {
+        assertThat(action.get_right_col_items_list(), is(empty()));
     }
 
 

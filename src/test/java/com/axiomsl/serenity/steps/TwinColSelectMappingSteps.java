@@ -84,5 +84,15 @@ public class TwinColSelectMappingSteps {
         step.should_see_items_in_left_col(items);
     }
 
+    @Then("they should see the empty list in right col")
+    public void thenTheyShouldSeeEmptyListInRightCol() {
+        step.should_see_empty_right_col();
+    }
+
+    @Then("they should see the empty list in left col")
+    public void thenTheyShouldSeeEmptyListInLeftCol() {
+        step.should_see_empty_left_col();
+    }
+
 
 }
