@@ -31,8 +31,8 @@ public class BasePage extends PageObject {
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
     }
 
-    public void clickByCoordinate(WebElementFacade element, int x, int y) {
-        Actions actions = new Actions(getDriver());
+    public void clickByCoordinate(WebDriver driver,WebElementFacade element, int x, int y) {
+        Actions actions = new Actions(driver);
         actions.moveToElement(element, x, y).click().build().perform();
     }
 

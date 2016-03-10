@@ -15,7 +15,7 @@ public class Tree extends BasePage {
     //    private String treeNodeLocator = ".//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
 //    private String treeNodeLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-leaf') or contains(@class, 'v-tree-node-last')]";
 //    private String treeRootLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-root')]";
-    private String treeNodeLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-leaf') or contains(@class, 'v-tree-node-last')]";
+    private String treeNodeLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node') and @aria-level='%s']";
     private String treeRootLocator = "//span[text() = '%s']/ancestor::div[contains(@class, 'v-tree-node-root')]";
 
     public Tree(WebDriver driver, WebElementFacade wrappedElement) {
@@ -28,26 +28,23 @@ public class Tree extends BasePage {
 
         String rootPath = String.format(treeRootLocator, itemList[0]);
         WebElementFacade treeRoot = wrappedElement.then(By.xpath(rootPath));
-        clickByCoordinate(treeRoot, 1, 1);
+        clickByCoordinate(driver, treeRoot, 1, 1);
 
         String nodePath = rootPath;
         for (int i = 1; i < itemList.length; i++) {
             System.out.println(itemList[i]);
             nodePath = nodePath + String.format(treeNodeLocator, itemList[i], i + 1);
             System.out.println(nodePath);
-            WebElementFacade treeNode = wrappedElement.then(By.xpath(nodePath));
+            WebElementFacade treeNode = treeRoot.then(By.xpath(nodePath));
             if (itemList.length == i + 1) {
                 treeNode.click();
                 break;
             }
-            clickByCoordinate(treeNode, 1, 1);
+            clickByCoordinate(driver, treeNode, 1, 1);
         }
     }
 
-    public void clickByCoordinate(WebElementFacade element, int x, int y) {
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(element, x, y).click().build().perform();
-    }
+
 
 
 }
