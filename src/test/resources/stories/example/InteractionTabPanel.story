@@ -12,19 +12,19 @@ When the user login in system
 Scenario: Tab Active
 Given the user refresh the Example page
 When the user select 'Interaction->TabPanel' in tree
-When the user type text '_01' in text field
-When the user click button with name 'Add tab'
-When the user click button with name 'Add tab'
-When the user click button with name 'new tab_011'
+And the user type text '_01' in text field
+And the user click button with name 'Add tab'
+And the user click button with name 'Add tab'
+And the user click button with name 'new tab_011'
 Then they should see the label with text 'new tab_011'
 
 Scenario: Tab Unactive
 Given the user refresh the Example page
 When the user select 'Interaction->TabPanel' in tree
-When the user type text '_01' in text field
-When the user click button with name 'Add tab'
-When the user click button with name 'Add tab'
-When the user click button with name 'new tab_011'
+And the user type text '_01' in text field
+And the user click button with name 'Add tab'
+And the user click button with name 'Add tab'
+And the user click button with name 'new tab_011'
 Then they should not see the label with text 'new tab_012'
 
 !-- Not yet implemented

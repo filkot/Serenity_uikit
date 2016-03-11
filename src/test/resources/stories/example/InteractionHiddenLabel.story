@@ -14,13 +14,13 @@ Scenario: Label Unhide
 Meta: @id2 TC_1_3_1
 Given the user refresh the Example page
 When the user select 'Interaction->Hidden Label' in tree
-When the user click button with name 'Show the label already!'
+And the user click button with name 'Show the label already!'
 Then they should see the label with text 'This is the label you've been waiting for'
 
 Scenario: Label Hide
 Meta: @id3 TC_1_3_2
 Given the user refresh the Example page
 When the user select 'Interaction->Hidden Label' in tree
-When the user click button with name 'Show the label already!'
-When the user click button with name 'Hide the label NOW!!'
+And the user click button with name 'Show the label already!'
+And the user click button with name 'Hide the label NOW!!'
 Then they should not see the label with text 'This is the label you've been waiting for'
