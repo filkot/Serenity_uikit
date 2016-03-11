@@ -15,6 +15,10 @@ public class LabelMappingSteps {
     public void thenTheyShouldSeeALabelWithText(String text) {
         step.should_see_label_with_text(text);
     }
+    @Then("they should not see the label with text '$text'")
+    public void thenTheyShouldNotSeeALabelWithText(String text) {
+        step.should_not_see_label_with_text(text);
+    }
 
 
 }
