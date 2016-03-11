@@ -1,18 +1,12 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
-import ch.lambdaj.function.convert.Converter;
 import com.axiomsl.serenity.pages.BasePage;
-import org.openqa.selenium.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.internal.Locatable;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.*;
 
 /**
