@@ -18,6 +18,7 @@ public class BasePage extends PageObject {
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
+    private String treeLocator = "//div[@role='tree']";
     private String passwordLocator = "//input[@type = 'password']";
 
     public final String stickyToolbar = ".b-sticky:not([style*='hidden'])";
@@ -33,6 +34,10 @@ public class BasePage extends PageObject {
         password.type(System.getProperty("axiom.password"));
         button.click();
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
+    }
+
+    public void move_cursor_on_tree(){
+        moveToElement(getDriver(), find(By.xpath(treeLocator)));
     }
 
     public void clickByCoordinate(WebDriver driver,WebElementFacade element, int x, int y) {
