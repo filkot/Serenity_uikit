@@ -1,17 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
 * UI element: Trees and Tables -> Table (Multi-Selection)
+*
+* Author: Maksim Zhelezko
+* Created Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-
-Meta:
-@author Maksim Zhelezko
-@date: 04.03.2016
-
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: Multi-Selection Table
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Make not visible all columns except column 'id' from the settings wheel for MULTI-SELECTION table
 Given the user refresh the Example page

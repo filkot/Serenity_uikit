@@ -1,17 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
 * UI element: Trees and Tables -> Editable Table
+*
+* Author: Maksim Zhelezko
+* Created Date: 09.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-
-Meta:
-@author Maksim Zhelezko
-@date: 09.03.2016
-
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: Editable Table
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Select a checkbox in unselected column
 Given the user refresh the Example page

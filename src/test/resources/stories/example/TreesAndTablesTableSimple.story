@@ -1,17 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
 * UI element: Trees and Tables -> Table (Simple)
+*
+* Author: Maksim Zhelezko
+* Created Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-
-Meta:
-@author Maksim Zhelezko
-@date: 04.03.2016
-
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: Simple Table
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Check the checkbox with caption 'id' only for SIMPLE table
 When the user select 'Trees and Tables->Table' in tree
