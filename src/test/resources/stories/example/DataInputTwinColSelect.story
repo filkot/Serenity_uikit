@@ -1,17 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
 * UI element: Data Input -> Multiple Values -> TwinColumn Selection
+*
+* Author: Maksim Zhelezko
+* Created Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-
-Meta:
-@author Maksim Zhelezko
-@date: 04.03.2016
-
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: TwinColumn Selection
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: User transfers all items starting from the first
 Given the user refresh the Example page
@@ -49,7 +45,7 @@ When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
 And the user transfer 'first row' from left to right
 Then they should see the item list 'first row' in right col
 When the user transfer 'first row' from right to left
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 
 Scenario: User transfers and transfers back only the last item
 Given the user refresh the Example page
@@ -57,7 +53,7 @@ When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
 And the user transfer 'third row' from left to right
 Then they should see the item list 'third row' in right col
 When the user transfer 'third row' from right to left
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 
 Scenario: User transfers all items and transfers back only the first two items starting from the first
 Given the user refresh the Example page
@@ -114,7 +110,7 @@ Then they should see the item list 'second row, third row' in right col
 When the user transfer 'second row' from right to left
 Then they should see the item list 'third row' in right col
 When the user transfer 'third row' from right to left
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 
 Scenario: User transfers all items and transfers them back in straight order
 Given the user refresh the Example page
@@ -127,7 +123,7 @@ Then they should see the item list 'first row, second row' in right col
 When the user transfer 'second row' from right to left
 Then they should see the item list 'first row' in right col
 When the user transfer 'first row' from right to left
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 
 Scenario: User transfers all items starting from the first by clicking on the item
 Given the user refresh the Example page
@@ -170,7 +166,7 @@ When the user press forwardButton '2' times
 Then they should see the item list 'first row, second row, third row' in right col
 When the user press forwardButton '2' times
 Then they should see the item list 'first row, second row, third row' in right col
-And they should see the item list '' in left col
+And they should see the empty list in left col
 
 Scenario: User transfers the items by clicking on moveBack button
 Given the user refresh the Example page
@@ -184,7 +180,7 @@ When the user press backButton '2' times
 Then they should see the item list 'third row' in right col
 When the user press backButton '2' times
 Then they should see the item list 'first row, second row, third row' in left col
-And they should see the item list '' in right col
+And they should see the empty list in right col
 
 Scenario: User uses a multiselection transfer w/o forced selecting the Twin Columns
 Given the user refresh the Example page
@@ -192,10 +188,10 @@ When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
 When the user select all items in left column
 And the user press forwardButton '1' times
 Then they should see the item list 'first row, second row, third row' in right col
-And they should see the item list '' in left col
+And they should see the empty list in left col
 When the user select all items in right column
 And the user press backButton '1' times
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 And they should see the item list 'first row, second row, third row' in left col
 
 Scenario: User uses a multiselection transfer with forced selecting the Twin Columns
@@ -206,10 +202,10 @@ And the user press forwardButton '1' times
 And the user select left column
 And the user press forwardButton '1' times
 Then they should see the item list 'first row, second row, third row' in right col
-And they should see the item list '' in left col
+And they should see the empty list in left col
 When the user select all items in right column
 And the user press backButton '1' times
 And the user select right column
 And the user press backButton '1' times
-Then they should see the item list '' in right col
+Then they should see the empty list in right col
 And they should see the item list 'first row, second row, third row' in left col

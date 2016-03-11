@@ -1,17 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
 * UI element: Trees and Tables -> Table (Simple)
+*
+* Author: Maksim Zhelezko
+* Created Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-
-Meta:
-@author Maksim Zhelezko
-@date: 04.03.2016
-
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: Simple Table
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Check the checkbox with caption 'id' only for SIMPLE table
 When the user select 'Trees and Tables->Table' in tree
@@ -50,40 +46,55 @@ Scenario: Make visible column 'id' only from the settings wheel for SIMPLE table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user makes visible column 'Id' from the wheel for 'simple' table
-Then they should see column 'Id' in 'simple' table
-And they should not see column 'Name' in 'simple' table
+Then they should see column 'Id' in <tableCaption> table
+And they should not see column 'Name' in <tableCaption> table
 And they should see checked 'Id' item in the wheel in 'simple' table
 And they should see unchecked 'Name' item in the wheel in 'simple' table
+Examples:
+|tableCaption|
+|Simple Table with label components as columns|
 
 Scenario: Make not visible columns 'id' and 'name' from the settings wheel for SIMPLE table
 When the user makes not visible column 'Id' from the wheel for 'simple' table
-Then they should not see column 'Id' in 'simple' table
-And they should not see column 'Name' in 'simple' table
+Then they should not see column 'Id' in <tableCaption> table
+And they should not see column 'Name' in <tableCaption> table
 And they should see unchecked 'Id' item in the wheel in 'simple' table
 And they should see unchecked 'Name' item in the wheel in 'simple' table
+Examples:
+|tableCaption|
+|Simple Table with label components as columns|
 
 Scenario: Make visible column 'name' only from the settings wheel for SIMPLE table
 When the user makes visible column 'Name' from the wheel for 'simple' table
-Then they should see column 'Name' in 'simple' table
-And they should not see column 'Id' in 'simple' table
+Then they should see column 'Name' in <tableCaption> table
+And they should not see column 'Id' in <tableCaption> table
 And they should see unchecked 'Id' item in the wheel in 'simple' table
 And they should see checked 'Name' item in the wheel in 'simple' table
+Examples:
+|tableCaption|
+|Simple Table with label components as columns|
 
 Scenario: Make visible columns 'id' and 'name' from the settings wheel for SIMPLE table
 When the user makes visible column 'Id' from the wheel for 'simple' table
 And the user makes visible column 'Name' from the wheel for 'simple' table
-Then they should see column 'Id' in 'simple' table
-And they should see column 'Name' in 'simple' table
+Then they should see column 'Id' in <tableCaption> table
+And they should see column 'Name' in <tableCaption> table
 And they should see checked 'Id' item in the wheel in 'simple' table
 And they should see checked 'Name' item in the wheel in 'simple' table
+Examples:
+|tableCaption|
+|Simple Table with label components as columns|
 
 Scenario: Make not visible columns 'id' and 'name' from the settings wheel for SIMPLE table
 When the user makes not visible column 'Id' from the wheel for 'simple' table
 And  the user makes not visible column 'Name' from the wheel for 'simple' table
-Then they should not see column 'Id' in 'simple' table
-And they should not see column 'Name' in 'simple' table
+Then they should not see column 'Id' in <tableCaption> table
+And they should not see column 'Name' in <tableCaption> table
 And they should see not checked 'Id' item in the wheel in 'simple' table
 And they should see not checked 'Name' item in the wheel in 'simple' table
+Examples:
+|tableCaption|
+|Simple Table with label components as columns|
 
 Scenario: Select the first column in SIMPLE table
 Given the user refresh the Example page

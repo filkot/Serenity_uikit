@@ -1,14 +1,13 @@
-Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 * Tested application: vaadin_example
 *
-* UI element: Data Input -> Multiple Values -> TwinColumn Selection
+* Login into Examples Application
+*
+* Author: Denis Budranov
+* Created Date: 03.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
+Meta: @group: Login Examples
 
-Meta:
-@author Maksim Zhelezko
-@date: 04.03.2016
-
-Scenario: Login to system
+Scenario: Login into vaadin_example
 Given the user is on the Example page
 When the user login in system
