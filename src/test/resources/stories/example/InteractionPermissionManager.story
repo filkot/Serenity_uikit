@@ -8,7 +8,6 @@ Narrative:
 Scenario: Login to system
 Given the user is on the Example page
 When the user login in system
-When the user select 'Interaction->Buttons' in tree
 
 !-- Scenario: Open a combobox
 !-- Scenario: Select an item in a combobox

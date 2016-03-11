@@ -12,11 +12,11 @@ When the user login in system
 Scenario: Active
 Given the user refresh the Example page
 When the user select 'Interaction->SlidingOut panel' in tree
-When the user moves a cursor on sliding panel
+And the user moves a cursor on sliding panel
 Then they should see active sliding panel
 
 Scenario: Inactive
 Given the user refresh the Example page
 When the user select 'Interaction->SlidingOut panel' in tree
-When the user moves cursor on example class path area
+And the user moves cursor on example class path area
 Then they should see inactive sliding panel
