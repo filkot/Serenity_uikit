@@ -96,51 +96,20 @@ Examples:
 |tableCaption|
 |Table with different components in columns and multi selection mode|
 
-Scenario: Select the first column in MULTI-SELECTION table
+Scenario: Select the first row in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user selects row with column 'Id' and value '0' in 'multi-selection' table
 Then they should see row with column 'Id' and value '0' is selected in 'multi-selection' table
 
-Scenario: Deselect the first column in MULTI-SELECTION table
-When the user deselects row with column 'Id' and value '0' in 'multi-selection' table
-Then they should see row with column 'Id' and value '0' is selected in 'multi-selection' table
-
-Scenario: Select the last column in MULTI-SELECTION table
+Scenario: Select the last row in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls down to the end in 'multi-selection' table
 And the user selects row with column 'Id' and value '49' in 'multi-selection' table
 Then they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
 
-Scenario: Deselect the last column in MULTI-SELECTION table
-When the user scrolls up to the beginning in 'multi-selection' table
-And the user scrolls down to the end in 'multi-selection' table
-And the user deselects row with column 'Id' and value '49' in 'multi-selection' table
-Then they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
-
-Scenario: Re-select a column at the beginning in MULTI-SELECTION table
-Given the user refresh the Example page
-When the user select 'Trees and Tables->Table' in tree
-And the user selects row with column 'Id' and value '1' in 'multi-selection' table
-And the user deselects row with column 'Id' and value '1' in 'multi-selection' table
-Then they should see row with column 'Id' and value '1' is deselected in 'multi-selection' table
-When the user selects row with column 'Id' and value '1' in 'multi-selection' table
-Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
-
-Scenario: Re-select a column at the end in MULTI-SELECTION table
-Given the user refresh the Example page
-When the user select 'Trees and Tables->Table' in tree
-And the user scrolls down to the end in 'multi-selection' table
-And the user selects row with column 'Id' and value '49' in 'multi-selection' table
-And the user deselects row with column 'Id' and value '49' in 'multi-selection' table
-Then they should see row with column 'Id' and value '49' is deselected in 'multi-selection' table
-And  they should see 'multi-selection' table in not scrolled to the beggining
-When the user selects row with column 'Id' and value '49' in 'multi-selection' table
-Then they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
-And they should see 'multi-selection' table in not scrolled to the beggining
-
-Scenario: Select another column at the beginning in MULTI-SELECTION table
+Scenario: Select another row at the beginning in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user selects row with column 'Id' and value '1' in 'multi-selection' table
@@ -148,7 +117,7 @@ And the user selects row with column 'Id' and value '2' in 'multi-selection' tab
 Then they should see row with column 'Id' and value '1' is deselected in 'multi-selection' table
 And they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
 
-Scenario: Select another column at the end in MULTI-SELECTION table
+Scenario: Select another row at the end in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls down to the end in 'multi-selection' table
@@ -157,7 +126,7 @@ And the user selects row with column 'Id' and value '48' in 'multi-selection' ta
 Then they should see row with column 'Id' and value '49' is deselected in 'multi-selection' table
 And they should see row with column 'Id' and value '48' is selected in 'multi-selection' table
 
-Scenario: Select another column in MULTI-SELECTION table
+Scenario: Select another row in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls down to the end in 'multi-selection' table
@@ -167,6 +136,31 @@ And the user selects row with column 'Id' and value '1' in 'multi-selection' tab
 Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
 When the user scrolls down to the end in 'multi-selection' table
 Then they should see row with column 'Id' and value '48' is deselected in 'multi-selection' table
+
+Scenario: Re-select a row at the beginning in MULTI-SELECTION table
+Given the user refresh the Example page
+When the user select 'Trees and Tables->Table' in tree
+And the user selects row with column 'Id' and value '1' in 'multi-selection' table
+And the user selects row with column 'Id' and value '0' in 'multi-selection' table
+Then they should see row with column 'Id' and value '1' is deselected in 'multi-selection' table
+And they should see row with column 'Id' and value '0' is selected in 'multi-selection' table
+When the user selects row with column 'Id' and value '1' in 'multi-selection' table
+Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '0' is selected in 'multi-selection' table
+
+Scenario: Re-select a row at the end in MULTI-SELECTION table
+Given the user refresh the Example page
+When the user select 'Trees and Tables->Table' in tree
+And the user scrolls down to the end in 'multi-selection' table
+And the user selects row with column 'Id' and value '49' in 'multi-selection' table
+And the user selects row with column 'Id' and value '48' in 'multi-selection' table
+Then they should see row with column 'Id' and value '49' is deselected in 'multi-selection' table
+And they should see row with column 'Id' and value '48' is selected in 'multi-selection' table
+And  they should see 'multi-selection' table in not scrolled to the beggining
+When the user selects row with column 'Id' and value '49' in 'multi-selection' table
+Then they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '48' is deselected in 'multi-selection' table
+And they should see 'multi-selection' table in not scrolled to the beggining
 
 Scenario: Selection is not disabling for a row when another column is visible in MULTI-SELECTION table
 Given the user refresh the Example page
@@ -192,23 +186,21 @@ When the user makes not visible column 'Id' from the wheel for 'multi-selection'
 And the user makes visible column 'Id' from the wheel for 'multi-selection' table
 Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
 
-Scenario: Multi-select/re-select the columns at the beginning in MULTI-SELECTION table
+Scenario: Multi-select the rows next to the current at the beginning in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user multi-selects row with column 'Id' and value '1' in 'multi-selection' table
 And the user multi-selects row with column 'Id' and value '2' in 'multi-selection' table
 Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
 And they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
-When the user deselects row with column 'Id' and value '1' in 'multi-selection' table
-And the user deselects row with column 'Id' and value '2' in 'multi-selection' table
-Then they should see row with column 'Id' and value '1' is deselected in 'multi-selection' table
-And they should see row with column 'Id' and value '2' is deselected in 'multi-selection' table
-When the user multi-selects row with column 'Id' and value '1' in 'multi-selection' table
-And the user multi-selects row with column 'Id' and value '2' in 'multi-selection' table
+When the user multi-selects row with column 'Id' and value '3' in 'multi-selection' table
+And the user multi-selects row with column 'Id' and value '4' in 'multi-selection' table
 Then they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
-And they should see row with column 'Id' and value '1' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '3' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
 
-Scenario: Multi-select/re-select a column at the end in MULTI-SELECTION table
+Scenario: Multi-select the rows next to the current at the end in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls down to the end in 'multi-selection' table
@@ -216,18 +208,16 @@ And the user multi-selects row with column 'Id' and value '48' in 'multi-selecti
 And the user multi-selects row with column 'Id' and value '49' in 'multi-selection' table
 Then they should see row with column 'Id' and value '48' is selected in 'multi-selection' table
 And they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
-When the user deselects row with column 'Id' and value '48' in 'multi-selection' table
-And the user deselects row with column 'Id' and value '49' in 'multi-selection' table
-Then they should see row with column 'Id' and value '48' is deselected in 'multi-selection' table
-And they should see row with column 'Id' and value '49' is deselected in 'multi-selection' table
 And  they should see 'multi-selection' table in not scrolled to the beggining
-When the user multi-selects row with column 'Id' and value '48' in 'multi-selection' table
-And the user multi-selects row with column 'Id' and value '49' in 'multi-selection' table
-Then they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
+When the user multi-selects row with column 'Id' and value '46' in 'multi-selection' table
+And the user multi-selects row with column 'Id' and value '47' in 'multi-selection' table
+Then they should see row with column 'Id' and value '46' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '47' is selected in 'multi-selection' table
 And they should see row with column 'Id' and value '48' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '49' is selected in 'multi-selection' table
 And they should see 'multi-selection' table in not scrolled to the beggining
 
-Scenario: Select other columns at the beginning in MULTI-SELECTION table
+Scenario: Select other rows at the beginning in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls up to the beginning in 'multi-selection' table
@@ -240,7 +230,7 @@ And the user multi-selects row with column 'Id' and value '4' in 'multi-selectio
 Then they should see row with column 'Id' and value '3' is selected in 'multi-selection' table
 And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
 
-Scenario: Select other column at the end in MULTI-SELECTION table
+Scenario: Select other rows at the end in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user scrolls down to the end in 'multi-selection' table
@@ -274,7 +264,7 @@ And they should see row with column 'Id' and value '2' is selected in 'multi-sel
 And they should see date '3/10/16 08:32:56 PM' in column 'Date' for row with column 'Id' and value '1' in 'multi-selection' table
 And they should see date '4/10/16 05:12:17 PM' in column 'Date' for row with column 'Id' and value '2' in 'multi-selection' table
 
-Scenario: Unselect a checkbox in selected column of MULTI-SELECTION table
+Scenario: Unselect a checkbox in selected row of MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user multi-selects row with column 'Id' and value '1' in 'multi-selection' table
@@ -283,7 +273,7 @@ Then they should see row with column 'Id' and value '1' is selected in 'multi-se
 And they should see unselected checkbox in column 'Active' for row with column 'Id' and value '1' in 'multi-selection' table
 And they should see selected checkbox in column 'Active' for row with column 'Id' and value '2' in 'multi-selection' table
 
-Scenario: Unselect a checkbox in one of selected columns of MULTI-SELECTION table
+Scenario: Unselect a checkbox in one of selected rows of MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user multi-selects row with column 'Id' and value '1' in 'multi-selection' table
@@ -294,7 +284,7 @@ And they should see row with column 'Id' and value '2' is selected in 'multi-sel
 And they should see selected checkbox in column 'Active' for row with column 'Id' and value '1' in 'multi-selection' table
 And they should see unselected checkbox in column 'Active' for row with column 'Id' and value '2' in 'multi-selection' table
 
-Scenario: Select a checkbox in selected column of MULTI-SELECTION table
+Scenario: Select a checkbox in selected row of MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user unselect checkbox in column 'Active' for row with column 'Id' and value '1' in 'multi-selection' table
@@ -305,7 +295,7 @@ Then they should see row with column 'Id' and value '1' is selected in 'multi-se
 And they should see selected checkbox in column 'Active' for row with column 'Id' and value '1' in 'multi-selection' table
 And they should see unselected checkbox in column 'Active' for row with column 'Id' and value '2' in 'multi-selection' table
 
-Scenario: Select a checkbox in one of selected columns of MULTI-SELECTION table
+Scenario: Select a checkbox in one of selected rows of MULTI-SELECTION table
 Given the user refresh the Example page
 When the user select 'Trees and Tables->Table' in tree
 And the user unselect checkbox in column 'Active' for row with column 'Id' and value '1' in 'multi-selection' table
@@ -337,3 +327,63 @@ Then they should see row with column 'Id' and value '1' is selected in 'multi-se
 And they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
 And they should see text 'Description of user1' in column 'Description' for row with column 'Id' and value '1' in 'multi-selection' table
 And they should see text 'New description' in column 'Description' for row with column 'Id' and value '2' in 'multi-selection' table
+
+Scenario: Multi-select the rows across the current in MULTI-SELECTION table
+Meta: @id 1
+Given the user refresh the Example page
+When the user select 'Trees and Tables->Table' in tree
+And the user multi-selects row with column 'Id' and value '4' in 'multi-selection' table
+Then they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+When the user multi-selects row with column 'Id' and value '6' in 'multi-selection' table
+Then they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '5' is unselected in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '7' is unselected in 'multi-selection' table
+When the user multi-selects row with column 'Id' and value '2' in 'multi-selection' table
+Then they should see row with column 'Id' and value '1' is unselected in 'multi-selection' table
+And they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '3' is unselected in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '5' is unselected in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see row with column 'Id' and value '7' is unselected in 'multi-selection' table
+
+Scenario: Unselect a checkbox in a row from the across selected rows in MULTI-SELECTION table
+GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
+When the user unselect checkbox in column 'Active' for row with column 'Id' and value '4' in 'multi-selection' table
+Then they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see selected checkbox in column 'Active' for row with column 'Id' and value '2' in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see unselected checkbox in column 'Active' for row with column 'Id' and value '4' in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see selected checkbox in column 'Active' for row with column 'Id' and value '6' in 'multi-selection' table
+
+Scenario: Select a checkbox in a row from the across selected rows in MULTI-SELECTION table
+GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
+When the user select checkbox in column 'Active' for row with column 'Id' and value '4' in 'multi-selection' table
+Then they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see selected checkbox in column 'Active' for row with column 'Id' and value '2' in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see selected checkbox in column 'Active' for row with column 'Id' and value '4' in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see selected checkbox in column 'Active' for row with column 'Id' and value '6' in 'multi-selection' table
+
+Scenario: Select a date in DatePicker in a row from the across selected rows in MULTI-SELECTION table
+GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
+When the user input date '4/10/16 05:12:17 PM' into column 'Date' for row with column 'Id' and value '4' in 'multi-selection' table
+Then they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see date '3/14/16 12:52:38 PM' in column 'Date' for row with column 'Id' and value '2' in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see date '4/10/16 05:12:17 PM' in column 'Date' for row with column 'Id' and value '4' in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see date '3/18/16 12:52:38 PM' in column 'Date' for row with column 'Id' and value '6' in 'multi-selection' table
+
+Scenario: Input a text in a row from the across selected rows in MULTI-SELECTION table
+GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
+When the user input text 'New description' into column 'Description' for row with column 'Id' and value '2' in 'multi-selection' table
+Then they should see row with column 'Id' and value '2' is selected in 'multi-selection' table
+And they should see text 'Description of user2' in column 'Description' for row with column 'Id' and value '2' in 'multi-selection' table
+And they should see row with column 'Id' and value '4' is selected in 'multi-selection' table
+And they should see text 'New description' in column 'Description' for row with column 'Id' and value '4' in 'multi-selection' table
+And they should see row with column 'Id' and value '6' is selected in 'multi-selection' table
+And they should see text 'Description of user6' in column 'Description' for row with column 'Id' and value '6' in 'multi-selection' table
