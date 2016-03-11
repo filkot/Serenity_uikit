@@ -14,6 +14,4 @@ public class TreeAction extends BasePage {
         Tree tree = new Tree(getDriver(), find(By.xpath(treeLocator)));
         tree.selectItem(item);
     }
-
-
 }

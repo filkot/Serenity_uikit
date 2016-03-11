@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.Locatable;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ public class BasePage extends PageObject {
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
     private String passwordLocator = "//input[@type = 'password']";
+
+    public final String stickyToolbar = ".b-sticky:not([style*='hidden'])";
+    public final int stickyToolbarHeight = 60;
 
 
     public void login() {
@@ -60,6 +64,73 @@ public class BasePage extends PageObject {
 //    }
 
 
+//______________________________________________________________________________________________________________________
+
+    /**
+     * Прокручиваем скролл вниз страницы
+     */
+//    public void scrollPageDown() {
+//        int y = element(footer).getLocation().getY();
+//        evaluateJavascript("window.scrollTo(0," + y + ")");
+//    }
+
+    /**
+     * Прокручиваем страницу до элемента , если элемент вне видимости пользователя
+     *
+     * @param webElement элемент, до которого необходимо скроллить
+     */
+    public void scrollPageToElement(WebElementFacade webElement) {
+        if (!elementIsIntoView(webElement)) {
+            int y = ((Locatable) webElement).getCoordinates().inViewPort().getY();
+            evaluateJavascript("window.scrollBy(0," + y + ")");
+        }
+    }
+
+    /**
+     * Прокручиваем страницу до элемента, если элемент вне видимости пользователя
+     *
+     * @param field элемент, до которого необходимо скроллить
+     */
+    public void scrollPageToElementWithToolbar(WebElementFacade field) {
+        if (!elementIsIntoView(field)) {
+            int elementYLocation = ((Locatable) field).getCoordinates().inViewPort().getY();
+            int y = elementYLocation - stickyToolbarHeight;
+            evaluateJavascript("window.scrollBy(0," + y + ")");
+            waitABit(300);
+        }
+    }
+
+    /**
+     * Проверяет что элемент виден пользователю в данный момент
+     *
+     * @param element
+     * @return
+     */
+    private boolean elementIsIntoView(WebElementFacade element) {
+        int docViewTop;
+        if (isToolbarSticked()) {
+            docViewTop = ((Number) evaluateJavascript("return $(window).scrollTop();")).intValue() + stickyToolbarHeight;
+        } else {
+            docViewTop = ((Number) evaluateJavascript("return $(window).scrollTop();")).intValue();
+        }
+        int docViewBottom = docViewTop + ((Number) evaluateJavascript("return $(window).height();")).intValue();
+        int elemTop = ((Number) evaluateJavascript("return $(arguments[0]).offset().top;", element)).intValue();
+        int elemBottom = elemTop + ((Number) evaluateJavascript("return $(arguments[0]).height();", element)).intValue();
+        return (((docViewTop < elemTop) && (docViewBottom > elemBottom)));
+    }
+
+    /**
+     * Проверяет что есть тулбар прилипший
+     *
+     * @return
+     */
+    private boolean isToolbarSticked() {
+        return element(stickyToolbar).getAttribute("class").contains("yes");
+    }
+
+
+
+//______________________________________________________________________________________________________________________
 //______________________________________________________________________________________________________________________
 
     protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
@@ -114,7 +185,7 @@ public class BasePage extends PageObject {
 //______________________________________________________________________________________________________________________
 
 
-    public boolean VisibilityOfElement(WebElementFacade element) {
+    public static boolean VisibilityOfElement(WebElementFacade element) {
         try {
             return element.isCurrentlyVisible();
         } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {

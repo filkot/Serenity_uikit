@@ -43,8 +43,4 @@ public class Tree extends BasePage {
             clickByCoordinate(driver, treeNode, 1, 1);
         }
     }
-
-
-
-
 }

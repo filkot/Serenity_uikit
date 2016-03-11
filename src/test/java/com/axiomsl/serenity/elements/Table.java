@@ -5,8 +5,14 @@ import ch.lambdaj.function.convert.Converter;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.internal.Locatable;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -20,6 +26,7 @@ public class Table extends BasePage {
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
+    private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
 
 
     public Table(WebDriver driver, WebElementFacade wrappedElement) {
@@ -69,7 +76,6 @@ public class Table extends BasePage {
 
                 columns.add(column);
             }
-
             return columns;
         }
     }
@@ -151,6 +157,24 @@ public class Table extends BasePage {
             System.out.println("Column already off");
         }
     }
+
+    public void vertical_scroll(String action){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
+        String heightPath = scrollLocator + "/div";
+        String heightTemp =  wrappedElement.then(By.xpath(heightPath)).getAttribute("style");
+        String height = "9000";
+        height = heightTemp.replaceAll("[\\D]", "");
+
+        if(action.contains("up")){
+            js.executeScript("arguments[0].scrollTop = 0;",element);
+        }else{
+            js.executeScript("arguments[0].scrollTop = "+height+";",element);
+        }
+    }
+
+
+
 
 
 

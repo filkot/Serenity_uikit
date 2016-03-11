@@ -31,11 +31,21 @@ public class TableMappingSteps {
         step.make_invisible_column(tableCaption, columnName);
     }
 
+    @When("the user vertical scroll up <tableCaption> table")
+    public void whenTheUserVerticalScrollUpTable(@Named("tableCaption") String tableCaption) {
+        step.vertical_scroll_table_with_caption(tableCaption, "up");
+    }
+
+    @When("the user vertical scroll down <tableCaption> table")
+    public void whenTheUserVerticalScrollDownTable(@Named("tableCaption") String tableCaption) {
+        step.vertical_scroll_table_with_caption(tableCaption, "down");
+    }
+
 
     //THEN
-    @Then("they should see the item list '$items' in table at '$numberColumn'")
-    public void thenTheyShouldSeeItemListInRightCol(String items, int i) {
-        step.should_see_items_in_table(items, (i - 1));
+    @Then("they should see the item list '$items' in table at '$columnNumber'")
+    public void thenTheyShouldSeeItemListInRightCol(String items, int columnNumber) {
+        step.should_see_items_in_table(items, (columnNumber - 1));
     }
 
     @Then("they should see column '$columnName' in table")
