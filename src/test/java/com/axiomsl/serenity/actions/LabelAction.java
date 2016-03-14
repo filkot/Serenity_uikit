@@ -9,7 +9,7 @@ public class LabelAction extends BasePage {
 
 
     private String labelLocator = "//div[contains(@class, 'v-label') and not(@style)]//span";
-    private String labelWithTextLocator = "//div[contains(@class, 'v-label') and not(@style)]//span[text() = '%s']";
+    private String labelWithTextLocator = "//div[contains(@class, 'v-label') and not(@style)]//span[text() = \"%s\"]";
 
     public String get_label_text() {
         Label label = new Label(getDriver(), find(By.xpath(labelLocator)));
