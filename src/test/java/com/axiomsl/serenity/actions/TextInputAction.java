@@ -21,6 +21,7 @@ public class TextInputAction extends BasePage {
 
     public void type_in_text_field(String text) {
         TextInput textInput = new TextInput(getDriver(), find(By.xpath(textFieldLocator)));
+        textInput.clear();
         textInput.sendKeys(text);
     }
 
