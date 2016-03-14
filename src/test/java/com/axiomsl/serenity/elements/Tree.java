@@ -4,7 +4,6 @@ import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 /**
  * Created by kfilippov on 11.02.2016.
@@ -43,8 +42,4 @@ public class Tree extends BasePage {
             clickByCoordinate(driver, treeNode, 1, 1);
         }
     }
-
-
-
-
 }

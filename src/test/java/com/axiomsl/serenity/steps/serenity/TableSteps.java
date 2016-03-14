@@ -17,9 +17,9 @@ public class TableSteps extends ScenarioSteps {
 
 
     @Step
-    public void should_see_items_in_table(String items, int i) {
+    public void should_see_items_in_table(String items, int columnNumber) {
         List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
-        assertThat(action.get_column_of_table_by_index(i), is(equalTo(itemsList)));
+        assertThat(action.get_column_of_table_by_index(columnNumber), is(equalTo(itemsList)));
     }
 
     @Step
@@ -56,5 +56,10 @@ public class TableSteps extends ScenarioSteps {
     @Step
     public void should_not_see_column_with_name_in_table_with_caption(String tableCaption, String columnName) {
         assertThat(action.getTableByCaption(tableCaption).getHeadingsAsString(), is(not(hasItem(columnName))));
+    }
+
+    @Step
+    public void vertical_scroll_table_with_caption(String tableCaption, String actionScroll) {
+        action.getTableByCaption(tableCaption).vertical_scroll(actionScroll);
     }
 }

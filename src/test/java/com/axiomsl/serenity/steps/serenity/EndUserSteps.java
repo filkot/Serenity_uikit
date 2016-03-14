@@ -35,6 +35,11 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
+    public void move_cursor_on_tree() {
+        basePage.move_cursor_on_tree();
+    }
+
+    @Step
     public void open_dashboard(String dashboardName) {
         basePage.open_dashboard(dashboardName);
     }

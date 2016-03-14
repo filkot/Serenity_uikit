@@ -14,7 +14,11 @@ public class LabelSteps extends ScenarioSteps {
 
     @Step
     public void should_see_label_with_text(String text) {
-        assertThat(action.get_label_text(), is(text));
+        assertThat(action.is_label_with_text(text), is(true));
+    }
+    @Step
+    public void should_not_see_label_with_text(String text) {
+        assertThat(action.is_label_with_text(text), is(false));
     }
 
 

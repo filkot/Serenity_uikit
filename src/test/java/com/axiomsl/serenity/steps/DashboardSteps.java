@@ -26,12 +26,18 @@ public class DashboardSteps {
         endUser.refresh_example_page();
     }
 
+    //WHEN
     @When("the user login in system")
     public void login() {
         endUser.login();
     }
 
-    //WHEN
+    @When("the user moves cursor on example class path area")
+    public void moveCursorOnTree() {
+        endUser.move_cursor_on_tree();
+    }
+
+
     @When("the user open dashboard with name '$dashboardName'")
     public void whenTheUserOpenTheDashboard(String dashboardName) {
         endUser.open_dashboard(dashboardName);

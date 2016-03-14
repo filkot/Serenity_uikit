@@ -2,7 +2,6 @@ package com.axiomsl.serenity.actions;
 
 import com.axiomsl.serenity.elements.Tree;
 import com.axiomsl.serenity.pages.BasePage;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 
 
@@ -14,6 +13,4 @@ public class TreeAction extends BasePage {
         Tree tree = new Tree(getDriver(), find(By.xpath(treeLocator)));
         tree.selectItem(item);
     }
-
-
 }
