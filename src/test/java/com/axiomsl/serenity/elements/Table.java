@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.internal.Locatable;
 
 import java.util.*;
 
@@ -16,6 +17,7 @@ public class Table extends BasePage {
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
+    private String selectedRowLocator = ".//tr[contains(@class, 'v-selected v-table-row')]";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
@@ -44,6 +46,10 @@ public class Table extends BasePage {
             rows.add(rowElement.thenFindAll(By.xpath(cellLocator)));
         }
         return rows;
+    }
+
+    public List<WebElementFacade> getCellsInRow(WebElementFacade rowElement){
+        return rowElement.thenFindAll(By.xpath(cellLocator));
     }
 
     public List<List<String>> getRowsAsString() {
@@ -152,7 +158,7 @@ public class Table extends BasePage {
         }
     }
 
-    public void vertical_scroll(String action){
+    public void verticalScroll(String action){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
         String heightPath = scrollLocator + "/div";
@@ -165,6 +171,63 @@ public class Table extends BasePage {
         }else{
             js.executeScript("arguments[0].scrollTop = "+height+";",element);
         }
+    }
+
+//    public void scrollDown(){
+//        List<List<WebElementFacade>> rows = this.getRows();
+//        WebElementFacade element = rows.get(rows.size()-1).get(0);
+//        ((Locatable) element).getCoordinates().inViewPort();
+//
+//        String scrollPositionAfter =  wrappedElement.then(By.xpath(scrollPositionLocator)).getAttribute("textContent");
+//
+//    }
+
+    public void selectRow(String columnName, String columnValue){
+        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+        for(Map<String, WebElementFacade> map:list){
+            WebElementFacade element = map.get(columnName);
+            if(element == null)
+            {
+                throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
+            }
+            if(element.getText().equals(columnValue)){
+                element.click();
+                break;
+            }
+        }
+    }
+
+    public WebElementFacade getSelectedRow(){
+        WebElementFacade row = wrappedElement.then(By.xpath(selectedRowLocator));
+        return row;
+    }
+
+    public Map<String, WebElementFacade> getRowByCellValue(String columnName, String cellValue){
+        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+        for(Map<String, WebElementFacade> map:list){
+            WebElementFacade element = map.get(columnName);
+            if(element == null)
+            {
+                throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
+            }
+            if(element.getAttribute("textContent").equals(cellValue)){
+                return map;
+            }
+        }
+        return null;
+    }
+
+    public WebElementFacade getRowByCell(WebElementFacade cellElement){
+        return cellElement.then(By.xpath("./ancestor::tr[contains(@class, 'v-table-row')]"));
+    }
+
+    public boolean isRowSelected(String columnName, String cellValue){
+        Map<String, WebElementFacade> rowMap = this.getRowByCellValue(columnName, cellValue);
+        WebElementFacade rowElement = this.getRowByCell(rowMap.get(columnName));
+        if(rowElement.getAttribute("class").contains("selected")){
+            return true;
+        }
+        return false;
     }
 
 

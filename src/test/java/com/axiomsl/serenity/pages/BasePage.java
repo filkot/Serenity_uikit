@@ -184,7 +184,8 @@ public class BasePage extends PageObject {
         }
 
         public String convert(WebElementFacade element) {
-            return element.getText();
+//            return element.getText();
+            return element.getAttribute("textContent");
         }
     }
 //______________________________________________________________________________________________________________________

@@ -31,14 +31,22 @@ public class TableMappingSteps {
         step.make_invisible_column(tableCaption, columnName);
     }
 
-    @When("the user vertical scroll up <tableCaption> table")
+    @When("the user vertical scroll up '$tableCaption' table")
+    @Alias("the user vertical scroll up <tableCaption> table")
     public void whenTheUserVerticalScrollUpTable(@Named("tableCaption") String tableCaption) {
         step.vertical_scroll_table_with_caption(tableCaption, "up");
     }
 
-    @When("the user vertical scroll down <tableCaption> table")
+    @When("the user vertical scroll down '$tableCaption' table")
+    @Alias("the user vertical scroll down <tableCaption> table")
     public void whenTheUserVerticalScrollDownTable(@Named("tableCaption") String tableCaption) {
         step.vertical_scroll_table_with_caption(tableCaption, "down");
+    }
+
+    @When("the user selects row with column '$columnName' and value '$columnValue' in '$tableCaption' table")
+    @Alias("the user selects row with column <columnName> and value <columnValue> in <tableCaption> table")
+    public void whenTheUserSelectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
+        step.select_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
     }
 
 
@@ -68,5 +76,17 @@ public class TableMappingSteps {
     @Alias("they should not see column '$columnName' in <tableCaption> table")
     public void thenTheyShouldNotSeeColumnInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.should_not_see_column_with_name_in_table_with_caption(tableCaption, columnName);
+    }
+
+    @Then("they should see row with column '$columnName' and value '$columnValue' is selected in '$tableCaption' table")
+    @Alias("they should see row with column <columnName> and value <columnValue> is selected in <tableCaption> table")
+    public void thenTheyShouldSeeRowIsSelected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
+        step.should_see_row_with_value_is_selected(tableCaption, columnName, columnValue);
+    }
+
+    @Then("they should see row with column '$columnName' and value '$columnValue' is deselected in '$tableCaption' table")
+    @Alias("they should see row with column <columnName> and value <columnValue> is deselected in <tableCaption> table")
+    public void thenTheyShouldSeeRowIsDeselected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
+        step.should_see_row_with_value_is_deselected(tableCaption, columnName, columnValue);
     }
 }
