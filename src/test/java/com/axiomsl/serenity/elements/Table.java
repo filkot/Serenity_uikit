@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.internal.Locatable;
 
 import java.util.*;
 
@@ -182,27 +181,12 @@ public class Table extends BasePage {
 //
 //    }
 
-    public void selectRow(String columnName, String columnValue){
-        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
-        for(Map<String, WebElementFacade> map:list){
-            WebElementFacade element = map.get(columnName);
-            if(element == null)
-            {
-                throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
-            }
-            if(element.getText().equals(columnValue)){
-                element.click();
-                break;
-            }
-        }
-    }
-
     public WebElementFacade getSelectedRow(){
         WebElementFacade row = wrappedElement.then(By.xpath(selectedRowLocator));
         return row;
     }
 
-    public Map<String, WebElementFacade> getRowByCellValue(String columnName, String cellValue){
+    public Map<String, WebElementFacade> getRowMapByCellValue(String columnName, String cellValue){
         List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
         for(Map<String, WebElementFacade> map:list){
             WebElementFacade element = map.get(columnName);
@@ -221,8 +205,22 @@ public class Table extends BasePage {
         return cellElement.then(By.xpath("./ancestor::tr[contains(@class, 'v-table-row')]"));
     }
 
+    public void selectRow(String columnName, String cellValue){
+        Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
+        if(map != null){
+            map.get(columnName).click();
+        }
+    }
+
+    public void deselectRow(String columnName, String cellValue){
+        Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
+        if(map != null){
+            clickWithKey(driver, map.get(columnName));
+        }
+    }
+
     public boolean isRowSelected(String columnName, String cellValue){
-        Map<String, WebElementFacade> rowMap = this.getRowByCellValue(columnName, cellValue);
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade rowElement = this.getRowByCell(rowMap.get(columnName));
         if(rowElement.getAttribute("class").contains("selected")){
             return true;

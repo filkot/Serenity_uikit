@@ -82,12 +82,12 @@ public class TwinColSelect extends BasePage {
 
     public void transferItemFromLeftToRightByDbClick(String item) {
         this.selectItemInLeftCol(item);
-        dbCLick(driver, wrappedElement.then(By.xpath(leftColLocator)));
+        doubleClick(driver, wrappedElement.then(By.xpath(leftColLocator)));
     }
 
     public void transferItemFromRightToLeftByDbClick(String item) {
         this.selectItemInRightCol(item);
-        dbCLick(driver, wrappedElement.then(By.xpath(rightColLocator)));
+        doubleClick(driver, wrappedElement.then(By.xpath(rightColLocator)));
     }
 
     public List<String> getLeftCoItemsList() {

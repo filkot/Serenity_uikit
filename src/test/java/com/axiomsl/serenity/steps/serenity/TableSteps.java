@@ -67,10 +67,12 @@ public class TableSteps extends ScenarioSteps {
 
     @Step
     public void select_row_with_value_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
-        Map<String, WebElementFacade> row = action.getTableByCaption(tableCaption).getRowByCellValue(columnName, cellValue);
-        if(row != null){
-            row.get(columnName).click();
-        }
+        action.getTableByCaption(tableCaption).selectRow(columnName, cellValue);
+    }
+
+    @Step
+    public void deselect_row_with_value_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
+        action.getTableByCaption(tableCaption).deselectRow(columnName, cellValue);
     }
 
     @Step

@@ -21,9 +21,6 @@ public class BasePage extends PageObject {
     private String treeLocator = "//div[@role='tree']";
     private String passwordLocator = "//input[@type = 'password']";
 
-    public final String stickyToolbar = ".b-sticky:not([style*='hidden'])";
-    public final int stickyToolbarHeight = 60;
-
 
     public void login() {
         find(By.xpath(passwordLocator)).waitUntilEnabled();
@@ -40,12 +37,26 @@ public class BasePage extends PageObject {
         moveToElement(getDriver(), find(By.xpath(treeLocator)));
     }
 
+
+
+
+    //_________________________________________________________________________________________
+
+    public void open_dashboard(String dashboardName) {
+        WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
+        dashboard.click();
+    }
+
+
+
+//_______Actions________________________________________________________________________________________________________
+
     public void clickByCoordinate(WebDriver driver,WebElementFacade element, int x, int y) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
-    public void dbCLick(WebDriver driver, WebElementFacade element) {
+    public void doubleClick(WebDriver driver, WebElementFacade element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).doubleClick().build().perform();
     }
@@ -55,88 +66,13 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).build().perform();
     }
 
-
-    //_________________________________________________________________________________________
-
-    public void open_dashboard(String dashboardName) {
-        WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
-        dashboard.click();
-    }
-//    public void select_item_in_tree(String item){
-//
-//        WebElementFacade treeNode = find(By.xpath(String.format(treeNodeLocator, item)));
-//        treeNode.click();
-//    }
-
-
-//______________________________________________________________________________________________________________________
-
-    /**
-     * Прокручиваем скролл вниз страницы
-     */
-//    public void scrollPageDown() {
-//        int y = element(footer).getLocation().getY();
-//        evaluateJavascript("window.scrollTo(0," + y + ")");
-//    }
-
-    /**
-     * Прокручиваем страницу до элемента , если элемент вне видимости пользователя
-     *
-     * @param webElement элемент, до которого необходимо скроллить
-     */
-    public void scrollPageToElement(WebElementFacade webElement) {
-        if (!elementIsIntoView(webElement)) {
-            int y = ((Locatable) webElement).getCoordinates().inViewPort().getY();
-            evaluateJavascript("window.scrollBy(0," + y + ")");
-        }
-    }
-
-    /**
-     * Прокручиваем страницу до элемента, если элемент вне видимости пользователя
-     *
-     * @param field элемент, до которого необходимо скроллить
-     */
-    public void scrollPageToElementWithToolbar(WebElementFacade field) {
-        if (!elementIsIntoView(field)) {
-            int elementYLocation = ((Locatable) field).getCoordinates().inViewPort().getY();
-            int y = elementYLocation - stickyToolbarHeight;
-            evaluateJavascript("window.scrollBy(0," + y + ")");
-            waitABit(300);
-        }
-    }
-
-    /**
-     * Проверяет что элемент виден пользователю в данный момент
-     *
-     * @param element
-     * @return
-     */
-    private boolean elementIsIntoView(WebElementFacade element) {
-        int docViewTop;
-        if (isToolbarSticked()) {
-            docViewTop = ((Number) evaluateJavascript("return $(window).scrollTop();")).intValue() + stickyToolbarHeight;
-        } else {
-            docViewTop = ((Number) evaluateJavascript("return $(window).scrollTop();")).intValue();
-        }
-        int docViewBottom = docViewTop + ((Number) evaluateJavascript("return $(window).height();")).intValue();
-        int elemTop = ((Number) evaluateJavascript("return $(arguments[0]).offset().top;", element)).intValue();
-        int elemBottom = elemTop + ((Number) evaluateJavascript("return $(arguments[0]).height();", element)).intValue();
-        return (((docViewTop < elemTop) && (docViewBottom > elemBottom)));
-    }
-
-    /**
-     * Проверяет что есть тулбар прилипший
-     *
-     * @return
-     */
-    private boolean isToolbarSticked() {
-        return element(stickyToolbar).getAttribute("class").contains("yes");
+    public void clickWithKey(WebDriver driver, WebElementFacade element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL).build().perform();
     }
 
 
-
-//______________________________________________________________________________________________________________________
-//______________________________________________________________________________________________________________________
+//_______Converter______________________________________________________________________________________________________
 
     protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
         private final Converter<F, T> valueConverter;
@@ -188,7 +124,7 @@ public class BasePage extends PageObject {
             return element.getAttribute("textContent");
         }
     }
-//______________________________________________________________________________________________________________________
+//________Visibility____________________________________________________________________________________________________
 
 
     public static boolean VisibilityOfElement(WebElementFacade element) {

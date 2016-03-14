@@ -48,6 +48,11 @@ public class TableMappingSteps {
     public void whenTheUserSelectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
         step.select_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
     }
+    @When("the user deselects row with column '$columnName' and value '$columnValue' in '$tableCaption' table")
+    @Alias("the user deselects row with column <columnName> and value <columnValue> in <tableCaption> table")
+    public void whenTheUserDeselectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
+        step.deselect_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
+    }
 
 
     //THEN

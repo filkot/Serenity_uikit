@@ -66,7 +66,7 @@ public class Menu extends BasePage {
         WebElementFacade menuItemRoot = wrappedElement.then(By.xpath(rootPath));
         if (itemList.length == 1) {
             System.out.println("click in menu " + itemList[0]);
-            dbCLick(driver, menuItemRoot);
+            doubleClick(driver, menuItemRoot);
             return;
         } else {
             menuItemRoot.click();
@@ -75,7 +75,7 @@ public class Menu extends BasePage {
             System.out.println("click in menu " + itemList[i]);
             String path = menuBarPopupLocator + String.format(menuItemLocator, itemList[i]);
             if (i == itemList.length - 1) {
-                dbCLick(driver, wrappedElement.then(By.xpath(path)));
+                doubleClick(driver, wrappedElement.then(By.xpath(path)));
             } else {
                 wrappedElement.then(By.xpath(path)).click();
             }
