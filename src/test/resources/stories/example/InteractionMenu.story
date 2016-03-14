@@ -6,7 +6,7 @@ Narrative:
 *-----------------------------------------------------------------------------------------------------------------------
 
 Scenario: Login to system
-Meta: @id0 TC_LOGIN
+Meta: @id0 0
 Given the user is on the Example page
 When the user login in system
 
@@ -15,7 +15,7 @@ When the user login in system
 !-----------------------------------------------------------------------------------------------------------------------
 
 Scenario: Mouse is on top item of static menu bar
-Meta: @id1 TC_1_6_1
+Meta: @id1 1
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user moves a cursos on menu item with name 'Menu5'
@@ -23,7 +23,7 @@ And the user moves a cursos on menu item with name 'Menu6'
 Then they should not see menu sub item with name 'Menu16' for 'Menu6'
 
 Scenario: Mouse is out of static menu bar
-Meta: @id2 TC_1_6_2
+Meta: @id2 2
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'Menu5'
@@ -33,7 +33,7 @@ And they should not see menu item with name 'Menu12'
 Then they should not see menu sub item with name 'Menu12' for 'Menu5'
 
 Scenario: Click on top item of static menu bar and move cursor
-Meta: @id3 TC_1_6_3
+Meta: @id3 3
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'Menu4'
@@ -42,7 +42,7 @@ And the user moves a cursos on menu item with name 'Menu4'
 Then they should see the item list 'Menu8, Menu9, Menu10, Menu11' for 'Menu4'
 
 Scenario: SingleClick on item of static menu bar
-Meta: @id4 TC_1_6_4
+Meta: @id4 4
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'Menu4->Menu10'
@@ -50,7 +50,7 @@ Then they should see popup with header 'Static Menu10 clicked'
 !-- Then they should see popup with label 'Static Menu10 clicked'
 
 Scenario: DoubleClick on top item of static menu bar
-Meta: @id5 TC_1_6_5
+Meta: @id5 5
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'Menu4'
@@ -64,7 +64,7 @@ Then they should see popup with text 'Static Menu8 clicked'
 !-----------------------------------------------------------------------------------------------------------------------
 
 Scenario: Mouse is on top item of dynamic menu bar
-Meta: @id6 TC_1_6_6
+Meta: @id6 6
 Given the user is on the Example page
 When the user login in system
 And the user select 'Interaction->Menu' in tree
@@ -73,7 +73,7 @@ And the user moves a cursos on menu item with name 'child 1'
 Then they should not see menu item with name
 
 Scenario: Mouse is out of dynamic menu bar
-Meta: @id7 TC_1_6_7
+Meta: @id7 7
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'child 1'
@@ -82,7 +82,7 @@ And the user clicks out of menubar
 Then they should not see menu item with name 'Menu12'
 
 Scenario: Click on top item of static menu bar and move cursor
-Meta: @id8 TC_1_6_8
+Meta: @id8 8
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'child 2'
@@ -91,7 +91,7 @@ And the user moves a cursos on menu item with name 'child 2'
 Then they should see the menu item list
 
 Scenario: SingleClick on top item of dynamic menu bar
-Meta: @id9 TC_1_6_9
+Meta: @id9 9
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'child 0'
@@ -99,7 +99,7 @@ And the user click menu item with name 'child 0-1'
 Then they should see popup with text 'Dynamic menu child 0-1 was selected'
 
 Scenario: DoubleClick on top item of static menu bar
-Meta: @id10 TC_1_6_10
+Meta: @id10 10
 Given the user refresh the Example page
 When the user select 'Interaction->Menu' in tree
 And the user click menu item with name 'child 0'
