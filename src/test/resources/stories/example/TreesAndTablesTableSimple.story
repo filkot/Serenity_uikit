@@ -294,7 +294,7 @@ Examples:
 |Simple Table with label components as columns|
 
 Scenario: Select another item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
-When the user selected checkbox for row with column 'Id' and value '2' is selected in <tableCaption> table
+When the user selected checkbox for row with column 'Id' and value '2' in <tableCaption> table
 Then they should see row with column 'Id' and value '2' is selected in <tableCaption> table
 And they should see row with column 'Id' and value '1' is unselected in <tableCaption> table
 And they should see checkbox for row with column 'Id' and value '2' is selected in <tableCaption> table

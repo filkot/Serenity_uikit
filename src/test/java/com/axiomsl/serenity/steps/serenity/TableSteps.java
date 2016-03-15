@@ -75,6 +75,17 @@ public class TableSteps extends ScenarioSteps {
         action.getTableByCaption(tableCaption).deselectRow(columnName, cellValue);
     }
 
+
+    @Step
+    public void select_checkbox_for_row_in_table(String tableCaption, String columnName, String cellValue) {
+        action.getTableByCaption(tableCaption).selectCheckboxInRow(columnName, cellValue);
+    }
+
+    @Step
+    public void deselect_checkbox_for_row_in_table(String tableCaption, String columnName, String cellValue) {
+        action.getTableByCaption(tableCaption).deselectCheckboxInRow(columnName, cellValue);
+    }
+
     @Step
     public void should_see_row_with_value_is_selected(String tableCaption, String columnName, String cellValue) {
         assertThat(action.getTableByCaption(tableCaption).isRowSelected(columnName, cellValue), is(true));

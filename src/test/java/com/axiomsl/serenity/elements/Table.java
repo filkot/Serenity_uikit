@@ -23,6 +23,8 @@ public class Table extends BasePage {
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
+    private String checkBoxLocator = ".//input[@type='checkbox']";
+
 
 
 
@@ -203,6 +205,12 @@ public class Table extends BasePage {
         return null;
     }
 
+    public WebElementFacade getRowByCellValue(String columnName, String cellValue){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
+        WebElementFacade rowElement = this.getRowByCell(rowMap.get(columnName));
+        return rowElement;
+    }
+
     public WebElementFacade getRowByCell(WebElementFacade cellElement){
         return cellElement.then(By.xpath(rowByCellLocator));
     }
@@ -222,8 +230,7 @@ public class Table extends BasePage {
     }
 
     public boolean isRowSelected(String columnName, String cellValue){
-        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
-        WebElementFacade rowElement = this.getRowByCell(rowMap.get(columnName));
+        WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         if(rowElement.getAttribute("class").contains("selected")){
             return true;
         }
@@ -242,6 +249,19 @@ public class Table extends BasePage {
         }
         throw new IllegalArgumentException("Table's setting wheel menu or item is changed.");
     }
+
+    public void selectCheckboxInRow(String columnName, String cellValue){
+        WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
+        CheckBox checkBox = new CheckBox(driver, rowElement.then(By.xpath(checkBoxLocator)));
+        checkBox.set(true);
+    }
+
+    public void deselectCheckboxInRow(String columnName, String cellValue){
+        WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
+        CheckBox checkBox = new CheckBox(driver, rowElement.then(By.xpath(checkBoxLocator)));
+        checkBox.set(false);
+    }
+
 
 
 
