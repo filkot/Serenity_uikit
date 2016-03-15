@@ -41,12 +41,12 @@ public class TableSteps extends ScenarioSteps {
 
 
     @Step
-    public void make_visible_column(String tableCaption, String columnName) {
+    public void make_column_visible(String tableCaption, String columnName) {
         action.getTableByCaption(tableCaption).makeVisibleColumn(columnName);
     }
 
     @Step
-    public void make_invisible_column(String tableCaption, String columnName) {
+    public void make_column_not_visible(String tableCaption, String columnName) {
         action.getTableByCaption(tableCaption).makeInvisibleColumn(columnName);
     }
 
@@ -61,7 +61,7 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void vertical_scroll_table_with_caption(String tableCaption, String actionScroll) {
+    public void scroll_vertically_table_with_caption(String tableCaption, String actionScroll) {
         action.getTableByCaption(tableCaption).verticalScroll(actionScroll);
     }
 
