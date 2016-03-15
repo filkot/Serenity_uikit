@@ -19,12 +19,12 @@ public class HoverMenuMappingSteps {
     }
 
     //Then
-    @Then("the user should see menu item list '$item_list'")
+    @Then("the user should see HoverMenu item list '$item_list'")
     public void thenTheUserShouldSeeMenuItemList(String itemsList){
         step.should_see_menu_items_list(itemsList);
     }
 
-    @Then("the user should not see menu item list")
+    @Then("the user should not see HoverMenu item list")
     public void thenTheUserShouldNotSeeMenuItemList(){
         step.should_not_see_menu_item_list();
     }
