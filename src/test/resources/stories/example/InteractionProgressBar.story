@@ -5,9 +5,11 @@ Narrative:
 * UI element: Interaction -> ProgressBar (1.7)
 *-----------------------------------------------------------------------------------------------------------------------
 
+Meta: @group: InteractionProgressBar
+GivenStories: stories/example/CommonLoginExamplesApp.story
+
 Scenario: Press Load button
-Given the user is on the Example page
-When the user login in system
+Given the user refresh the Example page
 And the user select 'Interaction->ProgressBar' in tree
 And the user click button with name 'Load'
-Then they should see the progress bar with text '100%'
+Then the user should see the progress bar with text '100%'

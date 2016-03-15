@@ -7,6 +7,5 @@ Narrative:
 * *** EXAMPLE HAS NOT BEEN YET IMPLEMENTED ***
 *-----------------------------------------------------------------------------------------------------------------------
 
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: InteractionJavaScript
+GivenStories: stories/example/CommonLoginExamplesApp.story
