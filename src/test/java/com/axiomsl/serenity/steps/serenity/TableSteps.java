@@ -84,4 +84,14 @@ public class TableSteps extends ScenarioSteps {
     public void should_see_row_with_value_is_deselected(String tableCaption, String columnName, String cellValue) {
         assertThat(action.getTableByCaption(tableCaption).isRowSelected(columnName, cellValue), is(false));
     }
+
+    @Step
+    public void should_see_checked_item_in_settings_wheel(String item, String tableCaption) {
+        assertThat(action.getTableByCaption(tableCaption).isSettingsItemIsChecked(item), is(true));
+    }
+
+    @Step
+    public void should_see_unchecked_item_in_settings_wheel(String item, String tableCaption) {
+        assertThat(action.getTableByCaption(tableCaption).isSettingsItemIsChecked(item), is(false));
+    }
 }
