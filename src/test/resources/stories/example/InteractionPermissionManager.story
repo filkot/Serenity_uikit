@@ -5,9 +5,8 @@ Narrative:
 * UI element: Interaction -> Permission Manager (1.x)
 *-----------------------------------------------------------------------------------------------------------------------
 
-Scenario: Login to system
-Given the user is on the Example page
-When the user login in system
+Meta: @group: InteractionPermissionManager
+GivenStories: stories/example/CommonLoginExamplesApp.story
 
 !-- Scenario: Open a combobox
 !-- Scenario: Select an item in a combobox
