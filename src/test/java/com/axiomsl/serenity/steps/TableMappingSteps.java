@@ -43,15 +43,15 @@ public class TableMappingSteps {
         step.vertical_scroll_table_with_caption(tableCaption, "down");
     }
 
-    @When("the user selects row with column '$columnName' and value '$columnValue' in '$tableCaption' table")
-    @Alias("the user selects row with column '$columnName' and value '$columnValue' in <tableCaption> table")
-    public void whenTheUserSelectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
-        step.select_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
+    @When("the user selects row with column '$columnName' and value '$cellValue' in '$tableCaption' table")
+    @Alias("the user selects row with column <columnName> and value <cellValue> in <tableCaption> table")
+    public void whenTheUserSelectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.select_row_with_value_in_table_with_caption(tableCaption, columnName, cellValue);
     }
-    @When("the user deselects row with column '$columnName' and value '$columnValue' in '$tableCaption' table")
-    @Alias("the user deselects row with column '$columnName' and value '$columnName' in <tableCaption> table")
-    public void whenTheUserDeselectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
-        step.deselect_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
+    @When("the user deselects row with column '$columnName' and value '$cellValue' in '$tableCaption' table")
+    @Alias("the user deselects row with column <columnName> and value <cellValue> in <tableCaption> table")
+    public void whenTheUserDeselectRowInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.deselect_row_with_value_in_table_with_caption(tableCaption, columnName, cellValue);
     }
 
 
@@ -72,38 +72,38 @@ public class TableMappingSteps {
     }
 
     @Then("they should see column '$columnName' in '$tableCaption' table")
-    @Alias("they should see column '$columnName' in <tableCaption> table")
+    @Alias("they should see column <columnName> in <tableCaption> table")
     public void thenTheyShouldSeeColumnInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.should_see_column_with_name_in_table_with_caption(tableCaption, columnName);
     }
 
     @Then("they should not see column '$columnName' in '$tableCaption' table")
-    @Alias("they should not see column '$columnName' in <tableCaption> table")
+    @Alias("they should not see column <columnName> in <tableCaption> table")
     public void thenTheyShouldNotSeeColumnInTable(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName) {
         step.should_not_see_column_with_name_in_table_with_caption(tableCaption, columnName);
     }
 
-    @Then("they should see row with column '$columnName' and value '$columnValue' is selected in '$tableCaption' table")
-    @Alias("they should see row with column '$columnName' and value '$columnValue' is selected in <tableCaption> table")
-    public void thenTheyShouldSeeRowIsSelected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
-        step.should_see_row_with_value_is_selected(tableCaption, columnName, columnValue);
+    @Then("they should see row with column '$columnName' and value '$cellValue' is selected in '$tableCaption' table")
+    @Alias("they should see row with column <columnName> and value <cellValue> is selected in <tableCaption> table")
+    public void thenTheyShouldSeeRowIsSelected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.should_see_row_with_value_is_selected(tableCaption, columnName, cellValue);
     }
 
-    @Then("they should see row with column '$columnName' and value '$columnValue' is deselected in '$tableCaption' table")
-    @Alias("they should see row with column '$columnName' and value '$columnValue' is deselected in <tableCaption> table")
-    public void thenTheyShouldSeeRowIsDeselected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
-        step.should_see_row_with_value_is_deselected(tableCaption, columnName, columnValue);
+    @Then("they should see row with column '$columnName' and value '$cellValue' is deselected in '$tableCaption' table")
+    @Alias("they should see row with column <columnName> and value <cellValue> is deselected in <tableCaption> table")
+    public void thenTheyShouldSeeRowIsDeselected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.should_see_row_with_value_is_deselected(tableCaption, columnName, cellValue);
     }
 
     @Then("they should see checked '$item' item in the wheel in '$tableCaption'table")
-    @Alias("they should see checked '$item' item in the wheel in <tableCaption> table")
-    public void thenTheyShouldSeeCheckedItemInSettingsWheel(String item, String tableCaption) {
+    @Alias("they should see checked <item> item in the wheel in <tableCaption> table")
+    public void thenTheyShouldSeeCheckedItemInSettingsWheel(@Named("item")String item, @Named("tableCaption")String tableCaption) {
         step.should_see_checked_item_in_settings_wheel(item, tableCaption);
     }
 
     @Then("they should see unchecked '$item' item in the wheel in '$tableCaption'table")
-    @Alias("they should see unchecked '$item' item in the wheel in <tableCaption> table")
-    public void thenTheyShouldSeeUncheckedItemInSettingsWheel(String item, String tableCaption) {
+    @Alias("they should see unchecked <item> item in the wheel in <tableCaption> table")
+    public void thenTheyShouldSeeUncheckedItemInSettingsWheel(@Named("item")String item, @Named("tableCaption")String tableCaption) {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
 }
