@@ -33,8 +33,13 @@ public class DashboardSteps {
     }
 
     @When("the user moves cursor on example class path area")
-    public void moveCursorOnTree() {
-        endUser.move_cursor_on_tree();
+    public void moveCursorOnExampleClassPathArea() {
+        endUser.move_cursor_on_example_class_path_area();
+    }
+
+    @When("the user clicks on example class path area")
+    public void clickOnExampleClassPathArea() {
+        endUser.click_on_example_class_path_area();
     }
 
 

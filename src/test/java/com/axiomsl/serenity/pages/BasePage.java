@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.internal.Locatable;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,7 @@ public class BasePage extends PageObject {
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
-    private String treeLocator = "//div[@role='tree']";
+    private String exampleClassPathLocator = "//div[contains@class, 'v-splitpanel-second-container')]";
     private String passwordLocator = "//input[@type = 'password']";
 
 
@@ -33,8 +32,12 @@ public class BasePage extends PageObject {
         find(By.xpath(passwordLocator)).waitUntilNotVisible();
     }
 
-    public void move_cursor_on_tree(){
-        moveToElement(getDriver(), find(By.xpath(treeLocator)));
+    public void move_cursor_on_example_class_path_area(){
+        moveToElement(getDriver(), find(By.xpath(exampleClassPathLocator)));
+    }
+
+    public void click_on_example_class_path_area(){
+        find(By.xpath(exampleClassPathLocator)).click();
     }
 
 

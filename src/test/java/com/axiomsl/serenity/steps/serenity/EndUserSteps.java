@@ -35,8 +35,13 @@ public class EndUserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void move_cursor_on_tree() {
-        basePage.move_cursor_on_tree();
+    public void move_cursor_on_example_class_path_area() {
+        basePage.move_cursor_on_example_class_path_area();
+    }
+
+    @Step
+    public void click_on_example_class_path_area() {
+        basePage.click_on_example_class_path_area();
     }
 
     @Step
