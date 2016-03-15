@@ -12,8 +12,12 @@ public class TooltipMappingSteps {
     @Steps
     TooltipSteps step;
 
-    @Then("they should see a tooltip with text '$text'")
+    @Then("the user should see the tooltip with text '$text'")
     public void thenTheyShouldSeeATooltipWithText(String text) {
         step.should_see_tooltip_with_text(text);
+    }
+    @Then("the user should not see the tooltip with text '$text'")
+    public void thenTheyShouldNotSeeATooltipWithText(String text) {
+        step.should_not_see_tooltip_with_text(text);
     }
 }

@@ -22,6 +22,9 @@ public class Button extends BasePage {
     public void click() {
         wrappedElement.click();
     }
+    public void rightClick() {
+        rightClick(driver, wrappedElement);
+    }
 
     public void hoverOn() {
         moveToElement(driver, wrappedElement);
@@ -30,4 +33,5 @@ public class Button extends BasePage {
     public String getText() {
         return wrappedElement.getText();
     }
+
 }

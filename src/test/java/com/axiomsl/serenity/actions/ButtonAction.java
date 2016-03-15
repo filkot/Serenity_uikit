@@ -15,6 +15,10 @@ public class ButtonAction extends BasePage {
         Button button = new Button(getDriver(), find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.click();
     }
+    public void right_click_button_by_name(String buttonName) {
+        Button button = new Button(getDriver(), find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
+        button.rightClick();
+    }
 
     public void hover_on_button_by_name(String buttonName) {
         Button button = new Button(getDriver(), find(By.xpath(String.format(buttonWithTextLocator, buttonName))));

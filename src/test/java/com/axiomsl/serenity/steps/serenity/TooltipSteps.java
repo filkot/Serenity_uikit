@@ -13,8 +13,14 @@ public class TooltipSteps {
 
     TooltipAction action;
 
+
     @Step
     public void should_see_tooltip_with_text(String text) {
-        assertThat(action.get_button_text(), is(text));
+        assertThat(action.is_tooltip_with_text(text), is(true));
+    }
+
+    @Step
+    public void should_not_see_tooltip_with_text(String text) {
+        assertThat(action.is_tooltip_with_text(text), is(false));
     }
 }

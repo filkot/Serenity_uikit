@@ -17,6 +17,11 @@ public class ButtonMappingSteps {
         step.click_button_by_name(buttonName);
     }
 
+    @When("the user does a right click button with name '$buttonName'")
+    public void whenTheUserRightClickTheButton(String buttonName) {
+        step.right_click_button_by_name(buttonName);
+    }
+
     @When("the user hover on button with name '$buttonName'")
     public void whenTheUserHoverOnTheButton(String buttonName) {
         step.hover_on_button_by_name(buttonName);

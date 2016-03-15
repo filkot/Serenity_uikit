@@ -16,12 +16,14 @@ public class Table extends BasePage {
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
+    private String rowByCellLocator = "./ancestor::tr[contains(@class, 'v-table-row')]";;
     private String selectedRowLocator = ".//tr[contains(@class, 'v-selected v-table-row')]";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
+
 
 
     public Table(WebDriver driver, WebElementFacade wrappedElement) {
@@ -181,8 +183,8 @@ public class Table extends BasePage {
 //
 //    }
 
-    public WebElementFacade getSelectedRow(){
-        WebElementFacade row = wrappedElement.then(By.xpath(selectedRowLocator));
+    public List<WebElementFacade> getSelectedRows(){
+        List<WebElementFacade> row = wrappedElement.thenFindAll(By.xpath(selectedRowLocator));
         return row;
     }
 
@@ -202,7 +204,7 @@ public class Table extends BasePage {
     }
 
     public WebElementFacade getRowByCell(WebElementFacade cellElement){
-        return cellElement.then(By.xpath("./ancestor::tr[contains(@class, 'v-table-row')]"));
+        return cellElement.then(By.xpath(rowByCellLocator));
     }
 
     public void selectRow(String columnName, String cellValue){

@@ -9,9 +9,17 @@ import org.openqa.selenium.By;
  */
 public class TooltipAction extends BasePage {
     private String tooltipLocator = "//div[@class='v-tooltip-text']";
+    private String tooltipWithTextLocator = "//div[@class='v-tooltip-text' and contains(text() , '%s')]";
 
-    public String get_button_text() {
-        Tooltip button = new Tooltip(getDriver(), find(By.xpath(tooltipLocator)));
-        return button.getText();
+    public String get_tooltip_text() {
+        Tooltip tooltip = new Tooltip(getDriver(), find(By.xpath(tooltipLocator)));
+        return tooltip.getText();
+    }
+
+    public boolean is_tooltip_with_text(String text){
+        if(findAll(By.xpath(String.format(tooltipWithTextLocator, text))).size()>0){
+            return true;
+        }
+        return false;
     }
 }
