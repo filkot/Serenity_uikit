@@ -230,14 +230,14 @@ public class Table extends BasePage {
         return false;
     }
 
-    public boolean isSettingsItemIsChecked(String item)
-    {
+    public boolean isSettingsItemIsChecked(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
-        String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
-        if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("on")){
+        String attributePath = String.format(menuVisibilityLocator, item) + "/parent::span";
+        String attributeValue = driver.findElement(By.xpath(attributePath)).getAttribute("class");
+        if(attributeValue.contains("on")){
             return true;
         }
-        if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("off")){
+        if(attributeValue.contains("off")){
             return false;
         }
         throw new IllegalArgumentException("Table's setting wheel menu or item is changed.");
