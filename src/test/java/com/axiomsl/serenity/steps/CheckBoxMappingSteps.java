@@ -12,14 +12,14 @@ public class CheckBoxMappingSteps {
     CheckBoxSteps step;
 
     //WHEN
-    @When("the user selects the checkbox with caption '$checkBoxName'")
-    @Alias("the user checks the checkbox with caption '$checkBoxName'")
+    @When("the user selects the checkbox with '$checkBoxName' caption")
+    @Alias("the user checks the checkbox with '$checkBoxName' caption")
     public void whenTheUserSelectCheckbox(String checkBoxName) {
         step.select_checkbox(checkBoxName);
     }
 
-    @When("the user deselects the checkbox with caption '$checkBoxName'")
-    @Alias("the user unchecks the checkbox with caption as '$checkBoxName'")
+    @When("the user deselects the checkbox with '$checkBoxName' caption")
+    @Alias("the user unchecks the checkbox with '$checkBoxName' caption")
     public void whenTheUserDeselectCheckbox(String checkBoxName) {
         step.deselect_checkbox(checkBoxName);
     }
