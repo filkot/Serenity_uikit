@@ -10,8 +10,8 @@ public class TreeMappingSteps {
     @Steps
     TreeSteps step;
 
-    @When("the user select '$item' in tree")
-    public void whenTheUserSelectItemInTree(String item) {
+    @When("the user selects the item '$item' in a tree")
+    public void whenTheUserSelectsItemInTree(String item) {
         step.select_item_in_tree(item);
     }
 
