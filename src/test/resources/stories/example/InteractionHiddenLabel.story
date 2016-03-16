@@ -13,7 +13,7 @@ Meta: @id2 2
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Hidden Label' in a tree
 And the user click button with name 'Show the label already!'
-Then the user should see the label with text 'This is the label'
+Then the user should see the label with text 'This is the label you've been waiting for'
 
 Scenario: Label Hide
 Meta: @id3 3
