@@ -60,6 +60,25 @@ public class TableMappingSteps {
 
     }
 
+    @When("the user multi-selects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user multi-selects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserMultiSelectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
+
+    }
+
+    @When("the user deselects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user deselects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
+
+    }
+
+    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+
+    }
+
+
 
     //THEN
     @Then("the user should see '$items' items with column number '$columnNumber' in the table")
@@ -115,8 +134,21 @@ public class TableMappingSteps {
 
     @Then("the user should see that '@table' table is scrolled to the end")
     @Alias("the user should see that <tableCaption> table is scrolled to the end")
-    public void thenTheUserShouldSeeTableIsNotScrolledToTheBeginning(String item, String tableCaption) {
+    public void thenTheUserShouldSeeIsTableScrolledToTheEnd(String item, String tableCaption) {
 
     }
+
+    @Then("the user should see that '@table' table is scrolled to the beginning")
+    @Alias("the user should see that <tableCaption> table is scrolled to the beginning")
+    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(String item, String tableCaption) {
+
+    }
+
+    @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user inputs '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+
+    }
+
 
 }
