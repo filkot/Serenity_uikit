@@ -113,8 +113,8 @@ public class TableMappingSteps {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
 
-    @Then("the user should see that '@table' table is not scrolled to the beginning")
-    @Alias("the user should see that <tableCaption> table is not scrolled to the beginning")
+    @Then("the user should see that '@table' table is scrolled to the end")
+    @Alias("the user should see that <tableCaption> table is scrolled to the end")
     public void thenTheUserShouldSeeTableIsNotScrolledToTheBeginning(String item, String tableCaption) {
 
     }
