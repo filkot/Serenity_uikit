@@ -9,25 +9,29 @@ Meta: @group: InteractionNotification
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Select Interaction Notification
+Meta: @id1 1
 Given the user refresh the Example page
-And the user select 'Interaction->Notification' in tree
-Then the user should see a caption with the text
+When the user selects the item 'Interaction->Notification' in a tree
+Then the user should see the notification with text 'Message'
 
 Scenario: Click on error message
+Meta: @id2 2
 Given the user refresh the Example page
-When the user select 'Interaction->Notification' in tree
-And the user click on a caption with text 'message'
-And the user select 'Interaction->Button' in tree
+When the user selects the item 'Interaction->Notification' in a tree
+And the user clicks on the notification with text 'Message'
+And the user selects the item 'Interaction->Button' in a tree
 Then the user should see the button with text 'Simple button with icon'
 
 Scenario: Click on out of area message
+Meta: @id3 3
 Given the user refresh the Example page
-When the user select 'Interaction->Notification' in tree
-And the user click out of area
-Then the user should see a caption with the text
+When the user selects the item 'Interaction->Notification' in a tree
+And the user clicks on example class path area
+Then the user should see the notification with text 'Message'
 
 Scenario: Click on on other elements out of area
+Meta: @id4 4
 Given the user refresh the Example page
-When the user select 'Interaction->Notification' in tree
-And the user select 'Interaction->Button' in tree
-Then the user should see a caption with the text
+When the user selects the item 'Interaction->Notification' in a tree
+And the user selects the item 'Interaction->Button' in a tree
+Then the user should see the notification with text 'Message'

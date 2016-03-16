@@ -10,7 +10,7 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Tab Active
 Given the user refresh the Example page
-When the user select 'Interaction->TabPanel' in tree
+When the user selects the item 'Interaction->TabPanel' in a tree
 And the user type text '_01' in text field
 And the user click button with name 'Add tab'
 And the user click button with name 'Add tab'
@@ -19,7 +19,7 @@ Then the user should see the label with text 'new tab_011'
 
 Scenario: Tab Unactive
 Given the user refresh the Example page
-When the user select 'Interaction->TabPanel' in tree
+When the user selects the item 'Interaction->TabPanel' in a tree
 And the user type text '_01' in text field
 And the user click button with name 'Add tab'
 And the user click button with name 'Add tab'

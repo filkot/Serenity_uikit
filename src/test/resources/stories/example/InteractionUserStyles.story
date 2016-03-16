@@ -10,13 +10,13 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Press Show It
 Given the user refresh the Example page
-When the user select 'Interaction->User Styles' in tree
+When the user selects the item 'Interaction->User Styles' in a tree
 And the user click button with name 'Show it'
 Then the user should see the label with text 'Woo-hoo!'
 
 Scenario: Press Hide It
 Given the user refresh the Example page
-When the user select 'Interaction->User Styles' in tree
+When the user selects the item 'Interaction->User Styles' in a tree
 And the user click button with name 'Show it'
 And the user click button with name 'Hide it'
 Then the user should not see the label with text 'Woo-hoo!'
