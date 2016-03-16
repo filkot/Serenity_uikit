@@ -16,14 +16,16 @@ public class Table extends BasePage {
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
-    private String rowByCellLocator = "./ancestor::tr[contains(@class, 'v-table-row')]";;
+    private String rowByCellLocator = "./ancestor::tr[contains(@class, 'v-table-row')]";
     private String selectedRowLocator = ".//tr[contains(@class, 'v-selected v-table-row')]";
-    private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
+//    private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
+    private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//div[contains(@class, 'v-table-cell-wrapper')]";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
-    private String checkBoxLocator = ".//input[@type='checkbox']";
+//    private String checkBoxLocator = ".//input[@type='checkbox']";
+    private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
 
 
 
@@ -141,27 +143,27 @@ public class Table extends BasePage {
         return Lambda.convert(this.getRowsMappedToHeadings(headings), BasePage.MapConverter.toMapsConvertingEachValue(BasePage.WebElementToTextConverter.toText()));
     }
 
-    public void makeVisibleColumn(String item){
+    public void makeColumnVisible(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
         if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("off")){
             driver.findElement(By.xpath(String.format(menuVisibilityLocator, item))).click();
         }else{
-            System.out.println("Column already on");
+            System.out.println("makeColumnVisible: Column already on");
         }
     }
 
-    public void makeInvisibleColumn(String item){
+    public void makeColumnNotVisible(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
         if(driver.findElement(By.xpath(attribute)).getAttribute("class").contains("on")){
             driver.findElement(By.xpath(String.format(menuVisibilityLocator, item))).click();
         }else{
-            System.out.println("Column already off");
+            System.out.println("makeColumnNotVisible: Column already off");
         }
     }
 
-    public void verticalScroll(String action){
+    public void scrollVerticallyTable(String action){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
         String heightPath = scrollLocator + "/div";
@@ -260,6 +262,29 @@ public class Table extends BasePage {
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         CheckBox checkBox = new CheckBox(driver, rowElement.then(By.xpath(checkBoxLocator)));
         checkBox.set(false);
+    }
+
+
+    public void selectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
+        WebElementFacade cell = rowMap.get(checkboxColumnName);
+        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        checkBox.set(true);
+    }
+
+    public void deselectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
+        WebElementFacade cell = rowMap.get(checkboxColumnName);
+        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        checkBox.set(false);
+    }
+
+
+    public boolean isCheckBoxIsCheckedInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
+        WebElementFacade cell = rowMap.get(checkboxColumnName);
+        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        return checkBox.isSelected();
     }
 
 

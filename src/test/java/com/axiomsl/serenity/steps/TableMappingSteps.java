@@ -55,10 +55,34 @@ public class TableMappingSteps {
         step.deselect_row_with_value_in_table_with_caption(tableCaption, columnName, columnValue);
     }
 
-    @When("the user selects '$value' value from '$name' combo-box")
-    public void whenTheSelectsValueFromComboBox(String value, String name) {
-
+    @When("the user selects the checkbox for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user selects the checkbox for row with <columnName> column and <cellValue> value in <tableCaption> table")
+    public void whenTheUserSelectCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.select_checkbox_for_row_in_table(tableCaption, columnName, cellValue);
     }
+
+    @When("the user deselects the checkbox for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user deselects the checkbox for row with <columnName> column and <cellValue> value in <tableCaption> table")
+    public void whenTheUserDeselectCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+        step.deselect_checkbox_for_row_in_table(tableCaption, columnName, cellValue);
+    }
+
+    @When("the user selects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user selects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
+    public void whenTheUserSelectCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                        @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.select_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
+    }
+
+    @When("the user deselects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user deselects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
+    public void whenTheUserDeselectCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                          @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.deselect_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
+    }
+
+
+
 
 
     //THEN
@@ -90,13 +114,13 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that row with '$columnName' column and '$columnValue' value is selected in '$tableCaption' table")
-    @Alias("the user should see that row with '$columnName' column and '$columnValue' value is selected in <tableCaption> table")
+    @Alias("the user should see that row with <columnName> column and <columnValue> value is selected in <tableCaption> table")
     public void thenTheUserShouldSeeRowIsSelected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
         step.should_see_row_with_value_is_selected(tableCaption, columnName, columnValue);
     }
 
     @Then("the user should see that row with '$columnName' column and '$columnValue' value is deselected in '$tableCaption' table")
-    @Alias("the user should see that row with '$columnName' column and '$columnValue' value is deselected in <tableCaption> table")
+    @Alias("the user should see that row with <columnName> column and <columnValue> value is deselected in <tableCaption> table")
     public void thenTheUserShouldSeeRowIsDeselected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
         step.should_see_row_with_value_is_deselected(tableCaption, columnName, columnValue);
     }
@@ -113,7 +137,21 @@ public class TableMappingSteps {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
 
-    @Then("the user should see that '@table' table is not scrolled to the beginning")
+    @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table")
+    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is checked in <tableCaption> table")
+    public void thenTheyShouldSeeCheckBoxIsCheckedInColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                           @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.should_see_checked_checkbox_in_column(tableCaption, columnName, cellValue, checkboxColumnName);
+    }
+
+    @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is unchecked in '$tableCaption' table")
+    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is unchecked in <tableCaption> table")
+    public void thenTheyShouldSeeCheckBoxIsUnCheckedInColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                             @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.should_see_unchecked_checkbox_in_column(tableCaption, columnName, cellValue, checkboxColumnName);
+    }
+
+    @Then("the user should see that '$table' table is not scrolled to the beginning")
     @Alias("the user should see that <tableCaption> table is not scrolled to the beginning")
     public void thenTheUserShouldSeeTableIsNotScrolledToTheBeginning(String item, String tableCaption) {
 
