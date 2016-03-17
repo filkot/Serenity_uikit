@@ -16,4 +16,8 @@ public class ComboBoxSteps extends ScenarioSteps {
     }
 
 
+    @Step
+    public void select_item_in_comboBox_with_caption(String comboBoxCaption, String item) {
+        action.getComboBoxByCaption(comboBoxCaption).selectItem(item);
+    }
 }

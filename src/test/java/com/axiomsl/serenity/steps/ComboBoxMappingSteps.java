@@ -16,9 +16,9 @@ public class ComboBoxMappingSteps {
         step.select_item_in_comboBox(item);
     }
 
-    @When("the user selects '$value' value from '$name' combo-box")
-    public void whenTheUserSelectsValueFromComboBox(String value, String name) {
-
+    @When("the user selects '$item' value from '$comboBoxCaption' comboBox")
+    public void whenTheUserSelectsValueFromComboBox(String item, String comboBoxCaption) {
+        step.select_item_in_comboBox_with_caption(comboBoxCaption, item);
     }
 
 
