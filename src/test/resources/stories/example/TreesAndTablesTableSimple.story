@@ -156,12 +156,12 @@ And the user scrolls vertically down to the end in <tableCaption> table
 And the user selects the row with 'Id' column and '49' value in <tableCaption> table
 And the user deselects the row with 'Id' column and '49' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '49' value is deselected in <tableCaption> table
-And the user should see that <tableCaption> table is not scrolled to the beginning
+And the user should see that <tableCaption> table is scrolled to the end
 And the user should see the label with 'ALL' text
 When the user selects the row with 'Id' column and '49' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '49' value is selected in <tableCaption> table
 And the user should see the label with 'user49' text
-And the user should see that <tableCaption> table is not scrolled to the beginning
+And the user should see that <tableCaption> table is scrolled to the end
 Examples:
 |tableCaption|
 |Simple Table with label components as columns|
@@ -263,9 +263,9 @@ Examples:
 |Simple Table with label components as columns|
 
 Scenario: Unselect item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
-When the user unchecks the checkbox for row with 'Id' column and '1' value is selected in <tableCaption> table
-Then the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And  the user should see that checkbox for row with 'Id' column and '1' value is unselected in <tableCaption> table
+When the user unchecks the checkbox for row with 'Id' column and '1' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '1' value is unchecked in <tableCaption> table
 And the user should see the label with 'ALL' text
 Examples:
 |tableCaption|
@@ -296,9 +296,9 @@ Examples:
 Scenario: Select another item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
 When the user selects the checkbox for row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
-And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And the user should see that checkbox for row with 'Id' column and value '2' is selected in <tableCaption> table
-And the user should see that checkbox for row with 'Id' column and value '1' is unselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '2' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '1' value is unchecked in <tableCaption> table
 And the user should see the label with 'user2' text
 Examples:
 |tableCaption|

@@ -2,18 +2,14 @@ package com.axiomsl.serenity.steps;
 
 import com.axiomsl.serenity.steps.serenity.TableSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-
+import org.jbehave.core.annotations.*;
 
 public class TableMappingSteps {
 
     @Steps
     TableSteps step;
 
-    //WHEN
+    //region WHEN
     @When("the user gets the table rows")
     public void whenTheUserGetsTableRows() {
         step.get_table_rows();
@@ -56,55 +52,49 @@ public class TableMappingSteps {
     }
 
     @When("the user selects the checkbox for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user selects the checkbox for row with <columnName> column and <cellValue> value in <tableCaption> table")
-    public void whenTheUserSelectCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+    @Aliases(values={"the user selects the checkbox for row with '$columnName' column and '$cellValue' value in <tableCaption> table",
+                    "the user checks the checkbox for row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
+    public void whenTheUserSelectsCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
         step.select_checkbox_for_row_in_table(tableCaption, columnName, cellValue);
     }
 
     @When("the user deselects the checkbox for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user deselects the checkbox for row with <columnName> column and <cellValue> value in <tableCaption> table")
-    public void whenTheUserDeselectCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
+    @Aliases(values={"the user deselects the checkbox for row with '$columnName column and '$cellValue' value in <tableCaption> table",
+                    "the user unchecks the checkbox for row with '$columnName column and '$cellValue' value in <tableCaption> table"})
+    public void whenTheUserDeselectsCheckboxInRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("cellValue") String cellValue) {
         step.deselect_checkbox_for_row_in_table(tableCaption, columnName, cellValue);
+    }
+
+    @When("the user selects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user selects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table",
+                    "the user checks the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
+    public void whenTheUserSelectsCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                        @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.select_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
+    }
+
+    @When("the user deselects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user deselects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table",
+                    "the user unchecks the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
+    public void whenTheUserDeselectsCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
+                                                          @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
+        step.deselect_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
     }
 
     @When("the user multi-selects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
     @Alias("the user multi-selects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
     public void whenTheUserMultiSelectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
-    @When("the user selects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user selects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
-    public void whenTheUserSelectCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
-                                                        @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
-        step.select_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
-    }
-
-    }
-
-    @When("the user deselects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
-    @Alias("the user deselects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
-    public void whenTheUserDeselectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
 
     }
 
     @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
     @Alias("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
-    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue, String $tableCaption) {
 
     }
+    // endregion THEN
 
-
-
-    @When("the user deselects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user deselects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
-    public void whenTheUserDeselectCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
-                                                          @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
-        step.deselect_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
-    }
-
-
-
-
-
-    //THEN
+    // region THEN
     @Then("the user should see '$items' items with column number '$columnNumber' in the table")
     public void thenTheUserShouldSeeItemListWithColumnInTable(String items, int columnNumber) {
         step.should_see_items_in_table(items, (columnNumber - 1));
@@ -133,13 +123,21 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that row with '$columnName' column and '$columnValue' value is selected in '$tableCaption' table")
-    @Alias("the user should see that row with <columnName> column and <columnValue> value is selected in <tableCaption> table")
+    @Aliases(values={"the user should see that row with '$columnName' column and '$columnValue' value is selected in <tableCaption> table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is selected in '$tableCaption' table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is selected in <tableCaption> table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is checked in '$tableCaption' table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is checked in <tableCaption> table"})
     public void thenTheUserShouldSeeRowIsSelected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
         step.should_see_row_with_value_is_selected(tableCaption, columnName, columnValue);
     }
 
     @Then("the user should see that row with '$columnName' column and '$columnValue' value is deselected in '$tableCaption' table")
-    @Alias("the user should see that row with <columnName> column and <columnValue> value is deselected in <tableCaption> table")
+    @Aliases(values={"the user should see that row with '$columnName' column and '$columnValue' value is deselected in <tableCaption> table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is deselected in '$tableCaption' table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is deselected in <tableCaption> table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is unchecked in '$tableCaption' table",
+                    "the user should see that checkbox for row with '$columnName' column and '$columnValue' value is unchecked in <tableCaption> table"})
     public void thenTheUserShouldSeeRowIsDeselected(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName, @Named("columnValue") String columnValue) {
         step.should_see_row_with_value_is_deselected(tableCaption, columnName, columnValue);
     }
@@ -155,40 +153,37 @@ public class TableMappingSteps {
     public void thenTheUserShouldSeeUncheckedItemInSettingsWheel(String item, String tableCaption) {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
-
+//*
     @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is checked in <tableCaption> table")
+    @Alias("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName'column and '$cellValue' value is checked in <tableCaption> table")
     public void thenTheyShouldSeeCheckBoxIsCheckedInColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
                                                            @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
         step.should_see_checked_checkbox_in_column(tableCaption, columnName, cellValue, checkboxColumnName);
     }
 
     @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is unchecked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is unchecked in <tableCaption> table")
+    @Alias("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is unchecked in <tableCaption> table")
     public void thenTheyShouldSeeCheckBoxIsUnCheckedInColumn(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
                                                              @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
         step.should_see_unchecked_checkbox_in_column(tableCaption, columnName, cellValue, checkboxColumnName);
     }
 
-    @Then("the user should see that '$table' table is not scrolled to the beginning")
-    @Alias("the user should see that <tableCaption> table is not scrolled to the beginning")
-    @Then("the user should see that '@table' table is scrolled to the end")
-    @Alias("the user should see that <tableCaption> table is scrolled to the end")
-    public void thenTheUserShouldSeeTableIsNotScrolledToTheBeginning(String item, String tableCaption) {
+    @Then("the user should see that '@table' table is scrolled to the beginning")
+    @Alias("the user should see that <tableCaption> table is scrolled to the beginning")
+    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(String tableCaption) {
 
     }
 
-    @Then("the user should see that '@table' table is scrolled to the beginning")
-    @Alias("the user should see that <tableCaption> table is scrolled to the beginning")
-    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(String item, String tableCaption) {
+    @Then("the user should see that '@table' table is scrolled to the end")
+    @Alias("the user should see that <tableCaption> table is scrolled to the end")
+    public void thenTheUserShouldSeeTableIsNotScrolledToTheEnd(String tableCaption) {
 
     }
 
     @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
-    @Alias("the user inputs '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
-    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+    @Alias("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserShouldSeeDateInRowInTable(String inputDate, String columnName, String columnKey, String columnValue, String tableCaption) {
 
     }
-
-
+    // endregion THEN
 }
