@@ -67,12 +67,31 @@ public class TableMappingSteps {
         step.deselect_checkbox_for_row_in_table(tableCaption, columnName, cellValue);
     }
 
+    @When("the user multi-selects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user multi-selects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserMultiSelectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
     @When("the user selects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user selects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
     public void whenTheUserSelectCheckboxInColumnForRow(@Named("tableCaption") String tableCaption, @Named("columnName") String columnName,
                                                         @Named("cellValue") String cellValue, @Named("checkboxColumnName") String checkboxColumnName) {
         step.select_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
     }
+
+    }
+
+    @When("the user deselects the row with '$columnName' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user deselects the row with '$columnName' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $columnName, String $columnValue) {
+
+    }
+
+    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+
+    }
+
+
 
     @When("the user deselects the checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user deselects the checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table")
@@ -158,5 +177,18 @@ public class TableMappingSteps {
     public void thenTheUserShouldSeeTableIsNotScrolledToTheBeginning(String item, String tableCaption) {
 
     }
+
+    @Then("the user should see that '@table' table is scrolled to the beginning")
+    @Alias("the user should see that <tableCaption> table is scrolled to the beginning")
+    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(String item, String tableCaption) {
+
+    }
+
+    @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in '$tableCaption' table")
+    @Alias("the user inputs '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$columnValue' value in <tableCaption> table")
+    public void whenTheUserDeselectsTheRowWithColumnInTable(String $inputDate, String $columnName, String $columnKey, String $columnValue) {
+
+    }
+
 
 }
