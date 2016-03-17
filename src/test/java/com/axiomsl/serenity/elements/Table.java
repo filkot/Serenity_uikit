@@ -168,8 +168,7 @@ public class Table extends BasePage {
         WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
         String heightPath = scrollLocator + "/div";
         String heightTemp =  wrappedElement.then(By.xpath(heightPath)).getAttribute("style");
-        String height = "9000";
-        height = heightTemp.replaceAll("[\\D]", "");
+        String height = heightTemp.replaceAll("[\\D]", "");
 
         if(action.contains("up")){
             js.executeScript("arguments[0].scrollTop = 0;",element);
@@ -188,8 +187,7 @@ public class Table extends BasePage {
 //    }
 
     public List<WebElementFacade> getSelectedRows(){
-        List<WebElementFacade> row = wrappedElement.thenFindAll(By.xpath(selectedRowLocator));
-        return row;
+        return wrappedElement.thenFindAll(By.xpath(selectedRowLocator));
     }
 
     public Map<String, WebElementFacade> getRowMapByCellValue(String columnName, String cellValue){
@@ -209,8 +207,7 @@ public class Table extends BasePage {
 
     public WebElementFacade getRowByCellValue(String columnName, String cellValue){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
-        WebElementFacade rowElement = this.getRowByCell(rowMap.get(columnName));
-        return rowElement;
+        return this.getRowByCell(rowMap.get(columnName));
     }
 
     public WebElementFacade getRowByCell(WebElementFacade cellElement){
