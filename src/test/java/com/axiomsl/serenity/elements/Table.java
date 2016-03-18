@@ -26,6 +26,7 @@ public class Table extends BasePage {
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
 //    private String checkBoxLocator = ".//input[@type='checkbox']";
     private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
+    private String buttonLocator = ".//div[@role = 'button']//span";
 
 
 
@@ -299,6 +300,13 @@ public class Table extends BasePage {
                 element.click();
             }
         }
+    }
+
+    public void pressButtonInColumnForRow(String columnName, String cellValue, String buttonColumnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
+        WebElementFacade cell = rowMap.get(buttonColumnName);
+        Button button = new Button(getDriver(), cell.then(By.xpath(buttonLocator)));
+        button.click();
     }
 
 

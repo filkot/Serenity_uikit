@@ -73,6 +73,11 @@ public class TableSteps extends ScenarioSteps {
         action.getTableByCaption(tableCaption).deselectRow(columnName, cellValue);
     }
 
+    @Step
+    public void press_button_in_column_for_row_in_table(String tableCaption, String columnName, String cellValue, String buttonColumnName) {
+        action.getTableByCaption(tableCaption).pressButtonInColumnForRow(columnName, cellValue, buttonColumnName);
+    }
+
 
     @Step
     public void select_checkbox_for_row_in_table(String tableCaption, String columnName, String cellValue) {
