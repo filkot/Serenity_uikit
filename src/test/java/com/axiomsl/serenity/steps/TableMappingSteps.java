@@ -102,9 +102,9 @@ public class TableMappingSteps {
         step.multi_select_for_rows_in_table_with_caption(tableCaption, columnName, cellValue);
     }
 
-    @When("the user selects the checkbox in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user selects the checkbox in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in <tableCaption> table",
-            "the user checks the checkbox in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
+    @When("the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in <tableCaption> table",
+            "the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
     public void whenTheUserPressButtonInColumnForRow(@Named("tableCaption") String tableCaption,
                                                          @Named("columnName") String columnName,
                                                          @Named("cellValue") String cellValue,
