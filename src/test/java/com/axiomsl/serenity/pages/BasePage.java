@@ -79,6 +79,11 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).contextClick().build().perform();
     }
 
+    public void controlDown(WebDriver driver, WebElementFacade element) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
+    }
+
 
 //_______Converter______________________________________________________________________________________________________
 
