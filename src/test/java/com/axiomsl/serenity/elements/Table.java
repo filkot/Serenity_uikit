@@ -318,6 +318,9 @@ public class Table extends BasePage {
     }
 
     public boolean isTextEqualsInColumn(String columnName, String cellValue) {
+        if(cellValue.equals("EMPTY_STRING")){
+            cellValue = "";
+        }
         List<String> headerList = getHeadingsAsString();
         List<String> column = null;
         for(int i = 0; i<headerList.size(); i++){
@@ -331,7 +334,7 @@ public class Table extends BasePage {
         }
         for(String item: column){
             if(!item.equals(cellValue)){
-               return false;
+                return false;
             }
         }
         return true;

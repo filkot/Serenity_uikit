@@ -27,13 +27,13 @@ Then the user should see new tab with text 'AFL'
 Scenario: Link is visited
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Links' in a tree
-And the user click the link with name 'Dilbert in new window'
+And the user clicks the link with name 'Dilbert in new window'
 Then the user should see a changed color of the link
 
 Scenario: Open a link in the current tab
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Links' in a tree
-And the user click links with name 'Link to Yandex in current tab'
+And the user clicks the link with name 'Link to Yandex in current tab'
 Then the user should see the current page with text 'yandex'
 
 Scenario: Open a link in a new tab

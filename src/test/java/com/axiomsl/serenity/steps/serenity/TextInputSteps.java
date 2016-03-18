@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.is;
 
 public class TextInputSteps extends ScenarioSteps {
 
+    public static final String EMPTY_STRING = "";
     TextInputAction action;
 
 
@@ -30,6 +31,9 @@ public class TextInputSteps extends ScenarioSteps {
 
     @Step
     public void enter_text_in_text_field_with_caption(String textInputCaption, String text) {
+        if(text.equals("EMPTY_STRING")){
+            text = EMPTY_STRING;
+        }
         action.getTextInputByCaption(textInputCaption).type(text);
     }
 

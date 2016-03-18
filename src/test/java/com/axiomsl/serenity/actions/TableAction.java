@@ -10,6 +10,8 @@ import java.util.List;
 public class TableAction extends BasePage {
 
 
+    public static final String EMPTY_STRING = "EMPTY_STRING";
+
     private String tableLocator = "//div[contains(@class, 'v-table-components-inside')]";
     private String captionLocator = "//div[contains(@class,'v-caption')]/span[text() = '%s']";
 
@@ -30,8 +32,13 @@ public class TableAction extends BasePage {
     }
 
     public Table getTableByCaption(String caption){
-        String path = String.format(captionLocator, caption) + "/parent::div/following-sibling::div[contains(@class, 'v-table-components-inside')]";
-        Table table = new Table(getDriver(), find(By.xpath(path)));
+        Table table;
+        if(caption.equals(EMPTY_STRING)){
+            table = new Table(getDriver(), find(By.xpath(tableLocator)));
+        }else{
+            String path = String.format(captionLocator, caption) + "/parent::div/following-sibling::div[contains(@class, 'v-table-components-inside')]";
+            table = new Table(getDriver(), find(By.xpath(path)));
+        }
         return table;
     }
 

@@ -10,26 +10,38 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Empty
 Given the user refresh the Example page
-When the user selects the item 'Interaction->InputMappinng' in a tree
-And the user enters the string - '' in the text field with name 'Value from this text field is used as input for second column'
-Then the user should see the column with name 'TextField Value' where all values are ''
+When the user selects the item 'Interaction->InputMapping' in a tree
+And the user enters <text> text in <textInputCaption> text field
+Then the user should see the <columnName> column where all values are <cellValue> in <tableCaption> table
+Examples:
+|columnName|cellValue|text|textInputCaption|tableCaption|
+|TextField Value|EMPTY_STRING|EMPTY_STRING|Value from this text field is used as input for second column|EMPTY_STRING|
 
 Scenario: Filled
 Given the user refresh the Example page
-When the user selects the item 'Interaction->InputMappinng' in a tree
-And the user enters the string - 'test string' in the text field with name 'Value from this text field is used as input for second column'
-Then the user should see the column with name 'TextField Value' where all values are 'test string'
+When the user selects the item 'Interaction->InputMapping' in a tree
+And the user enters <text> text in <textInputCaption> text field
+Then the user should see the <columnName> column where all values are <cellValue> in <tableCaption> table
+Examples:
+|columnName|cellValue|text|textInputCaption|tableCaption|
+|TextField Value|test string|test string|Value from this text field is used as input for second column|EMPTY_STRING|
 
 Scenario: Empty and use Self Destruction
 Given the user refresh the Example page
-When the user selects the item 'Interaction->InputMappinng' in a tree
-And the user enters the string - '' in the text field with name 'Value from this text field is used as input for second column'
-And the user presses the button with name 'Self Destruction' in table row with key value 'ID_0'
-Then the user should not see table row with key value 'ID_0'
+When the user selects the item 'Interaction->InputMapping' in a tree
+And the user enters <text> text in <textInputCaption> text field
+And the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table
+Then the user should not see the row with <columnName> column and <cellValue> value in <tableCaption> table
+Examples:
+|columnName|cellValue|text|textInputCaption|buttonColumnName|tableCaption|
+|ID|ID_0|EMPTY_STRING|Value from this text field is used as input for second column|Delete|EMPTY_STRING|
 
 Scenario: Filled and use Self Desrtuction
 Given the user refresh the Example page
-When the user selects the item 'Interaction->InputMappinng' in a tree
-And the user enters the string - 'test string 333' in the text field with name 'Value from this text field is used as input for second column'
-And the user presses the button with name 'Self Destruction' in table row with key value 'ID_0'
-Then the user should not see table row with key value 'ID_0'
+When the user selects the item 'Interaction->InputMapping' in a tree
+And the user enters <text> text in <textInputCaption> text field
+And the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table
+Then the user should not see the row with <columnName> column and <cellValue> value in <tableCaption> table
+Examples:
+|columnName|cellValue|text|textInputCaption|buttonColumnName|tableCaption|
+|ID|ID_5|test string 333|Value from this text field is used as input for second column|Delete|EMPTY_STRING|

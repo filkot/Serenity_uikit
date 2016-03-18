@@ -97,7 +97,7 @@ And the user select '>' in comboBox
 When the user click button with name 'Value'
 And the user type text '3' in text field
 When the user click button with name 'Query Instance'
-Then they should see data in a table where '$field' '$condition' '$value'
+Then the user should see data in a table where '$field' '$condition' '$value'
 
 Scenario: Number field, Value are input
 Meta: @id8 8

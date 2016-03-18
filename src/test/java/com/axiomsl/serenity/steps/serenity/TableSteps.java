@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.*;
 
 public class TableSteps extends ScenarioSteps {
 
+    public static final String EMPTY_STRING = "";
     TableAction action;
 
 
@@ -136,7 +137,7 @@ public class TableSteps extends ScenarioSteps {
 
     @Step
     public void should_see_column_with_text_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
-        assertThat(action.getTableByCaption(tableCaption).isTextEqualsInColumn(columnName, cellValue), is(true));
+            assertThat(action.getTableByCaption(tableCaption).isTextEqualsInColumn(columnName, cellValue), is(true));
     }
 
     @Step
