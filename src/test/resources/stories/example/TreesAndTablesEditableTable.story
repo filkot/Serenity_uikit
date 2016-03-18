@@ -10,7 +10,6 @@ Meta: @group: Editable Table
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Select a checkbox in unselected column
-Given the user refresh the Example page
 When the user select 'Trees and Tables->Editable table' in tree
 And the user select checkbox in column '' for row with column 'Id' and value '0' in <tableCaption> table
 Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table

@@ -10,7 +10,6 @@ Meta: @group: Simple Table
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Filter rows by Receiving Country as 'ALL' and Transmitting Country as 'ALL'
-Given the user refresh the Example page
 When the user select 'Trees and Tables->Table with filters' in tree
 And the user select 'ALL' in comboBox with caption 'Receiving Country'
 And the user select 'ALL' in comboBox with caption 'Transmitting Country'

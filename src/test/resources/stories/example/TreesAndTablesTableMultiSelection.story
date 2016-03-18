@@ -10,7 +10,6 @@ Meta: @group: Multi-Selection Table
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Make not visible all columns except column 'id' from the settings wheel for MULTI-SELECTION table
-Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user makes the 'Description' column not visible from the settings wheel for <tableCaption> table
 And the user makes the 'Active' column not visible from the settings wheel for <tableCaption> table
