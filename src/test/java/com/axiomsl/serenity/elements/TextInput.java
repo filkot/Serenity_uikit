@@ -20,6 +20,12 @@ public class TextInput extends BasePage {
         this.wrappedElement.clear();
     }
 
+    public void type(String text) {
+        this.wrappedElement.type(text);
+    }
+
+
+
     public void sendKeys(CharSequence... keys) {
         this.wrappedElement.sendKeys(keys);
     }

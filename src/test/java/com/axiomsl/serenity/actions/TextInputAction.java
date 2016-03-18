@@ -9,6 +9,7 @@ public class TextInputAction extends BasePage {
 
 
     private String textFieldLocator = "//input[@type = 'text']";
+    private String captionLocator = "//div[contains(@class,'v-caption')]/span[text() = '%s']";
 
     public boolean isTextFieldDisplayed() {
         TextInput textInput = new TextInput(getDriver(), find(By.xpath(textFieldLocator)));
@@ -23,6 +24,12 @@ public class TextInputAction extends BasePage {
         TextInput textInput = new TextInput(getDriver(), find(By.xpath(textFieldLocator)));
         textInput.clear();
         textInput.sendKeys(text);
+    }
+
+    public TextInput getTextInputByCaption(String caption){
+        String path = String.format(captionLocator, caption) + "/parent::div/following-sibling::input[@type = 'text']";
+        TextInput textInput = new TextInput(getDriver(), find(By.xpath(path)));
+        return textInput;
     }
 
 

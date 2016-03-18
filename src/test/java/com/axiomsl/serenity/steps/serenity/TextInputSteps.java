@@ -28,5 +28,10 @@ public class TextInputSteps extends ScenarioSteps {
         action.type_in_text_field(text);
     }
 
+    @Step
+    public void enter_text_in_text_field_with_caption(String textInputCaption, String text) {
+        action.getTextInputByCaption(textInputCaption).type(text);
+    }
+
 
 }
