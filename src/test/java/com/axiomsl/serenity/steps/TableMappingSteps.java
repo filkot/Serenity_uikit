@@ -155,6 +155,30 @@ public class TableMappingSteps {
         step.should_not_see_column_with_name_in_table_with_caption(tableCaption, columnName);
     }
 
+    @Then("the user should see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user should see the row with <columnName>  column and <cellValue> value in <tableCaption> table")
+    public void thenTheUserShouldSeeRowInTable(@Named("tableCaption") String tableCaption,
+                                                     @Named("columnName") String columnName,
+                                                     @Named("cellValue") String cellValue) {
+        step.should_see_row_in_table_with_caption(tableCaption, columnName, cellValue);
+    }
+
+    @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user should not see the row with <columnName>  column and <cellValue> value in <tableCaption> table")
+    public void thenTheUserShouldNotSeeRowInTable(@Named("tableCaption") String tableCaption,
+                                                     @Named("columnName") String columnName,
+                                                     @Named("cellValue") String cellValue) {
+        step.should_not_row_in_table_with_caption(tableCaption, columnName, cellValue);
+    }
+
+    @Then("the user should see the '$columnName' column where all values are '$cellValue' in '$tableCaption' table")
+    @Alias("the user should see the '$columnName' column where all values are <cellValue> in <tableCaption> table")
+    public void thenTheUserShouldSeeColumnWithTextInTable(@Named("tableCaption") String tableCaption,
+                                                  @Named("columnName") String columnName,
+                                                  @Named("cellValue") String cellValue) {
+        step.should_see_column_with_text_in_table_with_caption(tableCaption, columnName, cellValue);
+    }
+
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
     @Aliases(values={"the user should see that row with <columnName> column and <cellValue> value is selected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table",

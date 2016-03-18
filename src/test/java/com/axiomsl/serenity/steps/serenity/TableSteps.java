@@ -133,4 +133,19 @@ public class TableSteps extends ScenarioSteps {
     public void multi_select_for_rows_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
         action.getTableByCaption(tableCaption).multiSelectRows(columnName, cellValue);
     }
+
+    @Step
+    public void should_see_column_with_text_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
+        assertThat(action.getTableByCaption(tableCaption).isTextEqualsInColumn(columnName, cellValue), is(true));
+    }
+
+    @Step
+    public void should_see_row_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
+        assertThat(action.getTableByCaption(tableCaption).isRowPresentInTable(columnName, cellValue), is(true));
+    }
+
+    @Step
+    public void should_not_row_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
+        assertThat(action.getTableByCaption(tableCaption).isRowPresentInTable(columnName, cellValue), is(false));
+    }
 }

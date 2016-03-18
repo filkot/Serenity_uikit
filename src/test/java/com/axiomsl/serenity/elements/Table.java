@@ -237,6 +237,14 @@ public class Table extends BasePage {
         return false;
     }
 
+    public boolean isRowPresentInTable(String columnName, String cellValue){
+        WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
+        if(rowElement == null){
+            return false;
+        }
+        return true;
+    }
+
     public boolean isSettingsItemIsChecked(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attributePath = String.format(menuVisibilityLocator, item) + "/parent::span";
@@ -307,6 +315,26 @@ public class Table extends BasePage {
         WebElementFacade cell = rowMap.get(buttonColumnName);
         Button button = new Button(getDriver(), cell.then(By.xpath(buttonLocator)));
         button.click();
+    }
+
+    public boolean isTextEqualsInColumn(String columnName, String cellValue) {
+        List<String> headerList = getHeadingsAsString();
+        List<String> column = null;
+        for(int i = 0; i<headerList.size(); i++){
+            if(headerList.get(i).equals(columnName)){
+                column = getColumnAsStringByIndex(i);
+                break;
+            }
+        }
+        if(column == null){
+            throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
+        }
+        for(String item: column){
+            if(!item.equals(cellValue)){
+               return false;
+            }
+        }
+        return true;
     }
 
 
