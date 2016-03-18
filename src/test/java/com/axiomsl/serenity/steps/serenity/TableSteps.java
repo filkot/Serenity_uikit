@@ -123,4 +123,9 @@ public class TableSteps extends ScenarioSteps {
     public void should_see_unchecked_checkbox_in_column(String tableCaption, String columnName, String cellValue, String checkboxColumnName) {
         assertThat(action.getTableByCaption(tableCaption).isCheckBoxIsCheckedInColumnForRow(columnName, cellValue, checkboxColumnName), is(false));
     }
+
+    @Step
+    public void multi_select_for_rows_in_table_with_caption(String tableCaption, String columnName, String cellValue) {
+        action.getTableByCaption(tableCaption).multiSelectRows(columnName, cellValue);
+    }
 }

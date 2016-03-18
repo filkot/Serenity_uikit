@@ -284,9 +284,22 @@ public class Table extends BasePage {
         return checkBox.isSelected();
     }
 
+    public void multiSelectRows(String columnName, String cellValue) {
+        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+        WebElementFacade firsRow = list.get(0).get(columnName);
+        if(firsRow == null)
+        {
+            throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
+        }
+        controlDown(driver, firsRow);
 
-
-
+        for(Map<String, WebElementFacade> map:list){
+            WebElementFacade element = map.get(columnName);
+            if(element.getAttribute("textContent").contains(cellValue)){
+                element.click();
+            }
+        }
+    }
 
 
 //    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
