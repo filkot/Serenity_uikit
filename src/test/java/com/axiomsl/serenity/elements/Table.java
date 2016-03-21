@@ -208,7 +208,10 @@ public class Table extends BasePage {
 
     public WebElementFacade getRowByCellValue(String columnName, String cellValue){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
-        return this.getRowByCell(rowMap.get(columnName));
+        if (rowMap != null){
+            return this.getRowByCell(rowMap.get(columnName));
+        }
+        return null;
     }
 
     public WebElementFacade getRowByCell(WebElementFacade cellElement){
