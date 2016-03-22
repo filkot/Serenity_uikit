@@ -14,14 +14,14 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 Scenario: Drag'n'Drop Through Tabs
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Drag'n'Drop' in a tree
-And the user drags and drops the row '$row_number' from table '$table_name1' to table '$table_name2'
-Then the user should see new row '$row_number' in table '$table_name2'
+And the user drags and drops '$row_number' row from '$table_name1' table to '$table_name2' table
+Then the user should see new '$row_number' row in '$table_name2' table
 
 Scenario: Drag'n'Drop Through Tables
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Drag'n'Drop' in a tree
-And the user drags and drops the row '$row_number' from table '$table_name1' to table '$table_name2'
-Then the user should see new row '$row_number' in table '$table_name2'
+And the user drags and drops '$row_number' row from '$table_name1' table to '$table_name2' table
+Then the user should see new '$row_number' row in '$table_name2' table
 
 !-- Scenario: Drag'n'Drop Through Windows
 !-- Not Yet Implemented in UI Kit Examples
@@ -29,9 +29,9 @@ Then the user should see new row '$row_number' in table '$table_name2'
 Scenario: Drag'n'Drop Selected
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Drag'n'Drop' in a tree
-And the user selects row '$row_number' in table with name '$name'
-And the user drags and drops the row '$row_number' from table '$table_name1' to table '$table_name2'
-Then the user should see new row '$row_number' in table '$table_name2'
+And the user selects '$row_number' row in table with name '$name'
+And the user drags and drops '$row_number' row from '$table_name1' table to '$table_name2' table
+Then the user should see new '$row_number' row in '$table_name2' table
 
 Scenario: Drag'n'Drop Unselected
 Given the user refresh the Example page
@@ -51,7 +51,7 @@ Scenario: Drag'n'Drop Over other elements
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Drag'n'Drop' in a tree
 And the user drags and drops the row '$row_number' out from table '$table_name1'
-Then the user should not see the row '$row_number' in table '$table_name2'
+Then the user should not see '$row_number' row in '$table_name2' table
 
 Scenario: Drag'n'Drop Multiselection
 Given the user refresh the Example page
