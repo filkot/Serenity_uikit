@@ -77,15 +77,15 @@ public class TwinColSelectSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_items_in_left_col(String items) {
-        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
-        assertThat(action.get_left_col_items_list(), is(equalTo(itemsList)));
+    public void should_see_items_in_left_col(List<String> items) {
+//        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
+        assertThat(action.get_left_col_items_list(), is(equalTo(items)));
     }
 
     @Step
-    public void should_see_items_in_right_col(String items) {
-        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
-        assertThat(action.get_right_col_items_list(), is(equalTo(itemsList)));
+    public void should_see_items_in_right_col(List<String> items) {
+//        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
+        assertThat(action.get_right_col_items_list(), is(equalTo(items)));
     }
 
     @Step

@@ -4,6 +4,8 @@ import com.axiomsl.serenity.steps.serenity.TableSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
+import java.util.List;
+
 public class TableMappingSteps {
 
     @Steps
@@ -129,7 +131,7 @@ public class TableMappingSteps {
 
     // region THEN
     @Then("the user should see '$items' items with column number '$columnNumber' in the table")
-    public void thenTheUserShouldSeeItemListWithColumnInTable(String items, int columnNumber) {
+    public void thenTheUserShouldSeeItemListWithColumnInTable(List<String> items, int columnNumber) {
         step.should_see_items_in_table(items, (columnNumber - 1));
     }
 
@@ -174,7 +176,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see the '$columnName' column where all values are '$cellValue' in '$tableCaption' table")
-    @Aliases(values={"the user should see the <columnName> column where all values are <cellValue> in table",
+    @Aliases(values={"the user should see the <columnName> column where all values are <cellValue> in $tableCaption table",
                     "the user should see the <columnName> column where all values are <cellValue> in <tableCaption> table"})
     public void thenTheUserShouldSeeColumnWithTextInTable(@Named("tableCaption") String tableCaption,
                                                   @Named("columnName") String columnName,

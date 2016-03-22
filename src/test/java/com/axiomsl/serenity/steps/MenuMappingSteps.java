@@ -5,6 +5,8 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.util.List;
+
 /**
  * Created by kfilippov on 04.03.2016.
  */
@@ -31,7 +33,7 @@ public class MenuMappingSteps {
 
     //THEN
     @Then("they should see the item list '$itemsList' for '$item'")
-    public void thenTheyShouldSeeItemList(String itemsList, String item) {
+    public void thenTheyShouldSeeItemList(List<String> itemsList, String item) {
         step.should_see_items_in_sub_menu(itemsList, item);
     }
 

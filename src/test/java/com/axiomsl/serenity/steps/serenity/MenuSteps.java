@@ -34,9 +34,9 @@ public class MenuSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_items_in_sub_menu(String itemsList, String item) {
-        List<String> items = Arrays.asList(itemsList.split("\\s*,\\s*"));
-        assertThat(action.get_sub_menu_items_list(item), is(equalTo(items)));
+    public void should_see_items_in_sub_menu(List<String> itemsList, String item) {
+//        List<String> items = Arrays.asList(itemsList.split("\\s*,\\s*"));
+        assertThat(action.get_sub_menu_items_list(item), is(equalTo(itemsList)));
     }
 
     @Step

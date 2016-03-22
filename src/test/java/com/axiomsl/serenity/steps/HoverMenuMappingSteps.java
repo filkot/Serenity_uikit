@@ -5,6 +5,8 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.util.List;
+
 /**
  * Created by kfilippov on 11.03.2016.
  */
@@ -20,7 +22,7 @@ public class HoverMenuMappingSteps {
 
     //Then
     @Then("the user should see HoverMenu item list '$item_list'")
-    public void thenTheUserShouldSeeMenuItemList(String itemsList){
+    public void thenTheUserShouldSeeMenuItemList(List<String> itemsList){
         step.should_see_menu_items_list(itemsList);
     }
 

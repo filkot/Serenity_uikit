@@ -22,6 +22,7 @@ public class Button extends BasePage {
     public void click() {
         wrappedElement.click();
     }
+
     public void rightClick() {
         rightClick(driver, wrappedElement);
     }

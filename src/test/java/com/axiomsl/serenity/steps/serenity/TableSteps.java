@@ -18,9 +18,9 @@ public class TableSteps extends ScenarioSteps {
 
 
     @Step
-    public void should_see_items_in_table(String items, int columnNumber) {
-        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
-        assertThat(action.get_column_of_table_by_index(columnNumber), is(equalTo(itemsList)));
+    public void should_see_items_in_table(List<String> items, int columnNumber) {
+//        List<String> itemsList = Arrays.asList(items.split("\\s*,\\s*"));
+        assertThat(action.get_column_of_table_by_index(columnNumber), is(equalTo(items)));
     }
 
     @Step

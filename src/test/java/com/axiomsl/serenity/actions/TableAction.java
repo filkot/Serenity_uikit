@@ -33,7 +33,7 @@ public class TableAction extends BasePage {
 
     public Table getTableByCaption(String caption){
         Table table;
-        if(caption.equals(EMPTY_STRING)){
+        if(caption.equals("a") || caption.equals("the") ){
             table = new Table(getDriver(), find(By.xpath(tableLocator)));
         }else{
             String path = String.format(captionLocator, caption) + "/parent::div/following-sibling::div[contains(@class, 'v-table-components-inside')]";

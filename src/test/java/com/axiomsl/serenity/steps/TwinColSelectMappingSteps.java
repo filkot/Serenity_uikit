@@ -6,6 +6,8 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.util.List;
+
 
 public class TwinColSelectMappingSteps {
 
@@ -75,12 +77,12 @@ public class TwinColSelectMappingSteps {
 
     //THEN
     @Then("the user should see the item list '$items' in the right twin column")
-    public void thenTheyShouldSeeItemListInRightCol(String items) {
+    public void thenTheyShouldSeeItemListInRightCol(List<String> items) {
         step.should_see_items_in_right_col(items);
     }
 
     @Then("the user should see the item list '$items' in the left twin column")
-    public void thenTheyShouldSeeItemListInLeftCol(String items) {
+    public void thenTheyShouldSeeItemListInLeftCol(List<String> items) {
         step.should_see_items_in_left_col(items);
     }
 
