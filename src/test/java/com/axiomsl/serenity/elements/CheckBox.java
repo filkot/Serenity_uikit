@@ -80,9 +80,6 @@ public class CheckBox extends BasePage {
     public boolean isSelected() {
         WebElementFacade checkbox = this.getCheckBox();
         checkbox.getAttribute("checked");
-//        if(){
-//
-//        }
         return checkbox.isSelected();
     }
 

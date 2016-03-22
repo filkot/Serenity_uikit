@@ -101,14 +101,14 @@ Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '0' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
-And the user should see the label with 'user1' text
+And the user should see the label with 'user0' text
 Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
 Scenario: Deselect the first column in SIMPLE table
 When the user deselects the row with 'Id' column and '0' value in <tableCaption> table
-Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is deselected in <tableCaption> table
 And the user should see the label with 'ALL' text
 Examples:
 |tableCaption|
@@ -129,7 +129,7 @@ Scenario: Deselect the last column in SIMPLE table
 When the user scrolls up vertically to the beginning in <tableCaption> table
 And the user scrolls vertically down to the end in <tableCaption> table
 And the user deselects the row with 'Id' column and '49' value in <tableCaption> table
-Then the user should see that row with 'Id' column and '49' value is selected in <tableCaption> table
+Then the user should see that row with 'Id' column and '49' value is deselected in <tableCaption> table
 And the user should see the label with 'ALL' text
 Examples:
 |tableCaption|
@@ -227,10 +227,11 @@ Examples:
 
 Scenario: Selection is not disabling when all columns are not visible in SIMPLE table
 When the user makes the 'Id' column not visible from the settings wheel for <tableCaption> table
-Then the user should see that row with 'Name' column and 'user1' value is selected in <tableCaption> table
-When the user makes the 'Name' column not visible from the settings wheel for <tableCaption> table
-And the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
+Then the user should see no columns in <tableCaption> table
+When the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
+When the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
+Then the user should see that row with 'Name' column and 'user1' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
 |Simple Table with label components as columns|

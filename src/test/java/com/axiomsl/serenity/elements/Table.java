@@ -265,7 +265,7 @@ public class Table extends BasePage {
         if(attributeValue.contains("off")){
             return false;
         }
-        throw new IllegalArgumentException("Table's setting wheel menu or item is changed.");
+        throw new IllegalArgumentException("Table's settings wheel panel or selected item is changed.");
     }
 
     public void selectCheckboxInRow(String columnName, String cellValue){
@@ -280,7 +280,6 @@ public class Table extends BasePage {
         checkBox.set(false);
     }
 
-
     public void selectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
@@ -294,7 +293,6 @@ public class Table extends BasePage {
         CheckBox checkBox = new CheckBox(cell.then(By.xpath(checkBoxLocator)));
         checkBox.set(false);
     }
-
 
     public boolean isCheckBoxIsCheckedInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
