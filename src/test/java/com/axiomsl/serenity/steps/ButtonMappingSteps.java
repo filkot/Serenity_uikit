@@ -22,7 +22,7 @@ public class ButtonMappingSteps {
         step.right_click_button_by_name(buttonName);
     }
 
-    @When("the user hover on button with name '$buttonName'")
+    @When("the user hovers on button with name '$buttonName'")
     public void whenTheUserHoverOnTheButton(String buttonName) {
         step.hover_on_button_by_name(buttonName);
     }

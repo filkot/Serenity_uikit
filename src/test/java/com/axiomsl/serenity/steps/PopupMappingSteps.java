@@ -29,12 +29,12 @@ public class PopupMappingSteps {
     }
 
     //Then
-    @Then("they should see popup with label '$text'")
+    @Then("the user should see popup with label '$text'")
     public void thenTheyShouldSeePopupWithLabelText(String labelText) {
         step.should_see_popup_with_label_text(labelText);
     }
 
-    @Then("they should see popup with header '$text'")
+    @Then("the user should see popup with header '$text'")
     public void thenTheyShouldSeePopupWithHeaderText(String headerText) {
         step.should_see_popup_with_header_text(headerText);
     }

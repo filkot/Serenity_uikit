@@ -20,7 +20,9 @@ Given the user refresh the Example page
 When the user selects the item 'Interaction->Notification' in a tree
 And the user clicks on the notification with text 'Message'
 And the user selects the item 'Interaction->Button' in a tree
-Then the user should see the button with text 'Simple button with icon'
+And the user click button with name 'Simple button with icon'
+Then the user should see popup with header 'Button click event'
+And the user should see popup with label 'Button has been pressed'
 
 Scenario: Click on out of area message
 Meta: @id3 3
