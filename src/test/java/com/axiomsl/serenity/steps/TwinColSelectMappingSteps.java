@@ -11,10 +11,12 @@ import java.util.List;
 
 public class TwinColSelectMappingSteps {
 
+    //region @Steps
     @Steps
     TwinColSelectSteps step;
+    //endregion @Steps
 
-    //WHEN
+    //region @When
     @When("the user presses 'Forward' button '$n' times")
     public void whenTheUserPressForwardButtonNTimes(String n) {
         step.press_forward_button_n_times(n);
@@ -35,12 +37,12 @@ public class TwinColSelectMappingSteps {
         step.select_right_col();
     }
 
-    @When("the user selects item '$item' in the left twin column")
+    @When("the user selects '$item' item in the left twin column")
     public void whenTheUserSelectItemInLeftCol(String item) {
         step.select_item_in_left_col(item);
     }
 
-    @When("the user select item '$item' in the right twin column")
+    @When("the user selects '$item' item in the right twin column")
     public void whenTheUserSelectItemInRightCol(String item) {
         step.select_item_in_right_col(item);
     }
@@ -55,33 +57,34 @@ public class TwinColSelectMappingSteps {
         step.select_all_items_in_right_col();
     }
 
-    @When("the user transfers item '$item' from the left to right")
+    @When("the user transfers '$item' item from the left to right")
     public void whenTheUserTransferItemFromLeftToRight(String item) {
         step.transfer_item_from_left_to_right(item);
     }
 
-    @When("the user transfers item '$item' from the right to left")
+    @When("the user transfers '$item' item from the right to left")
     public void whenTheUserTransferItemFromRightToLeft(String item) {
         step.transfer_item_from_right_to_left(item);
     }
 
-    @When("the user transfers the item '$item' from the left to right by double clicking on the item")
+    @When("the user transfers '$item' item from the left to right by double clicking on the item")
     public void whenTheUserDoubleClickOnItemInLeftCol(String item) {
         step.transfer_item_from_left_to_right_by_dbclick(item);
     }
 
-    @When("the user transfers the item '$item' from the right to left by double clicking on the item")
+    @When("the user transfers '$item' item from the right to left by double clicking on the item")
     public void whenTheUserDoubleClickOnItemInRightCol(String item) {
         step.transfer_item_from_right_to_left_by_dbclick(item);
     }
+    //endregion @When
 
-    //THEN
-    @Then("the user should see the item list '$items' in the right twin column")
+    //region @Then
+    @Then("the user should see '$items' item list in the right twin column")
     public void thenTheyShouldSeeItemListInRightCol(List<String> items) {
         step.should_see_items_in_right_col(items);
     }
 
-    @Then("the user should see the item list '$items' in the left twin column")
+    @Then("the user should see '$items' item list in the left twin column")
     public void thenTheyShouldSeeItemListInLeftCol(List<String> items) {
         step.should_see_items_in_left_col(items);
     }
@@ -95,6 +98,5 @@ public class TwinColSelectMappingSteps {
     public void thenTheyShouldSeeEmptyListInLeftCol() {
         step.should_see_empty_left_col();
     }
-
-
+    //endregion @Then
 }

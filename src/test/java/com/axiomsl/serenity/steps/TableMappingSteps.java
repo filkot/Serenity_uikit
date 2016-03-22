@@ -8,10 +8,12 @@ import java.util.List;
 
 public class TableMappingSteps {
 
+    //region @Steps
     @Steps
     TableSteps step;
+    //endregion @Steps
 
-    //region WHEN
+    //region @When
     @When("the user gets the table rows")
     public void whenTheUserGetsTableRows() {
         step.get_table_rows();
@@ -125,11 +127,9 @@ public class TableMappingSteps {
     public void whenTheUserInputsTextIntoColumnInRowInTable(String $inputText, String $columnName, String $columnKey, String $cellValue, String $tableCaption) {
 
     }
+    //endregion @When
 
-
-    // endregion WHEN
-
-    // region THEN
+    //region @Then
     @Then("the user should see '$items' items with column number '$columnNumber' in the table")
     public void thenTheUserShouldSeeItemListWithColumnInTable(List<String> items, int columnNumber) {
         step.should_see_items_in_table(items, (columnNumber - 1));
@@ -159,7 +159,7 @@ public class TableMappingSteps {
 
     @Then("the user should see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user should see the row with <columnName>  column and <cellValue> value in table"
-            ,"the user should see the row with <columnName>  column and <cellValue> value in <tableCaption> table"})
+            ,"the user should see the row with '$columnName'  column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldSeeRowInTable(@Named("tableCaption") String tableCaption,
                                                      @Named("columnName") String columnName,
                                                      @Named("cellValue") String cellValue) {
@@ -168,7 +168,7 @@ public class TableMappingSteps {
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user should not see the row with <columnName>  column and <cellValue> value in table"
-            ,"the user should not see the row with <columnName>  column and <cellValue> value in <tableCaption> table"})
+            ,"the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("tableCaption") String tableCaption,
                                                      @Named("columnName") String columnName,
                                                      @Named("cellValue") String cellValue) {
@@ -185,7 +185,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
-    @Aliases(values={"the user should see that row with <columnName> column and <cellValue> value is selected in <tableCaption> table",
+    @Aliases(values={"the user should see that row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table",
@@ -197,7 +197,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is deselected in '$tableCaption' table")
-    @Aliases(values={"the user should see that row with <columnName> column and <cellValue> value is deselected in <tableCaption> table",
+    @Aliases(values={"the user should see that row with '$columnName' column and '$cellValue' value is deselected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is deselected in '$tableCaption' table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is deselected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is unchecked in '$tableCaption' table",
@@ -209,14 +209,16 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that '$item' item is checked in the settings wheel in '$tableCaption' table")
-    @Alias("the user should see that <item> item is checked in the settings wheel in <tableCaption> table")
-    public void thenTheUserShouldSeeCheckedItemInSettingsWheel(String item, String tableCaption) {
+    @Alias("the user should see that '$item' item is checked in the settings wheel in <tableCaption> table")
+    public void thenTheUserShouldSeeCheckedItemInSettingsWheel(@Named("item") String item,
+                                                               @Named("tableCaption")String tableCaption) {
         step.should_see_checked_item_in_settings_wheel(item, tableCaption);
     }
 
     @Then("the user should see that '$item' item is unchecked in the settings wheel in '$tableCaption' table")
-    @Alias("the user should see that <item> item is unchecked in the settings wheel in <tableCaption> table")
-    public void thenTheUserShouldSeeUncheckedItemInSettingsWheel(String item, String tableCaption) {
+    @Alias("the user should see that '$item' item is unchecked in the settings wheel in <tableCaption> table")
+    public void thenTheUserShouldSeeUncheckedItemInSettingsWheel(@Named("item") String item,
+                                                                 @Named("tableCaption") String tableCaption) {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
 //*
@@ -261,5 +263,5 @@ public class TableMappingSteps {
     public void whenTheUserShouldSeeTextInRowInTable(String $inputText, String columnName, String columnKey, String cellValue, String tableCaption) {
 
     }
-    // endregion THEN
+    //endregion @Then
 }

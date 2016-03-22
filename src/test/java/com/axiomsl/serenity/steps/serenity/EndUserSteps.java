@@ -25,8 +25,8 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void refresh_example_page() {
-        examplePage.getDriver().navigate().refresh();
-        examplePage.getDriver().switchTo().alert().accept();
+       examplePage.getDriver().navigate().refresh();
+       examplePage.getDriver().switchTo().alert().accept();
     }
 
     @Step

@@ -8,10 +8,17 @@ import org.openqa.selenium.By;
  * Created by kfilippov on 15.03.2016.
  */
 public class NotificationAction extends BasePage{
+
+    //region Private Fields
+
     private String notificationWithTextLocator = "//div[contains(@class, 'v-Notification error')]//p[text() = \"%s\"]";
 
+    //endregion Private Fields
+
+    //region Public Methods
+
     public void click(String text) {
-        Notification notification = new Notification(getDriver(), find(By.xpath(String.format(notificationWithTextLocator, text))));
+        Notification notification = new Notification(find(By.xpath(String.format(notificationWithTextLocator, text))));
         notification.click();
     }
 
@@ -21,4 +28,6 @@ public class NotificationAction extends BasePage{
         }
         return false;
     }
+
+    //endregion Public Methods
 }

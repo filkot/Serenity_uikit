@@ -1,6 +1,7 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
+import com.axiomsl.serenity.helpers.WebDriverHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -13,28 +14,34 @@ import java.util.*;
  * Created by kfilippov on 10.02.2016.
  */
 public class Table extends BasePage {
+
+    //region Private Fields
+
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
     private String rowByCellLocator = "./ancestor::tr[contains(@class, 'v-table-row')]";
     private String selectedRowLocator = ".//tr[contains(@class, 'v-selected v-table-row')]";
-//    private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
+//  private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//div[contains(@class, 'v-table-cell-wrapper')]";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
-//    private String checkBoxLocator = ".//input[@type='checkbox']";
+//  private String checkBoxLocator = ".//input[@type='checkbox']";
     private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
     private String buttonLocator = ".//div[@role = 'button']//span";
 
+    //endregion Private Fields
 
-
-
-    public Table(WebDriver driver, WebElementFacade wrappedElement) {
-        this.driver = driver;
+    //region Constructors
+    public Table(WebElementFacade wrappedElement) {
+        this.driver = WebDriverHelper.GetGlobalWebDriver();
         this.wrappedElement = wrappedElement;
     }
+    //endregion Constructors
+
+    //region Public Methods
 
     public List<WebElementFacade> getHeadings() {
         return wrappedElement.thenFindAll(By.xpath(headingLocator));
@@ -42,7 +49,7 @@ public class Table extends BasePage {
 
     public List<String> getHeadingsAsString() {
         return Lambda.convert(this.getHeadings(), BasePage.WebElementToTextConverter.toTextValues());
-//        return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
+//      return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
     }
 
     public List<List<WebElementFacade>> getRows() {
@@ -228,7 +235,7 @@ public class Table extends BasePage {
     public void deselectRow(String columnName, String cellValue){
         Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
         if(map != null){
-            clickWithKey(driver, map.get(columnName));
+            clickWithKey(map.get(columnName));
         }
     }
 
@@ -263,13 +270,13 @@ public class Table extends BasePage {
 
     public void selectCheckboxInRow(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
-        CheckBox checkBox = new CheckBox(driver, rowElement.then(By.xpath(checkBoxLocator)));
+        CheckBox checkBox = new CheckBox(rowElement.then(By.xpath(checkBoxLocator)));
         checkBox.set(true);
     }
 
     public void deselectCheckboxInRow(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
-        CheckBox checkBox = new CheckBox(driver, rowElement.then(By.xpath(checkBoxLocator)));
+        CheckBox checkBox = new CheckBox(rowElement.then(By.xpath(checkBoxLocator)));
         checkBox.set(false);
     }
 
@@ -277,14 +284,14 @@ public class Table extends BasePage {
     public void selectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
-        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        CheckBox checkBox = new CheckBox(cell.then(By.xpath(checkBoxLocator)));
         checkBox.set(true);
     }
 
     public void deselectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
-        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        CheckBox checkBox = new CheckBox(cell.then(By.xpath(checkBoxLocator)));
         checkBox.set(false);
     }
 
@@ -292,7 +299,7 @@ public class Table extends BasePage {
     public boolean isCheckBoxIsCheckedInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
-        CheckBox checkBox = new CheckBox(driver, cell.then(By.xpath(checkBoxLocator)));
+        CheckBox checkBox = new CheckBox(cell.then(By.xpath(checkBoxLocator)));
         return checkBox.isSelected();
     }
 
@@ -303,7 +310,7 @@ public class Table extends BasePage {
         {
             throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
         }
-        controlDown(driver, firsRow);
+        controlDown(firsRow);
 
         for(Map<String, WebElementFacade> map:list){
             WebElementFacade element = map.get(columnName);
@@ -316,7 +323,7 @@ public class Table extends BasePage {
     public void pressButtonInColumnForRow(String columnName, String cellValue, String buttonColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(buttonColumnName);
-        Button button = new Button(getDriver(), cell.then(By.xpath(buttonLocator)));
+        Button button = new Button(cell.then(By.xpath(buttonLocator)));
         button.click();
     }
 
@@ -342,7 +349,7 @@ public class Table extends BasePage {
         }
         return true;
     }
-
+    //endregion Public Methods
 
 //    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
 //        private final Converter<F, T> valueConverter;
@@ -393,6 +400,4 @@ public class Table extends BasePage {
 //            return element.getText();
 //        }
 //    }
-
-
 }

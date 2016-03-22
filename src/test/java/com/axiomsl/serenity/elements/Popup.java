@@ -3,13 +3,13 @@ package com.axiomsl.serenity.elements;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by kfilippov on 04.03.2016.
  */
 public class Popup extends BasePage {
-    private final WebDriver driver;
+
+    //region Private Fields
     private final WebElementFacade wrappedElement;
 
     private String closeLocator = ".//div[contains(@class, 'v-window-closebox')]";
@@ -18,10 +18,17 @@ public class Popup extends BasePage {
     private String headerLocator = ".//div[contains(@class, 'v-window-header')]";
     private String labelLocator = ".//div[contains(@class,'v-label')]";
 
-    public Popup(WebDriver driver, WebElementFacade wrappedElement) {
-        this.driver = driver;
+    //endregion Private Fields
+
+    //region Constructors
+
+    public Popup(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }
+
+    //endregion Constructors
+
+    //region Public Methods
 
     public void close() {
         wrappedElement.then(By.xpath(closeLocator)).click();
@@ -42,5 +49,7 @@ public class Popup extends BasePage {
     public String getLabelText() {
         return wrappedElement.then(By.xpath(labelLocator)).getText();
     }
+
+    //endregion Public Methods
 
 }

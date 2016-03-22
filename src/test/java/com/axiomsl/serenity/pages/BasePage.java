@@ -2,6 +2,7 @@ package com.axiomsl.serenity.pages;
 
 import ch.lambdaj.Lambda;
 import ch.lambdaj.function.convert.Converter;
+import com.axiomsl.serenity.helpers.WebDriverHelper;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.*;
@@ -33,7 +34,7 @@ public class BasePage extends PageObject {
     }
 
     public void move_cursor_on_example_class_path_area(){
-        moveToElement(getDriver(), find(By.xpath(exampleClassPathLocator)));
+        moveToElement(find(By.xpath(exampleClassPathLocator)));
     }
 
     public void click_on_example_class_path_area(){
@@ -54,33 +55,33 @@ public class BasePage extends PageObject {
 
 //_______Actions________________________________________________________________________________________________________
 
-    public void clickByCoordinate(WebDriver driver,WebElementFacade element, int x, int y) {
-        Actions actions = new Actions(driver);
+    public void clickByCoordinate(WebElementFacade element, int x, int y) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
-    public void doubleClick(WebDriver driver, WebElementFacade element) {
-        Actions actions = new Actions(driver);
+    public void doubleClick(WebElementFacade element) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).doubleClick().build().perform();
     }
 
-    public void moveToElement(WebDriver driver, WebElementFacade element) {
-        Actions actions = new Actions(driver);
+    public void moveToElement(WebElementFacade element) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).build().perform();
     }
 
-    public void clickWithKey(WebDriver driver, WebElementFacade element){
-        Actions actions = new Actions(driver);
+    public void clickWithKey(WebElementFacade element){
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL).build().perform();
     }
 
-    public void rightClick(WebDriver driver, WebElementFacade element) {
-        Actions actions = new Actions(driver);
+    public void rightClick(WebElementFacade element) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).contextClick().build().perform();
     }
 
-    public void controlDown(WebDriver driver, WebElementFacade element) {
-        Actions actions = new Actions(driver);
+    public void controlDown(WebElementFacade element) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
     }
 

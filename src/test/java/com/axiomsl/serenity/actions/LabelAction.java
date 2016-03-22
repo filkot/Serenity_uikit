@@ -4,15 +4,19 @@ import com.axiomsl.serenity.elements.Label;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
 
-
 public class LabelAction extends BasePage {
 
+    //region Private Fields
 
     private String labelLocator = "//div[contains(@class, 'v-label') and not(@style)]//span";
     private String labelWithTextLocator = "//div[contains(@class, 'v-label') and not(@style)]//span[text() = \"%s\"]";
 
+    //endregion Private Fields
+
+    //region Public Methods
+
     public String get_label_text() {
-        Label label = new Label(getDriver(), find(By.xpath(labelLocator)));
+        Label label = new Label(find(By.xpath(labelLocator)));
         return label.getText();
     }
 
@@ -23,5 +27,5 @@ public class LabelAction extends BasePage {
         return false;
     }
 
-
+    //endregion Public Methods
 }

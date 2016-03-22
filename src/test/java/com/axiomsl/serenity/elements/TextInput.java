@@ -2,19 +2,27 @@ package com.axiomsl.serenity.elements;
 
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Created by kfilippov on 13.02.2016.
  */
 public class TextInput extends BasePage {
-    private final WebDriver driver;
+
+    //region Private Fields
+
     private final WebElementFacade wrappedElement;
 
-    public TextInput(WebDriver driver, WebElementFacade wrappedElement) {
-        this.driver = driver;
+    //endregion Private Fields
+
+    //region Constructors
+
+    public TextInput(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }
+
+    //endregion Constructors
+
+    //region Public Methods
 
     public void clear() {
         this.wrappedElement.clear();
@@ -24,12 +32,9 @@ public class TextInput extends BasePage {
         this.wrappedElement.type(text);
     }
 
-
-
     public void sendKeys(CharSequence... keys) {
         this.wrappedElement.sendKeys(keys);
     }
-
 
     public String getText() {
         if ("textarea".equals(this.wrappedElement.getTagName())) {
@@ -39,4 +44,6 @@ public class TextInput extends BasePage {
             return enteredText == null ? "" : enteredText;
         }
     }
+
+    //endregion Public Methods
 }

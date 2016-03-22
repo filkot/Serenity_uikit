@@ -8,11 +8,18 @@ import org.openqa.selenium.By;
  * Created by kfilippov on 09.03.2016.
  */
 public class TooltipAction extends BasePage {
+
+    //region Private Fields
+
     private String tooltipLocator = "//div[@class='v-tooltip-text']";
     private String tooltipWithTextLocator = "//div[@class='v-tooltip-text' and contains(text() , '%s')]";
 
+    //endregion Private Fields
+
+    //region Public Methods
+
     public String get_tooltip_text() {
-        Tooltip tooltip = new Tooltip(getDriver(), find(By.xpath(tooltipLocator)));
+        Tooltip tooltip = new Tooltip(find(By.xpath(tooltipLocator)));
         return tooltip.getText();
     }
 
@@ -22,4 +29,6 @@ public class TooltipAction extends BasePage {
         }
         return false;
     }
+
+    //endregion Public Methods
 }

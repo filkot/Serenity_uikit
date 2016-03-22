@@ -11,201 +11,201 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: User transfers all items starting from the first
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-Then they should see the item list 'first row' in right col
-When the user transfer 'second row' from left to right
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'third row' from left to right
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+Then the user should see 'first row' item list in the right twin column
+When the user transfers 'second row' item from the left to right
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'third row' item from the left to right
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers all items starting from the second
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'second row' from left to right
-Then they should see the item list 'second row' in right col
-When the user transfer 'first row' from left to right
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'third row' from left to right
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'second row' item from the left to right
+Then the user should see 'second row' item list in the right twin column
+When the user transfers 'first row' item from the left to right
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'third row' item from the left to right
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers all items starting from the third
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'third row' from left to right
-Then they should see the item list 'third row' in right col
-When the user transfer 'second row' from left to right
-Then they should see the item list 'second row, third row' in right col
-When the user transfer 'first row' from left to right
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'third row' item from the left to right
+Then the user should see 'third row' item list in the right twin column
+When the user transfers 'second row' item from the left to right
+Then the user should see 'second row, third row' item list in the right twin column
+When the user transfers 'first row' item from the left to right
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers and transfers back only the first item
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-Then they should see the item list 'first row' in right col
-When the user transfer 'first row' from right to left
-Then they should see the empty list in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+Then the user should see 'first row' item list in the right twin column
+When the user transfers 'first row' item from the right to left
+Then the user should see the empty list in the right twin column
 
 Scenario: User transfers and transfers back only the last item
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'third row' from left to right
-Then they should see the item list 'third row' in right col
-When the user transfer 'third row' from right to left
-Then they should see the empty list in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'third row' item from the left to right
+Then the user should see 'third row' item list in the right twin column
+When the user transfers 'third row' item from the right to left
+Then the user should see the empty list in the right twin column
 
 Scenario: User transfers all items and transfers back only the first two items starting from the first
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'first row' from right to left
-Then they should see the item list 'second row, third row' in right col
-When the user transfer 'second row' from right to left
-Then they should see the item list 'third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'first row' item from the right to left
+Then the user should see 'second row, third row' item list in the right twin column
+When the user transfers 'second row' item from the right to left
+Then the user should see 'third row' item list in the right twin column
 
 Scenario: User transfers all items and transfers back only the first two items starting from the last
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'second row' from right to left
-Then they should see the item list 'first row, third row' in right col
-When the user transfer 'first row' from right to left
-Then they should see the item list 'third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'second row' item from the right to left
+Then the user should see 'first row, third row' item list in the right twin column
+When the user transfers 'first row' item from the right to left
+Then the user should see 'third row' item list in the right twin column
 
 Scenario: User transfers all items and transfers back only the last two items starting from the first
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'second row' from right to left
-Then they should see the item list 'first row, third row' in right col
-When the user transfer 'third row' from right to left
-Then they should see the item list 'first row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'second row' item from the right to left
+Then the user should see 'first row, third row' item list in the right twin column
+When the user transfers 'third row' item from the right to left
+Then the user should see 'first row' item list in the right twin column
 
 Scenario: User transfers all items and transfers back only the last two items starting from the last
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'third row' from right to left
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'second row' from right to left
-Then they should see the item list 'first row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'third row' item from the right to left
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'second row' item from the right to left
+Then the user should see 'first row' item list in the right twin column
 
 Scenario: User transfers all items and transfers them back in backward order
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'first row' from right to left
-Then they should see the item list 'second row, third row' in right col
-When the user transfer 'second row' from right to left
-Then they should see the item list 'third row' in right col
-When the user transfer 'third row' from right to left
-Then they should see the empty list in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'first row' item from the right to left
+Then the user should see 'second row, third row' item list in the right twin column
+When the user transfers 'second row' item from the right to left
+Then the user should see 'third row' item list in the right twin column
+When the user transfers 'third row' item from the right to left
+Then the user should see the empty list in the right twin column
 
 Scenario: User transfers all items and transfers them back in straight order
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user transfer 'third row' from right to left
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'second row' from right to left
-Then they should see the item list 'first row' in right col
-When the user transfer 'first row' from right to left
-Then they should see the empty list in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user transfers 'third row' item from the right to left
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'second row' item from the right to left
+Then the user should see 'first row' item list in the right twin column
+When the user transfers 'first row' item from the right to left
+Then the user should see the empty list in the right twin column
 
 Scenario: User transfers all items starting from the first by clicking on the item
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-When the user transfer 'first row' from left to right by double clicking on item
-Then they should see the item list 'first row' in right col
-When the user transfer 'second row' from left to right by double clicking on item
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'third row' from left to right by double clicking on item
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+When the user transfers 'first row' item from the left to right by double clicking on the item
+Then the user should see 'first row' item list in the right twin column
+When the user transfers 'second row' item from the left to right by double clicking on the item
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'third row' item from the left to right by double clicking on the item
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers all items starting from the second by clicking on the item
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'second row' from left to right by double clicking on item
-Then they should see the item list 'second row' in right col
-When the user transfer 'first row' from left to right by double clicking on item
-Then they should see the item list 'first row, second row' in right col
-When the user transfer 'third row' from left to right by double clicking on item
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'second row' item from the left to right by double clicking on the item
+Then the user should see 'second row' item list in the right twin column
+When the user transfers 'first row' item from the left to right by double clicking on the item
+Then the user should see 'first row, second row' item list in the right twin column
+When the user transfers 'third row' item from the left to right by double clicking on the item
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers all items starting from the third by clicking on the item
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user transfer 'third row' from left to right by double clicking on item
-Then they should see the item list 'third row' in right col
-When the user transfer 'second row' from left to right by double clicking on item
-Then they should see the item list 'second row, third row' in right col
-When the user transfer 'first row' from left to right by double clicking on item
-Then they should see the item list 'first row, second row, third row' in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user transfers 'third row' item from the left to right by double clicking on the item
+Then the user should see 'third row' item list in the right twin column
+When the user transfers 'second row' item from the left to right by double clicking on the item
+Then the user should see 'second row, third row' item list in the right twin column
+When the user transfers 'first row' item from the left to right by double clicking on the item
+Then the user should see 'first row, second row, third row' item list in the right twin column
 
 Scenario: User transfers the items by clicking on moveForward button
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-And the user press forwardButton '2' times
-Then they should see the item list 'first row' in right col
-When the user press forwardButton '2' times
-Then they should see the item list 'first row, second row' in right col
-When the user press forwardButton '2' times
-Then they should see the item list 'first row, second row, third row' in right col
-When the user press forwardButton '2' times
-Then they should see the item list 'first row, second row, third row' in right col
-And they should see the empty list in left col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+And the user presses 'Forward' button '2' times
+Then the user should see 'first row' item list in the right twin column
+When the user presses 'Forward' button '2' times
+Then the user should see 'first row, second row' item list in the right twin column
+When the user presses 'Forward' button '2' times
+Then the user should see 'first row, second row, third row' item list in the right twin column
+When the user presses 'Forward' button '2' times
+Then the user should see 'first row, second row, third row' item list in the right twin column
+And the user should see the empty list in the left twin column
 
 Scenario: User transfers the items by clicking on moveBack button
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-When the user transfer 'first row' from left to right
-And the user transfer 'second row' from left to right
-And the user transfer 'third row' from left to right
-And the user press backButton '2' times
-Then they should see the item list 'second row, third row' in right col
-When the user press backButton '2' times
-Then they should see the item list 'third row' in right col
-When the user press backButton '2' times
-Then they should see the item list 'first row, second row, third row' in left col
-And they should see the empty list in right col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+When the user transfers 'first row' item from the left to right
+And the user transfers 'second row' item from the left to right
+And the user transfers 'third row' item from the left to right
+And the user presses 'Back' button '2' times
+Then the user should see 'second row, third row' item list in the right twin column
+When the user presses 'Back' button '2' times
+Then the user should see 'third row' item list in the right twin column
+When the user presses 'Back' button '2' times
+Then the user should see 'first row, second row, third row' item list in the left twin column
+And the user should see the empty list in the right twin column
 
 Scenario: User uses a multiselection transfer w/o forced selecting the Twin Columns
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-When the user select all items in left column
-And the user press forwardButton '1' times
-Then they should see the item list 'first row, second row, third row' in right col
-And they should see the empty list in left col
-When the user select all items in right column
-And the user press backButton '1' times
-Then they should see the empty list in right col
-And they should see the item list 'first row, second row, third row' in left col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+When the user selects all items in the left twin column
+And the user presses 'Forward' button '1' times
+Then the user should see 'first row, second row, third row' item list in the right twin column
+And the user should see the empty list in the left twin column
+When the user selects all items in the right twin column
+And the user presses 'Back' button '1' times
+Then the user should see the empty list in the right twin column
+And the user should see 'first row, second row, third row' item list in the left twin column
 
 Scenario: User uses a multiselection transfer with forced selecting the Twin Columns
 Given the user refresh the Example page
-When the user select 'Data Input->Multiple Values->TwinColumn Selection' in tree
-When the user select all items in left column
-And the user press forwardButton '1' times
-And the user select left column
-And the user press forwardButton '1' times
-Then they should see the item list 'first row, second row, third row' in right col
-And they should see the empty list in left col
-When the user select all items in right column
-And the user press backButton '1' times
-And the user select right column
-And the user press backButton '1' times
-Then they should see the empty list in right col
-And they should see the item list 'first row, second row, third row' in left col
+When the user selects the item 'Data Input->Multiple Values->TwinColumn Selection' in a tree
+When the user selects all items in the left twin column
+And the user presses 'Forward' button '1' times
+And the user selects the left twin column
+And the user presses 'Forward' button '1' times
+Then the user should see 'first row, second row, third row' item list in the right twin column
+And the user should see the empty list in the left twin column
+When the user selects all items in the right twin column
+And the user presses 'Back' button '1' times
+And the user selects the right twin column
+And the user presses 'Back' button '1' times
+Then the user should see the empty list in the right twin column
+And the user should see 'first row, second row, third row' item list in the left twin column

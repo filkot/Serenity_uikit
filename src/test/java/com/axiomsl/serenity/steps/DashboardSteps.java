@@ -5,12 +5,14 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.When;
 
-
 public class DashboardSteps {
 
+    //region @Steps
     @Steps
     EndUserSteps endUser;
+    //endregion @Steps
 
+    //region @Given
     @Given("the user is on the Automated Tests page")
     public void givenTheUserIsOnTheAutomatedTestsPage() {
         endUser.is_the_automated_tests_page();
@@ -25,8 +27,9 @@ public class DashboardSteps {
     public void givenTheUserIRefreshTheExamplePage() {
         endUser.refresh_example_page();
     }
+    //endregion @Given
 
-    //WHEN
+    //region @When
     @When("the user login in system")
     public void login() {
         endUser.login();
@@ -42,11 +45,9 @@ public class DashboardSteps {
         endUser.click_on_example_class_path_area();
     }
 
-
     @When("the user open dashboard with name '$dashboardName'")
     public void whenTheUserOpenTheDashboard(String dashboardName) {
         endUser.open_dashboard(dashboardName);
     }
-
-
+    //endregion @When
 }

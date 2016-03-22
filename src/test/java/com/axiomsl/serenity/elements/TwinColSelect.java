@@ -1,5 +1,6 @@
 package com.axiomsl.serenity.elements;
 
+import com.axiomsl.serenity.helpers.WebDriverHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -12,19 +13,27 @@ import java.util.List;
  * Created by kfilippov on 11.02.2016.
  */
 public class TwinColSelect extends BasePage {
-    private final WebDriver driver;
+
+    //region Private Fields
+
     private final WebElementFacade wrappedElement;
-    //TwinColSelect
     private String itemLocator = "//option[text() = '%s']";
     private String leftColLocator = ".//select[@class = 'v-select-twincol-options']";
     private String rightColLocator = ".//select[@class = 'v-select-twincol-selections']";
     private String forwardButtonLocator = ".//div[@class = 'v-select-twincol-buttons']/div[1]//span";
     private String backButtonLocator = ".//div[@class = 'v-select-twincol-buttons']/div[3]//span";
 
-    public TwinColSelect(WebDriver driver, WebElementFacade wrappedElement) {
-        this.driver = driver;
+    //endregion Private Fields
+
+    //region Constructors
+
+    public TwinColSelect(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }
+
+    //endregion Constructors
+
+    //region Public Methods
 
     public void selectItemInLeftCol(String item) {
         wrappedElement.then(By.xpath(leftColLocator)).selectByVisibleText(item);
@@ -82,12 +91,12 @@ public class TwinColSelect extends BasePage {
 
     public void transferItemFromLeftToRightByDbClick(String item) {
         this.selectItemInLeftCol(item);
-        doubleClick(driver, wrappedElement.then(By.xpath(leftColLocator)));
+        doubleClick(wrappedElement.then(By.xpath(leftColLocator)));
     }
 
     public void transferItemFromRightToLeftByDbClick(String item) {
         this.selectItemInRightCol(item);
-        doubleClick(driver, wrappedElement.then(By.xpath(rightColLocator)));
+        doubleClick(wrappedElement.then(By.xpath(rightColLocator)));
     }
 
     public List<String> getLeftCoItemsList() {
@@ -102,5 +111,5 @@ public class TwinColSelect extends BasePage {
         return wrappedElement.then(By.xpath(leftColLocator + String.format(itemLocator, item)));
     }
 
-
+    //endregion Public Methods
 }

@@ -3,7 +3,6 @@ package com.axiomsl.serenity.elements;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +12,27 @@ import java.util.List;
  */
 public class HoverMenu extends BasePage{
 
-    private final WebDriver driver;
+    //region Private Fields
+
     private final WebElementFacade wrappedElement;
 
     private String buttonLocator = ".//div[@class = 'hover-menu-button']";
     private String menuItemsLocator = ".//div[@class= 'hover-menu-items']";
 
-    public HoverMenu(WebDriver driver, WebElementFacade wrappedElement) {
-        this.driver = driver;
+    //endregion Private Fields
+
+    //region Constructors
+
+    public HoverMenu(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }
 
+    //endregion Constructors
+
+    //region Public Methods
     public void hoverOnMenu() {
         WebElementFacade menu = wrappedElement.then(By.xpath(buttonLocator));
-        moveToElement(driver, menu);
+        moveToElement(menu);
     }
 
     public List<String> getItemsList(){
@@ -43,4 +49,5 @@ public class HoverMenu extends BasePage{
         }
         return false;
     }
+    //endregion Public Methods
 }

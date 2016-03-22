@@ -9,30 +9,38 @@ import org.openqa.selenium.By;
  */
 public class PopupAction extends BasePage {
 
+    //region Private Fields
+
     private String popupLocator = "//div[contains(@class, 'v-window') and @role = 'dialog']";
 
+    //endregion Private Fields
+
+    //region Public Methods
+
     public void close() {
-        Popup popup = new Popup(getDriver(), find(By.xpath(popupLocator)));
+        Popup popup = new Popup(find(By.xpath(popupLocator)));
         popup.close();
     }
 
     public void maximize() {
-        Popup popup = new Popup(getDriver(), find(By.xpath(popupLocator)));
+        Popup popup = new Popup(find(By.xpath(popupLocator)));
         popup.maximize();
     }
 
     public void restore() {
-        Popup popup = new Popup(getDriver(), find(By.xpath(popupLocator)));
+        Popup popup = new Popup(find(By.xpath(popupLocator)));
         popup.restore();
     }
 
     public String get_label_text() {
-        Popup popup = new Popup(getDriver(), find(By.xpath(popupLocator)));
+        Popup popup = new Popup(find(By.xpath(popupLocator)));
         return popup.getLabelText();
     }
 
     public String get_header_text() {
-        Popup popup = new Popup(getDriver(), find(By.xpath(popupLocator)));
+        Popup popup = new Popup(find(By.xpath(popupLocator)));
         return popup.getHeaderText();
     }
+
+    //endregion Public Methods
 }
