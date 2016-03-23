@@ -255,7 +255,7 @@ When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
 And the user selects the checkbox with 'name' caption
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user selects 'NONE' value from 'Select RowHeaderMode' combo-box
+And the user selects 'NONE' item  from 'Select RowHeaderMode' combo box
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
@@ -268,7 +268,7 @@ When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
 And the user selects the checkbox with 'name' caption
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user selects 'CHECKBOX' value from 'Select RowHeaderMode' combo-box
+And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see that checkbox for row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
@@ -288,7 +288,7 @@ Examples:
 Scenario: Select item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user selects 'CHECKBOX' value from 'Select RowHeaderMode' combo-box
+And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 And the user selects the checkbox for row with 'Id' column and '1' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see that checkbox for row with 'Id' column and '1' value is selected in <tableCaption> table
@@ -324,7 +324,7 @@ When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
 And the user selects the checkbox with 'name' caption
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user selects 'ROW_NUMBER' value from 'Select RowHeaderMode' combo-box
+And the user selects 'ROW_NUMBER' item from 'Select RowHeaderMode' combo box
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
@@ -337,7 +337,7 @@ When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
 And the user selects the checkbox with 'name' caption
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user selects 'CAPTION' value from 'Select RowHeaderMode' combo-box
+And the user selects 'CAPTION' item from 'Select RowHeaderMode' combo box
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
