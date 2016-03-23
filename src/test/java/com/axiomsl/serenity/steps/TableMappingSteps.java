@@ -270,5 +270,11 @@ public class TableMappingSteps {
     public void thenTheUserShouldSeeNoColumnsInTable(String tableCaption) {
 
     }
+
+    @Then("the user should see no rows in '$tableCaption' table")
+    @Alias("the user should see no rows in <tableCaption> table")
+    public void thenTheUserShouldSeeNoRowsInTable(String tableCaption) {
+
+    }
     //endregion @Then
 }
