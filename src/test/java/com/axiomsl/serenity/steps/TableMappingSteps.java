@@ -99,8 +99,8 @@ public class TableMappingSteps {
         step.deselect_checkbox_in_column_for_row_in_table(tableCaption, columnName, cellValue, checkboxColumnName);
     }
 
-    @When("the user multi-selects the rows with '$columnName' column and '$cellValue' containing value in '$tableCaption' table")
-    @Alias("the user multi-selects the rows with <columnName> column and <cellValue> containing value in <tableCaption> table")
+    @When("the user multi-selects the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user multi-selects the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
     public void whenTheUserMultiSelectsTheRowsWithColumnInTable(@Named("tableCaption") String tableCaption,
                                                                @Named("columnName") String columnName,
                                                                @Named("cellValue") String cellValue) {
@@ -108,8 +108,8 @@ public class TableMappingSteps {
     }
 
     @When("the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in $tableCaption table",
-                    "the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
+    @Aliases(values={"the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in $tableCaption table",
+                    "the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void whenTheUserPressButtonInColumnForRow(@Named("tableCaption") String tableCaption,
                                                          @Named("columnName") String columnName,
                                                          @Named("cellValue") String cellValue,
@@ -224,7 +224,7 @@ public class TableMappingSteps {
     }
 //*
     @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is checked in <tableCaption> table")
+    @Alias("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in <tableCaption> table")
     public void thenTheyShouldSeeCheckBoxIsCheckedInColumn(@Named("checkboxColumnName") String checkboxColumnName,
                                                            @Named("columnName") String columnName,
                                                            @Named("cellValue") String cellValue,
@@ -233,7 +233,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is unchecked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in <checkboxColumnName> column for row with <columnName> column and <cellValue> value is unchecked in <tableCaption> table")
+    @Alias("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is unchecked in <tableCaption> table")
     public void thenTheyShouldSeeCheckBoxIsUnCheckedInColumn(@Named("checkboxColumnName") String checkboxColumnName,
                                                              @Named("columnName") String columnName,
                                                              @Named("cellValue") String cellValue,
