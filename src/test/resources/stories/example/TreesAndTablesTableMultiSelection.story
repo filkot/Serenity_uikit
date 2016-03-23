@@ -4,7 +4,7 @@
 * UI element: Trees and Tables -> Table (Multi-Selection)
 *
 * Author: Maksim Zhelezko
-* Created Date: 04.03.2016
+* Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
 Meta: @group: Multi-Selection Table
 GivenStories: stories/example/CommonLoginExamplesApp.story

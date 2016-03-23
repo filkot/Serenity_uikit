@@ -4,7 +4,7 @@
 * UI element: Trees and Tables -> Table Column filtering
 *
 * Author: Maksim Zhelezko
-* Created Date: 14.03.2016
+* Date: 14.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
 Meta: @group: Table Column filtering
 GivenStories: stories/example/CommonLoginExamplesApp.story
@@ -590,3 +590,34 @@ And the user should see row with column 'Id' and value '1' is selected in <table
 Examples:
 |tableCaption|
 |Simple Table showing filtering behaviour|
+
+Scenario: Input into 'Name' column a text with beginning part of column's value
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user inputs text 'us' into 'Name' filter
+Then the user should see no rows in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Input into 'Name' column a text with middle part of column's value
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user inputs text 'er' into 'Name' filter
+Then the user should see no rows in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Input into 'Name' column a text with end part of column's value
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user inputs text 'r3' into 'Name' filter
+Then the user should see no rows in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+
+
+//Add ASC and DESC order scenarios

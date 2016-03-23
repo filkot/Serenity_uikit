@@ -4,7 +4,7 @@
 * UI element: Trees and Tables -> Table (Simple)
 *
 * Author: Maksim Zhelezko
-* Created Date: 04.03.2016
+* Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
 Meta: @group: Simple Table
 GivenStories: stories/example/CommonLoginExamplesApp.story

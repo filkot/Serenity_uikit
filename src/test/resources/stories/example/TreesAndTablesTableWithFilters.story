@@ -4,7 +4,7 @@
 * UI element: Trees and Tables -> Table with filters
 *
 * Author: Maksim Zhelezko
-* Created Date: 11.03.2016
+* Date: 11.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
 Meta: @group: Simple Table
 GivenStories: stories/example/CommonLoginExamplesApp.story

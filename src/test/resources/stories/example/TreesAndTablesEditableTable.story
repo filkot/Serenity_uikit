@@ -4,7 +4,7 @@
 * UI element: Trees and Tables -> Editable Table
 *
 * Author: Maksim Zhelezko
-* Created Date: 09.03.2016
+* Date: 09.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
 Meta: @group: Editable Table
 GivenStories: stories/example/CommonLoginExamplesApp.story
