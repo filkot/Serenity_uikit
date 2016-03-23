@@ -108,7 +108,7 @@ public class TableMappingSteps {
     }
 
     @When("the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in table",
+    @Aliases(values={"the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in $tableCaption table",
                     "the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in <tableCaption> table"})
     public void whenTheUserPressButtonInColumnForRow(@Named("tableCaption") String tableCaption,
                                                          @Named("columnName") String columnName,
@@ -168,7 +168,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should not see the row with <columnName>  column and <cellValue> value in table"
+    @Aliases(values={"the user should not see the row with <columnName>  column and <cellValue> value in $tableCaption table"
             ,"the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("columnName") String columnName,
                                                   @Named("cellValue") String cellValue,
