@@ -26,7 +26,6 @@ public class Table extends BasePage {
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
-//  private String checkBoxLocator = ".//input[@type='checkbox']";
     private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
     private String buttonLocator = ".//div[@role = 'button']//span";
     private String textInputLocator = ".//input[@type = 'text']";

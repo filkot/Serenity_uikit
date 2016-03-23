@@ -164,4 +164,9 @@ public class TableSteps extends ScenarioSteps {
     public void should_see_text_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputText) {
         assertThat(action.getTable(tableCaption).getTextInCell(columnKey, cellValue, columnName), is(inputText));
     }
+
+    @Step
+    public void should_not_see_columns(String tableCaption) {
+        assertThat(action.getTable(tableCaption).getHeadings().size(), is(0));
+    }
 }

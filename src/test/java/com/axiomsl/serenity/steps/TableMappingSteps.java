@@ -27,7 +27,8 @@ public class TableMappingSteps {
     }
 
     @When("the user makes the '$columnName' column not visible from the settings wheel for '$tableCaption' table")
-    @Alias("the user makes the '$columnName' column not visible from the settings wheel for <tableCaption> table")
+    @Aliases(values={"the user makes the '$columnName' column not visible from the settings wheel for <tableCaption> table",
+            "the user makes the '$columnName' column not visible from the settings wheel for $tableCaption table"})
     public void whenTheUserMakesColumnNotVisible(@Named("columnName") String columnName,
                                                  @Named("tableCaption") String tableCaption) {
         step.make_column_not_visible(tableCaption, columnName);
@@ -278,9 +279,10 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see no columns in '$tableCaption' table")
-    @Alias("the user should see no columns in <tableCaption> table")
-    public void thenTheUserShouldSeeNoColumnsInTable(String tableCaption) {
-
+    @Aliases(values={"the user should see no columns in <tableCaption> table",
+            "the user should see no columns in $tableCaption table"})
+    public void thenTheUserShouldSeeNoColumnsInTable(@Named("tableCaption") String tableCaption) {
+        step.should_not_see_columns(tableCaption);
     }
 
     @Then("the user should see no rows in '$tableCaption' table")
