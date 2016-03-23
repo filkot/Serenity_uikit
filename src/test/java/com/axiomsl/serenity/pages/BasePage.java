@@ -85,7 +85,6 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
     }
 
-
 //_______Converter______________________________________________________________________________________________________
 
     protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {

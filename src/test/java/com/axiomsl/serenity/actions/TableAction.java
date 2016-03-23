@@ -33,7 +33,7 @@ public class TableAction extends BasePage {
         System.out.println(table.getColumnAsStringByIndex(0));
     }
 
-    public Table getTableByCaption(String caption){
+    public Table getTable(String caption){
         Table table;
         if(caption.equals("a") || caption.equals("the") ){
             table = new Table(find(By.xpath(tableLocator)));

@@ -8,7 +8,7 @@ public class TextInputAction extends BasePage {
 
     //region Private Fields
 
-    private String textFieldLocator = "//input[@type = 'text']";
+    private String textInputLocator = "//input[@type = 'text']";
     private String captionLocator = "//div[contains(@class,'v-caption')]/span[text() = '%s']";
 
     //endregion Private Fields
@@ -16,16 +16,16 @@ public class TextInputAction extends BasePage {
     //region Public Methods
 
     public boolean isTextFieldDisplayed() {
-        TextInput textInput = new TextInput(find(By.xpath(textFieldLocator)));
-        return VisibilityOfElementLocated(By.xpath(textFieldLocator));
+        TextInput textInput = new TextInput(find(By.xpath(textInputLocator)));
+        return VisibilityOfElementLocated(By.xpath(textInputLocator));
     }
 
     public boolean isTextFieldNotDisplayed() {
-        return InvisibilityOfElementLocated(By.xpath(textFieldLocator));
+        return InvisibilityOfElementLocated(By.xpath(textInputLocator));
     }
 
     public void type_in_text_field(String text) {
-        TextInput textInput = new TextInput(find(By.xpath(textFieldLocator)));
+        TextInput textInput = new TextInput(find(By.xpath(textInputLocator)));
         textInput.clear();
         textInput.sendKeys(text);
     }

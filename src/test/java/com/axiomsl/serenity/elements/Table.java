@@ -4,9 +4,7 @@ import ch.lambdaj.Lambda;
 import com.axiomsl.serenity.helpers.WebDriverHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.*;
 
@@ -31,6 +29,7 @@ public class Table extends BasePage {
 //  private String checkBoxLocator = ".//input[@type='checkbox']";
     private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
     private String buttonLocator = ".//div[@role = 'button']//span";
+    private String textInputLocator = ".//input[@type = 'text']";
 
     //endregion Private Fields
 
@@ -206,9 +205,19 @@ public class Table extends BasePage {
             {
                 throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
             }
-            if(element.getAttribute("textContent").equals(cellValue)){
-                return map;
+
+            WebElement cell = element.findElement(By.xpath(".//input"));
+            if(cell != null){
+                if(cell.getAttribute("value").equals(cellValue)){
+                    return map;
+                }
+                continue;
+            }else {
+                if(element.getAttribute("textContent").equals(cellValue)){
+                    return map;
+                }
             }
+
         }
         return null;
     }
@@ -348,6 +357,34 @@ public class Table extends BasePage {
         return true;
     }
     //endregion Public Methods
+
+    public void inputTextInCell(String columnKey, String cellValue, String columnName, String inputText){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
+        textInput.type(inputText);
+    }
+
+    public String getTextInCell(String columnKey, String cellValue, String columnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
+        return textInput.getText();
+    }
+
+    public void undoTextInCell(String columnKey, String cellValue, String columnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        String undo = Keys.chord(Keys.CONTROL, "z");
+        WebElement cellInput = cell.findElement(By.xpath(".//input"));
+        for(int i =0; i<2; i++){
+            cellInput.sendKeys(undo);
+        }
+    }
+
+
+
+
 
 //    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
 //        private final Converter<F, T> valueConverter;

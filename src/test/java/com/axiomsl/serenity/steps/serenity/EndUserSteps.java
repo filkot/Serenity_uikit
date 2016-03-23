@@ -1,5 +1,6 @@
 package com.axiomsl.serenity.steps.serenity;
 
+
 import com.axiomsl.serenity.pages.AutomatedTestsPage;
 import com.axiomsl.serenity.pages.BasePage;
 import com.axiomsl.serenity.pages.ExamplePage;
