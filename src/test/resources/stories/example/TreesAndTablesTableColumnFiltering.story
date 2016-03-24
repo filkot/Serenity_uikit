@@ -618,6 +618,101 @@ Examples:
 |tableCaption|
 |Simple Table showing filtering behaviour|
 
+Scenario: Sort 'Id' column ascendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '1' times on 'Id' column in <tableCaption> table
+Then the user should see that values are sorted ascendingly in 'Id' column in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
 
+Scenario: Sort 'Id' column descendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '2' times on 'Id' column in <tableCaption> table
+Then the user should see that values in 'Id' column are sorted descendingly in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
 
-//Add ASC and DESC order scenarios
+Scenario: Column 'Id' is unsorted
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '3' times on 'Id' column in <tableCaption> table
+Then the user should see that values in 'Id' column are sorted as '0,1,2,3,4,5,6,7,8,9,10,11' in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Sort 'Name' column ascendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '1' times on 'Name' column in <tableCaption> table
+Then the user should see that values are sorted ascendingly in 'Name' column in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Sort 'Name' column descendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '2' times on 'Name' column in <tableCaption> table
+Then the user should see that values in 'Name' column are sorted descendingly in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Column 'Name' is unsorted
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '3' times on 'Name' column in <tableCaption> table
+Then the user should see that values in 'Name' column are sorted as 'user0,user1,user2,user3,user4,user5' in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Re-sort 'Id' column ascendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '4' times on 'Id' column in <tableCaption> table
+Then the user should see that values are sorted ascendingly in 'Id' column in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Re-sort 'Name' column descendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '5' times on 'Name' column in <tableCaption> table
+Then the user should see that values in 'Name' column are sorted descendingly in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Re-unsort the 'Id' column
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '6' times on 'Name' column in <tableCaption> table
+Then the user should see that values in 'Id' column are sorted as '0,1,2,3,4,5,6,7,8,9,10,11' in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Sort 'Date' column ascendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '1' times on 'Date' column in <tableCaption> table
+Then the user should see that values in 'Date' column are sorted as date ascendingly in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
+
+Scenario: Sort 'Date' column descendingly
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
+And the user clicks '2' times on 'Date' column in <tableCaption> table
+Then the user should see that values in 'Date' column are sorted as date descendingly in <tableCaption> table
+Examples:
+|tableCaption|
+|Simple Table showing filtering behaviour|
