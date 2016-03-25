@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 11.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Simple Table
+Meta: @group: TableWithFilters
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Filter rows by Receiving Country as 'ALL' and Transmitting Country as 'ALL'

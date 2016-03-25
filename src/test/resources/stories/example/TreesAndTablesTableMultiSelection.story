@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Multi-Selection Table
+Meta: @group: TableMultiSelection
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Make not visible all columns except column 'id' from the settings wheel for MULTI-SELECTION table

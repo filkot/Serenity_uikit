@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 04.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Simple Table
+Meta: @group: TableSimple
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Check the checkbox with caption 'id' only for SIMPLE table
@@ -249,7 +249,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select 'NONE' item from 'RowHeadeMode' Combo-Box in SIMPLE table
+Scenario: Select 'NONE' item from 'RowHeadeMode' combo box in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
@@ -262,7 +262,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select 'CHECKBOX' item from 'RowHeadeMode' Combo-Box in SIMPLE table
+Scenario: Select 'CHECKBOX' item from 'RowHeadeMode' combo box in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the checkbox with 'id' caption
@@ -277,7 +277,10 @@ Examples:
 |Simple Table with label components as columns|
 
 Scenario: Unselect item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
-When the user unchecks the checkbox for row with 'Id' column and '1' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user selects the checkbox with 'id' caption
+And the user unchecks the checkbox for row with 'Id' column and '1' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
 And the user should see that checkbox for row with 'Id' column and '1' value is unchecked in <tableCaption> table
 And the user should see the label with 'ALL' text
@@ -298,7 +301,9 @@ Examples:
 |Simple Table with label components as columns|
 
 Scenario: Re-select item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
-When the user unchecks the checkbox for row with 'Id' column and '1' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user unchecks the checkbox for row with 'Id' column and '1' value in <tableCaption> table
 And the user selects the checkbox for row with 'Id' column and '1' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see that checkbox for row with 'Id' column and '1' value is selected in <tableCaption> table
@@ -308,7 +313,9 @@ Examples:
 |Simple Table with label components as columns|
 
 Scenario: Select another item by clicking on checkbox in 'CHECKBOX' mode in SIMPLE table
-When the user selects the checkbox for row with 'Id' column and '2' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user selects the checkbox for row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
 And the user should see that checkbox for row with 'Id' column and '2' value is checked in <tableCaption> table

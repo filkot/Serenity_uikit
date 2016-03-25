@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 23.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Editable Table
+Meta: @group: TableSubscriptions
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Remove all rows and use 'Change Random Row' button

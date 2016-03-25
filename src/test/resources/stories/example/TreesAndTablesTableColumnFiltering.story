@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 14.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Table Column filtering
+Meta: @group: TableColumnFiltering
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Make not visible column 'Name' with TextField filter from the settings wheel

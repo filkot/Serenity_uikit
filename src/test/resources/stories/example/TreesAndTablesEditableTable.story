@@ -6,7 +6,7 @@
 * Author: Maksim Zhelezko
 * Date: 09.03.2016
 *-----------------------------------------------------------------------------------------------------------------------
-Meta: @group: Editable Table
+Meta: @group: TableEditable
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Select a checkbox in unselected column
