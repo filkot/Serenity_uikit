@@ -4,6 +4,7 @@ import com.axiomsl.serenity.steps.serenity.EndUserSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.Then;
 
 public class DashboardSteps {
 
@@ -50,4 +51,13 @@ public class DashboardSteps {
         endUser.open_dashboard(dashboardName);
     }
     //endregion @When
+
+    //region @Then
+
+    @Then("the user should not be able to click on class path area")
+    public void thenTheUserCannotClickOnClassPath() {
+        endUser.is_class_path_available();
+    }
+
+    //endregion @Then
 }

@@ -18,7 +18,8 @@ public class BasePage extends PageObject {
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
-    private String exampleClassPathLocator = "//div[contains@class, 'v-splitpanel-second-container')]";
+    private String exampleClassPathLocator = "//div[contains@class, 'v-splitpanel-second-container']";
+    private String exampleClassPathSplitterLocator = "//div[@class = 'v-splitpanel-hsplitter']";
     private String passwordLocator = "//input[@type = 'password']";
 
 
@@ -39,6 +40,14 @@ public class BasePage extends PageObject {
 
     public void click_on_example_class_path_area(){
         find(By.xpath(exampleClassPathLocator)).click();
+    }
+
+    public Boolean is_class_path_available(){
+        int hsX1 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
+        dragAndDropByOffset(find(By.xpath(exampleClassPathSplitterLocator)), 10, 0);
+        int hsX2 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
+
+        return ((hsX2 - hsX1) != 0) ? true : false;
     }
 
 
@@ -83,6 +92,11 @@ public class BasePage extends PageObject {
     public void controlDown(WebElementFacade element) {
         Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
+    }
+
+    public void dragAndDropByOffset(WebElementFacade element, int offsetX, int offsetY) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
+        actions.dragAndDropBy(element, offsetX, offsetY).click().build().perform();
     }
 
 //_______Converter______________________________________________________________________________________________________

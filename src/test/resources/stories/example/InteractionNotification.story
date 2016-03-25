@@ -19,21 +19,20 @@ Meta: @id2 2
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Notification' in a tree
 And the user clicks on the notification with text 'Message'
-And the user selects the item 'Interaction->Button' in a tree
+And the user selects the item 'Interaction' in a tree
+And the user selects the item 'Interaction->Buttons' in a tree
 And the user click button with name 'Simple button with icon'
 Then the user should see popup with header 'Button click event'
 And the user should see popup with label 'Button has been pressed'
 
-Scenario: Click on out of area message
+Scenario: Click out of area message
 Meta: @id3 3
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Notification' in a tree
-And the user clicks on example class path area
-Then the user should see the notification with text 'Message'
+Then the user should not be able to click on class path area
 
-Scenario: Click on on other elements out of area
+Scenario: Click on other elements out of area
 Meta: @id4 4
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Notification' in a tree
-And the user selects the item 'Interaction->Button' in a tree
-Then the user should see the notification with text 'Message'
+Then the user should not be able to click on tree 'Data Presentation' item
