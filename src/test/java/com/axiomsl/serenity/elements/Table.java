@@ -198,15 +198,18 @@ public class Table extends BasePage {
 
     public Map<String, WebElementFacade> getRowMapByCellValue(String columnName, String cellValue){
         List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+
+        if(list.get(0).get(columnName) == null)
+        {
+            throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
+        }
+
         for(Map<String, WebElementFacade> map:list){
             WebElementFacade element = map.get(columnName);
-            if(element == null)
-            {
-                throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
-            }
 
-            WebElement cell = element.findElement(By.xpath(".//input"));
-            if(cell != null){
+            //if we have editable table
+            if(element.thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size()>0){
+                WebElement cell = element.findElement(By.xpath(".//input"));
                 if(cell.getAttribute("value").equals(cellValue)){
                     return map;
                 }
