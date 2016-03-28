@@ -23,7 +23,7 @@ public class Table extends BasePage {
 //  private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//div[contains(@class, 'v-table-cell-wrapper')]";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
-    private String filteringLocator = ".//td[contains(@class, 'filters-wrap')]/div[contains(@class, 'filterwrapper)]";
+    private String filteringLocator = ".//div[contains(@class, 'filters-wrap')]//div[contains(@class, 'filterwrapper')]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
@@ -406,7 +406,7 @@ public class Table extends BasePage {
     public void inputTextInFilter(String columnKey, String text){
         Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
         WebElementFacade filter = filterMap.get(columnKey);
-        TextInput textInput = filter.then(By.xpath(".//input"));
+        TextInput textInput =  new TextInput(filter.then(By.xpath(textInputLocator)));
         textInput.type(text);
         textInput.sendKeys(Keys.ENTER);
     }
@@ -414,9 +414,21 @@ public class Table extends BasePage {
     public void makeFilterEmpty(String columnKey){
         Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
         WebElementFacade filter = filterMap.get(columnKey);
-        TextInput textInput = filter.then(By.xpath(".//input"));
+        TextInput textInput = new TextInput(filter.then(By.xpath(textInputLocator)));
         textInput.clear();
         textInput.sendKeys(Keys.ENTER);
+    }
+
+    public void clickAtHeader(String columnKey, int n){
+        List<WebElementFacade> headers = this.getHeadings();
+        for (WebElementFacade header: headers){
+            if(header.getAttribute("textContent").equals(columnKey)){
+                for(int i=0; i<n; i++){
+                    header.click();
+                }
+                break;
+            }
+        }
     }
 
 

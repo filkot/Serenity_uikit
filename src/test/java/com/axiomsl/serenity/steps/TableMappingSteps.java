@@ -155,10 +155,18 @@ public class TableMappingSteps {
     }
 
     @When("the user makes '$columnKey' filter empty in '$tableCaption' table")
-    @Aliases(values={"the user makes <columnKey> filter empty in <tableCaption> table"})
+    @Aliases(values={"the user makes '$columnKey' filter empty in <tableCaption> table"})
     public void whenTheUserMakesFilterEmptyInTable(@Named("columnKey") String columnKey,
-                                                       @Named("tableCaption") String tableCaption) {
+                                                   @Named("tableCaption") String tableCaption) {
         step.make_filter_empty_in_table(tableCaption, columnKey);
+    }
+
+    @When("the user clicks '$n' times on '$columnKey' column in '$tableCaption' table")
+    @Aliases(values={"the user clicks '$n' times on '$columnKey' column in <tableCaption> table"})
+    public void whenTheUserClicksNTimesOnHeaderInTable(@Named("n") int n,
+                                                       @Named("columnKey") String columnKey,
+                                                       @Named("tableCaption") String tableCaption) {
+        step.click_n_times_at_header_in_table(tableCaption, columnKey, n);
     }
 
     // endregion WHEN
@@ -194,8 +202,8 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should see the row with <columnName>  column and <cellValue> value in table"
-            ,"the user should see the row with '$columnName'  column and '$cellValue' value in <tableCaption> table"})
+    @Aliases(values={"the user should see the row with <columnName> column and <cellValue> value in table"
+            ,"the user should see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldSeeRowInTable(@Named("columnName") String columnName,
                                                @Named("cellValue") String cellValue,
                                                @Named("tableCaption") String tableCaption) {
@@ -203,7 +211,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should not see the row with <columnName>  column and <cellValue> value in table",
+    @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in table",
             "the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("columnName") String columnName,
                                                   @Named("cellValue") String cellValue,

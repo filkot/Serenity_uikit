@@ -96,6 +96,11 @@ public class TableSteps extends ScenarioSteps {
         action.getTable(tableCaption).makeFilterEmpty(columnKey);
     }
 
+    @Step
+    public void click_n_times_at_header_in_table(String tableCaption, String columnKey, int n) {
+        action.getTable(tableCaption).clickAtHeader(columnKey, n);
+    }
+
 
 
     //___Assertion______________________________________________________________________________________________________
