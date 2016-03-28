@@ -25,7 +25,6 @@ public class LinkMappingSteps {
     }
 
 
-
     //THEN
     @Then("the user should see a changed color of '$linkText' link")
     public void thenTheyShouldSeeChangedColorOfTheLink(String linkText) {

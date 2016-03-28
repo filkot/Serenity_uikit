@@ -102,19 +102,19 @@ public class TableMappingSteps {
 
     @When("the user multi-selects the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user multi-selects the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserMultiSelectsTheRowsWithColumnInTable(@Named("tableCaption") String tableCaption,
-                                                               @Named("columnName") String columnName,
-                                                               @Named("cellValue") String cellValue) {
+    public void whenTheUserMultiSelectsTheRowsWithColumnInTable(@Named("columnName") String columnName,
+                                                               @Named("cellValue") String cellValue,
+                                                               @Named("tableCaption") String tableCaption) {
         step.multi_select_for_rows_in_table(tableCaption, columnName, cellValue);
     }
 
     @When("the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in $tableCaption table",
                     "the user presses the button in '$buttonColumnName' column for row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
-    public void whenTheUserPressButtonInColumnForRow(@Named("tableCaption") String tableCaption,
+    public void whenTheUserPressButtonInColumnForRow(@Named("buttonColumnName") String buttonColumnName,
                                                          @Named("columnName") String columnName,
                                                          @Named("cellValue") String cellValue,
-                                                         @Named("buttonColumnName") String buttonColumnName) {
+                                                     @Named("tableCaption") String tableCaption) {
         step.press_button_in_column_for_row_in_table(tableCaption, columnName, cellValue, buttonColumnName);
     }
 
@@ -127,22 +127,31 @@ public class TableMappingSteps {
     @When("the user inputs '$inputText' text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user inputs '$inputText' text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
             "the user inputs <inputText> text into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
-    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("tableCaption") String tableCaption,
+    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputText") String inputText,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,
                                                             @Named("columnName") String columnName,
-                                                            @Named("inputText") String inputText) {
+                                                            @Named("tableCaption") String tableCaption) {
         step.input_text_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputText);
     }
 
     @When("the user cancels the text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user cancels the text text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
             "the user cancels the text text into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
-    public void whenTheUserCancelsTextIntoColumnInRowInTable(@Named("tableCaption") String tableCaption,
+    public void whenTheUserCancelsTextIntoColumnInRowInTable(@Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,
-                                                            @Named("columnName") String columnName) {
+                                                            @Named("tableCaption") String tableCaption) {
         step.undo_text_in_cell_in_table(tableCaption, columnKey, cellValue, columnName);
+    }
+
+    @When("the user inputs '$inputText' text into '$columnKey' filter in '$tableCaption' table")
+    @Aliases(values={"the user inputs '$inputText' text into '$columnKey' filter in <tableCaption> table",
+            "the user inputs <inputText> text into <columnKey> filter in <tableCaption> table"})
+    public void whenTheUserInputsTextIntoFilterInTable(@Named("inputText") String inputText,
+                                                       @Named("columnKey") String columnKey,
+                                                       @Named("tableCaption") String tableCaption) {
+        step.input_text_in_filter_in_table(tableCaption, columnKey, inputText);
     }
 
     // endregion WHEN
