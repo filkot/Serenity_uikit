@@ -23,6 +23,7 @@ public class Table extends BasePage {
 //  private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//span";
     private String cellLocator = ".//td[contains(@class, 'table-cell-content')]//div[contains(@class, 'v-table-cell-wrapper')]";
     private String headingLocator = ".//td[contains(@class, 'table-header')]/div[contains(@class, 'table-caption')]";
+    private String filteringLocator = ".//td[contains(@class, 'filters-wrap')]/div[contains(@class, 'filterwrapper)]";
     private String settingsLocator = ".//div[@class='v-table-column-selector']";
     private String menuVisibilityLocator = "//div[contains(@class ,'gwt-MenuBar')]//span/div[text() = '%s']";
     private String scrollLocator = ".//div[contains(@class, 'v-scrollable')]";
@@ -43,6 +44,10 @@ public class Table extends BasePage {
 
     public List<WebElementFacade> getHeadings() {
         return wrappedElement.thenFindAll(By.xpath(headingLocator));
+    }
+
+    public List<WebElementFacade> getFilters() {
+        return wrappedElement.thenFindAll(By.xpath(filteringLocator));
     }
 
     public List<String> getHeadingsAsString() {
@@ -107,6 +112,9 @@ public class Table extends BasePage {
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings() {
         return this.getRowsMappedToHeadings(this.getHeadingsAsString());
     }
+    public Map<String, WebElementFacade> getFiltersMappedToHeadings() {
+        return this.getFiltersMappedToHeadings(this.getHeadingsAsString());
+    }
 
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings(List<String> headings) {
         ArrayList rowsMappedToHeadings = new ArrayList();
@@ -139,6 +147,18 @@ public class Table extends BasePage {
 
             return rowsMappedToHeadings;
         }
+    }
+
+    public Map<String, WebElementFacade> getFiltersMappedToHeadings(List<String> headings) {
+        List<WebElementFacade> filters = this.getFilters();
+        if (headings.size() != filters.size())
+            throw new IllegalArgumentException ("Headings count is not equal to filters count");
+        HashMap filterToHeadingsMap = new HashMap();
+        for (int i=0; i<headings.size(); i++) {
+            filterToHeadingsMap.put(headings.get(i), filters.get(i));
+        }
+        return filterToHeadingsMap;
+
     }
 
     public List<Map<String, String>> getRowsAsStringMappedToHeadings() {
@@ -219,7 +239,6 @@ public class Table extends BasePage {
                     return map;
                 }
             }
-
         }
         return null;
     }
@@ -382,6 +401,22 @@ public class Table extends BasePage {
         for(int i =0; i<2; i++){
             cellInput.sendKeys(undo);
         }
+    }
+
+    public void inputTextInFilter(String columnKey, String text){
+        Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
+        WebElementFacade filter = filterMap.get(columnKey);
+        TextInput textInput = filter.then(By.xpath(".//input"));
+        textInput.type(text);
+        textInput.sendKeys(Keys.ENTER);
+    }
+
+    public void makeFilterEmpty(String columnKey){
+        Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
+        WebElementFacade filter = filterMap.get(columnKey);
+        TextInput textInput = filter.then(By.xpath(".//input"));
+        textInput.clear();
+        textInput.sendKeys(Keys.ENTER);
     }
 
 

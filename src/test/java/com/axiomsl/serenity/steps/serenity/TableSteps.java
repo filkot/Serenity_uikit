@@ -86,6 +86,16 @@ public class TableSteps extends ScenarioSteps {
         action.getTable(tableCaption).undoTextInCell(columnKey, cellValue, columnName);
     }
 
+    @Step
+    public void input_text_in_filter_in_table(String tableCaption, String columnKey, String inputText) {
+        action.getTable(tableCaption).inputTextInFilter(columnKey, inputText);
+    }
+
+    @Step
+    public void make_filter_empty_in_table(String tableCaption, String columnKey) {
+        action.getTable(tableCaption).makeFilterEmpty(columnKey);
+    }
+
 
 
     //___Assertion______________________________________________________________________________________________________
