@@ -30,9 +30,19 @@ public class ButtonMappingSteps {
     //endregion @When
 
     //region @Then
-    @Then("the user should see the button with '$name' name")
-    public void thenTheUserShouldSeeButtonWithName(String name) {
-        step.should_see_button_with_name(name);
+    @Then("the user should see the button with '$buttonName' name")
+    public void thenTheUserShouldSeeButtonWithName(String buttonName) {
+        step.should_see_button_with_name(buttonName);
+    }
+
+    @Then("the user should see that '$buttonName' button is enabled")
+    public void thenTheUserShouldSeeButtonIsEnabled(String buttonName) {
+        step.should_see_button_is_enabled(buttonName);
+    }
+
+    @Then("the user should see that '$buttonName' button is disabled")
+    public void thenTheUserShouldSeeButtonIsDisabled(String buttonName) {
+        step.should_see_button_is_disabled(buttonName);
     }
     //endregion @Then
 }

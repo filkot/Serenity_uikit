@@ -42,5 +42,9 @@ public class Button extends BasePage {
         return wrappedElement.getText();
     }
 
+    public boolean isEnabled() {
+        return !wrappedElement.hasClass("v-disabled");
+    }
+
     //endregion Public Methods
 }
