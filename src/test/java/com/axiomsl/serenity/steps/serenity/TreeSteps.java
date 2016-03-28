@@ -3,7 +3,8 @@ package com.axiomsl.serenity.steps.serenity;
 import com.axiomsl.serenity.actions.TreeAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 
 public class TreeSteps extends ScenarioSteps {
@@ -18,7 +19,7 @@ public class TreeSteps extends ScenarioSteps {
 
     @Step
     public void is_tree_item_available(String item) {
-        assertFalse(action.is_tree_item_available(item));
+        assertThat(action.is_tree_item_available(item), is(false));
     }
 
 }
