@@ -154,6 +154,13 @@ public class TableMappingSteps {
         step.input_text_in_filter_in_table(tableCaption, columnKey, inputText);
     }
 
+    @When("the user makes '$columnKey' filter empty in '$tableCaption' table")
+    @Aliases(values={"the user makes <columnKey> filter empty in <tableCaption> table"})
+    public void whenTheUserMakesFilterEmptyInTable(@Named("columnKey") String columnKey,
+                                                       @Named("tableCaption") String tableCaption) {
+        step.make_filter_empty_in_table(tableCaption, columnKey);
+    }
+
     // endregion WHEN
 
 

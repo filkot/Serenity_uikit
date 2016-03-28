@@ -408,6 +408,15 @@ public class Table extends BasePage {
         WebElementFacade filter = filterMap.get(columnKey);
         TextInput textInput = filter.then(By.xpath(".//input"));
         textInput.type(text);
+        textInput.sendKeys(Keys.ENTER);
+    }
+
+    public void makeFilterEmpty(String columnKey){
+        Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
+        WebElementFacade filter = filterMap.get(columnKey);
+        TextInput textInput = filter.then(By.xpath(".//input"));
+        textInput.clear();
+        textInput.sendKeys(Keys.ENTER);
     }
 
 
