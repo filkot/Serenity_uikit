@@ -28,8 +28,8 @@ public class ButtonSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_button_with_text(String text) {
-        assertThat(action.get_button_text(), is(text));
+    public void should_see_button_with_name(String name) {
+        assertThat(action.get_button_text(), is(name));
     }
 
 }
