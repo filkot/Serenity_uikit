@@ -10,6 +10,7 @@ public class ButtonAction extends BasePage {
 
     private String buttonWithTextLocator = "//div//span[text() = '%s']";
     private String buttonLocator = "//div[@role = 'button']//span";
+    private String buttonClassLocator = "/parent::span/parent::div";
 
     //endregion Private Fields
 
@@ -32,6 +33,11 @@ public class ButtonAction extends BasePage {
     public String get_button_text() {
         Button button = new Button(find(By.xpath(buttonLocator)));
         return button.getText();
+    }
+
+    public boolean get_button_enabled_state(String buttonName) {
+        Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName) + buttonClassLocator)));
+        return button.isEnabled();
     }
 
     //endregion Public Methods
