@@ -9,25 +9,28 @@ import java.util.List;
 public class TableMappingSteps {
 
     //region @Steps
+
     @Steps
     TableSteps step;
+
     //endregion @Steps
 
     //region @When
+
     @When("the user gets the table rows")
     public void whenTheUserGetsTableRows() {
         step.get_table_rows();
     }
 
-    @When("the user makes the '$columnName' column visible from the settings wheel for '$tableCaption' table")
-    @Alias("the user makes the '$columnName' column visible from the settings wheel for <tableCaption> table")
+    @When("the user makes '$columnName' column visible from the settings wheel for '$tableCaption' table")
+    @Alias("the user makes '$columnName' column visible from the settings wheel for <tableCaption> table")
     public void whenTheUserMakesColumnVisible(@Named("columnName") String columnName,
                                               @Named("tableCaption") String tableCaption) {
         step.make_column_visible(tableCaption, columnName);
     }
 
-    @When("the user makes the '$columnName' column not visible from the settings wheel for '$tableCaption' table")
-    @Aliases(values={"the user makes the '$columnName' column not visible from the settings wheel for <tableCaption> table",
+    @When("the user makes '$columnName' column not visible from the settings wheel for '$tableCaption' table")
+    @Aliases(values={"the user makes '$columnName' column not visible from the settings wheel for <tableCaption> table",
             "the user makes the '$columnName' column not visible from the settings wheel for $tableCaption table"})
     public void whenTheUserMakesColumnNotVisible(@Named("columnName") String columnName,
                                                  @Named("tableCaption") String tableCaption) {
@@ -169,34 +172,41 @@ public class TableMappingSteps {
         step.click_n_times_at_header_in_table(tableCaption, columnKey, n);
     }
 
-    // endregion WHEN
+    @When("the user waits until data is loaded in '$tableCaption' table")
+    @Alias("the user waits until data is loaded in <tableCaption> table")
+    public void whenTheUserWaitsUntilDataIsLoadedInTable(String tableCaption) {}
 
+    @When("the user waits until '$numberOfRows' rows are loaded in '$tableCaption' table")
+    @Alias("the user waits until '$numberOfRows' rows are loaded in <tableCaption> table")
+    public void whenTheUserWaitsUntilRowsAreLoadedInTable(String numberOfRows,String tableCaption) {}
 
+    //endregion @When
 
-    // region THEN
+    //region @Then
+
     @Then("the user should see '$items' items with column number '$columnNumber' in the table")
     public void thenTheUserShouldSeeItemListWithColumnInTable(List<String> items, int columnNumber) {
         step.should_see_items_in_table(items, (columnNumber - 1));
     }
 
-    @Then("the user should see the '$columnName' column in the table")
+    @Then("the user should see '$columnName' column in the table")
     public void thenTheUserShouldSeeColumnInTable(String $columnName) {
         step.should_see_column_with_name_in_table($columnName);
     }
 
-    @Then("the user should not see the '$columnName' column in the table")
+    @Then("the user should not see '$columnName' column in the table")
     public void thenTheUserShouldNotSeeColumnInTable(String $columnName) {
         step.should_not_see_column_with_name_in_table($columnName);
     }
 
-    @Then("the user should see the '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see the '$columnName' column in <tableCaption> table")
+    @Then("the user should see '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldSeeColumnInTable(@Named("columnName") String columnName, @Named("tableCaption") String tableCaption) {
         step.should_see_column_with_name_in_table(tableCaption, columnName);
     }
 
-    @Then("the user should not see the '$columnName' column in '$tableCaption' table")
-    @Alias("the user should not see the '$columnName' column in <tableCaption> table")
+    @Then("the user should not see '$columnName' column in '$tableCaption' table")
+    @Alias("the user should not see '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldNotSeeColumnInTable(@Named("columnName") String columnName, @Named("tableCaption") String tableCaption) {
         step.should_not_see_column_with_name_in_table(tableCaption, columnName);
     }
@@ -323,5 +333,14 @@ public class TableMappingSteps {
                                                      @Named("inputText") String inputText) {
         step.should_see_text_in_cell(tableCaption, columnKey, cellValue, columnName, inputText);
     }
+
+    @Then("the user should see that rows with '$columnName' column contain the values from '$startValue' to '$endValue' in '$tableCaption' table")
+    @Alias("the user should see that rows with '$columnName' column contain the values from '$startValue' to '$endValue' in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsContainValuesFromToInTable(String columnName, String startValue, String endValue, String tableCaption) {}
+
+    @Then("the user should see that values are sorted as '$listOfValues' in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted as '$listOfValues' in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedAsListInTable(List listOfValues, String columnName, String tableCaption) {}
+
     //endregion @Then
 }

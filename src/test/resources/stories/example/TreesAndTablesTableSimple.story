@@ -13,23 +13,23 @@ Scenario: Check the checkbox with caption 'id' only for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user checks the checkbox with 'id' caption
-Then the user should see the 'Id' column in the table
-And the user should not see the 'Name' column in the table
+Then the user should see 'Id' column in the table
+And the user should not see 'Name' column in the table
 
 Scenario: Uncheck the checkbox with caption 'id' only for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user unchecks the checkbox with 'id' caption
-Then the user should not see the 'Id' column in the table
-And the user should not see the 'Name' column in the table
+Then the user should not see 'Id' column in the table
+And the user should not see 'Name' column in the table
 
 Scenario: Check the checkbox with caption 'name' only for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user unchecks the checkbox with 'id' caption
 And the user checks the checkbox with 'name' caption
-Then the user should see the 'Name' column in the table
-And the user should not see the 'Id' column in the table
+Then the user should see 'Name' column in the table
+And the user should not see 'Id' column in the table
 
 Scenario: Uncheck the checkbox with caption 'name' only for SIMPLE table
 Given the user refresh the Example page
@@ -37,16 +37,16 @@ When the user selects the item 'Trees and Tables->Table' in a tree
 And the user unchecks the checkbox with 'id' caption
 And the user checks the checkbox with 'name' caption
 And the user unchecks the checkbox with 'name' caption
-Then the user should not see the 'Name' column in the table
-And the user should not see the 'Id' column in the table
+Then the user should not see 'Name' column in the table
+And the user should not see 'Id' column in the table
 
 Scenario: Check the checkbox with caption 'id' and 'name' for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user checks the checkbox with 'id' caption
 And the user checks the checkbox with 'name' caption
-Then the user should see the 'Id' column in the table
-And the user should see the 'Name' column in the table
+Then the user should see 'Id' column in the table
+And the user should see 'Name' column in the table
 
 Scenario: Uncheck the checkbox with caption 'id' and 'name' for SIMPLE table
 Given the user refresh the Example page
@@ -55,15 +55,15 @@ And the user checks the checkbox with 'id' caption
 And the user checks the checkbox with 'name' caption
 And the user unchecks the checkbox with 'id' caption
 And the user unchecks the checkbox with 'name' caption
-Then the user should not see the 'Id' column in the table
-And the user should not see the 'Name' column in the table
+Then the user should not see 'Id' column in the table
+And the user should not see 'Name' column in the table
 
 Scenario: Make visible the column 'id' only from the settings wheel for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
-Then the user should see the 'Id' column in <tableCaption> table
-And the user should not see the 'Name' column in <tableCaption> table
+And the user makes 'Id' column visible from the settings wheel for <tableCaption> table
+Then the user should see 'Id' column in <tableCaption> table
+And the user should not see 'Name' column in <tableCaption> table
 And the user should see that 'Id' item is checked in the settings wheel in <tableCaption> table
 And the user should see that 'Name' item is unchecked in the settings wheel in <tableCaption> table
 Examples:
@@ -73,10 +73,10 @@ Examples:
 Scenario: Make visible the column 'name' only from the settings wheel for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user makes the 'Id' column not visible from the settings wheel for <tableCaption> table
-And the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
-Then the user should see the 'Name' column in <tableCaption> table
-And the user should not see the 'Id' column in <tableCaption> table
+And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
+Then the user should see 'Name' column in <tableCaption> table
+And the user should not see 'Id' column in <tableCaption> table
 And the user should see that 'Id' item is unchecked in the settings wheel in <tableCaption> table
 And the user should see that 'Name' item is checked in the settings wheel in <tableCaption> table
 Examples:
@@ -86,10 +86,10 @@ Examples:
 Scenario: Make visible the columns 'id' and 'name' from the settings wheel for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
-And the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
-Then the user should see the 'Id' column in <tableCaption> table
-And the user should see the 'Name' column in <tableCaption> table
+And the user makes 'Id' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
+Then the user should see 'Id' column in <tableCaption> table
+And the user should see 'Name' column in <tableCaption> table
 And the user should see that 'Id' item is checked in the settings wheel in <tableCaption> table
 And the user should see that 'Name' item is checked in the settings wheel in <tableCaption> table
 Examples:
@@ -99,12 +99,12 @@ Examples:
 Scenario: Make not visible the columns 'id' and 'name' from the settings wheel for SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
-And the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
-And the user makes the 'Id' column not visible from the settings wheel for <tableCaption> table
-And the user makes the 'Name' column not visible from the settings wheel for <tableCaption> table
-Then the user should not see the 'Id' column in <tableCaption> table
-And the user should not see the 'Name' column in <tableCaption> table
+And the user makes 'Id' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column not visible from the settings wheel for <tableCaption> table
+Then the user should not see 'Id' column in <tableCaption> table
+And the user should not see 'Name' column in <tableCaption> table
 And the user should see that 'Id' item is unchecked in the settings wheel in <tableCaption> table
 And the user should see that 'Name' item is unchecked in the settings wheel in <tableCaption> table
 Examples:
@@ -215,7 +215,7 @@ Scenario: Selection is not disabling for a row when another column is visible in
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
@@ -225,9 +225,9 @@ Examples:
 Scenario: Selection is not disabling for a row when another column is not visible in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
-And the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user makes the 'Name' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Name' column not visible from the settings wheel for <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
@@ -238,12 +238,12 @@ Scenario: Selection is not disabling when all columns are not visible in SIMPLE 
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user makes the 'Id' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
 Then the user should see no columns in <tableCaption> table
 And the user should see no rows in <tableCaption> table
-When the user makes the 'Id' column visible from the settings wheel for <tableCaption> table
+When the user makes 'Id' column visible from the settings wheel for <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
-When the user makes the 'Name' column visible from the settings wheel for <tableCaption> table
+When the user makes 'Name' column visible from the settings wheel for <tableCaption> table
 Then the user should see that row with 'Name' column and 'user1' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
