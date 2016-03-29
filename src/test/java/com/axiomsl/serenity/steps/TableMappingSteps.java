@@ -180,6 +180,14 @@ public class TableMappingSteps {
     @Alias("the user waits until '$numberOfRows' row is loaded into <tableCaption> table")
     public void whenTheUserWaitsUntilRowIsLoadedInTable(String numberOfRows,String tableCaption) {}
 
+    @When("the user expands the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user expands the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
+    public void whenTheUserExpandsTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
+
+    @When("the user collapses the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
+    @Alias("the user collapses the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
+    public void whenTheUserCollapsesTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
+
     //endregion @When
 
     //region @Then
@@ -341,6 +349,14 @@ public class TableMappingSteps {
     @Then("the user should see that values are sorted as '$listOfValues' in '$columnName' column in '$tableCaption' table")
     @Alias("the user should see that values are sorted as '$listOfValues' in '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldSeeRowsAreSortedAsListInTable(List listOfValues, String columnName, String tableCaption) {}
+
+    @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
+    @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
+    public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {}
+
+    @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
+    @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
+    public void thenTheUserShouldSeeRowIsCollapsedInTable(String columnName, String cellValue, String tableCaption) {}
 
     //endregion @Then
 }

@@ -8,10 +8,15 @@ import org.jbehave.core.annotations.When;
 
 public class CheckBoxMappingSteps {
 
+    //region @Steps
+
     @Steps
     CheckBoxSteps step;
 
-    //WHEN
+    //endregion @Steps
+
+    //region @When
+
     @When("the user selects the checkbox with '$checkBoxName' caption")
     @Alias("the user checks the checkbox with '$checkBoxName' caption")
     public void whenTheUserSelectCheckbox(String checkBoxName) {
@@ -24,5 +29,6 @@ public class CheckBoxMappingSteps {
         step.deselect_checkbox(checkBoxName);
     }
 
+    //endregion @When
 
 }

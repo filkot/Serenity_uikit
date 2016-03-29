@@ -111,7 +111,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select/Deselect the first column in SIMPLE table
+Scenario: Select/Deselect the first row in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '0' value in <tableCaption> table
@@ -124,7 +124,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select/Deselect the last column in SIMPLE table
+Scenario: Select/Deselect the last row in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user scrolls vertically down to the end in <tableCaption> table
@@ -140,7 +140,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Re-select a column at the beginning in SIMPLE table
+Scenario: Re-select a row at the beginning in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
@@ -154,7 +154,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Re-select a column at the end in SIMPLE table
+Scenario: Re-select a row at the end in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user scrolls vertically down to the end in <tableCaption> table
@@ -171,7 +171,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select another column at the beginning in SIMPLE table
+Scenario: Select another row at the beginning in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
@@ -183,7 +183,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select another column at the end in SIMPLE table
+Scenario: Select another row at the end in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user scrolls vertically down to the end in <tableCaption> table
@@ -196,7 +196,7 @@ Examples:
 |tableCaption|
 |Simple Table with label components as columns|
 
-Scenario: Select another column in SIMPLE table
+Scenario: Select another row in SIMPLE table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user scrolls vertically down to the end in <tableCaption> table
