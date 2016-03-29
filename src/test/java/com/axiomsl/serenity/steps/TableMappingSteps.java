@@ -176,9 +176,9 @@ public class TableMappingSteps {
     @Alias("the user waits until data is loaded in <tableCaption> table")
     public void whenTheUserWaitsUntilDataIsLoadedInTable(String tableCaption) {}
 
-    @When("the user waits until '$numberOfRows' rows are loaded in '$tableCaption' table")
-    @Alias("the user waits until '$numberOfRows' rows are loaded in <tableCaption> table")
-    public void whenTheUserWaitsUntilRowsAreLoadedInTable(String numberOfRows,String tableCaption) {}
+    @When("the user waits until '$numberOfRows' row is loaded into '$tableCaption' table")
+    @Alias("the user waits until '$numberOfRows' row is loaded into <tableCaption> table")
+    public void whenTheUserWaitsUntilRowIsLoadedInTable(String numberOfRows,String tableCaption) {}
 
     //endregion @When
 
