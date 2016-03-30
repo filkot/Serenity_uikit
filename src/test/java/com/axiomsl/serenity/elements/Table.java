@@ -225,16 +225,20 @@ public class Table extends BasePage {
             throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
         }
 
+        boolean isEditableTable = false;
+        if(list.get(0).get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0){
+            isEditableTable = true;
+        }
+
         for(Map<String, WebElementFacade> map:list){
             WebElementFacade element = map.get(columnName);
 
             //if we have editable table
-            if(element.thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size()>0){
+            if(isEditableTable){
                 WebElement cell = element.findElement(By.xpath(".//input"));
                 if(cell.getAttribute("value").equals(cellValue)){
                     return map;
                 }
-                continue;
             }else {
                 if(element.getAttribute("textContent").equals(cellValue)){
                     return map;
@@ -434,7 +438,7 @@ public class Table extends BasePage {
     public void inputDateInCell(String columnKey, String cellValue, String columnName, Date date){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
-        DatePicker datePicker = new DatePicker(find(By.xpath(datePickerLocator)));
+        DatePicker datePicker = new DatePicker(cell.find(By.xpath(datePickerLocator)));
         datePicker.setDate(date);
     }
 

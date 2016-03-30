@@ -22,6 +22,15 @@ public class BasePage extends PageObject {
     private String exampleClassPathSplitterLocator = "//div[@class = 'v-splitpanel-hsplitter']";
     private String passwordLocator = "//input[@type = 'password']";
 
+    public static boolean VisibilityOfElement(WebElementFacade element) {
+        try {
+            return element.isCurrentlyVisible();
+        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
+            return false;
+        } catch (Throwable t) {
+            throw new Error(t);
+        }
+    }
 
     public void login() {
         find(By.xpath(passwordLocator)).waitUntilEnabled();
@@ -42,27 +51,27 @@ public class BasePage extends PageObject {
         find(By.xpath(exampleClassPathLocator)).click();
     }
 
-    public Boolean is_class_path_available(){
-        int hsX1 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
-        dragAndDropByOffset(find(By.xpath(exampleClassPathSplitterLocator)), 10, 0);
-        int hsX2 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
-
-        return ((hsX2 - hsX1) != 0) ? true : false;
-    }
-
 
 
 
     //_________________________________________________________________________________________
 
-    public void open_dashboard(String dashboardName) {
-        WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
-        dashboard.click();
+    public Boolean is_class_path_available(){
+        int hsX1 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
+        dragAndDropByOffset(find(By.xpath(exampleClassPathSplitterLocator)), 10, 0);
+        int hsX2 = find(By.xpath(exampleClassPathSplitterLocator)).getLocation().getX();
+
+        return ((hsX2 - hsX1) != 0);
     }
 
 
 
 //_______Actions________________________________________________________________________________________________________
+
+    public void open_dashboard(String dashboardName) {
+        WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
+        dashboard.click();
+    }
 
     public void clickByCoordinate(WebElementFacade element, int x, int y) {
         Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
@@ -94,74 +103,11 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
     }
 
+//_______Converter______________________________________________________________________________________________________
+
     public void dragAndDropByOffset(WebElementFacade element, int offsetX, int offsetY) {
         Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.dragAndDropBy(element, offsetX, offsetY).click().build().perform();
-    }
-
-//_______Converter______________________________________________________________________________________________________
-
-    protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
-        private final Converter<F, T> valueConverter;
-
-        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
-            return new MapConverter(valueConverter);
-        }
-
-        private MapConverter(Converter<F, T> valueConverter) {
-            this.valueConverter = valueConverter;
-        }
-
-        public Map<K, T> convert(Map<K, F> map) {
-            return Lambda.convertMap(map, this.valueConverter);
-        }
-    }
-
-
-    protected static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
-        private final Converter<F, T> itemsConverter;
-
-        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
-            return new ListConverter(itemsConverter);
-        }
-
-        private ListConverter(Converter<F, T> itemsConverter) {
-            this.itemsConverter = itemsConverter;
-        }
-
-        public List<T> convert(List<F> list) {
-            return Lambda.convert(list, this.itemsConverter);
-        }
-    }
-
-    protected static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
-        public static Converter<WebElementFacade, String> toText() {
-            return new WebElementToTextConverter();
-        }
-
-        public static Converter<WebElementFacade, String> toTextValues() {
-            return new WebElementToTextConverter();
-        }
-
-        private WebElementToTextConverter() {
-        }
-
-        public String convert(WebElementFacade element) {
-//            return element.getText();
-            return element.getAttribute("textContent");
-        }
-    }
-//________Visibility____________________________________________________________________________________________________
-
-
-    public static boolean VisibilityOfElement(WebElementFacade element) {
-        try {
-            return element.isCurrentlyVisible();
-        } catch (StaleElementReferenceException | NoSuchElementException | ElementNotVisibleException e) {
-            return false;
-        } catch (Throwable t) {
-            throw new Error(t);
-        }
     }
 
     public boolean VisibilityOfElementLocated(By locator) {
@@ -187,6 +133,7 @@ public class BasePage extends PageObject {
             throw new Error(t);
         }
     }
+//________Visibility____________________________________________________________________________________________________
 
     public boolean InvisibilityOfElementLocated(By locator) {
         try {
@@ -199,6 +146,56 @@ public class BasePage extends PageObject {
             return true;
         } catch (Throwable t) {
             throw new Error(t);
+        }
+    }
+
+    protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
+        private final Converter<F, T> valueConverter;
+
+        private MapConverter(Converter<F, T> valueConverter) {
+            this.valueConverter = valueConverter;
+        }
+
+        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
+            return new MapConverter(valueConverter);
+        }
+
+        public Map<K, T> convert(Map<K, F> map) {
+            return Lambda.convertMap(map, this.valueConverter);
+        }
+    }
+
+    protected static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
+        private final Converter<F, T> itemsConverter;
+
+        private ListConverter(Converter<F, T> itemsConverter) {
+            this.itemsConverter = itemsConverter;
+        }
+
+        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
+            return new ListConverter(itemsConverter);
+        }
+
+        public List<T> convert(List<F> list) {
+            return Lambda.convert(list, this.itemsConverter);
+        }
+    }
+
+    protected static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
+        private WebElementToTextConverter() {
+        }
+
+        public static Converter<WebElementFacade, String> toText() {
+            return new WebElementToTextConverter();
+        }
+
+        public static Converter<WebElementFacade, String> toTextValues() {
+            return new WebElementToTextConverter();
+        }
+
+        public String convert(WebElementFacade element) {
+//            return element.getText();
+            return element.getAttribute("textContent");
         }
     }
 

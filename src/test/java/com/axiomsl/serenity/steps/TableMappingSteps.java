@@ -123,9 +123,14 @@ public class TableMappingSteps {
     }
 
     @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserInputsDateIntoColumnInRowInTable(String $inputDate, String $columnName, String $columnKey, String $cellValue, String $tableCaption) {
-
+    @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+            "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
+    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
+                                                            @Named("columnKey") String columnKey,
+                                                            @Named("cellValue") String cellValue,
+                                                            @Named("columnName") String columnName,
+                                                            @Named("tableCaption") String tableCaption) {
+        step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
     }
 
     @When("the user inputs '$inputText' text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
@@ -189,16 +194,7 @@ public class TableMappingSteps {
     @Alias("the user collapses the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
     public void whenTheUserCollapsesTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
 
-    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
-            "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
-    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
-                                                            @Named("columnKey") String columnKey,
-                                                            @Named("cellValue") String cellValue,
-                                                            @Named("columnName") String columnName,
-                                                            @Named("tableCaption") String tableCaption) {
-        step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
-    }
+
 
     //endregion @When
 
@@ -258,7 +254,7 @@ public class TableMappingSteps {
         step.should_see_column_with_text_in_table(tableCaption, columnName, cellValue);
     }
 
-        @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
+    @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
     @Aliases(values={"the user should see that row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
@@ -366,9 +362,7 @@ public class TableMappingSteps {
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
     public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {}
 
-    @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
-    @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
-    public void thenTheUserShouldSeeRowIsCollapsedInTable(String columnName, String cellValue, String tableCaption) {}
+
 
     //endregion @Then
 }
