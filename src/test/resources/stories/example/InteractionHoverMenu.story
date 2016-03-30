@@ -20,7 +20,7 @@ Meta: @id2 2
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Hover Menu' in a tree
 And the user hovers on HoverMenu
-And the user click button with name 'Item #3'
+And the user right clicks on 'Item #3' button
 Then the user should see popup with header 'Hover menu item'
 And the user should see popup with label 'Item #3 was selected'
 
