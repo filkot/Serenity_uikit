@@ -125,10 +125,10 @@ public class TableMappingSteps {
     @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
             "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
-    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
+    public void whenTheUserInputsDateIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
+                                                            @Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,
-                                                            @Named("columnName") String columnName,
                                                             @Named("tableCaption") String tableCaption) {
         step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
     }
@@ -137,9 +137,9 @@ public class TableMappingSteps {
     @Aliases(values={"the user inputs '$inputText' text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
             "the user inputs <inputText> text into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
     public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputText") String inputText,
+                                                            @Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,
-                                                            @Named("columnName") String columnName,
                                                             @Named("tableCaption") String tableCaption) {
         step.input_text_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputText);
     }
@@ -324,8 +324,12 @@ public class TableMappingSteps {
 
     @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserShouldSeeDateInRowInTable(String inputDate, String columnName, String columnKey, String cellValue, String tableCaption) {
-
+    public void whenTheUserShouldSeeDateInRowInTable(@Named("inputDate") Date inputDate,
+                                                     @Named("columnName") String columnName,
+                                                     @Named("columnKey") String columnKey,
+                                                     @Named("cellValue") String cellValue,
+                                                     @Named("tableCaption") String tableCaption) {
+        step.should_see_date_in_cell(tableCaption, columnKey, cellValue, columnName, inputDate);
     }
 
     @Then("the user should see no columns in '$tableCaption' table")

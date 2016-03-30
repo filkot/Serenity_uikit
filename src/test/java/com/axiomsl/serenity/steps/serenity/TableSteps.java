@@ -3,6 +3,7 @@ package com.axiomsl.serenity.steps.serenity;
 import com.axiomsl.serenity.actions.TableAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.Matchers;
 
 import java.util.Date;
 import java.util.List;
@@ -188,5 +189,10 @@ public class TableSteps extends ScenarioSteps {
     @Step
     public void should_not_see_columns(String tableCaption) {
         assertThat(action.getTable(tableCaption).getHeadings().size(), is(0));
+    }
+
+    @Step
+    public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, Date inputDate) {
+        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.<Date>is(inputDate));
     }
 }

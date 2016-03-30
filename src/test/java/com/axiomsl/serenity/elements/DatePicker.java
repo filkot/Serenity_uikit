@@ -23,7 +23,7 @@ public class DatePicker extends BasePage{
     private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String buttonLocator = ".//button[contains(@class, 'v-datefield-button')]";
-    private String inputLocator = ".//button[contains(@class, 'v-datefield-button')]";
+    private String inputLocator = ".//input";
     private String dateFieldPopupLocator = "//div[contains(@class, 'v-datefield-popup')]";
     private String currentMonthYearLocator = "//span[@class = 'v-datefield-calendarpanel-month']";
     private String timeSelectsLocator = "//td[@class='v-datefield-calendarpanel-time']//select";
@@ -32,6 +32,7 @@ public class DatePicker extends BasePage{
     private String prevmonthLocator = "//td[@class='v-datefield-calendarpanel-prevmonth']//button";
     private String nextmonthLocator = "//td[@class='v-datefield-calendarpanel-nextmonth']//button";
     private String dayLocator = "//td[@class = 'v-datefield-calendarpanel-body']//td[@role = 'gridcell']/span[not(contains(@class , 'day-offmonth')) and text() = '%s']";
+    private String date;
 
     //endregion Private Fields
 
@@ -43,29 +44,6 @@ public class DatePicker extends BasePage{
     }
 
     //endregion Constructors
-
-
-    //region Public Methods
-    public void setDate(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-
-        openDatePicker();
-        Date curDate = getCurrentMonthYear();
-        calendar.setTime(curDate);
-        int yearCur = calendar.get(Calendar.YEAR);
-        int monthCur = calendar.get(Calendar.MONTH);
-
-
-        setTime(date);
-        setYear(yearCur, year);
-        setMonth(monthCur, month);
-        setDay(day);
-    }
 
     private Date getCurrentMonthYear() {
         String monthYear = wrappedElement.then(By.xpath(currentMonthYearLocator)).getText();
@@ -136,6 +114,40 @@ public class DatePicker extends BasePage{
 
     public void openDatePicker() {
         wrappedElement.then(By.xpath(buttonLocator)).click();
+    }
+
+    public Date getDate() {
+        String string = wrappedElement.then(By.xpath(inputLocator)).getValue();
+        DateFormat format = new SimpleDateFormat("MM/dd/yy", Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = format.parse(string);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    //region Public Methods
+    public void setDate(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        openDatePicker();
+        Date curDate = getCurrentMonthYear();
+        calendar.setTime(curDate);
+        int yearCur = calendar.get(Calendar.YEAR);
+        int monthCur = calendar.get(Calendar.MONTH);
+
+
+        setTime(date);
+        setYear(yearCur, year);
+        setMonth(monthCur, month);
+        setDay(day);
     }
 
 

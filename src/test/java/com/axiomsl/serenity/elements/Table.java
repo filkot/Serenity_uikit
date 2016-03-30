@@ -442,6 +442,14 @@ public class Table extends BasePage {
         datePicker.setDate(date);
     }
 
+    public Date getDateInCell(String columnKey, String cellValue, String columnName){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        DatePicker datePicker = new DatePicker(cell.find(By.xpath(datePickerLocator)));
+        return datePicker.getDate();
+    }
+
+
 
     //endregion Public Methods
 
