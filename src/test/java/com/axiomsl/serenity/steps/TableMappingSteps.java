@@ -4,6 +4,7 @@ import com.axiomsl.serenity.steps.serenity.TableSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class TableMappingSteps {
@@ -188,6 +189,17 @@ public class TableMappingSteps {
     @Alias("the user collapses the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
     public void whenTheUserCollapsesTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
 
+    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+            "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
+    public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
+                                                            @Named("columnKey") String columnKey,
+                                                            @Named("cellValue") String cellValue,
+                                                            @Named("columnName") String columnName,
+                                                            @Named("tableCaption") String tableCaption) {
+        step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
+    }
+
     //endregion @When
 
     //region @Then
@@ -220,7 +232,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should see the row with <columnName> column and <cellValue> value in table"
+    @Aliases(values={"the user should see the row with <columnName> column and <cellValue> value in $tableCaption  table"
             ,"the user should see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldSeeRowInTable(@Named("columnName") String columnName,
                                                @Named("cellValue") String cellValue,
@@ -229,8 +241,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in table",
-            "the user should not see the row with <columnName> column and <cellValue> value in $tableCaption table",
+    @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in $tableCaption table",
             "the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("columnName") String columnName,
                                                   @Named("cellValue") String cellValue,

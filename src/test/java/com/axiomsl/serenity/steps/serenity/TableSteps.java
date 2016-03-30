@@ -4,6 +4,7 @@ import com.axiomsl.serenity.actions.TableAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -101,6 +102,10 @@ public class TableSteps extends ScenarioSteps {
         action.getTable(tableCaption).clickAtHeader(columnKey, n);
     }
 
+    @Step
+    public void input_date_in_cell_in_table(String tableCaption, String columnKey, String cellValue, String columnName, Date date) {
+        action.getTable(tableCaption).inputDateInCell(columnKey, cellValue, columnName, date);
+    }
 
 
     //___Assertion______________________________________________________________________________________________________

@@ -30,6 +30,7 @@ public class Table extends BasePage {
     private String checkBoxLocator = ".//span[contains(@class, 'v-checkbox')]";
     private String buttonLocator = ".//div[@role = 'button']//span";
     private String textInputLocator = ".//input[@type = 'text']";
+    private String datePickerLocator = ".//div[contains(@class, 'v-datefield-popupcalendar')]";
 
     //endregion Private Fields
 
@@ -377,7 +378,6 @@ public class Table extends BasePage {
         }
         return true;
     }
-    //endregion Public Methods
 
     public void inputTextInCell(String columnKey, String cellValue, String columnName, String inputText){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
@@ -431,8 +431,15 @@ public class Table extends BasePage {
         }
     }
 
+    public void inputDateInCell(String columnKey, String cellValue, String columnName, Date date){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        DatePicker datePicker = new DatePicker(find(By.xpath(datePickerLocator)));
+        datePicker.setDate(date);
+    }
 
 
+    //endregion Public Methods
 
 
 //    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
