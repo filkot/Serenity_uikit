@@ -230,6 +230,7 @@ public class TableMappingSteps {
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in table",
+            "the user should not see the row with <columnName> column and <cellValue> value in $tableCaption table",
             "the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("columnName") String columnName,
                                                   @Named("cellValue") String cellValue,

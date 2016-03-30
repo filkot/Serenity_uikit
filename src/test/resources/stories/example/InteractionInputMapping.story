@@ -33,9 +33,8 @@ Meta: @id3 3
 Given the user refresh the Example page
 When the user selects the item 'Interaction->InputMapping' in a tree
 And the user enters <text> text in <textInputCaption> text field
-And the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in a table
-Then the user should not see the row with <columnName>  column and <cellValue> value in a table
-
+And the user presses the button in 'Delete' column for row with 'ID' column and 'ID_0' value in a table
+Then the user should not see the row with <columnName> column and <cellValue> value in a table
 Examples:
 |columnName|cellValue|text|textInputCaption|buttonColumnName|
 |ID|ID_0|EMPTY_STRING|Value from this text field is used as input for second column|Delete|
@@ -45,9 +44,8 @@ Meta: @id4 4
 Given the user refresh the Example page
 When the user selects the item 'Interaction->InputMapping' in a tree
 And the user enters <text> text in <textInputCaption> text field
-And the user presses the button in <buttonColumnName> column for row with <columnName> column and <cellValue> value in a table
-Then the user should not see the row with <columnName>  column and <cellValue> value in a table
-
+And the user presses the button in 'Delete' column for row with 'ID' column and 'ID_5' value in a table
+Then the user should not see the row with <columnName> column and <cellValue> value in a table
 Examples:
 |columnName|cellValue|text|textInputCaption|buttonColumnName|
 |ID|ID_5|test string 333|Value from this text field is used as input for second column|Delete|

@@ -13,7 +13,7 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 Scenario: Logout from the system
 Given the user refresh the Example page
 When the user selects the item 'Interaction->App life circle' in a tree
-And the user click button with name 'Logout Application'
+And the user clicks on 'Logout Application' button
 Then the user should see login menu
 
 Scenario: Login to system
@@ -21,4 +21,3 @@ Given the user is on the Example page
 When the user login in system
 And the user selects the item 'Interaction->Menu' in a tree
 And the user click menu item with name 'Menu4'
-Then the user should see the item list 'Menu8, Menu9, Menu10, Menu11' for 'Menu4'
