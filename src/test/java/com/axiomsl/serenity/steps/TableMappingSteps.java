@@ -228,7 +228,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should see the row with <columnName> column and <cellValue> value in $tableCaption  table"
+    @Aliases(values={"the user should see the row with <columnName> column and <cellValue> value in table"
             ,"the user should see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldSeeRowInTable(@Named("columnName") String columnName,
                                                @Named("cellValue") String cellValue,
@@ -237,7 +237,7 @@ public class TableMappingSteps {
     }
 
     @Then("the user should not see the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in $tableCaption table",
+    @Aliases(values={"the user should not see the row with <columnName> column and <cellValue> value in table",
             "the user should not see the row with '$columnName' column and '$cellValue' value in <tableCaption> table"})
     public void thenTheUserShouldNotSeeRowInTable(@Named("columnName") String columnName,
                                                   @Named("cellValue") String cellValue,
@@ -254,7 +254,7 @@ public class TableMappingSteps {
         step.should_see_column_with_text_in_table(tableCaption, columnName, cellValue);
     }
 
-    @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
+        @Then("the user should see that row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table")
     @Aliases(values={"the user should see that row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in '$tableCaption' table",
                     "the user should see that checkbox for row with '$columnName' column and '$cellValue' value is selected in <tableCaption> table",
@@ -366,7 +366,9 @@ public class TableMappingSteps {
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
     public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {}
 
-
+    @Then("the user should see that row with '$columnName' column and '$cellValue' value is collapsed in '$tableCaption' table")
+    @Alias("the user should see that row with '$columnName' column and '$cellValue' value is collapsed in <tableCaption> table")
+    public void thenTheUserShouldSeeRowIsCollapsedInTable(String columnName, String cellValue, String tableCaption) {}
 
     //endregion @Then
 }

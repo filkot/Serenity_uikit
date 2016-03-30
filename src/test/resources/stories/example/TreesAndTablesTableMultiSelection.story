@@ -289,7 +289,7 @@ Scenario: Select a new date in DatePicker in selected row of MULTI-SELECTION tab
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user multi-selects the row with 'Id' column and '1' value in <tableCaption> table
-And the user inputs '4/10/16 05:12:17 PM' date into 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+And the user inputs '4/10/16 05:12:17 PM' text into 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see '4/10/16 05:12:17 PM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
 And the user should see '3/11/16 08:35:36 PM' date in 'Date' column for row with 'Id' column and '2' value in <tableCaption> table
@@ -302,7 +302,7 @@ Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user multi-selects the row with 'Id' column and '1' value in <tableCaption> table
 And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
-And the user inputs '4/10/16 05:12:17 PM' date into 'Date' column for row with 'Id' column and '2' value in <tableCaption> table
+And the user inputs '4/10/16 05:12:17 PM' text into 'Date' column for row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see '3/10/16 08:32:56 PM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
@@ -444,7 +444,7 @@ Examples:
 
 Scenario: Select a date in DatePicker in a row from the across selected rows in MULTI-SELECTION table
 GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
-When the user inputs '4/10/16 05:12:17 PM' date into 'Date' column for row with 'Id' column and '4' value in <tableCaption> table
+When the user inputs '4/10/16 05:12:17 PM' text into 'Date' column for row with 'Id' column and '4' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see '3/14/16 12:52:38 PM' date in 'Date' column for row with 'Id' column and '2' value in <tableCaption> table
 And the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
