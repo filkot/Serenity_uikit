@@ -45,6 +45,7 @@ public class DatePicker extends BasePage{
 
     //endregion Constructors
 
+    //region Public Methods
     private Date getCurrentMonthYear() {
         String monthYear = wrappedElement.then(By.xpath(currentMonthYearLocator)).getText();
         DateFormat format = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
@@ -118,7 +119,7 @@ public class DatePicker extends BasePage{
 
     public Date getDate() {
         String string = wrappedElement.then(By.xpath(inputLocator)).getValue();
-        DateFormat format = new SimpleDateFormat("MM/dd/yy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("MM/dd/yy");
         Date date = null;
         try {
             date = format.parse(string);
@@ -128,7 +129,7 @@ public class DatePicker extends BasePage{
         return date;
     }
 
-    //region Public Methods
+
     public void setDate(Date date){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -148,6 +149,14 @@ public class DatePicker extends BasePage{
         setYear(yearCur, year);
         setMonth(monthCur, month);
         setDay(day);
+    }
+
+    public void inputDate(String date){
+        wrappedElement.then(By.xpath(inputLocator)).type(date);
+    }
+
+    public void clearInput(){
+        wrappedElement.then(By.xpath(inputLocator)).clear();
     }
 
 

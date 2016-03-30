@@ -122,15 +122,15 @@ public class TableMappingSteps {
         step.press_button_in_column_for_row_in_table(tableCaption, columnName, cellValue, buttonColumnName);
     }
 
-    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
-    @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
-            "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
+    @When("the user selects '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user selects '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+            "the user selects <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
     public void whenTheUserInputsDateIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
                                                             @Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,
                                                             @Named("tableCaption") String tableCaption) {
-        step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
+        step.select_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
     }
 
     @When("the user inputs '$inputText' text into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
@@ -161,6 +161,17 @@ public class TableMappingSteps {
                                                        @Named("columnKey") String columnKey,
                                                        @Named("tableCaption") String tableCaption) {
         step.input_text_in_filter_in_table(tableCaption, columnKey, inputText);
+    }
+
+    @When("the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
+    @Aliases(values={"the user inputs '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+            "the user inputs <inputDate> date into <columnName> column for row with <columnKey> column and <cellValue> value in <tableCaption> table"})
+    public void whenTheUserInputsDateIntoColumnInRowInTable(@Named("inputDate") String inputDate,
+                                                            @Named("columnName") String columnName,
+                                                            @Named("columnKey") String columnKey,
+                                                            @Named("cellValue") String cellValue,
+                                                            @Named("tableCaption") String tableCaption) {
+        step.input_date_in_cell_in_table(tableCaption, columnKey, cellValue, columnName, inputDate);
     }
 
     @When("the user makes '$columnKey' filter empty in '$tableCaption' table")

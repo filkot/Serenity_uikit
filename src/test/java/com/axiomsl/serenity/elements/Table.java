@@ -435,11 +435,18 @@ public class Table extends BasePage {
         }
     }
 
-    public void inputDateInCell(String columnKey, String cellValue, String columnName, Date date){
+    public void selectDateInCell(String columnKey, String cellValue, String columnName, Date date){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
         DatePicker datePicker = new DatePicker(cell.find(By.xpath(datePickerLocator)));
         datePicker.setDate(date);
+    }
+
+    public void inputDateInCell(String columnKey, String cellValue, String columnName, String date){
+        Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        WebElementFacade cell = rowMap.get(columnName);
+        DatePicker datePicker = new DatePicker(cell.find(By.xpath(datePickerLocator)));
+        datePicker.inputDate(date);
     }
 
     public Date getDateInCell(String columnKey, String cellValue, String columnName){
