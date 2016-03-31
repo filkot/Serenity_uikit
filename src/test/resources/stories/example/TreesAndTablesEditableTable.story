@@ -10,134 +10,171 @@ Meta: @group: TableEditable
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
 Scenario: Select a checkbox in unselected column
-When the user select 'Trees and Tables->Editable table' in tree
-And the user select checkbox in column '' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the checkbox in unnamed column for row with column 'Id' and value '0' in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '0' is checked in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Unselect a checkbox in a column
-When the user unselect checkbox in column '' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is unselected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the checkbox in unnamed column for row with column 'Id' and value '0' in <tableCaption> table
+When the user deselects the checkbox in unnamed column for row with column 'Id' and value '0' in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is deselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '0' is unchecked in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Select a column
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user selects row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '0' is checked in <tableCaption> table
+And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Input a text into unselected column
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user input text '999' into column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And the user input text 'user999' into column 'Name' for row with column 'Id' and value '0' in <tableCaption> table
-And the user input text 'Password999' into column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is not selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see text '999' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see text 'user999' in column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see text 'Password999' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '999' text into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs 'user999' text into 'Name' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs 'Password999' text into 'Password' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see '999' text in 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see '999' text in 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see 'user999' text in 'Name' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see 'Password999' text in 'Password' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is unselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Input a date into unselected column
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user input date '4/12/17 09:23:25 PM' into column 'Date' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is not selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see date '4/12/17 09:23:25 PM' in column 'Date' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see date '3/12/16 08:22:24 PM' in column 'Date' for row with column 'Id' and value '1' in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is not selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '4/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see '4/12/17 09:23:25 PM' date in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see '3/12/16 08:22:24 PM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is unselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
-Scenario: Input a text into selected column
+Scenario: Input a text into TextField for the selected column
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user selects row with column 'Id' and value '0' in <tableCaption> table
-And the user input text '999' into column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And the user input text 'user999' into column 'Name' for row with column 'Id' and value '0' in <tableCaption> table
-And the user input text 'Password999' into column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see text '999' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see text 'user999' in column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see text 'Password999' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '999' text into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs 'user999' text into 'Name' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs 'Password999' text into 'Password' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see '999' text in 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see 'user999' text in 'Name' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see 'Password999' text in 'Password' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
-Scenario: Input a date into selected column
+Scenario: Input a date into DatePicker field for the selected column
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user selects row with column 'Id' and value '0' in <tableCaption> table
-And the user input date '4/12/17 09:23:25 PM' into column 'Date' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see row with column 'Id' and value '1' is not selected in <tableCaption> table
-And they should see date '4/12/17 09:23:25 PM' in column 'Date' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see date '3/12/16 08:22:24 PM' in column 'Date' for row with column 'Id' and value '1' in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '1' is not selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '4/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see '4/12/17 09:23:25 PM' date in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see '3/12/16 08:22:24 PM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Cancel the text input (Ctrl+Z) when column is selected
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user selects row with column 'Id' and value '0' in <tableCaption> table
-And the user input text '999' into column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And the user cancel the text input into column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see text '0' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-When the user input text 'user999' into column 'Name' for row with column 'Id' and value '0' in <tableCaption> table
-And the user cancel the text input into column 'Name' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see text 'user0' in column 'Name' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
-When the user input text 'Password999' into column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-And the user cancel the text input into column 'Password' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see text 'ec16e50c-7d33-4619-a2b4-7b37fb395ad6' in column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-And they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user selects the row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '999' text into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user cancels the text input into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see '0' text in 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
 
 Scenario: Cancel the date input (Ctrl+Z) when column is selected
 Given the user refresh the Example page
-When the user select 'Trees and Tables->Editable table' in tree
-And the user selects row with column 'Id' and value '0' in <tableCaption> table
-And the user input date '4/12/17 09:23:25 PM' into column 'Date' for row with column 'Id' and value '0' in <tableCaption> table
-And the user cancel the date input into column 'Id' for row with column 'Id' and value '0' in <tableCaption> table
-Then they should see row with column 'Id' and value '0' is selected in <tableCaption> table
-And they should see date '3/11/16 10:25:15 PM' in column 'Date' for row with column 'Id' and value '' in <tableCaption> table
-And they should see checkbox in column '' for row with column 'Id' and value '0' is selected in <tableCaption> table
+When the user selects the row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '4/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '5/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user cancels the date input into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see '4/12/17 09:23:25 PM' date in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|
+
+Scenario: Make a column with edited textfield not visible
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '999' text into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
+Then the user should not see 'Id' column in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|
+
+Scenario: Make a column with edited textfield visible
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '999' text into 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Id' column visible from the settings wheel for <tableCaption> table
+Then the user should see 'Id' column in <tableCaption> table
+And the user should see '999' text in 'Id' column for row with 'Id' column and '0' value in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|
+
+Scenario: Make a column with edited date not visible
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '4/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user makes 'Date' column not visible from the settings wheel for <tableCaption> table
+Then the user should not see 'Date' column in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|
+
+Scenario: Make a column with edited date visible
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable table' in a tree
+And the user inputs '4/12/17 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user makes 'Date' column not visible from the settings wheel for <tableCaption> table
+And the user makes 'Date' column visible from the settings wheel for <tableCaption> table
+Then the user should see 'Date' column in <tableCaption> table
+And the user should see '4/12/17 09:23:25 PM' text in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|

@@ -147,8 +147,13 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_row_with_value_is_deselected(String tableCaption, String columnName, String cellValue) {
+    public void should_see_row_with_value_is_unselected(String tableCaption, String columnName, String cellValue) {
         assertThat(action.getTable(tableCaption).isRowSelected(columnName, cellValue), is(false));
+    }
+
+    @Step
+    public void should_see_row_with_value_is_deselected(String tableCaption, String columnName, String cellValue) {
+        assertThat(action.getTable(tableCaption).isRowDeselected(columnName, cellValue), is(true));
     }
 
     @Step

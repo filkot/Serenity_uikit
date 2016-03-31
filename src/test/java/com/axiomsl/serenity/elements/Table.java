@@ -276,7 +276,22 @@ public class Table extends BasePage {
 
     public boolean isRowSelected(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
-        if(rowElement.getAttribute("class").contains("selected")){
+        if(rowElement.hasClass("v-selected")){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isRowFocused(String columnName, String cellValue){
+        WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
+        if(rowElement.hasClass("v-table-focus")){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isRowDeselected(String columnName, String cellValue){
+        if(!isRowSelected(columnName, cellValue) || isRowFocused(columnName, cellValue)){
             return true;
         }
         return false;
