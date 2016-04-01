@@ -139,9 +139,9 @@ public class TableMappingSteps {
     @When("the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
     public void whenTheUserCancelsTextIntoColumnInRowInTable(@Named("columnName") String columnName,
-                                                            @Named("columnKey") String columnKey,
-                                                            @Named("cellValue") String cellValue,
-                                                            @Named("tableCaption") String tableCaption) {
+                                                             @Named("columnKey") String columnKey,
+                                                             @Named("cellValue") String cellValue,
+                                                             @Named("tableCaption") String tableCaption) {
         step.undo_text_in_cell_in_table(tableCaption, columnKey, cellValue, columnName);
     }
 
