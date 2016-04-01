@@ -11,20 +11,17 @@ GivenStories: stories/example/CommonLoginExamplesApp.story
 Scenario: Tab Active
 Given the user refresh the Example page
 When the user selects the item 'Interaction->TabPanel' in a tree
-And the user type text '_01' in text field
-And the user click button with name 'Add tab'
-And the user click button with name 'Add tab'
-And the user click button with name 'new tab_011'
-Then the user should see the label with text 'new tab_011'
+And the user type text 'tab_' in text field
+And the user clicks on 'Add tab' button
+And the user clicks on 'Add tab' button
+And the user clicks on 'tab_1' button
+Then the user should see the label with 'tab_1' text
 
 Scenario: Tab Unactive
 Given the user refresh the Example page
 When the user selects the item 'Interaction->TabPanel' in a tree
-And the user type text '_01' in text field
-And the user click button with name 'Add tab'
-And the user click button with name 'Add tab'
-And the user click button with name 'new tab_011'
-Then the user should not see the label with text 'new tab_012'
-
-!-- Not yet implemented
-!-- Scenario: Tab Moving a tab
+And the user type text 'tab_' in text field
+And the user clicks on 'Add tab' button
+And the user clicks on 'Add tab' button
+And the user clicks on 'tab_1' button
+Then the user should not see the label with 'tab_2' text
