@@ -64,6 +64,9 @@ public class BasePage extends PageObject {
         return ((hsX2 - hsX1) != 0);
     }
 
+
+//_______Actions________________________________________________________________________________________________________
+
     public void open_dashboard(String dashboardName) {
         WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();
@@ -106,12 +109,14 @@ public class BasePage extends PageObject {
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
     }
 
-//_______Converter______________________________________________________________________________________________________
-
     public void dragAndDropByOffset(WebElementFacade element, int offsetX, int offsetY) {
         Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
-        actions.dragAndDropBy(element, offsetX, offsetY).click().build().perform();
+        actions.dragAndDropBy(element, offsetX, offsetY).build().perform();
     }
+
+//_______Converter______________________________________________________________________________________________________
+
+
 
     public boolean VisibilityOfElementLocated(By locator) {
         try {
