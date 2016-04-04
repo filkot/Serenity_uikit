@@ -64,18 +64,21 @@ public class BasePage extends PageObject {
         return ((hsX2 - hsX1) != 0);
     }
 
-
-
-//_______Actions________________________________________________________________________________________________________
-
     public void open_dashboard(String dashboardName) {
         WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();
     }
 
+//_______Actions________________________________________________________________________________________________________
+
     public void clickByCoordinate(WebElementFacade element, int x, int y) {
         Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
         actions.moveToElement(element, x, y).click().build().perform();
+    }
+
+    public void click(WebElementFacade element) {
+        Actions actions = new Actions(WebDriverHelper.GetGlobalWebDriver());
+        actions.moveToElement(element).click().build().perform();
     }
 
     public void doubleClick(WebElementFacade element) {

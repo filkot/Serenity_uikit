@@ -37,11 +37,12 @@ public class CheckBox extends BasePage {
     }
 
     public WebElementFacade getCheckBox() {
-        try {
-            return this.wrappedElement.then(By.xpath(checkboxLocator));
-        } catch (NoSuchElementException var2) {
-            return null;
-        }
+        return wrappedElement;
+//        try {
+//            return this.wrappedElement.then(By.xpath(checkboxLocator));
+//        } catch (NoSuchElementException var2) {
+//            return null;
+//        }
     }
 
     public String getCaptionText() {
@@ -55,18 +56,21 @@ public class CheckBox extends BasePage {
 
     public void select() {
         WebElementFacade checkbox = this.getCheckBox();
-        if (!checkbox.isSelected()) {
-            checkbox.click();
+        if (!checkbox.then(By.xpath(checkboxLocator)).isSelected()) {
+            click(checkbox);
         }
-
     }
 
     public void deselect() {
         WebElementFacade checkbox = this.getCheckBox();
-        if (checkbox.isSelected()) {
-            checkbox.click();
+        if (checkbox.then(By.xpath(checkboxLocator)).isSelected()) {
+            click(checkbox);
         }
+    }
 
+    public boolean isSelected() {
+        WebElementFacade checkbox = this.getCheckBox();
+        return checkbox.then(By.xpath(checkboxLocator)).isSelected();
     }
 
     public void set(boolean value) {
@@ -75,12 +79,6 @@ public class CheckBox extends BasePage {
         } else {
             this.deselect();
         }
-    }
-
-    public boolean isSelected() {
-        WebElementFacade checkbox = this.getCheckBox();
-        checkbox.getAttribute("checked");
-        return checkbox.isSelected();
     }
 
     //endregion Public Methods

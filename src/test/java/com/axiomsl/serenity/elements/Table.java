@@ -320,6 +320,8 @@ public class Table extends BasePage {
 
     public void selectCheckboxInRow(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
+//        WebElementFacade checkBox = rowElement.then(By.xpath(checkBoxLocator));
+//        checkBox.click();
         CheckBox checkBox = new CheckBox(rowElement.then(By.xpath(checkBoxLocator)));
         checkBox.set(true);
     }
