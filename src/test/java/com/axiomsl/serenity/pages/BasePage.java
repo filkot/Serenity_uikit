@@ -174,6 +174,15 @@ public class BasePage extends PageObject {
         actions.dragAndDropBy(element, offsetX, offsetY).build().perform();
     }
 
+    public void moveMouseByOffset(int offsetX, int offsetY) {
+        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        actions.moveByOffset(offsetX, offsetY).build().perform();
+    }
+
+//_______Converter______________________________________________________________________________________________________
+
+
+
     public boolean VisibilityOfElementLocated(By locator) {
         try {
             List<WebElementFacade> elements = findAll(locator);

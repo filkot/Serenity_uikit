@@ -8,14 +8,17 @@ Narrative:
 Meta: @group: InteractionSlidingOutPanel
 GivenStories: stories/example/CommonLoginExamplesApp.story
 
-Scenario: Active
+Scenario: Slide panel is active
+Meta: @id1 1
 Given the user refresh the Example page
 When the user selects the item 'Interaction->SlidingOut panel' in a tree
 And the user moves a cursor on sliding panel
 Then the user should see active sliding panel
 
-Scenario: Inactive
+Scenario: Slide panel is inactive
+Meta: @id2 2
 Given the user refresh the Example page
 When the user selects the item 'Interaction->SlidingOut panel' in a tree
-And the user moves cursor on example class path area
+And the user moves a cursor on sliding panel
+And the user moves a cursor out of sliding panel
 Then the user should see inactive sliding panel
