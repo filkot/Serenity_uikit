@@ -32,60 +32,6 @@ public class BasePage extends PageObject {
 
     //endregion Protected Fields
 
-    //region Protected Static Methods
-
-    protected static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
-        private final Converter<F, T> valueConverter;
-
-        private MapConverter(Converter<F, T> valueConverter) {
-            this.valueConverter = valueConverter;
-        }
-
-        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
-            return new MapConverter(valueConverter);
-        }
-
-        public Map<K, T> convert(Map<K, F> map) {
-            return Lambda.convertMap(map, this.valueConverter);
-        }
-    }
-
-    protected static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
-        private final Converter<F, T> itemsConverter;
-
-        private ListConverter(Converter<F, T> itemsConverter) {
-            this.itemsConverter = itemsConverter;
-        }
-
-        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
-            return new ListConverter(itemsConverter);
-        }
-
-        public List<T> convert(List<F> list) {
-            return Lambda.convert(list, this.itemsConverter);
-        }
-    }
-
-    protected static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
-        private WebElementToTextConverter() {
-        }
-
-        public static Converter<WebElementFacade, String> toText() {
-            return new WebElementToTextConverter();
-        }
-
-        public static Converter<WebElementFacade, String> toTextValues() {
-            return new WebElementToTextConverter();
-        }
-
-        public String convert(WebElementFacade element) {
-            // return element.getText();
-            return element.getAttribute("textContent");
-        }
-    }
-
-    //endregion Protected Static Methods
-
     //region Public Static Methods
 
     public static boolean VisibilityOfElement(WebElementFacade element) {

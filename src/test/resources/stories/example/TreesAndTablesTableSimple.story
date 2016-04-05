@@ -291,7 +291,7 @@ And the user selects the checkbox with 'name' caption
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
 And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is checked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is checked in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
 |tableCaption|
@@ -305,7 +305,7 @@ And the user selects the checkbox with 'name' caption
 And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 And the user selects the checkbox in unnamed column for row with column 'Id' and value '1' in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is checked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is checked in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
 |tableCaption|
@@ -320,7 +320,7 @@ And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 And the user selects the checkbox in unnamed column for row with column 'Id' and value '1' in <tableCaption> table
 And the user deselects the checkbox in unnamed column for row with column 'Id' and value '1' in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 And the user should see the label with 'ALL' text
 Examples:
 |tableCaption|
@@ -335,7 +335,7 @@ And the user selects 'CHECKBOX' item from 'Select RowHeaderMode' combo box
 And the user selects the checkbox in unnamed column for row with column 'Id' and value '1' in <tableCaption> table
 And the user reselects the checkbox in unnamed column for row with column 'Id' and value '1' in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is checked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is checked in <tableCaption> table
 And the user should see the label with 'user1' text
 Examples:
 |tableCaption|
@@ -351,8 +351,8 @@ And the user selects the checkbox in unnamed column for row with column 'Id' and
 And the user selects the checkbox in unnamed column for row with column 'Id' and value '2' in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '2' is checked in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '2' is checked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 And the user should see the label with 'user2' text
 Examples:
 |tableCaption|
@@ -368,8 +368,8 @@ And the user selects the checkbox in unnamed column for row with column 'Id' and
 And the user selects the row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '2' is checked in <tableCaption> table
-And the user should see that checkbox in unnamed column for row with column 'Id' and value '1' is unchecked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '2' is checked in <tableCaption> table
+And the user should see that checkbox for row with column 'Id' and value '1' is unchecked in <tableCaption> table
 And the user should see the label with 'user2' text
 Examples:
 |tableCaption|

@@ -1,11 +1,13 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
-import com.axiomsl.serenity.helpers.HelperManager;
-import com.axiomsl.serenity.helpers.WebDriverHelper;
+import com.axiomsl.serenity.helpers.ConversionsHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import java.util.*;
 
@@ -35,9 +37,11 @@ public class Table extends BasePage {
     //endregion Private Fields
 
     //region Constructors
+
     public Table(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }
+
     //endregion Constructors
 
     //region Public Methods
@@ -51,7 +55,7 @@ public class Table extends BasePage {
     }
 
     public List<String> getHeadingsAsString() {
-        return Lambda.convert(this.getHeadings(), BasePage.WebElementToTextConverter.toTextValues());
+        return Lambda.convert(this.getHeadings(), ConversionsHelper.WebElementToTextConverter.toTextValues());
 //      return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
     }
 
@@ -69,8 +73,8 @@ public class Table extends BasePage {
     }
 
     public List<List<String>> getRowsAsString() {
-        return Lambda.convert(this.getRows(), BasePage.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
-//        return Lambda.convert(this.getRows(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
+        return Lambda.convert(this.getRows(), ConversionsHelper.ListConverter.toListsConvertingEachItem(ConversionsHelper.WebElementToTextConverter.toTextValues()));
+        //return Lambda.convert(this.getRows(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
     public List<List<WebElementFacade>> getColumns() {
@@ -97,8 +101,8 @@ public class Table extends BasePage {
     }
 
     public List<List<String>> getColumnsAsString() {
-        return Lambda.convert(this.getColumns(), BasePage.ListConverter.toListsConvertingEachItem(BasePage.WebElementToTextConverter.toTextValues()));
-//        return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
+        return Lambda.convert(this.getColumns(), ConversionsHelper.ListConverter.toListsConvertingEachItem(ConversionsHelper.WebElementToTextConverter.toTextValues()));
+        //return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
     public List<String> getColumnAsStringByIndex(int index) {
@@ -166,7 +170,7 @@ public class Table extends BasePage {
     }
 
     public List<Map<String, String>> getRowsAsStringMappedToHeadings(List<String> headings) {
-        return Lambda.convert(this.getRowsMappedToHeadings(headings), BasePage.MapConverter.toMapsConvertingEachValue(BasePage.WebElementToTextConverter.toText()));
+        return Lambda.convert(this.getRowsMappedToHeadings(headings), ConversionsHelper.MapConverter.toMapsConvertingEachValue(ConversionsHelper.WebElementToTextConverter.toText()));
     }
 
     public void makeColumnVisible(String item){

@@ -71,7 +71,7 @@ And the user makes the textfield empty in 'Value' column in the first row in a t
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
-And the user presses on 'Change Random Row' button
+When the user presses on 'Change Random Row' button
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
@@ -84,7 +84,7 @@ And the user makes the textfield empty in 'Name' column in the first row in a ta
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
-And the user presses on 'Change Random Row' button
+When the user presses on 'Change Random Row' button
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
@@ -99,7 +99,7 @@ And the user makes the textfield empty in 'Value' column in the first row in a t
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
-And the user presses on 'Change Random Row' button
+When the user presses on 'Change Random Row' button
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
@@ -112,7 +112,7 @@ And the user presses on 'Add Row' button
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
-And the user presses on 'Change Random Row' button
+When the user presses on 'Change Random Row' button
 Then the user should see '1' rows in a table
 And the user should see 'Total Rows' is '1'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
@@ -123,7 +123,7 @@ And the user presses on 'Add Row' button
 Then the user should see '11' rows in a table
 And the user should see 'Total Rows' is '11'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table
-And the user presses on 'Change Random Row' button
+When the user presses on 'Change Random Row' button
 Then the user should see '11' rows in a table
 And the user should see 'Total Rows' is '11'
 And the user should see that 'Sum Value' equals sum of values in all rows in a table

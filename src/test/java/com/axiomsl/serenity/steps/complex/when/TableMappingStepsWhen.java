@@ -126,7 +126,8 @@ public class TableMappingStepsWhen {
     }
 
     @When("the user inputs '$inputText' {date|text} into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user inputs '$inputText' {date|text} into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
+    @Aliases(values={"the user inputs '$inputText' {date|text} into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+                    "the user inputs '$inputText' {date|text} into '$columnName' column for row with '$columnKey' column and '$cellValue' value in $tableCaption table"})
     public void whenTheUserInputsTextIntoColumnInRowInTable(@Named("inputText") String inputText,
                                                             @Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
@@ -136,7 +137,8 @@ public class TableMappingStepsWhen {
     }
 
     @When("the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
-    @Alias("the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
+    @Aliases(values={"the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table",
+            "the user cancels the {date|text} input into '$columnName' column for row with '$columnKey' column and '$cellValue' value in $tableCaption table"})
     public void whenTheUserCancelsTextIntoColumnInRowInTable(@Named("columnName") String columnName,
                                                              @Named("columnKey") String columnKey,
                                                              @Named("cellValue") String cellValue,
@@ -197,6 +199,19 @@ public class TableMappingStepsWhen {
 
     @When("the user removes all rows by clicking on '$buttonName' button")
     public void whenTheUserRemoveAllRowsByButtonClick(String buttonName) {}
+
+    @When("the user selects the row with '$rowValue' value in a textfield in '$columnName' column in '$tableCaption' table")
+    @Alias("the user selects the row with '$rowValue' value in a textfield in '$columnName' column in <tableCaption> table")
+    public void whenTheUserSelectRowWithValueInTextField(String rowValue, String columnName, String tableCaption) {}
+
+    @When("the user deselects the row with '$rowValue' value in a textfield in '$columnName' column in '$tableCaption' table")
+    @Alias("the user deselects the row with '$rowValue' value in a textfield in '$columnName' column in <tableCaption> table")
+    public void whenTheUserDeselectRowWithValueInTextField(String rowValue, String columnName, String tableCaption) {}
+
+    @When("the user makes the textfield empty in '$rowValue' column in the first row in '$tableCaption' table")
+    @Aliases(values={"the user makes the textfield empty in '$rowValue' column in the first row in <tableCaption> table",
+            "the user makes the textfield empty in '$rowValue' column in the first row in $tableCaption table"})
+    public void whenTheUserMakesEmptyTextFieldInFirstRow(String rowValue, String tableCaption) {}
 
     //endregion @When
 }
