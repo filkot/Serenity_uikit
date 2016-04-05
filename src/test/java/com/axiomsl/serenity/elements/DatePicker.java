@@ -1,10 +1,9 @@
 package com.axiomsl.serenity.elements;
 
-import com.axiomsl.serenity.helpers.WebDriverHelper;
+import com.axiomsl.serenity.helpers.HelperManager;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,7 +19,6 @@ import java.util.Locale;
  */
 public class DatePicker extends BasePage{
     //region Private Fields
-    private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String buttonLocator = ".//button[contains(@class, 'v-datefield-button')]";
     private String inputLocator = ".//input";
@@ -39,13 +37,12 @@ public class DatePicker extends BasePage{
     //region Constructors
 
     public DatePicker(WebElementFacade wrappedElement) {
-        this.driver = WebDriverHelper.GetGlobalWebDriver();
         this.wrappedElement = wrappedElement;
     }
 
     //endregion Constructors
 
-    //region Public Methods
+    //region Private Methods
     private Date getCurrentMonthYear() {
         String monthYear = wrappedElement.then(By.xpath(currentMonthYearLocator)).getText();
         DateFormat format = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
@@ -58,36 +55,30 @@ public class DatePicker extends BasePage{
         return date;
     }
 
-    public void setYear(int yearCur, int year) {
+    private void setCurrentCalendarItem(int calCur, int cal) {
         int n;
         WebElementFacade button;
 
-        if(yearCur > year){
-            n = yearCur - year;
+        if(calCur > cal){
+            n = calCur - cal;
             button = wrappedElement.then(By.xpath(prevyearLocator));
         }else{
-            n = year - yearCur;
+            n = cal - calCur;
             button = wrappedElement.then(By.xpath(nextyearLocator));
         }
         for(int i =0; i<n; i++){
             button.click();
         }
     }
+    //endregion Private Methods
+
+    //region Public Methods
+    public void setYear(int yearCur, int year) {
+        setCurrentCalendarItem(yearCur, year);
+    }
 
     public void setMonth(int monthCur, int month) {
-        int n;
-        WebElementFacade button;
-
-        if(monthCur > month){
-            n = monthCur - month;
-            button = wrappedElement.then(By.xpath(prevmonthLocator));
-        }else{
-            n = month - monthCur;
-            button = wrappedElement.then(By.xpath(nextmonthLocator));
-        }
-        for(int i =0; i<n; i++){
-            button.click();
-        }
+        setCurrentCalendarItem(monthCur, month);
     }
 
     public void setDay(int day) {
@@ -119,16 +110,8 @@ public class DatePicker extends BasePage{
 
     public Date getDate() {
         String string = wrappedElement.then(By.xpath(inputLocator)).getValue();
-        DateFormat format = new SimpleDateFormat("MM/dd/yy");
-        Date date = null;
-        try {
-            date = format.parse(string);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
+        return HelperManager.Conversions.convertStringToDate(string);
     }
-
 
     public void setDate(Date date){
         Calendar calendar = Calendar.getInstance();
@@ -158,7 +141,6 @@ public class DatePicker extends BasePage{
     public void clearInput(){
         wrappedElement.then(By.xpath(inputLocator)).clear();
     }
-
 
     //endregion Public Methods
 }

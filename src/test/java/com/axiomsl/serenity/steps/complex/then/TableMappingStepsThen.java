@@ -69,16 +69,16 @@ public class TableMappingStepsThen {
         step.should_see_column_with_text_in_table(tableCaption, columnName, cellValue);
     }
 
-    @Then("the user should see that checkbox in unnamed column for row with column '$columnName' and value '$cellValue' is checked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in unnamed column for row with column '$columnName' and value '$cellValue' is checked in <tableCaption> table")
+    @Then("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is checked in '$tableCaption' table")
+    @Alias("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is checked in <tableCaption> table")
     public void thenTheUserShouldSeeCheckboxIsCheckedInUnnamedColumnInTable(@Named("columnName") String columnName,
                                                                             @Named("cellValue") String cellValue,
                                                                             @Named("tableCaption") String tableCaption) {
         step.should_see_row_with_value_is_selected(tableCaption, columnName, cellValue);
     }
 
-    @Then("the user should see that checkbox in unnamed column for row with column '$columnName' and value '$cellValue' is unchecked in '$tableCaption' table")
-    @Alias("the user should see that checkbox in unnamed column for row with column '$columnName' and value '$cellValue' is unchecked in <tableCaption> table")
+    @Then("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is unchecked in '$tableCaption' table")
+    @Alias("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is unchecked in <tableCaption> table")
     public void thenTheUserShouldSeeCheckboxIsUncheckedInUnnamedColumnInTable(@Named("columnName") String columnName,
                                                                               @Named("cellValue") String cellValue,
                                                                               @Named("tableCaption") String tableCaption) {
@@ -155,7 +155,7 @@ public class TableMappingStepsThen {
 
     @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserShouldSeeDateInRowInTable(@Named("inputDate") Date inputDate,
+    public void whenTheUserShouldSeeDateInRowInTable(@Named("inputDate") String inputDate,
                                                      @Named("columnName") String columnName,
                                                      @Named("columnKey") String columnKey,
                                                      @Named("cellValue") String cellValue,
@@ -205,6 +205,9 @@ public class TableMappingStepsThen {
 
     @Then("the user should see 'Total Rows' is '$totalRows'")
     public void thenTheUserShouldSeeTotalRowsInLabel(String $totalRows) {}
+
+    @Then("the user should see that 'Sum Value' equals sum of values in all rows in a table")
+    public void thenTheUserShouldSeeSumValueEqualsInLabel() {}
 
     //endregion @Then
 }

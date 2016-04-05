@@ -17,6 +17,7 @@ public class Button extends BasePage {
     //endregion Private Fields
 
     //region Constructors
+
     public Button(WebElementFacade wrappedElement) {
         this.wrappedElement = wrappedElement;
     }

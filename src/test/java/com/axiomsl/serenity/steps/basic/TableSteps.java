@@ -1,11 +1,14 @@
 package com.axiomsl.serenity.steps.basic;
 
 import com.axiomsl.serenity.actions.TableAction;
+import com.axiomsl.serenity.helpers.HelperManager;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.hamcrest.Matchers;
+
 import java.util.Date;
 import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -102,8 +105,8 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, Date inputDate) {
-        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.<Date>is(inputDate));
+    public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputDate) {
+        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate)));
     }
 
     //endregion Assertions

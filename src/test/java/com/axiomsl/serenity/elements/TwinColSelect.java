@@ -1,11 +1,9 @@
 package com.axiomsl.serenity.elements;
 
-import com.axiomsl.serenity.helpers.WebDriverHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 

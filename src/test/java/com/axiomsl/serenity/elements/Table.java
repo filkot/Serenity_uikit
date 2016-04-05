@@ -1,6 +1,7 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
+import com.axiomsl.serenity.helpers.HelperManager;
 import com.axiomsl.serenity.helpers.WebDriverHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,7 +16,6 @@ public class Table extends BasePage {
 
     //region Private Fields
 
-    private final WebDriver driver;
     private final WebElementFacade wrappedElement;
     private String rowLocator = ".//tr[contains(@class, 'v-table-row')]";
     private String rowByCellLocator = "./ancestor::tr[contains(@class, 'v-table-row')]";
@@ -36,7 +36,6 @@ public class Table extends BasePage {
 
     //region Constructors
     public Table(WebElementFacade wrappedElement) {
-        this.driver = WebDriverHelper.GetGlobalWebDriver();
         this.wrappedElement = wrappedElement;
     }
     //endregion Constructors

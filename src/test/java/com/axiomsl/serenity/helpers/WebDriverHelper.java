@@ -10,7 +10,7 @@ final public class WebDriverHelper {
 
     //region Public Static Methods
 
-    public static WebDriver GetGlobalWebDriver()
+    public WebDriver GetGlobalWebDriver()
     {
         return getDriver();
     }
