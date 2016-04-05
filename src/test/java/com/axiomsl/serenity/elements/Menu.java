@@ -1,6 +1,7 @@
 package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
+import com.axiomsl.serenity.helpers.ConversionsHelper;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -97,7 +98,7 @@ public class Menu extends BasePage {
     }
 
     public List<String> getSubItemsListAsString() {
-        return Lambda.convert(this.getSubItemsList(), WebElementToTextConverter.toTextValues());
+        return Lambda.convert(this.getSubItemsList(), ConversionsHelper.WebElementToTextConverter.toTextValues());
     }
     //endregion Public Methods
 }
