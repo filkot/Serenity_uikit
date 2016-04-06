@@ -206,8 +206,17 @@ public class TableMappingStepsThen {
     @Then("the user should see 'Total Rows' is '$totalRows'")
     public void thenTheUserShouldSeeTotalRowsInLabel(String $totalRows) {}
 
-    @Then("the user should see that 'Sum Value' equals sum of values in all rows in a table")
-    public void thenTheUserShouldSeeSumValueEqualsInLabel() {}
+    @Then("the user should see that 'Sum Value' equals sum of values in all rows in {'$tableCaption'|$tableCaption} table")
+    public void thenTheUserShouldSeeSumValueEqualsInLabel(String tableCaption) {}
+
+    @Then("the user should see that 'Sum Value' is '$sumValue'")
+    public void thenTheUserShouldSeeSumValueEqualsInLabel(String sumValue) {}
+
+    @Then("the user should see '$cellValue' value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
+    public void thenTheUserShouldSeeSumValueEqualsInLabel(String cellValue, String columnName, String tableCaption) {}
+
+    @Then("the user should see the empty value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
+    public void thenTheUserShouldSeeSumValueEqualsInLabel(String columnName, String tableCaption) {}
 
     //endregion @Then
 }
