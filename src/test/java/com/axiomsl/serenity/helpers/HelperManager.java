@@ -7,8 +7,8 @@ final public class HelperManager {
 
     //region Private Static Fields
 
-    private static ConversionsHelper ConversionsHelperInstance;
-    private static WebDriverHelper WebDriverHelperInstance;
+    private static ConversionsHelper ConversionsHelperInstance = null;
+    private static WebDriverHelper WebDriverHelperInstance = null;
 
     //endregion Private Static Fields
 

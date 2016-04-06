@@ -161,6 +161,10 @@ public class TableMappingStepsWhen {
         step.make_filter_empty_in_table(tableCaption, columnKey);
     }
 
+    @When("the user clears '$columnKey' filter in '$tableCaption' table")
+    @Alias("the user clears '$columnKey' filter in <tableCaption> table")
+    public void whenTheUserClearsFilterInTable(String columnKey, String tableCaption) {}
+
     @When("the user clicks '$n' times on '$columnKey' column in '$tableCaption' table")
     @Alias("the user clicks '$n' times on '$columnKey' column in <tableCaption> table")
     public void whenTheUserClicksNTimesOnHeaderInTable(@Named("n") int n,
@@ -212,6 +216,14 @@ public class TableMappingStepsWhen {
     @Aliases(values={"the user makes the textfield empty in '$rowValue' column in the first row in <tableCaption> table",
             "the user makes the textfield empty in '$rowValue' column in the first row in $tableCaption table"})
     public void whenTheUserMakesEmptyTextFieldInFirstRow(String rowValue, String tableCaption) {}
+
+    @When("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
+    @Alias("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
+    public void whenTheUserSelectDateOnDayAffterInFilterInTable(String dayValue, String dateDirection, String filterName, String tableCaption) {}
+
+    @When("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
+    @Alias("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
+    public void whenTheUserSelectDateOnDayBeforeInFilterInTable(String dayValue, String dateDirection, String filterName, String tableCaption) {}
 
     //endregion @When
 }

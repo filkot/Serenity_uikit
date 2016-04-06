@@ -397,13 +397,8 @@ Scenario: Multi-select the rows across the current in MULTI-SELECTION table
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
-Then the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
-When the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
-Then the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
-And the user should see that row with 'Id' column and '5' value is deselected in <tableCaption> table
-And the user should see that row with 'Id' column and '6' value is selected in <tableCaption> table
-And the user should see that row with 'Id' column and '7' value is deselected in <tableCaption> table
-When the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
 And the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '3' value is deselected in <tableCaption> table
@@ -419,7 +414,7 @@ Scenario: Unselect a checkbox in a row from the across selected rows in MULTI-SE
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
-When the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
 And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
 And the user unchecks the checkbox in 'Active' column for row with 'Id' column and '4' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table

@@ -189,7 +189,23 @@ public class TableMappingStepsThen {
 
     @Then("the user should see that values are sorted as '$listOfValues' in '$columnName' column in '$tableCaption' table")
     @Alias("the user should see that values are sorted as '$listOfValues' in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedAsListInTable(List listOfValues, String columnName, String tableCaption) {}
+    public void thenTheUserShouldSeeRowsAreSortedAsListInColumnInTable(List listOfValues, String columnName, String tableCaption) {}
+
+    @Then("the user should see that values are sorted ascendingly in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted ascendingly in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedAscInColumnInTable(String columnName, String tableCaption) {}
+
+    @Then("the user should see that values are sorted descendingly in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted descendingly in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedDescInColumnInTable(String columnName, String tableCaption) {}
+
+    @Then("the user should see that values are sorted as date ascendingly in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted as date ascendingly in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedAscAsDateInColumnInTable(String columnName, String tableCaption) {}
+
+    @Then("the user should see that values are sorted as date descendingly in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted as date descendingly in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedDescAsDateInColumnInTable(String columnName, String tableCaption) {}
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
@@ -217,6 +233,18 @@ public class TableMappingStepsThen {
 
     @Then("the user should see the empty value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
     public void thenTheUserShouldSeeEmptyValueInTextFieldInColumnInFirstRow(String columnName, String tableCaption) {}
+
+    @Then("the user should not see the filter in '$columnName' column in {'$tableCaption'|$tableCaption} table")
+    @Alias("the user should not see the filter in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldNotSeeFilterInColumnInTable(String columnName, String tableCaption) {}
+
+    @Then("the user should see the filter with textfield in '$columnName' column in {'$tableCaption'|$tableCaption} table")
+    @Alias("the user should see the filter with textfield in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeTextFieldFilterInColumnInTable(String columnName, String tableCaption) {}
+
+    @Then("the user should see the filter with datepicker in '$columnName' column in {'$tableCaption'|$tableCaption} table")
+    @Alias("the user should see the filter with datepicker in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeDatePickerFilterInColumnInTable(String columnName, String tableCaption) {}
 
     //endregion @Then
 }
