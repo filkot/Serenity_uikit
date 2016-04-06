@@ -183,8 +183,8 @@ public class TableMappingStepsThen {
         step.should_see_text_in_cell(tableCaption, columnKey, cellValue, columnName, inputText);
     }
 
-    @Then("the user should see that rows with '$columnName' column contain the values from '$startValue' to '$endValue' in '$tableCaption' table")
-    @Alias("the user should see that rows with '$columnName' column contain the values from '$startValue' to '$endValue' in <tableCaption> table")
+    @Then("the user should see that rows in '$columnName' column contain the values from '$startValue' to '$endValue' in '$tableCaption' table")
+    @Alias("the user should see that rows in '$columnName' column contain the values from '$startValue' to '$endValue' in <tableCaption> table")
     public void thenTheUserShouldSeeRowsContainValuesFromToInTable(String columnName, String startValue, String endValue, String tableCaption) {}
 
     @Then("the user should see that values are sorted as '$listOfValues' in '$columnName' column in '$tableCaption' table")
@@ -210,13 +210,13 @@ public class TableMappingStepsThen {
     public void thenTheUserShouldSeeSumValueEqualsInLabel(String tableCaption) {}
 
     @Then("the user should see that 'Sum Value' is '$sumValue'")
-    public void thenTheUserShouldSeeSumValueEqualsInLabel(String sumValue) {}
+    public void thenTheUserShouldSeeSumValuelsInLabel(String sumValue) {}
 
     @Then("the user should see '$cellValue' value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
-    public void thenTheUserShouldSeeSumValueEqualsInLabel(String cellValue, String columnName, String tableCaption) {}
+    public void thenTheUserShouldSeeValueInTextFieldInColumnInFirstRow(String cellValue, String columnName, String tableCaption) {}
 
     @Then("the user should see the empty value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
-    public void thenTheUserShouldSeeSumValueEqualsInLabel(String columnName, String tableCaption) {}
+    public void thenTheUserShouldSeeEmptyValueInTextFieldInColumnInFirstRow(String columnName, String tableCaption) {}
 
     //endregion @Then
 }
