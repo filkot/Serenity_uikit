@@ -69,16 +69,16 @@ public class TableMappingStepsThen {
         step.should_see_column_with_text_in_table(tableCaption, columnName, cellValue);
     }
 
-    @Then("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is checked in '$tableCaption' table")
-    @Alias("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is checked in <tableCaption> table")
+    @Then("the user should see that checkbox for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table")
+    @Alias("the user should see that checkbox for row with '$columnName' column and '$cellValue' value is checked in <tableCaption> table")
     public void thenTheUserShouldSeeCheckboxIsCheckedInUnnamedColumnInTable(@Named("columnName") String columnName,
                                                                             @Named("cellValue") String cellValue,
                                                                             @Named("tableCaption") String tableCaption) {
         step.should_see_row_with_value_is_selected(tableCaption, columnName, cellValue);
     }
 
-    @Then("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is unchecked in '$tableCaption' table")
-    @Alias("the user should see that checkbox for row with column '$columnName' and value '$cellValue' is unchecked in <tableCaption> table")
+    @Then("the user should see that checkbox for row with '$columnName' column and '$cellValue' value is unchecked in '$tableCaption' table")
+    @Alias("the user should see that checkbox for row with '$columnName' column and '$cellValue' value is unchecked in <tableCaption> table")
     public void thenTheUserShouldSeeCheckboxIsUncheckedInUnnamedColumnInTable(@Named("columnName") String columnName,
                                                                               @Named("cellValue") String cellValue,
                                                                               @Named("tableCaption") String tableCaption) {

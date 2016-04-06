@@ -80,7 +80,7 @@ Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user selects the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child4' value in <tableCaption> table
-Then the user should see that row with 'Name' column and 'child1' value is deselected in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child4' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
@@ -129,8 +129,8 @@ When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user selects the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
 Then the user should see that row with 'Name' column and 'child1' value is selected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child2' value is deselected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child3' value is deselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child2' value is unselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child3' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
@@ -202,14 +202,12 @@ And the user selects the row with 'Name' column and 'child1' value in <tableCapt
 And the user multi-selects the row with 'Name' column and 'child4' value in <tableCaption> table
 And the user expands the row with 'Name' column and 'child4' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child7' value in <tableCaption> table
-Then the user should see that row with 'Name' column and 'child1' value is deselected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child4' value is deselected in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child4' value is unselected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child7' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
-
---->
 
 Scenario: Select a child row in TreeTable
 Given the user refresh the Example page
@@ -217,7 +215,7 @@ When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child2' value in <tableCaption> table
 Then the user should see that row with 'Name' column and 'child2' value is selected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child1' value is deselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
@@ -228,7 +226,7 @@ When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child2' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child3' value in <tableCaption> table
-Then the user should see that row with 'Name' column and 'child2' value is deselected in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child2' value is unselected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child3' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
@@ -242,7 +240,7 @@ And the user selects the row with 'Name' column and 'child2' value in <tableCapt
 And the user multi-selects the row with 'Name' column and 'child3' value in <tableCaption> table
 Then the user should see that row with 'Name' column and 'child3' value is selected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child2' value is selected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child1' value is deselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
@@ -267,7 +265,30 @@ When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child2' value in <tableCaption> table
 And the user collapses the row with 'Name' column and 'child1' value in <tableCaption> table
-Then the user should see that row with 'Name' column and 'child1' value is deselected in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select all children rows in a single unselected parent row in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child10' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child11' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child12' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child10' value is unselected in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select all children rows in a single selected parent row in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child10' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child10' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child11' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child12' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child10' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
@@ -304,7 +325,7 @@ When the user selects the item 'Trees and Tables->TreeTable' in a tree
 And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child3' value in <tableCaption> table
 And the user selects the row with 'Name' column and 'child4' value in <tableCaption> table
-Then the user should see that row with 'Name' column and 'child3' value is deselected in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child3' value is unselected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child4' value is selected in <tableCaption> table
 Examples:
 |tableCaption|
@@ -331,8 +352,8 @@ And the user multi-selects the row with 'Name' column and 'child4' value in <tab
 And the user expands the row with 'Name' column and 'child4' value in <tableCaption> table
 Then the user should see that row with 'Name' column and 'child3' value is selected in <tableCaption> table
 And the user should see that row with 'Name' column and 'child4' value is selected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child5' value is deselected in <tableCaption> table
-And the user should see that row with 'Name' column and 'child6' value is deselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child5' value is unselected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child6' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|
@@ -570,6 +591,188 @@ And the user collapses the row with 'Name' column and 'child10' value in <tableC
 And the user inputs 'a' text into 'Id' filter in <tableCaption> table
 And the user makes 'Id' filter empty in <tableCaption> table
 Then the user should see that row with 'Name' column and 'child10' value is collapsed in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select a parent row using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is selected in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select another parent row using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is selected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child4' value is selected in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select a collapsed parent row using a checkbox when another parent row is selected and expanded in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select the expanded parent row using a checkbox when another parent row is selected in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select the collapsed parent row using a checkbox when other parent rows are selected in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+And the user expands the row with 'Name' column and 'child4' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child7' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child7' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select a child row using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child2' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child2' value is selected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child1' value is unchecked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child2' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select another child using a checkbox in the same parent row using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child2' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child3' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child2' value is selected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child3' value is selected in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child2' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child3' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select a child row using a checkbox and then collapse the parent row in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user selects the row with 'Name' column and 'child2' value in <tableCaption> table
+And the user collapses the row with 'Name' column and 'child1' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is unselected in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select all children rows using a checkbox in a single unselected parent row in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child10' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child11' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child12' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child10' value is unchecked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select all children rows using a checkbox in a single selected parent row in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child10' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child10' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child11' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child12' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child10' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+->>
+
+Scenario: Select another parent row using a checkbox when child row is selected in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child3' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child3' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select the child and another parent rows using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child3' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+Then the user should see that row with 'Name' column and 'child1' value is selected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child3' value is selected in <tableCaption> table
+And the user should see that row with 'Name' column and 'child4' value is selected in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select the child and parent rows using a checkbox and then select another child row that is not in that parent in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user expands the row with 'Name' column and 'child4' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child3' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child5' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child3' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child5' value is checked in <tableCaption> table
+Examples:
+|tableCaption|
+|TreeTable with different types of columns|
+
+Scenario: Select the child and parent rows and then select other child and parent rows using a checkbox in TreeTable
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->TreeTable' in a tree
+And the user expands the row with 'Name' column and 'child1' value in <tableCaption> table
+And the user expands the row with 'Name' column and 'child4' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child1' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child3' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child4' value in <tableCaption> table
+And the user checks the checkbox for row with 'Name' column and 'child6' value in <tableCaption> table
+Then the user should see that checkbox for row with 'Name' column and 'child1' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child3' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child4' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Name' column and 'child6' value is checked in <tableCaption> table
 Examples:
 |tableCaption|
 |TreeTable with different types of columns|

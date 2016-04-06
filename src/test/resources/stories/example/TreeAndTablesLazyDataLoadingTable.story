@@ -29,7 +29,7 @@ Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Lazy Data Loading->Table' in a tree
 And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
-Then the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+Then the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 And the user should see that values are sorted as 'user0,user1,user2,user3,user4' in 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
 Examples:
@@ -43,7 +43,7 @@ And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
 And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
-Then the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+Then the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 And the user should see that values are sorted as 'user0,user1,user2,user3,user4' in 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
 Examples:
@@ -56,10 +56,10 @@ When the user selects the item 'Trees and Tables->Lazy Data Loading->Table' in a
 And the user clicks on 'Load data' button
 And the user waits until '1' row is loaded into <tableCaption> table
 And the user clicks on 'Stop loading' button
-Then the user should see that rows with 'Id' column contain the values from '0' to '1' in <tableCaption> table
+Then the user should see that rows in 'Id' column contain the values from '0' to '1' in <tableCaption> table
 When the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
-Then the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+Then the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 And the user should see that values are sorted as 'user0,user1,user2,user3,user4' in 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
 Examples:
@@ -90,7 +90,7 @@ And the user makes 'Password' column not visible from the settings wheel for <ta
 Then the user should see 'Id' column in <tableCaption> table
 And the user should not see 'Name' column in <tableCaption> table
 And the user should not see 'Password' column in <tableCaption> table
-And the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+And the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
@@ -122,7 +122,7 @@ And the user should see no rows in <tableCaption> table
 When the user makes 'Id' column visible from the settings wheel for <tableCaption> table
 And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
 And the user makes 'Password' column visible from the settings wheel for <tableCaption> table
-Then the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+Then the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 And the user should see that values are sorted as 'user0,user1,user2,user3,user4' in 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
 Examples:
@@ -139,7 +139,7 @@ And the user makes 'Id' column visible from the settings wheel for <tableCaption
 Then the user should see 'Id' column in <tableCaption> table
 And the user should see 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
-And the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+And the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
@@ -156,7 +156,7 @@ And the user makes 'Name' column visible from the settings wheel for <tableCapti
 Then the user should see 'Id' column in <tableCaption> table
 And the user should see 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
-And the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+And the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
@@ -175,7 +175,7 @@ And the user makes 'Password' column visible from the settings wheel for <tableC
 Then the user should see 'Id' column in <tableCaption> table
 And the user should see 'Name' column in <tableCaption> table
 And the user should see 'Password' column in <tableCaption> table
-And the user should see that rows with 'Id' column contain the values from '0' to '4' in <tableCaption> table
+And the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|

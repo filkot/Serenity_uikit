@@ -1,7 +1,5 @@
 package com.axiomsl.serenity.pages;
 
-import ch.lambdaj.Lambda;
-import ch.lambdaj.function.convert.Converter;
 import com.axiomsl.serenity.helpers.HelperManager;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -9,7 +7,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
-import java.util.Map;
 
 //@DefaultUrl("http://192.168.11.176:8080/axiom/tests")
 public class BasePage extends PageObject {
@@ -124,10 +121,6 @@ public class BasePage extends PageObject {
         Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
         actions.moveByOffset(offsetX, offsetY).build().perform();
     }
-
-//_______Converter______________________________________________________________________________________________________
-
-
 
     public boolean VisibilityOfElementLocated(By locator) {
         try {
