@@ -15,8 +15,8 @@ When the user selects the item 'Trees and Tables->Editable Table' in a tree
 And the user selects the checkbox for row with 'Id' column and '0' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
 And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And the user should see that checkbox for row with column 'Id' and value '0' is checked in <tableCaption> table
-And the user should see that checkbox for row with column 'Id' and value '1' is unchecked in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '0' value is checked in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '1' value is unchecked in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
@@ -28,8 +28,8 @@ And the user selects the checkbox for row with 'Id' column and '0' value in <tab
 And the user deselects the checkbox for row with 'Id' column and '0' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '0' value is deselected in <tableCaption> table
 And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
-And the user should see that checkbox for row with column 'Id' and value '0' is unchecked in <tableCaption> table
-And the user should see that checkbox for row with column 'Id' and value '1' is unchecked in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '0' value is unchecked in <tableCaption> table
+And the user should see that checkbox for row with 'Id' column and '1' value is unchecked in <tableCaption> table
 Examples:
 |tableCaption|
 |Editable table|
