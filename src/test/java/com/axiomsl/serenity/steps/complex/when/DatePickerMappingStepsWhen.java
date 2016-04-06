@@ -21,7 +21,7 @@ public class DatePickerMappingStepsWhen {
     //region @When
 
     @When("the user inputs the date '$date'")
-    public void whenTheUserClicksOnTheButton(Date date) {
+    public void whenTheUserClicksOnTheButton(String date) {
         step.set_date_in_date_picker(date);
     }
 

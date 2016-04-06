@@ -117,7 +117,7 @@ public class TableMappingStepsWhen {
 
     @When("the user selects '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user selects '$inputDate' date into '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserSelectDateIntoColumnInRowInTable(@Named("inputDate") Date inputDate,
+    public void whenTheUserSelectDateIntoColumnInRowInTable(@Named("inputDate") String inputDate,
                                                             @Named("columnName") String columnName,
                                                             @Named("columnKey") String columnKey,
                                                             @Named("cellValue") String cellValue,

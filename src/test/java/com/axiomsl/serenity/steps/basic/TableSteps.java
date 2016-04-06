@@ -199,7 +199,7 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void select_date_in_cell_in_table(String tableCaption, String columnKey, String cellValue, String columnName, Date date) {
+    public void select_date_in_cell_in_table(String tableCaption, String columnKey, String cellValue, String columnName, String date) {
         action.getTable(tableCaption).selectDateInCell(columnKey, cellValue, columnName, date);
     }
 

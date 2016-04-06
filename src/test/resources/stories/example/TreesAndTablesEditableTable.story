@@ -156,3 +156,30 @@ And the user should see '4/12/17 09:23:25 PM' text in 'Date' column for row with
 Examples:
 |tableCaption|
 |Editable table|
+
+Scenario: Select a date from DatePicker for the unselected column
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable Table' in a tree
+And the user selects '3/12/17 08:22:24 PM' date into 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+And the user selects '4/12/18 09:23:25 AM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is unselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
+And the user should see '4/12/18 09:23:25 AM' date in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see '3/12/17 08:22:24 PM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|
+
+Scenario: Select a date from DatePicker for the selected column
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Editable Table' in a tree
+And the user selects the checkbox for row with 'Id' column and '0' value in <tableCaption> table
+And the user inputs '3/12/17 08:22:24 AM' date into 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+And the user inputs '4/12/18 09:23:25 PM' date into 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+And the user should see '4/12/18 09:23:25 PM' date in 'Date' column for row with 'Id' column and '0' value in <tableCaption> table
+And the user should see '3/12/17 08:22:24 AM' date in 'Date' column for row with 'Id' column and '1' value in <tableCaption> table
+Examples:
+|tableCaption|
+|Editable table|

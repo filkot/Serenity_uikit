@@ -122,7 +122,7 @@ public class TableMappingStepsThen {
                                                                  @Named("tableCaption") String tableCaption) {
         step.should_see_unchecked_item_in_settings_wheel(item, tableCaption);
     }
-//*
+
     @Then("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in '$tableCaption' table")
     @Alias("the user should see that checkbox in '$checkboxColumnName' column for row with '$columnName' column and '$cellValue' value is checked in <tableCaption> table")
     public void thenTheyShouldSeeCheckBoxIsCheckedInColumn(@Named("checkboxColumnName") String checkboxColumnName,

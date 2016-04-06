@@ -15,7 +15,7 @@ public class DatePickerSteps extends ScenarioSteps {
     //region Conditions
 
     @Step
-    public void set_date_in_date_picker(Date date) {
+    public void set_date_in_date_picker(String date) {
         action.getDatePicker().setDate(date);
     }
 

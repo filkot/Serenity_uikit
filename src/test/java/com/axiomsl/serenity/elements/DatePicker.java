@@ -25,10 +25,10 @@ public class DatePicker extends BasePage{
     private String dateFieldPopupLocator = "//div[contains(@class, 'v-datefield-popup')]";
     private String currentMonthYearLocator = "//span[@class = 'v-datefield-calendarpanel-month']";
     private String timeSelectsLocator = "//td[@class='v-datefield-calendarpanel-time']//select";
-    private String prevyearLocator = "//td[@class='v-datefield-calendarpanel-prevyear']//button";
-    private String nextyearLocator = "//td[@class='v-datefield-calendarpanel-nextyear']//button";
-    private String prevmonthLocator = "//td[@class='v-datefield-calendarpanel-prevmonth']//button";
-    private String nextmonthLocator = "//td[@class='v-datefield-calendarpanel-nextmonth']//button";
+    private String prevYearLocator = "//td[@class='v-datefield-calendarpanel-prevyear']//button";
+    private String nextYearLocator = "//td[@class='v-datefield-calendarpanel-nextyear']//button";
+    private String prevMonthLocator = "//td[@class='v-datefield-calendarpanel-prevmonth']//button";
+    private String nextMonthLocator = "//td[@class='v-datefield-calendarpanel-nextmonth']//button";
     private String dayLocator = "//td[@class = 'v-datefield-calendarpanel-body']//td[@role = 'gridcell']/span[not(contains(@class , 'day-offmonth')) and text() = '%s']";
     private String date;
 
@@ -55,30 +55,41 @@ public class DatePicker extends BasePage{
         return date;
     }
 
-    private void setCurrentCalendarItem(int calCur, int cal) {
-        int n;
-        WebElementFacade button;
-
-        if(calCur > cal){
-            n = calCur - cal;
-            button = wrappedElement.then(By.xpath(prevyearLocator));
-        }else{
-            n = cal - calCur;
-            button = wrappedElement.then(By.xpath(nextyearLocator));
-        }
-        for(int i =0; i<n; i++){
-            button.click();
-        }
-    }
     //endregion Private Methods
 
     //region Public Methods
-    public void setYear(int yearCur, int year) {
-        setCurrentCalendarItem(yearCur, year);
+    public void setYear(int currentYear, int targetYear) {
+        int n;
+        WebElementFacade button;
+
+        if(currentYear > targetYear){
+            n = currentYear - targetYear;
+            button = wrappedElement.then(By.xpath(prevYearLocator));
+        }else{
+            n = targetYear - currentYear;
+            button = wrappedElement.then(By.xpath(nextYearLocator));
+        }
+
+        for(int i=0; i<n; i++){
+            button.click();
+        }
     }
 
-    public void setMonth(int monthCur, int month) {
-        setCurrentCalendarItem(monthCur, month);
+    public void setMonth(int currentMonth, int targetMonth) {
+        int n;
+        WebElementFacade button;
+
+        if(currentMonth > targetMonth){
+            n = currentMonth - targetMonth;
+            button = wrappedElement.then(By.xpath(prevMonthLocator));
+        }else{
+            n = targetMonth - currentMonth;
+            button = wrappedElement.then(By.xpath(nextMonthLocator));
+        }
+
+        for(int i=0; i<n; i++){
+            button.click();
+        }
     }
 
     public void setDay(int day) {
@@ -113,22 +124,21 @@ public class DatePicker extends BasePage{
         return HelperManager.Conversions.convertStringToDate(string);
     }
 
-    public void setDate(Date date){
+    public void setDate(String date){
+        Date currentDate = HelperManager.Conversions.convertStringToDate(date);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
+        calendar.setTime(currentDate);
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-
 
         openDatePicker();
         Date curDate = getCurrentMonthYear();
         calendar.setTime(curDate);
         int yearCur = calendar.get(Calendar.YEAR);
-        int monthCur = calendar.get(Calendar.MONTH);
+        int monthCur = calendar.get(Calendar.MONTH)+1;
 
-
-        setTime(date);
+        setTime(currentDate);
         setYear(yearCur, year);
         setMonth(monthCur, month);
         setDay(day);

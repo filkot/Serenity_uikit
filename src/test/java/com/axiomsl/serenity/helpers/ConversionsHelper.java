@@ -75,7 +75,7 @@ final public class ConversionsHelper {
 
     public Date convertStringToDate(String inputDate)
     {
-        DateFormat format = new SimpleDateFormat("MM/dd/yy HH:mm:ss", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("MM/dd/yy hh:mm:ss aa", Locale.ENGLISH);
         Date parsedDate = null;
         try {
             parsedDate = format.parse(inputDate);
