@@ -394,7 +394,6 @@ Examples:
 |Table with different components in columns and multi selection mode|
 
 Scenario: Multi-select the rows across the current in MULTI-SELECTION table
-Meta: @id 1
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table' in a tree
 And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
@@ -417,8 +416,12 @@ Examples:
 |Table with different components in columns and multi selection mode|
 
 Scenario: Unselect a checkbox in a row from the across selected rows in MULTI-SELECTION table
-GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
-When the user unchecks the checkbox in 'Active' column for row with 'Id' column and '4' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
+When the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
+And the user unchecks the checkbox in 'Active' column for row with 'Id' column and '4' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that checkbox in 'Active' column for row with 'Id' column and '2' value is checked in <tableCaption> table
 And the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
@@ -430,8 +433,12 @@ Examples:
 |Table with different components in columns and multi selection mode|
 
 Scenario: Select a checkbox in a row from the across selected rows in MULTI-SELECTION table
-GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
-When the user checks the checkbox in 'Active' column for row with 'Id' column and '4' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
+And the user checks the checkbox in 'Active' column for row with 'Id' column and '4' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see that checkbox in 'Active' column for row with 'Id' column and '2' value is checked in <tableCaption> table
 And the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
@@ -443,8 +450,12 @@ Examples:
 |Table with different components in columns and multi selection mode|
 
 Scenario: Select a date in DatePicker in a row from the across selected rows in MULTI-SELECTION table
-GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
-When the user inputs '4/10/16 05:12:17 PM' text into 'Date' column for row with 'Id' column and '4' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
+And the user inputs '4/10/16 05:12:17 PM' text into 'Date' column for row with 'Id' column and '4' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see '3/14/16 12:52:38 PM' date in 'Date' column for row with 'Id' column and '2' value in <tableCaption> table
 And the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
@@ -456,8 +467,12 @@ Examples:
 |Table with different components in columns and multi selection mode|
 
 Scenario: Input a text in a row from the across selected rows in MULTI-SELECTION table
-GivenStories: stories/example/CommonLoginExamplesApp.story#{id:1}
-When the user inputs 'New description' text into 'Description' column for row with 'Id' column and '2' value in <tableCaption> table
+Given the user refresh the Example page
+When the user selects the item 'Trees and Tables->Table' in a tree
+And the user multi-selects the row with 'Id' column and '4' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '6' value in <tableCaption> table
+And the user multi-selects the row with 'Id' column and '2' value in <tableCaption> table
+And the user inputs 'New description' text into 'Description' column for row with 'Id' column and '2' value in <tableCaption> table
 Then the user should see that row with 'Id' column and '2' value is selected in <tableCaption> table
 And the user should see 'Description of user2' text in 'Description' column for row with 'Id' column and '2' value in <tableCaption> table
 And the user should see that row with 'Id' column and '4' value is selected in <tableCaption> table
