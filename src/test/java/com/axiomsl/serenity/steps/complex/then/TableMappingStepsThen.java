@@ -2,9 +2,10 @@ package com.axiomsl.serenity.steps.complex.then;
 
 import com.axiomsl.serenity.steps.basic.TableSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Alias;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
 
-import java.util.Date;
 import java.util.List;
 
 public class TableMappingStepsThen {

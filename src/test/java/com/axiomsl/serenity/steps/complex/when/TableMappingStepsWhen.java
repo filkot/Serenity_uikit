@@ -2,9 +2,10 @@ package com.axiomsl.serenity.steps.complex.when;
 
 import com.axiomsl.serenity.steps.basic.TableSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
-
-import java.util.Date;
+import org.jbehave.core.annotations.Alias;
+import org.jbehave.core.annotations.Aliases;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
 
 public class TableMappingStepsWhen {
 
@@ -154,11 +155,35 @@ public class TableMappingStepsWhen {
         step.input_text_in_filter_in_table(tableCaption, columnKey, inputText);
     }
 
+    @When("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
+    @Alias("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
+    public void whenTheUserSelectDateOnDayAffterInFilterInTable(@Named("dayValue") int dayValue,
+                                                                @Named("dateDirection") String dateDirection,
+                                                                @Named("filterName") String filterName,
+                                                                @Named("tableCaption") String tableCaption) {
+        step.select_date_in_filter_in_table(dayValue, dateDirection, filterName, "after", tableCaption);}
+
+    @When("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
+    @Alias("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
+    public void whenTheUserSelectDateOnDayBeforeInFilterInTable(@Named("dayValue") int dayValue,
+                                                                @Named("dateDirection") String dateDirection,
+                                                                @Named("filterName") String filterName,
+                                                                @Named("tableCaption") String tableCaption) {
+        step.select_date_in_filter_in_table(dayValue, dateDirection, filterName, "before", tableCaption);
+    }
+
     @When("the user makes '$columnKey' filter empty in '$tableCaption' table")
     @Alias("the user makes '$columnKey' filter empty in <tableCaption> table")
     public void whenTheUserMakesFilterEmptyInTable(@Named("columnKey") String columnKey,
                                                    @Named("tableCaption") String tableCaption) {
         step.make_filter_empty_in_table(tableCaption, columnKey);
+    }
+
+    @When("the user clears date in '$columnKey' filter in '$tableCaption' table")
+    @Alias("the user clears date in '$columnKey' filter in <tableCaption> table")
+    public void whenTheUserClearsDateFilterInTable(@Named("columnKey") String columnKey,
+                                                   @Named("tableCaption") String tableCaption) {
+        step.clear_date_filter_in_table(tableCaption, columnKey);
     }
 
     @When("the user clears '$columnKey' filter in '$tableCaption' table")
@@ -216,14 +241,6 @@ public class TableMappingStepsWhen {
     @Aliases(values={"the user makes the textfield empty in '$rowValue' column in the first row in <tableCaption> table",
             "the user makes the textfield empty in '$rowValue' column in the first row in $tableCaption table"})
     public void whenTheUserMakesEmptyTextFieldInFirstRow(String rowValue, String tableCaption) {}
-
-    @When("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
-    @Alias("the user selects the date on a day '$dayValue' after today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
-    public void whenTheUserSelectDateOnDayAffterInFilterInTable(String dayValue, String dateDirection, String filterName, String tableCaption) {}
-
-    @When("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in '$tableCaption' table")
-    @Alias("the user selects the date on a day '$dayValue' before today as '$dateDirection' date in '$filterName' filter in <tableCaption> table")
-    public void whenTheUserSelectDateOnDayBeforeInFilterInTable(String dayValue, String dateDirection, String filterName, String tableCaption) {}
 
     //endregion @When
 }

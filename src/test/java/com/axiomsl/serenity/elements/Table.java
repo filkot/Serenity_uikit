@@ -33,6 +33,7 @@ public class Table extends BasePage {
     private String buttonLocator = ".//div[@role = 'button']//span";
     private String textInputLocator = ".//input[@type = 'text']";
     private String datePickerLocator = ".//div[contains(@class, 'v-datefield-popupcalendar')]";
+    private String doubleDatePickerLocator = ".//div[contains(@class, 'v-customcomponent-datefilterpopup')]";
 
     //endregion Private Fields
 
@@ -46,19 +47,34 @@ public class Table extends BasePage {
 
     //region Public Methods
 
+    /**
+     * Get list of header as WebElement
+     * @return - list of WebElementFacade
+     */
     public List<WebElementFacade> getHeadings() {
         return wrappedElement.thenFindAll(By.xpath(headingLocator));
     }
 
+    /**
+     * Get list of filters as WebElement
+     * @return - list of WebElementFacade
+     */
     public List<WebElementFacade> getFilters() {
         return wrappedElement.thenFindAll(By.xpath(filteringLocator));
     }
 
+    /**
+     * Get list of header as string
+     * @return - list of string
+     */
     public List<String> getHeadingsAsString() {
         return Lambda.convert(this.getHeadings(), ConversionsHelper.WebElementToTextConverter.toTextValues());
-//      return Lambda.convert(this.getHeadings(), Table.WebElementToTextConverter.toTextValues());
     }
 
+    /**
+     * Get list of rows with list of cell in the row as WebElement
+     * @return - list of list of WebElementFacade
+     */
     public List<List<WebElementFacade>> getRows() {
         List<List<WebElementFacade>> rows = new ArrayList<>();
         List<WebElementFacade> rowElements = wrappedElement.thenFindAll(By.xpath(rowLocator));
@@ -68,15 +84,27 @@ public class Table extends BasePage {
         return rows;
     }
 
+    /**
+     * Get list of cells in the row
+     * @param rowElement - row
+     * @return - list of WebElementFacade
+     */
     public List<WebElementFacade> getCellsInRow(WebElementFacade rowElement){
         return rowElement.thenFindAll(By.xpath(cellLocator));
     }
 
+    /**
+     * Get list of rows with list of cell in the row as string
+     * @return - list of list of string
+     */
     public List<List<String>> getRowsAsString() {
         return Lambda.convert(this.getRows(), ConversionsHelper.ListConverter.toListsConvertingEachItem(ConversionsHelper.WebElementToTextConverter.toTextValues()));
-        //return Lambda.convert(this.getRows(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
+    /**
+     * Get list of columns as WebElement
+     * @return - list of list of WebElementFacade
+     */
     public List<List<WebElementFacade>> getColumns() {
         ArrayList columns = new ArrayList();
         List rows = this.getRows();
@@ -100,26 +128,54 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Get list of columns as string
+     * @return - list of list of string
+     */
     public List<List<String>> getColumnsAsString() {
         return Lambda.convert(this.getColumns(), ConversionsHelper.ListConverter.toListsConvertingEachItem(ConversionsHelper.WebElementToTextConverter.toTextValues()));
-        //return Lambda.convert(this.getColumns(), Table.ListConverter.toListsConvertingEachItem(Table.WebElementToTextConverter.toTextValues()));
     }
 
+    /**
+     * Get column by index
+     * @param index - index of column
+     * @return - list of string
+     */
     public List<String> getColumnAsStringByIndex(int index) {
         return getColumnsAsString().get(index);
     }
 
+    /**
+     * Get cell by coordinate
+     * @param i - row number
+     * @param j - column number
+     * @return
+     */
     public WebElementFacade getCellAt(int i, int j) {
         return (WebElementFacade) ((List) this.getRows().get(i)).get(j);
     }
 
+    /**
+     * Get list of rows where cell in the row mapping to header
+     * @return
+     */
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings() {
         return this.getRowsMappedToHeadings(this.getHeadingsAsString());
     }
+
+    /**
+     * Get map where filter mapping to header
+     * @return
+     */
     public Map<String, WebElementFacade> getFiltersMappedToHeadings() {
         return this.getFiltersMappedToHeadings(this.getHeadingsAsString());
     }
 
+    /**
+     * Get list of rows where cell in the row mapping to header
+     * @param headings
+     * @return
+     */
     public List<Map<String, WebElementFacade>> getRowsMappedToHeadings(List<String> headings) {
         ArrayList rowsMappedToHeadings = new ArrayList();
         List rows = this.getRows();
@@ -153,6 +209,11 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Get map where filter mapping to header
+     * @param headings
+     * @return
+     */
     public Map<String, WebElementFacade> getFiltersMappedToHeadings(List<String> headings) {
         List<WebElementFacade> filters = this.getFilters();
         if (headings.size() != filters.size())
@@ -165,14 +226,27 @@ public class Table extends BasePage {
 
     }
 
+    /**
+     * Get list of rows mapped on headers as string
+     * @return
+     */
     public List<Map<String, String>> getRowsAsStringMappedToHeadings() {
         return this.getRowsAsStringMappedToHeadings(this.getHeadingsAsString());
     }
 
+    /**
+     *
+     * @param headings - list of headers
+     * @return
+     */
     public List<Map<String, String>> getRowsAsStringMappedToHeadings(List<String> headings) {
         return Lambda.convert(this.getRowsMappedToHeadings(headings), ConversionsHelper.MapConverter.toMapsConvertingEachValue(ConversionsHelper.WebElementToTextConverter.toText()));
     }
 
+    /**
+     * Make column visible
+     * @param item
+     */
     public void makeColumnVisible(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
@@ -183,6 +257,10 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Make column invisible
+     * @param item - column name
+     */
     public void makeColumnNotVisible(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attribute = String.format(menuVisibilityLocator, item) + "/parent::span";
@@ -193,6 +271,10 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Scroll vertically table
+     * @param action
+     */
     public void scrollVerticallyTable(String action){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
@@ -216,10 +298,20 @@ public class Table extends BasePage {
 //
 //    }
 
+    /**
+     *
+     * @return
+     */
     public List<WebElementFacade> getSelectedRows(){
         return wrappedElement.thenFindAll(By.xpath(selectedRowLocator));
     }
 
+    /**
+     * Get map with
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public Map<String, WebElementFacade> getRowMapByCellValue(String columnName, String cellValue){
         List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
 
@@ -251,6 +343,12 @@ public class Table extends BasePage {
         return null;
     }
 
+    /**
+     * Get row by cell value
+     * @param columnName
+     * @param cellValue
+     * @return - row
+     */
     public WebElementFacade getRowByCellValue(String columnName, String cellValue){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         if (rowMap != null){
@@ -259,10 +357,20 @@ public class Table extends BasePage {
         return null;
     }
 
+    /**
+     * Get row from cell
+     * @param cellElement
+     * @return
+     */
     public WebElementFacade getRowByCell(WebElementFacade cellElement){
         return cellElement.then(By.xpath(rowByCellLocator));
     }
 
+    /**
+     * Select row in table
+     * @param columnName
+     * @param cellValue
+     */
     public void selectRow(String columnName, String cellValue){
         Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
         if(map != null){
@@ -270,6 +378,11 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Deselect row in table
+     * @param columnName
+     * @param cellValue
+     */
     public void deselectRow(String columnName, String cellValue){
         Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
         if(map != null){
@@ -277,6 +390,12 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Verify is row selected in table
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public boolean isRowSelected(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         if(rowElement.hasClass("v-selected")){
@@ -285,6 +404,12 @@ public class Table extends BasePage {
         return false;
     }
 
+    /**
+     * Verify is row in focus in table
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public boolean isRowFocused(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         if(rowElement.hasClass("v-table-focus")){
@@ -293,6 +418,12 @@ public class Table extends BasePage {
         return false;
     }
 
+    /**
+     * Verify is row unselected in table
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public boolean isRowDeselected(String columnName, String cellValue){
         if(!isRowSelected(columnName, cellValue) || isRowFocused(columnName, cellValue)){
             return true;
@@ -300,6 +431,12 @@ public class Table extends BasePage {
         return false;
     }
 
+    /**
+     * Verify is row exist in table
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public boolean isRowPresentInTable(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         if(rowElement == null){
@@ -308,6 +445,11 @@ public class Table extends BasePage {
         return true;
     }
 
+    /**
+     * Verify is column is checked in setting
+     * @param item - column name
+     * @return - boolean
+     */
     public boolean isSettingsItemIsChecked(String item){
         wrappedElement.then(By.xpath(settingsLocator)).click();
         String attributePath = String.format(menuVisibilityLocator, item) + "/parent::span";
@@ -321,6 +463,11 @@ public class Table extends BasePage {
         throw new IllegalArgumentException("Table's settings wheel panel or selected item is changed.");
     }
 
+    /**
+     * Check Checkbox in first column
+     * @param columnName
+     * @param cellValue
+     */
     public void selectCheckboxInRow(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
 //        WebElementFacade checkBox = rowElement.then(By.xpath(checkBoxLocator));
@@ -329,12 +476,23 @@ public class Table extends BasePage {
         checkBox.set(true);
     }
 
+    /**
+     * Unchecked Checkbox in first column
+     * @param columnName
+     * @param cellValue
+     */
     public void deselectCheckboxInRow(String columnName, String cellValue){
         WebElementFacade rowElement = this.getRowByCellValue(columnName, cellValue);
         CheckBox checkBox = new CheckBox(rowElement.then(By.xpath(checkBoxLocator)));
         checkBox.set(false);
     }
 
+    /**
+     * Check Checkbox in cell
+     * @param columnName
+     * @param cellValue
+     * @param checkboxColumnName
+     */
     public void selectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
@@ -342,6 +500,12 @@ public class Table extends BasePage {
         checkBox.set(true);
     }
 
+    /**
+     * Unchecked Checkbox in cell
+     * @param columnName
+     * @param cellValue
+     * @param checkboxColumnName
+     */
     public void deselectCheckboxInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
@@ -349,6 +513,13 @@ public class Table extends BasePage {
         checkBox.set(false);
     }
 
+    /**
+     * Verify is checkbox checked
+     * @param columnName
+     * @param cellValue
+     * @param checkboxColumnName
+     * @return
+     */
     public boolean isCheckBoxIsCheckedInColumnForRow(String columnName, String cellValue, String checkboxColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(checkboxColumnName);
@@ -356,6 +527,11 @@ public class Table extends BasePage {
         return checkBox.isSelected();
     }
 
+    /**
+     * Select multi rows
+     * @param columnName
+     * @param cellValue
+     */
     public void multiSelectRows(String columnName, String cellValue) {
         List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
         WebElementFacade firsRow = list.get(0).get(columnName);
@@ -373,6 +549,12 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Press button in cell
+     * @param columnName
+     * @param cellValue
+     * @param buttonColumnName
+     */
     public void pressButtonInColumnForRow(String columnName, String cellValue, String buttonColumnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnName, cellValue);
         WebElementFacade cell = rowMap.get(buttonColumnName);
@@ -380,6 +562,12 @@ public class Table extends BasePage {
         button.click();
     }
 
+    /**
+     * Verify text in all column
+     * @param columnName
+     * @param cellValue
+     * @return
+     */
     public boolean isTextEqualsInColumn(String columnName, String cellValue) {
         if(cellValue.equals("EMPTY_STRING")){
             cellValue = "";
@@ -403,6 +591,13 @@ public class Table extends BasePage {
         return true;
     }
 
+    /**
+     * Input text in cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName
+     * @param inputText
+     */
     public void inputTextInCell(String columnKey, String cellValue, String columnName, String inputText){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
@@ -410,13 +605,29 @@ public class Table extends BasePage {
         textInput.type(inputText);
     }
 
+    /**
+     * Get text from cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName
+     * @return
+     */
     public String getTextInCell(String columnKey, String cellValue, String columnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
+        if(rowMap == null){
+            throw new IllegalArgumentException("No cell values are found in the selected table");
+        }
         WebElementFacade cell = rowMap.get(columnName);
         TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
         return textInput.getText();
     }
 
+    /**
+     * Rollback value in cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName - column name in witch needed rollback value
+     */
     public void undoTextInCell(String columnKey, String cellValue, String columnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
@@ -427,6 +638,11 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Input text in filter column
+     * @param columnKey - filter column name
+     * @param text - text for filtering
+     */
     public void inputTextInFilter(String columnKey, String text){
         Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
         WebElementFacade filter = filterMap.get(columnKey);
@@ -435,6 +651,10 @@ public class Table extends BasePage {
         textInput.sendKeys(Keys.ENTER);
     }
 
+    /**
+     * Clear input filter
+     * @param columnKey - filter column name
+     */
     public void makeFilterEmpty(String columnKey){
         Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
         WebElementFacade filter = filterMap.get(columnKey);
@@ -443,6 +663,25 @@ public class Table extends BasePage {
         textInput.sendKeys(Keys.ENTER);
     }
 
+    public void selectDateInFilter(String columnKey, String beforeAfter, String direction, int days){
+        Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
+        WebElementFacade filter = filterMap.get(columnKey);
+        DoubleDatePicker doubleDatePicker = new DoubleDatePicker(filter.then(By.xpath(doubleDatePickerLocator)));
+        doubleDatePicker.setDate(days, beforeAfter, direction);
+    }
+
+    public void clearDateFilter(String columnKey){
+        Map<String, WebElementFacade> filterMap = this.getFiltersMappedToHeadings();
+        WebElementFacade filter = filterMap.get(columnKey);
+        DoubleDatePicker doubleDatePicker = new DoubleDatePicker(filter.then(By.xpath(doubleDatePickerLocator)));
+        doubleDatePicker.clearDate();
+    }
+
+    /**
+     * Click n-times in header for sorting it
+     * @param columnKey - column name which header needed sorting
+     * @param n - how many times needed click at header
+     */
     public void clickAtHeader(String columnKey, int n){
         List<WebElementFacade> headers = this.getHeadings();
         for (WebElementFacade header: headers){
@@ -455,6 +694,13 @@ public class Table extends BasePage {
         }
     }
 
+    /**
+     * Select date in date picker in cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName - column with date picker
+     * @param date - date for date piker
+     */
     public void selectDateInCell(String columnKey, String cellValue, String columnName, String date){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
@@ -462,6 +708,13 @@ public class Table extends BasePage {
         datePicker.setDate(date);
     }
 
+    /**
+     * Input date in input in cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName - column with date picker
+     * @param date - date in string format for date picker
+     */
     public void inputDateInCell(String columnKey, String cellValue, String columnName, String date){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
@@ -469,6 +722,13 @@ public class Table extends BasePage {
         datePicker.inputDate(date);
     }
 
+    /**
+     * Get date from cell
+     * @param columnKey - name of column for find needed row
+     * @param cellValue - value of cell for find needed row
+     * @param columnName - column with date picker
+     * @return - date from cell
+     */
     public Date getDateInCell(String columnKey, String cellValue, String columnName){
         Map<String, WebElementFacade> rowMap = this.getRowMapByCellValue(columnKey, cellValue);
         WebElementFacade cell = rowMap.get(columnName);
@@ -477,55 +737,4 @@ public class Table extends BasePage {
     }
 
     //endregion Public Methods
-
-
-//    static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
-//        private final Converter<F, T> valueConverter;
-//
-//        public static <F, T> Converter<Map<String, F>, Map<String, T>> toMapsConvertingEachValue(Converter<F, T> valueConverter) {
-//            return new Table.MapConverter(valueConverter);
-//        }
-//
-//        private MapConverter(Converter<F, T> valueConverter) {
-//            this.valueConverter = valueConverter;
-//        }
-//
-//        public Map<K, T> convert(Map<K, F> map) {
-//            return Lambda.convertMap(map, this.valueConverter);
-//        }
-//    }
-//
-//
-//    static final class ListConverter<F, T> implements Converter<List<F>, List<T>> {
-//        private final Converter<F, T> itemsConverter;
-//
-//        public static <F, T> Converter<List<F>, List<T>> toListsConvertingEachItem(Converter<F, T> itemsConverter) {
-//            return new Table.ListConverter(itemsConverter);
-//        }
-//
-//        private ListConverter(Converter<F, T> itemsConverter) {
-//            this.itemsConverter = itemsConverter;
-//        }
-//
-//        public List<T> convert(List<F> list) {
-//            return Lambda.convert(list, this.itemsConverter);
-//        }
-//    }
-//
-//    static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
-//        public static Converter<WebElementFacade, String> toText() {
-//            return new Table.WebElementToTextConverter();
-//        }
-//
-//        public static Converter<WebElementFacade, String> toTextValues() {
-//            return new Table.WebElementToTextConverter();
-//        }
-//
-//        private WebElementToTextConverter() {
-//        }
-//
-//        public String convert(WebElementFacade element) {
-//            return element.getText();
-//        }
-//    }
 }

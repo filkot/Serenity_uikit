@@ -5,13 +5,9 @@ import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 /**
@@ -30,7 +26,6 @@ public class DatePicker extends BasePage{
     private String prevMonthLocator = "//td[@class='v-datefield-calendarpanel-prevmonth']//button";
     private String nextMonthLocator = "//td[@class='v-datefield-calendarpanel-nextmonth']//button";
     private String dayLocator = "//td[@class = 'v-datefield-calendarpanel-body']//td[@role = 'gridcell']/span[not(contains(@class , 'day-offmonth')) and text() = '%s']";
-    private String date;
 
     //endregion Private Fields
 
@@ -45,49 +40,42 @@ public class DatePicker extends BasePage{
     //region Private Methods
     private Date getCurrentMonthYear() {
         String monthYear = wrappedElement.then(By.xpath(currentMonthYearLocator)).getText();
-        DateFormat format = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
-        Date date = null;
-        try {
-            date = format.parse(monthYear);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
+        return HelperManager.Conversions.convertStringToDate(monthYear, "MMMM yyyy");
     }
 
     //endregion Private Methods
 
     //region Public Methods
-    public void setYear(int currentYear, int targetYear) {
+    public void setMonthYear(int actItem, int expItem, String monthYear) {
         int n;
         WebElementFacade button;
+        String locator = null;
+        String prevNext;
 
-        if(currentYear > targetYear){
-            n = currentYear - targetYear;
-            button = wrappedElement.then(By.xpath(prevYearLocator));
+        if(actItem > expItem){
+            n = actItem - expItem;
+            prevNext = "prev";
         }else{
-            n = targetYear - currentYear;
-            button = wrappedElement.then(By.xpath(nextYearLocator));
+            n = expItem - actItem;
+            prevNext = "next";
         }
 
-        for(int i=0; i<n; i++){
-            button.click();
+        switch (prevNext+monthYear) {
+            case "prevmonth":
+                locator = prevMonthLocator;
+                break;
+            case "nextmonth":
+                locator = nextMonthLocator;
+                break;
+            case "prevyear":
+                locator = prevYearLocator;
+                break;
+            case "nextyear":
+                locator = nextYearLocator;
+                break;
         }
-    }
-
-    public void setMonth(int currentMonth, int targetMonth) {
-        int n;
-        WebElementFacade button;
-
-        if(currentMonth > targetMonth){
-            n = currentMonth - targetMonth;
-            button = wrappedElement.then(By.xpath(prevMonthLocator));
-        }else{
-            n = targetMonth - currentMonth;
-            button = wrappedElement.then(By.xpath(nextMonthLocator));
-        }
-
-        for(int i=0; i<n; i++){
+        button = wrappedElement.then(By.xpath(locator));
+        for(int i =0; i<n; i++){
             button.click();
         }
     }
@@ -121,11 +109,11 @@ public class DatePicker extends BasePage{
 
     public Date getDate() {
         String string = wrappedElement.then(By.xpath(inputLocator)).getValue();
-        return HelperManager.Conversions.convertStringToDate(string);
+        return HelperManager.Conversions.convertStringToDate(string, "MM/dd/yy hh:mm:ss aa");
     }
 
     public void setDate(String date){
-        Date currentDate = HelperManager.Conversions.convertStringToDate(date);
+        Date currentDate = HelperManager.Conversions.convertStringToDate(date, "MM/dd/yy hh:mm:ss aa");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
         int year = calendar.get(Calendar.YEAR);
@@ -139,8 +127,8 @@ public class DatePicker extends BasePage{
         int monthCur = calendar.get(Calendar.MONTH)+1;
 
         setTime(currentDate);
-        setYear(yearCur, year);
-        setMonth(monthCur, month);
+        setMonthYear(yearCur, year, "year");
+        setMonthYear(monthCur, month, "month");
         setDay(day);
     }
 

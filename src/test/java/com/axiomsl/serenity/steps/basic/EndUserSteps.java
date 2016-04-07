@@ -5,6 +5,7 @@ import com.axiomsl.serenity.pages.BasePage;
 import com.axiomsl.serenity.pages.ExamplePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 

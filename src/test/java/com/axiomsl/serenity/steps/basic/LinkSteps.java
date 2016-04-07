@@ -3,6 +3,7 @@ package com.axiomsl.serenity.steps.basic;
 import com.axiomsl.serenity.actions.LinkAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;

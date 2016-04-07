@@ -13,21 +13,22 @@ public class BasePage extends PageObject {
 
     //region Private Fields
 
+    protected final WebDriver driver = HelperManager.WebDriver.GetGlobalWebDriver();
     private String itemInTreeLocator = "//div[contains (@class, 'v-tree')]//span[text() = '%s']";
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
     private String exampleClassPathLocator = "//div[contains@class, 'v-splitpanel-second-container']";
     private String exampleClassPathSplitterLocator = "//div[@class = 'v-splitpanel-hsplitter']";
-    private String passwordLocator = "//input[@type = 'password']";
 
     //endregion Private Fields
 
     //region Protected Fields
-
-    protected final WebDriver driver = HelperManager.WebDriver.GetGlobalWebDriver();
+    private String passwordLocator = "//input[@type = 'password']";
 
     //endregion Protected Fields
+
+
 
     //region Public Static Methods
 

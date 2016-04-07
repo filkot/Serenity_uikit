@@ -2,7 +2,6 @@ package com.axiomsl.serenity.elements;
 
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.By;
 
 /**
  * Created by dbudranov on 05.04.2016.
@@ -10,8 +9,8 @@ import org.openqa.selenium.By;
 public class SlidingPanel extends BasePage {
     //region Private Fields
 
-    private final WebElementFacade wrappedElement;
     private final static int SLIDE_PANEL_OFFSET_X = 100;
+    private final WebElementFacade wrappedElement;
 
     //endregion Private Fields
 

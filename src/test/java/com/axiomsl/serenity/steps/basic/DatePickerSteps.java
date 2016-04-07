@@ -3,7 +3,6 @@ package com.axiomsl.serenity.steps.basic;
 import com.axiomsl.serenity.actions.DatePickerAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import java.util.Date;
 
 /**
  * Created by kfilippov on 29.03.2016.

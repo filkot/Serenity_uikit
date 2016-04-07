@@ -6,7 +6,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.hamcrest.Matchers;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -106,7 +105,7 @@ public class TableSteps extends ScenarioSteps {
 
     @Step
     public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputDate) {
-        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate)));
+        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, "MM/dd/yy hh:mm:ss aa")));
     }
 
     //endregion Assertions
@@ -189,8 +188,18 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void make_filter_empty_in_table(String tableCaption, String columnKey) {
+    public void select_date_in_filter_in_table(int dayValue, String dateDirection, String columnKey, String beforeAfter, String tableCaption) {
+        action.getTable(tableCaption).selectDateInFilter(columnKey, beforeAfter, dateDirection, dayValue);
+    }
+
+    @Step
+     public void make_filter_empty_in_table(String tableCaption, String columnKey) {
         action.getTable(tableCaption).makeFilterEmpty(columnKey);
+    }
+
+    @Step
+    public void clear_date_filter_in_table(String tableCaption, String columnKey) {
+        action.getTable(tableCaption).clearDateFilter(columnKey);
     }
 
     @Step

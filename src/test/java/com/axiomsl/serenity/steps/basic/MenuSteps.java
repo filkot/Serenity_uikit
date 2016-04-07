@@ -3,7 +3,9 @@ package com.axiomsl.serenity.steps.basic;
 import com.axiomsl.serenity.actions.MenuAction;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 

@@ -19,6 +19,17 @@ final public class ConversionsHelper {
 
     //region Protected Static Inner Classes
 
+    public Date convertStringToDate(String inputDate, String formatOfDate){
+        DateFormat format = new SimpleDateFormat(formatOfDate, Locale.ENGLISH);
+        Date parsedDate = null;
+        try {
+            parsedDate = format.parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return parsedDate;
+    }
+
     public static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
         private final Converter<F, T> valueConverter;
 
@@ -51,6 +62,10 @@ final public class ConversionsHelper {
         }
     }
 
+    //endregion Protected Static Inner Classes
+
+    //region Public Methods
+
     public static final class WebElementToTextConverter implements Converter<WebElementFacade, String> {
         private WebElementToTextConverter() {
         }
@@ -69,21 +84,6 @@ final public class ConversionsHelper {
         }
     }
 
-    //endregion Protected Static Inner Classes
-
-    //region Public Methods
-
-    public Date convertStringToDate(String inputDate)
-    {
-        DateFormat format = new SimpleDateFormat("MM/dd/yy hh:mm:ss aa", Locale.ENGLISH);
-        Date parsedDate = null;
-        try {
-            parsedDate = format.parse(inputDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return parsedDate;
-    }
-
     //endregion Public Methods
+
 }
