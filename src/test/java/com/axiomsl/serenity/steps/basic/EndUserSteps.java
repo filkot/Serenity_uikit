@@ -22,6 +22,11 @@ public class EndUserSteps extends ScenarioSteps {
         assertThat(basePage.is_class_path_available(), is(false));
     }
 
+    @Step
+    public void check_current_page_url(String expectedURL) {
+        assertThat(basePage.current_url_equals(expectedURL), is(true));
+    }
+
     //endregion Assertions
 
     //region Conditions

@@ -73,6 +73,10 @@ public class BasePage extends PageObject {
         return ((hsX2 - hsX1) != 0);
     }
 
+    public Boolean current_url_equals(String expectedURL) {
+        return getCurrentPageURL().equals(expectedURL);
+    }
+
     public void open_dashboard(String dashboardName) {
         WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();
@@ -122,6 +126,11 @@ public class BasePage extends PageObject {
         Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
         actions.moveByOffset(offsetX, offsetY).build().perform();
     }
+
+    public String getCurrentPageURL() {
+        return driver.getCurrentUrl();
+    }
+
 
     public boolean VisibilityOfElementLocated(By locator) {
         try {

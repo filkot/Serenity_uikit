@@ -21,7 +21,6 @@ public class HoverMenuSteps extends ScenarioSteps {
 
     @Step
     public void should_see_menu_items_list(List<String> itemsList) {
-        // List<String> items = Arrays.asList(itemsList.split("\\s*,\\s*"));
         assertThat(action.get_menu_items_list(), is(equalTo(itemsList)));
     }
 

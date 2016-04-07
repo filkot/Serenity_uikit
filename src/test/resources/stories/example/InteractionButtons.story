@@ -20,8 +20,8 @@ Scenario: Single Click - open in the current tab
 Meta: @id2 2
 Given the user refresh the Example page
 When the user selects the item 'Interaction->Buttons' in a tree
-And the user clicks on 'Show xkcd.com in current tab' button
-Then the user should see the current page with text 'xkcd'
+And the user clicks on 'Show xkcd.com in current tab' URL button
+Then the user should see 'http://xkcd.com/' the current page URL
 
 Scenario: Single Click - open in a new tab
 Meta: @id3 3

@@ -20,6 +20,11 @@ public class ButtonMappingStepsWhen {
         step.click_button_by_name(buttonName);
     }
 
+    @When("the user {clicks|presses} on '$buttonName' URL button")
+    public void whenTheUserClicksOnTheURLButton(String buttonName) {
+        step.click_url_button_by_name(buttonName);
+    }
+
     @When("the user right clicks on '$buttonName' button")
     public void whenTheUserRightClicksOnTheButton(String buttonName) {
         step.right_click_button_by_name(buttonName);

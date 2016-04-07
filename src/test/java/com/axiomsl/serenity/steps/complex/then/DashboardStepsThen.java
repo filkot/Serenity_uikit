@@ -20,5 +20,11 @@ public class DashboardStepsThen {
         endUser.is_class_path_available();
     }
 
+
+    @Then("the user should see '$currentPageURL' the current page URL")
+    public void thenTheUserShouldSeeTheCurrentPageURL(String currentPageURL) {
+        endUser.check_current_page_url(currentPageURL);
+    }
+
     //endregion @Then
 }

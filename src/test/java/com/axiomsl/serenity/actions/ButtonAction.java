@@ -1,6 +1,7 @@
 package com.axiomsl.serenity.actions;
 
 import com.axiomsl.serenity.elements.Button;
+import com.axiomsl.serenity.helpers.HelperManager;
 import com.axiomsl.serenity.pages.BasePage;
 import org.openqa.selenium.By;
 
@@ -20,6 +21,13 @@ public class ButtonAction extends BasePage {
         Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.click();
     }
+
+    public void click_url_button_by_name(String buttonName) {
+        Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
+        button.click();
+        HelperManager.WebDriver.GetGlobalWebDriver().switchTo().alert().accept();
+    }
+
     public void right_click_button_by_name(String buttonName) {
         Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.rightClick();
