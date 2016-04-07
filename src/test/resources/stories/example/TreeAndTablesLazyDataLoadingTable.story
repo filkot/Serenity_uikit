@@ -104,7 +104,7 @@ And the user makes 'Id' column not visible from the settings wheel for <tableCap
 And the user makes 'Name' column not visible from the settings wheel for <tableCaption> table
 And the user makes 'Password' column not visible from the settings wheel for <tableCaption> table
 Then the user should see no columns in <tableCaption> table
-Then the user should see no rows in <tableCaption> table
+And the user should see no rows in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
@@ -117,9 +117,7 @@ And the user waits until data is loaded in <tableCaption> table
 And the user makes 'Id' column not visible from the settings wheel for <tableCaption> table
 And the user makes 'Name' column not visible from the settings wheel for <tableCaption> table
 And the user makes 'Password' column not visible from the settings wheel for <tableCaption> table
-Then the user should see no columns in <tableCaption> table
-And the user should see no rows in <tableCaption> table
-When the user makes 'Id' column visible from the settings wheel for <tableCaption> table
+And the user makes 'Id' column visible from the settings wheel for <tableCaption> table
 And the user makes 'Name' column visible from the settings wheel for <tableCaption> table
 And the user makes 'Password' column visible from the settings wheel for <tableCaption> table
 Then the user should see that rows in 'Id' column contain the values from '0' to '4' in <tableCaption> table
@@ -188,7 +186,7 @@ And the user waits until data is loaded in <tableCaption> table
 And the user selects the row with 'Id' column and '1' value in <tableCaption> table
 And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
-Then the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+Then the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
@@ -214,12 +212,10 @@ And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
 And the user multi-selects the row with 'Id' column and '0' value in <tableCaption> table
 And the user multi-selects the row with 'Id' column and '1' value in <tableCaption> table
-Then the user should see that row with 'Id' column and '0' value is selected in <tableCaption> table
-And the user should see that row with 'Id' column and '1' value is selected in <tableCaption> table
-When the user clicks on 'Load data' button
+And the user clicks on 'Load data' button
 And the user waits until data is loaded in <tableCaption> table
-Then the user should see that row with 'Id' column and '0' value is deselected in <tableCaption> table
-And the user should see that row with 'Id' column and '1' value is deselected in <tableCaption> table
+Then the user should see that row with 'Id' column and '0' value is unselected in <tableCaption> table
+And the user should see that row with 'Id' column and '1' value is unselected in <tableCaption> table
 Examples:
 |tableCaption|
 |TableWithProgressBarPresenter example: Lazy table|
