@@ -1,5 +1,6 @@
 package com.axiomsl.serenity.steps.basic;
 
+import com.axiomsl.serenity.helpers.HelperManager;
 import com.axiomsl.serenity.pages.AutomatedTestsPage;
 import com.axiomsl.serenity.pages.BasePage;
 import com.axiomsl.serenity.pages.ExamplePage;
@@ -43,8 +44,8 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void refresh_example_page() {
-       examplePage.getDriver().navigate().refresh();
-       examplePage.getDriver().switchTo().alert().accept();
+        HelperManager.WebDriver.GetGlobalWebDriver().navigate().refresh();
+        HelperManager.WebDriver.GetGlobalWebDriver().switchTo().alert().accept();
     }
 
     @Step

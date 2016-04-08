@@ -172,7 +172,9 @@ public class TableMappingStepsThen {
 
     @Then("the user should see no rows in {'$tableCaption'|$tableCaption} table")
     @Alias("the user should see no rows in <tableCaption> table")
-    public void thenTheUserShouldSeeNoRowsInTable(String tableCaption) {}
+    public void thenTheUserShouldSeeNoRowsInTable(@Named("tableCaption") String tableCaption) {
+        step.should_not_see_rows(tableCaption);
+    }
 
     @Then("the user should see '$inputText' text in '$columnName' column for row with '$columnKey' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user should see '$inputText' text in '$columnName' column for row with '$columnKey' column and '$cellValue' value in <tableCaption> table")

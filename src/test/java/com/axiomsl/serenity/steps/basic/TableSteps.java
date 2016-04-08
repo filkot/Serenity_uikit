@@ -104,6 +104,11 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
+    public void should_not_see_rows(String tableCaption) {
+        assertThat(action.getTable(tableCaption).getRows().size(), is(0));
+    }
+
+    @Step
     public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputDate) {
         assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, "MM/dd/yy hh:mm:ss aa")));
     }
