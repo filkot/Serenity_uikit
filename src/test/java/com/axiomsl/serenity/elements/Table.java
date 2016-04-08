@@ -320,16 +320,13 @@ public class Table extends BasePage {
             throw new IllegalArgumentException("Column name is not correct. Act : " + columnName);
         }
 
-        boolean isEditableTable = false;
-        if(list.get(0).get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0){
-            isEditableTable = true;
-        }
+        boolean isTableEditable = isRowEditable(list.get(0), columnName);
 
         for(Map<String, WebElementFacade> map:list){
             WebElementFacade element = map.get(columnName);
 
             //if we have editable table
-            if(isEditableTable){
+            if(isTableEditable){
                 WebElement cell = element.findElement(By.xpath(".//input"));
                 if(cell.getAttribute("value").equals(cellValue)){
                     return map;
@@ -734,6 +731,30 @@ public class Table extends BasePage {
         WebElementFacade cell = rowMap.get(columnName);
         DatePicker datePicker = new DatePicker(cell.find(By.xpath(datePickerLocator)));
         return datePicker.getDate();
+    }
+
+    public List<String> getValuesFromColumn(String columnName) {
+        List<String> values = new ArrayList<>();
+        List<Map<String, WebElementFacade>> rowMap = this.getRowsMappedToHeadings();
+        boolean isTableEditable = isRowEditable(rowMap.get(0), columnName);
+
+        for (Map<String, WebElementFacade> map : rowMap)
+        {
+            if (isTableEditable) {
+                values.add(map.get(columnName).findElement(By.xpath(".//input")).getAttribute("value"));
+            }
+            else
+            {
+                values.add(map.get(columnName).getAttribute("textContent"));
+            }
+        }
+
+        return values;
+    }
+
+    public boolean isRowEditable(Map<String, WebElementFacade> list, String columnName)
+    {
+        return (list.get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0);
     }
 
     //endregion Public Methods

@@ -113,6 +113,20 @@ public class TableSteps extends ScenarioSteps {
         assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, "MM/dd/yy hh:mm:ss aa")));
     }
 
+    @Step
+    public void should_see_values_sorted_ascending(String columnName, String tableCaption) {
+        List<String> sortedValues = action.getTable(tableCaption).getValuesFromColumn(columnName);
+        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Conversions.sortAscending(sortedValues));
+        assertThat(HelperManager.Conversions.convertListToStringArray(sortedValues), arrayContaining(expectedValues));
+    }
+
+    @Step
+    public void should_see_values_sorted_descending(String columnName, String tableCaption) {
+        List<String> sortedValues = action.getTable(tableCaption).getValuesFromColumn(columnName);
+        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Conversions.sortDescending(sortedValues));
+        assertThat(HelperManager.Conversions.convertListToStringArray(sortedValues), arrayContaining(expectedValues));
+    }
+
     //endregion Assertions
 
     //region Conditions

@@ -194,20 +194,24 @@ public class TableMappingStepsThen {
     @Alias("the user should see that values are sorted as '$listOfValues' in '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldSeeRowsAreSortedAsListInColumnInTable(List listOfValues, String columnName, String tableCaption) {}
 
-    @Then("the user should see that values are sorted ascendingly in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted ascendingly in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedAscInColumnInTable(String columnName, String tableCaption) {}
+    @Then("the user should see that values are sorted ascending in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted ascending in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedAscInColumnInTable(@Named("$columnName") String columnName, @Named("tableCaption") String tableCaption) {
+        step.should_see_values_sorted_ascending(columnName, tableCaption);
+    }
 
-    @Then("the user should see that values are sorted descendingly in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted descendingly in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedDescInColumnInTable(String columnName, String tableCaption) {}
+    @Then("the user should see that values are sorted descending in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted descending in '$columnName' column in <tableCaption> table")
+    public void thenTheUserShouldSeeRowsAreSortedDescInColumnInTable(@Named("$columnName") String columnName, @Named("tableCaption") String tableCaption) {
+        step.should_see_values_sorted_descending(columnName, tableCaption);
+    }
 
-    @Then("the user should see that values are sorted as date ascendingly in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted as date ascendingly in '$columnName' column in <tableCaption> table")
+    @Then("the user should see that values are sorted as date ascending in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted as date ascending in '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldSeeRowsAreSortedAscAsDateInColumnInTable(String columnName, String tableCaption) {}
 
-    @Then("the user should see that values are sorted as date descendingly in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted as date descendingly in '$columnName' column in <tableCaption> table")
+    @Then("the user should see that values are sorted as date descending in '$columnName' column in '$tableCaption' table")
+    @Alias("the user should see that values are sorted as date descending in '$columnName' column in <tableCaption> table")
     public void thenTheUserShouldSeeRowsAreSortedDescAsDateInColumnInTable(String columnName, String tableCaption) {}
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
