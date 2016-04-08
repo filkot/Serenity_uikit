@@ -25,21 +25,24 @@ Then the user should see 'http://xkcd.com/' the current page URL
 
 Scenario: Single Click - open in a new tab
 Meta: @id3 3
-Given the user refresh the Example page
+Given the user is on the Example page
 When the user selects the item 'Interaction->Buttons' in a tree
 And the user clicks on 'Show stackoverflow.com in new tab' button
-Then the user should see new tab with text 'stackoverflow'
+And the user selects new window
+Then the user should see 'http://stackoverflow.com/' the current page URL
 
-Scenario: Single Click - open in a new window
+Scenario: Single Click - open in a new tab
 Meta: @id4 4
-Given the user refresh the Example page
+Given the user is on the Example page
 When the user selects the item 'Interaction->Buttons' in a tree
 And the user clicks on 'Show recipes in new window' button
-Then the user should see new firefox window with text 'recipies'
+And the user selects new window
+Then the user should see 'http://allrecipes.com/' the current page URL
 
 Scenario: Right click
 Meta: @id5 5
-Given the user refresh the Example page
+Given the user is on main window
+And the user refresh the Example page
 When the user selects the item 'Interaction->Buttons' in a tree
 And the user hovers on 'Simple button with icon' button
 And the user does a right click

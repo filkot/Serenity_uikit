@@ -9,6 +9,7 @@ final public class HelperManager {
 
     private static ConversionsHelper ConversionsHelperInstance = null;
     private static WebDriverHelper WebDriverHelperInstance = null;
+    private static WindowsHelperSteps WindowsHelperInstance = null;
 
     //endregion Private Static Fields
 
@@ -22,12 +23,17 @@ final public class HelperManager {
         return WebDriverHelperInstance!=null ? WebDriverHelperInstance : new WebDriverHelper();
     }
 
+    private static WindowsHelperSteps getWindowsHelper() {
+        return WindowsHelperInstance!=null ? WindowsHelperInstance : new WindowsHelperSteps();
+    }
+
     //endregion Private Static Methods
 
     //region Public Static Methods
 
     public static ConversionsHelper Conversions = getConversionsHelper();
     public static WebDriverHelper WebDriver = getWebDriverHelper();
+    public static WindowsHelperSteps WindowsSwitch = getWindowsHelper();
 
     //endregion Public Static Methods
 }

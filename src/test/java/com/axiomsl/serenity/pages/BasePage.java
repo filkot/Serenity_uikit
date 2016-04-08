@@ -77,6 +77,14 @@ public class BasePage extends PageObject {
         return getCurrentPageURL().equals(expectedURL);
     }
 
+    public void switch_to_old_window() {
+        HelperManager.WindowsSwitch.switchOnOldWindow();
+    }
+
+    public void switch_to_new_window() {
+        HelperManager.WindowsSwitch.switchOnNewWindow();
+    }
+
     public void open_dashboard(String dashboardName) {
         WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();

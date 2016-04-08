@@ -35,5 +35,10 @@ public class DashboardStepsWhen {
         endUser.open_dashboard(dashboardName);
     }
 
+    @When("the user selects new window")
+    public void whenTheUserSelectsNewWindow() {
+        endUser.switch_to_new_window();
+    }
+
     //endregion @When
 }

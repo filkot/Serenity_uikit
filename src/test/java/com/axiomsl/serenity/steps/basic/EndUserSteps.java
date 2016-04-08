@@ -68,5 +68,15 @@ public class EndUserSteps extends ScenarioSteps {
         basePage.open_dashboard(dashboardName);
     }
 
+    @Step
+    public void switch_to_new_window() {
+        basePage.switch_to_new_window();
+    }
+
+    @Step
+    public void switch_to_old_window() {
+        basePage.switch_to_old_window();
+    }
+
     //endregion Conditions
 }

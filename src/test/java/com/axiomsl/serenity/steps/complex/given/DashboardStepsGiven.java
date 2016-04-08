@@ -30,5 +30,10 @@ public class DashboardStepsGiven {
         endUser.refresh_example_page();
     }
 
+    @Given("the user is on main window")
+    public void givenTheUserIsOnMainWindow() {
+        endUser.switch_to_old_window();
+    }
+
     //endregion @Given
 }
