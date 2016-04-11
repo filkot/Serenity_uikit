@@ -8,13 +8,18 @@ import java.util.List;
  */
 final public class UtilsHelper {
 
+    //region Public Fields
+
+    public String DateFormatLocale = "MM/dd/yy hh:mm:ss aa";
+
+    //region Public Fields
+
     //region Public Methods
 
     public List<String> removeTripleDots(List<String> currentList) {
         List<String> modifiedList = new ArrayList<>();
-        for(int i=0; i < currentList.size(); i++)
-        {
-            modifiedList.add(currentList.get(i).replace("...",""));
+        for (String aCurrentList : currentList) {
+            modifiedList.add(aCurrentList.replace("...", ""));
         }
         return modifiedList;
     }
