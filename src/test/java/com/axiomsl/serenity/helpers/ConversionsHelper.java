@@ -2,6 +2,10 @@ package com.axiomsl.serenity.helpers;
 
 import ch.lambdaj.Lambda;
 import ch.lambdaj.function.convert.Converter;
+import com.axiomsl.serenity.comparators.TableColumnIntegerReverseOrderComparator;
+import com.axiomsl.serenity.comparators.TableColumnIntegerStraightOrderComparator;
+import com.axiomsl.serenity.comparators.TableColumnStringReverseOrderComparator;
+import com.axiomsl.serenity.comparators.TableColumnStringStraightOrderComparator;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.text.DateFormat;
@@ -90,80 +94,6 @@ final public class ConversionsHelper {
         return convertedListToArray;
     }
 
-    public List<String> sortAscending(List<String> targetList){
-
-        boolean targetListHasWords = false;
-        List<Integer> integerList = new ArrayList<>();
-        List<String> expectedList = new ArrayList<>();
-
-        for(String item : targetList)
-        {
-            if (!item.matches("\\d+")) {
-                targetListHasWords = true;
-                break;
-            }
-        }
-
-        if(!targetListHasWords)
-        {
-            for(String strValue : targetList) integerList.add(Integer.valueOf(strValue));
-            java.util.Collections.sort(integerList);
-            for(Integer intValue : integerList) expectedList.add(String.valueOf(intValue));
-        }
-        else
-        {
-            expectedList = targetList;
-            java.util.Collections.sort(expectedList);
-        }
-        return expectedList;
-    }
-
-    public List<String> sortDescending(List<String> targetList){
-
-        boolean targetListHasWords = false;
-        List<Integer> integerList = new ArrayList<>();
-        List<String> expectedList = new ArrayList<>();
-
-        for(String item : targetList)
-        {
-            if (!item.matches("\\d+")) {
-                targetListHasWords = true;
-                break;
-            }
-        }
-
-        if(!targetListHasWords)
-        {
-            for(String strValue : targetList) integerList.add(Integer.valueOf(strValue));
-            java.util.Collections.reverse(integerList);
-            for(Integer intValue : integerList) expectedList.add(String.valueOf(intValue));
-        }
-        else
-        {
-            expectedList = targetList;
-            java.util.Collections.reverse(expectedList);
-        }
-        return expectedList;
-    }
-
     //endregion Public Methods
-
-    //region Public Classes - Comparators
-
-    public class TableTextColumnComparator implements Comparator<String> {
-
-        //String
-        @Override
-        public int compare(String strObj1, String strObj2){
-            return Integer.valueOf(strObj1).compareTo(Integer.valueOf(strObj2));
-        }
-
-        //Integer
-        public int compare(Integer intObj1, Integer intObj2){
-            return intObj1.compareTo(intObj2);
-        }
-    }
-
-    //endregion Public Classes - Comparators
 
 }

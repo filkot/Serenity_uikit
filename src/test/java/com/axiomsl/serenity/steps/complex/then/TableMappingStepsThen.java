@@ -192,7 +192,9 @@ public class TableMappingStepsThen {
 
     @Then("the user should see that values are sorted as '$listOfValues' in '$columnName' column in '$tableCaption' table")
     @Alias("the user should see that values are sorted as '$listOfValues' in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedAsListInColumnInTable(List listOfValues, String columnName, String tableCaption) {}
+    public void thenTheUserShouldSeeRowsAreSortedAsListInColumnInTable(@Named("$listOfValues") List<String> listOfValues, @Named("$columnName") String columnName, @Named("tableCaption") String tableCaption) {
+        step.should_see_values_sorted_as_list(listOfValues, columnName, tableCaption);
+    }
 
     @Then("the user should see that values are sorted ascending in '$columnName' column in '$tableCaption' table")
     @Alias("the user should see that values are sorted ascending in '$columnName' column in <tableCaption> table")

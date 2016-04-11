@@ -13,7 +13,6 @@ import static org.hamcrest.Matchers.*;
 
 public class TableSteps extends ScenarioSteps {
 
-    public static final String EMPTY_STRING = "";
     TableAction action;
 
     //region Assertions
@@ -110,21 +109,28 @@ public class TableSteps extends ScenarioSteps {
 
     @Step
     public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputDate) {
-        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName), Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, "MM/dd/yy hh:mm:ss aa")));
+        assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName),
+                Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, "MM/dd/yy hh:mm:ss aa")));
     }
 
     @Step
     public void should_see_values_sorted_ascending(String columnName, String tableCaption) {
         List<String> sortedValues = action.getTable(tableCaption).getValuesFromColumn(columnName);
-        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Conversions.sortAscending(sortedValues));
+        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Sorting.sortAscending(sortedValues));
         assertThat(HelperManager.Conversions.convertListToStringArray(sortedValues), arrayContaining(expectedValues));
     }
 
     @Step
     public void should_see_values_sorted_descending(String columnName, String tableCaption) {
         List<String> sortedValues = action.getTable(tableCaption).getValuesFromColumn(columnName);
-        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Conversions.sortDescending(sortedValues));
+        String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Sorting.sortDescending(sortedValues));
         assertThat(HelperManager.Conversions.convertListToStringArray(sortedValues), arrayContaining(expectedValues));
+    }
+
+    @Step
+    public void should_see_values_sorted_as_list(List<String> expectedList, String columnName, String tableCaption) {
+        String[] unsortedValues = HelperManager.Conversions.convertListToStringArray(action.getTable(tableCaption).getCountedValuesFromColumn(columnName, expectedList));
+        assertThat(unsortedValues, arrayContaining(HelperManager.Conversions.convertListToStringArray(HelperManager.Utils.removeTripleDots(expectedList))));
     }
 
     //endregion Assertions

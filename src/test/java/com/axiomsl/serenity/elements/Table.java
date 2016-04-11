@@ -757,5 +757,19 @@ public class Table extends BasePage {
         return (list.get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0);
     }
 
+    public List<String> getCountedValuesFromColumn(String columnName, List<String> expectedMask){
+        List<String> values = getValuesFromColumn(columnName);
+        if(expectedMask.get(expectedMask.size()-1).endsWith("..."))
+        {
+            List<String> countedValues = new ArrayList<>();
+            for(int i=0; i < expectedMask.size(); i++)
+            {
+                countedValues.add(values.get(i));
+            }
+            return countedValues;
+        }
+        return values;
+    }
+
     //endregion Public Methods
 }
