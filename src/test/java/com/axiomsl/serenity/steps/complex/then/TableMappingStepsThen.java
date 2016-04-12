@@ -208,14 +208,6 @@ public class TableMappingStepsThen {
         step.should_see_values_sorted_descending(columnName, tableCaption);
     }
 
-    @Then("the user should see that values are sorted as date ascending in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted as date ascending in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedAscAsDateInColumnInTable(String columnName, String tableCaption) {}
-
-    @Then("the user should see that values are sorted as date descending in '$columnName' column in '$tableCaption' table")
-    @Alias("the user should see that values are sorted as date descending in '$columnName' column in <tableCaption> table")
-    public void thenTheUserShouldSeeRowsAreSortedDescAsDateInColumnInTable(String columnName, String tableCaption) {}
-
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in '$tableCaption' table")
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
     public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {}

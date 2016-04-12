@@ -1,6 +1,6 @@
 package com.axiomsl.serenity.helpers;
 
-import com.axiomsl.serenity.comparators.TableColumnComparatorManager;
+import com.axiomsl.serenity.comparators.OrderComparatorManager;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import java.util.List;
 final public class SortingHelper {
 
     public List<String> sortAscending(List<String> sortingList){
-        return new TableColumnComparatorManager(sortingList).sort();
+        return new OrderComparatorManager(sortingList).sort();
     }
 
     public List<String> sortDescending(List<String> sortingList){
-        return new TableColumnComparatorManager(sortingList).reverse();
+        return new OrderComparatorManager(sortingList).reverse();
     }
 }

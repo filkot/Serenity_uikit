@@ -10,7 +10,8 @@ final public class UtilsHelper {
 
     //region Public Fields
 
-    public String DateFormatLocale = "MM/dd/yy hh:mm:ss aa";
+    public String DefaultDateFormatLocale = "MM/dd/yy hh:mm:ss aa";
+    public String DefaultDatePickerFormat = "E MMM dd HH:mm:ss z yyyy";
 
     //region Public Fields
 
