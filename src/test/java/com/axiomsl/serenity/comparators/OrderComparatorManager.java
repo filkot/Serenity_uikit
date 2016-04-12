@@ -84,7 +84,9 @@ public class OrderComparatorManager {
         return sort(integerReverseOrder, stringReverseOrder, dateReverseOrder);
     }
 
-    //endregion Protected Inner Classes
+    //endregion Public Methods
+
+    //region Public Inner Classes
 
     public class DateReverseOrderComparator implements Comparator<Date> {
 
@@ -136,5 +138,6 @@ public class OrderComparatorManager {
         }
     }
 
-    //region Protected Inner Classes
+    //endregion Public Inner Classes
+
 }

@@ -771,5 +771,45 @@ public class Table extends BasePage {
         return values;
     }
 
+    public void expandRow (String columnName, String cellValue)
+    {
+        Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
+        if(map != null){
+            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(".//span[@class, 'v-treetable-treespacer']"));
+            if(selectedRowSpacer.hasClass("v-treetable-node-closed"))
+            {
+                selectedRowSpacer.click();
+                selectedRowSpacer.click();
+            }
+            if(selectedRowSpacer.hasClass("v-treetable-node-open"))
+            {
+                System.out.println("Selected treetable row is already expanded");
+            }
+            else{
+                System.out.println("Selected treetable row is not expandable");
+            }
+        }
+    }
+
+    public void collapseRow (String columnName, String cellValue)
+    {
+        Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
+        if(map != null){
+            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(".//span[@class, 'v-treetable-treespacer']"));
+            if(selectedRowSpacer.hasClass("v-treetable-node-open"))
+            {
+                selectedRowSpacer.click();
+                selectedRowSpacer.click();
+            }
+            if(selectedRowSpacer.hasClass("v-treetable-node-closed"))
+            {
+                System.out.println("Selected treetable row is already collapsed");
+            }
+            else{
+                System.out.println("Selected treetable row is not expandable");
+            }
+        }
+    }
+
     //endregion Public Methods
 }

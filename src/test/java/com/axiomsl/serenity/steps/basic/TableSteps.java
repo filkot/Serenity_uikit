@@ -242,5 +242,15 @@ public class TableSteps extends ScenarioSteps {
         action.getTable(tableCaption).inputDateInCell(columnKey, cellValue, columnName, date);
     }
 
+    @Step
+    public void expand_row_in_treetable(String columnName, String cellValue, String tableCaption) {
+        action.getTable(tableCaption).expandRow(columnName, cellValue);
+    }
+
+    @Step
+    public void collapse_row_in_treetable(String columnName, String cellValue, String tableCaption) {
+        action.getTable(tableCaption).collapseRow(columnName, cellValue);
+    }
+
     //endregion Conditions
 }

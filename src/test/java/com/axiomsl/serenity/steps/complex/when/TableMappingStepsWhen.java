@@ -204,27 +204,23 @@ public class TableMappingStepsWhen {
 
     @When("the user waits until '$numberOfRows' row is loaded into '$tableCaption' table")
     @Alias("the user waits until '$numberOfRows' row is loaded into <tableCaption> table")
-    public void whenTheUserWaitsUntilRowIsLoadedInTable(String numberOfRows,String tableCaption) {}
+    public void whenTheUserWaitsUntilRowIsLoadedInTable(String numberOfRows, String tableCaption) {}
 
     @When("the user expands the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user expands the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserExpandsTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
+    public void whenTheUserExpandsTheRowInTreeTable(@Named("$columnName") String columnName,
+                                                    @Named("cellValue") String cellValue,
+                                                    @Named("tableCaption") String tableCaption) {
+        step.expand_row_in_treetable(columnName, cellValue, tableCaption);
+    }
 
     @When("the user collapses the row with '$columnName' column and '$cellValue' value in '$tableCaption' table")
     @Alias("the user collapses the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
-    public void whenTheUserCollapsesTheRowInTreeTable(String columnName, String cellValue, String tableCaption) {}
-
-    @When("the user selects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in '$tableCaption' table")
-    @Alias("the user selects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in <tableCaption> table")
-    public void whenTheUserSelectsCheckboxInUnnamedRowInTable(String columnName, String cellValue, String tableCaption) {}
-
-    @When("the user deselects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in '$tableCaption' table")
-    @Alias("the user deselects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in <tableCaption> table")
-    public void whenTheUserDeselectsCheckboxInUnnamedRowInTable(String columnName, String cellValue, String tableCaption) {}
-
-    @When("the user reselects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in '$tableCaption' table")
-    @Alias("the user reselects the checkbox in unnamed column for row with column '$columnName' and value '$cellValue' in <tableCaption> table")
-    public void whenTheUserReselectsCheckboxInUnnamedRowInTable(String columnName, String cellValue, String tableCaption) {}
+    public void whenTheUserCollapsesTheRowInTreeTable(@Named("$columnName") String columnName,
+                                                      @Named("cellValue") String cellValue,
+                                                      @Named("tableCaption") String tableCaption) {
+        step.collapse_row_in_treetable(columnName, cellValue, tableCaption);
+    }
 
     @When("the user removes all rows by clicking on '$buttonName' button")
     public void whenTheUserRemoveAllRowsByButtonClick(String buttonName) {}
