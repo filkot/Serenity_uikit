@@ -8,13 +8,6 @@ import java.util.List;
  */
 final public class UtilsHelper {
 
-    //region Public Fields
-
-    public String DefaultDateFormatLocale = "MM/dd/yy hh:mm:ss aa";
-    public String DefaultDatePickerFormat = "E MMM dd HH:mm:ss z yyyy";
-
-    //region Public Fields
-
     //region Public Methods
 
     public List<String> removeTripleDots(List<String> currentList) {

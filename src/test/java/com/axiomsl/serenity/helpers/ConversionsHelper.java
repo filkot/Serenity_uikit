@@ -17,6 +17,14 @@ import java.util.Map;
  */
 final public class ConversionsHelper {
 
+    //region Public Fields
+
+    public String DefaultDateFormatLocale = "MM/dd/yy hh:mm:ss aa";
+    public String DefaultDatePickerFormat = "E MMM dd HH:mm:ss z yyyy";
+    public String DefaultMonthYearFormat = "MMMM yyyy";
+
+    //endregion Public Fields
+
     //region Protected Static Inner Classes
 
     public static final class MapConverter<K, F, T> implements Converter<Map<K, F>, Map<K, T>> {
@@ -85,11 +93,11 @@ final public class ConversionsHelper {
     }
 
     public Date convertStringToDate(String inputDate){
-        return convertStringToDate(inputDate, HelperManager.Utils.DefaultDatePickerFormat);
+        return convertStringToDate(inputDate, HelperManager.Conversions.DefaultDatePickerFormat);
     }
 
     public String convertDateToString(Date inputDate){
-        return new SimpleDateFormat(HelperManager.Utils.DefaultDatePickerFormat).format(inputDate);
+        return new SimpleDateFormat(HelperManager.Conversions.DefaultDatePickerFormat).format(inputDate);
     }
 
     public String[] convertListToStringArray(List<String> currentList) {
@@ -107,7 +115,7 @@ final public class ConversionsHelper {
             return false;
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat(HelperManager.Utils.DefaultDatePickerFormat);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(HelperManager.Conversions.DefaultDatePickerFormat);
         dateFormat.setLenient(false);
 
         dateFormat.parse(stringDate);

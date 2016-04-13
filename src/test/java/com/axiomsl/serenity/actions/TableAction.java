@@ -10,7 +10,8 @@ public class TableAction extends BasePage {
 
     //region Private Fields
 
-    private String tableLocator = "//div[contains(@class, 'v-table-components-inside')]";
+    //private String tableLocator = "//div[contains(@class, 'v-table-components-inside')]";
+    private String tableLocator = "//div[contains(@class, 'v-table')]";
     private String captionLocator = "//div[contains(@class,'v-caption')]/span[text() = '%s']";
 
     //endregion Private Fields
@@ -38,7 +39,10 @@ public class TableAction extends BasePage {
         if(caption.equals("a") || caption.equals("the") ){
             table = new Table(find(By.xpath(tableLocator)));
         }else{
-            String path = String.format(captionLocator, caption) + "/parent::div/following-sibling::div[contains(@class, 'v-table-components-inside')]";
+            //String path = String.format(captionLocator, caption)
+            //        + String.format("/parent::div/following-sibling::%s", tableLocator.replace("//",""));
+            String path = String.format(captionLocator, caption)
+                    + String.format("/parent::div/following-sibling::div[contains(concat(' ', normalize-space(@class), ' '), concat(' ', 'v-table', ' '))]");
             table = new Table(find(By.xpath(path)));
         }
         return table;

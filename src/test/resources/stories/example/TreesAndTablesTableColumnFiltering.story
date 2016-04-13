@@ -705,7 +705,7 @@ Scenario: Re-unsort the 'Id' column
 Given the user refresh the Example page
 When the user selects the item 'Trees and Tables->Table Column filtering' in a tree
 And the user clicks '6' times on 'Name' column in <tableCaption> table
-Then the user should see that values are sorted as '0,1,2,3,4,5,6,7,8,9,10,11' in 'Id' column in <tableCaption> table
+Then the user should see that values are sorted as '0,1,2,3,4,5,6,7,8,9,10,11...' in 'Id' column in <tableCaption> table
 Examples:
 |tableCaption|
 |Simple Table showing filtering behaviour|

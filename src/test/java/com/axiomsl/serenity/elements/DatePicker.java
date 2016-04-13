@@ -14,7 +14,9 @@ import java.util.List;
  * Created by kfilippov on 29.03.2016.
  */
 public class DatePicker extends BasePage{
+
     //region Private Fields
+
     private final WebElementFacade wrappedElement;
     private String buttonLocator = ".//button[contains(@class, 'v-datefield-button')]";
     private String inputLocator = ".//input";
@@ -40,7 +42,7 @@ public class DatePicker extends BasePage{
     //region Private Methods
     private Date getCurrentMonthYear() {
         String monthYear = wrappedElement.then(By.xpath(currentMonthYearLocator)).getText();
-        return HelperManager.Conversions.convertStringToDate(monthYear, "MMMM yyyy");
+        return HelperManager.Conversions.convertStringToDate(monthYear, HelperManager.Conversions.DefaultMonthYearFormat);
     }
 
     //endregion Private Methods
@@ -109,11 +111,11 @@ public class DatePicker extends BasePage{
 
     public Date getDate() {
         String string = wrappedElement.then(By.xpath(inputLocator)).getValue();
-        return HelperManager.Conversions.convertStringToDate(string, "MM/dd/yy hh:mm:ss aa");
+        return HelperManager.Conversions.convertStringToDate(string, HelperManager.Conversions.DefaultDateFormatLocale);
     }
 
     public void setDate(String date){
-        Date currentDate = HelperManager.Conversions.convertStringToDate(date, "MM/dd/yy hh:mm:ss aa");
+        Date currentDate = HelperManager.Conversions.convertStringToDate(date, HelperManager.Conversions.DefaultDateFormatLocale);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
         int year = calendar.get(Calendar.YEAR);

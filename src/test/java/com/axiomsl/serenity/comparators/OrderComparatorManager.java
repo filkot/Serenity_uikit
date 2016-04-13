@@ -51,7 +51,7 @@ public class OrderComparatorManager {
 
     //endregion Private Methods
 
-    //region Public Methods
+    //region Constructors
 
     public OrderComparatorManager(List<String> actualList)
     {
@@ -75,6 +75,10 @@ public class OrderComparatorManager {
             }
         }
     }
+
+    //endregion Constructors
+
+    //region Public Methods
 
     public List<String> sort(){
         return sort(integerStraightOrder, stringStraightOrder, dateStraightOrder);

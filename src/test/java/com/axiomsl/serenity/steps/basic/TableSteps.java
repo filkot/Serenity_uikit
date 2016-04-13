@@ -115,7 +115,7 @@ public class TableSteps extends ScenarioSteps {
     @Step
     public void should_see_date_in_cell(String tableCaption, String columnKey, String cellValue, String columnName, String inputDate) {
         assertThat(action.getTable(tableCaption).getDateInCell(columnKey, cellValue, columnName),
-                Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, HelperManager.Utils.DefaultDateFormatLocale)));
+                Matchers.is(HelperManager.Conversions.convertStringToDate(inputDate, HelperManager.Conversions.DefaultDateFormatLocale)));
     }
 
     @Step

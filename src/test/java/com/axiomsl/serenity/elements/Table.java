@@ -34,6 +34,7 @@ public class Table extends BasePage {
     private String textInputLocator = ".//input[@type = 'text']";
     private String datePickerLocator = ".//div[contains(@class, 'v-datefield-popupcalendar')]";
     private String doubleDatePickerLocator = ".//div[contains(@class, 'v-customcomponent-datefilterpopup')]";
+    private String treeSpacer = "/descendant::span[contains(@class, 'v-treetable-treespacer')]";
     private String buttonWithTextLocator = "//div//span[text() = '%s']";
 
     //endregion Private Fields
@@ -760,10 +761,15 @@ public class Table extends BasePage {
         return datePicker.getDate();
     }
 
+
+    /**
+     * Get all values from the specified column
+     * @param columnName - Name of column from what the values will be taken
+     */
     public List<String> getValuesFromColumn(String columnName) {
         List<String> values = new ArrayList<>();
         List<Map<String, WebElementFacade>> rowMap = this.getRowsMappedToHeadings();
-        boolean isTableEditable = this.isRowEditable(rowMap.get(0), columnName);
+        boolean isTableEditable = isRowEditable(rowMap.get(0), columnName);
 
         for (Map<String, WebElementFacade> map : rowMap)
         {
@@ -774,10 +780,15 @@ public class Table extends BasePage {
                 values.add(map.get(columnName).getAttribute("textContent"));
             }
         }
-
         return values;
     }
 
+    /**
+     * Checks if specified column has the editable elements
+     * @param list - List of rows
+     * @param columnName - Name of column
+     * @return - Returns true if selected column contains the editable elements
+     */
     public boolean isRowEditable(Map<String, WebElementFacade> list, String columnName)
     {
         return (list.get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0);
@@ -801,12 +812,18 @@ public class Table extends BasePage {
         return actSum == Integer.parseInt(expSum);
     }
 
-    public List<String> getCountedValuesFromColumn(String columnName, List<String> expectedMask){
+    /**
+     * Get only a certain amount of values from the specified column
+     * @param columnName - Name of column from what the values will be taken
+     * @param itemListMask - List of items that will be used as amount mask to get such amount of the values from the selected column
+     * @return - If [itemListMask] contains '...' at the end then return only a certain amount of values, else return all values from the selected column
+     */
+    public List<String> getCountedValuesFromColumn(String columnName, List<String> itemListMask){
         List<String> values = getValuesFromColumn(columnName);
-        if(expectedMask.get(expectedMask.size()-1).endsWith("..."))
+        if(itemListMask.get(itemListMask.size()-1).endsWith("..."))
         {
             List<String> countedValues = new ArrayList<>();
-            for(int i=0; i < expectedMask.size(); i++)
+            for(int i=0; i < itemListMask.size(); i++)
             {
                 countedValues.add(values.get(i));
             }
@@ -815,47 +832,55 @@ public class Table extends BasePage {
         return values;
     }
 
-    public void expandRow (String columnName, String cellValue)
+    /**
+     * Expand a row in TreeTable
+     * @param columnName - Name of column for the row that will be expanded
+     * @param cellValue - Value of cell for the row that will be expanded
+     */
+    public void expandRow(String columnName, String cellValue)
     {
         Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
         if(map != null){
-            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(".//span[@class, 'v-treetable-treespacer']"));
+            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(treeSpacer));
             if(selectedRowSpacer.hasClass("v-treetable-node-closed"))
             {
                 selectedRowSpacer.click();
-                selectedRowSpacer.click();
             }
-            if(selectedRowSpacer.hasClass("v-treetable-node-open"))
+            else
             {
-                System.out.println("Selected treetable row is already expanded");
-            }
-            else{
-                System.out.println("Selected treetable row is not expandable");
+                if(selectedRowSpacer.hasClass("v-treetable-node-open")) {
+                    System.out.println("Selected treetable row is already expanded");
+                }
+                else
+                    System.out.println("Selected treetable row is not expandable");
             }
         }
     }
 
-    public void collapseRow (String columnName, String cellValue)
+    /**
+     * Collapse a row in TreeTable
+     * @param columnName - Name of column for the row that will be collapsed
+     * @param cellValue - Value of cell for the row that will be collapsed
+     */
+    public void collapseRow(String columnName, String cellValue)
     {
         Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
         if(map != null){
-            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(".//span[@class, 'v-treetable-treespacer']"));
+            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(treeSpacer));
             if(selectedRowSpacer.hasClass("v-treetable-node-open"))
             {
                 selectedRowSpacer.click();
-                selectedRowSpacer.click();
             }
-            if(selectedRowSpacer.hasClass("v-treetable-node-closed"))
+            else
             {
-                System.out.println("Selected treetable row is already collapsed");
-            }
-            else{
-                System.out.println("Selected treetable row is not expandable");
+                if(selectedRowSpacer.hasClass("v-treetable-node-closed")) {
+                    System.out.println("Selected treetable row is already collapsed");
+                }
+                else
+                    System.out.println("Selected treetable row is not expandable");
             }
         }
     }
-
-
 
     //endregion Public Methods
 }
