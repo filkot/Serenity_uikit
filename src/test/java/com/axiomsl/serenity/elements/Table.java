@@ -784,10 +784,10 @@ public class Table extends BasePage {
     }
 
     /**
-     * Checks if specified column has the editable elements
-     * @param list - List of rows
+     * Checks if specified row has the editable elements
+     * @param list - Map for the selected row
      * @param columnName - Name of column
-     * @return - Returns true if selected column contains the editable elements
+     * @return - Returns true if selected row contains the editable elements
      */
     public boolean isRowEditable(Map<String, WebElementFacade> list, String columnName)
     {
@@ -833,7 +833,7 @@ public class Table extends BasePage {
     }
 
     /**
-     * Expand a row in TreeTable
+     * Expand a row
      * @param columnName - Name of column for the row that will be expanded
      * @param cellValue - Value of cell for the row that will be expanded
      */
@@ -858,7 +858,7 @@ public class Table extends BasePage {
     }
 
     /**
-     * Collapse a row in TreeTable
+     * Collapse a row
      * @param columnName - Name of column for the row that will be collapsed
      * @param cellValue - Value of cell for the row that will be collapsed
      */
@@ -880,6 +880,22 @@ public class Table extends BasePage {
                     System.out.println("Selected treetable row is not expandable");
             }
         }
+    }
+
+    /**
+     * Checks if specified row is expanded
+     * @param columnName - Name of column for the row that is expanded
+     * @param cellValue - Value of cell for the row that is expanded
+     * @return - Returns true if selected row is expanded
+     */
+    public boolean isRowExpanded(String columnName, String cellValue)
+    {
+        Map<String, WebElementFacade> map = this.getRowMapByCellValue(columnName, cellValue);
+        if(map != null){
+            WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(treeSpacer));
+            return selectedRowSpacer.hasClass("v-treetable-node-open");
+        }
+        return false;
     }
 
     //endregion Public Methods

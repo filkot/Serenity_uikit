@@ -148,6 +148,16 @@ public class TableSteps extends ScenarioSteps {
         assertThat(unsortedValues, arrayContaining(HelperManager.Conversions.convertListToStringArray(HelperManager.Utils.removeTripleDots(expectedList))));
     }
 
+    @Step
+    public void should_see_row_is_expanded(String columnName, String cellValue, String tableCaption) {
+        assertThat(action.getTable(tableCaption).isRowExpanded(columnName, cellValue), is(true));
+    }
+
+    @Step
+    public void should_see_row_is_collapsed(String columnName, String cellValue, String tableCaption) {
+        assertThat(action.getTable(tableCaption).isRowExpanded(columnName, cellValue), is(false));
+    }
+
     //endregion Assertions
 
     //region Conditions
@@ -276,5 +286,6 @@ public class TableSteps extends ScenarioSteps {
     public void remove_all_row_in_table_by_pressing_button(String buttonName, String tableCaption) {
         action.getTable(tableCaption).remove_all_rows_by_button(buttonName);
     }
+
     //endregion Conditions
 }

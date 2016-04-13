@@ -219,11 +219,17 @@ public class TableMappingStepsThen {
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is expanded in {'$tableCaption'|$tableCaption} table")
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is expanded in <tableCaption> table")
-    public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {}
+    public void thenTheUserShouldSeeRowIsExpandedInTable(String columnName, String cellValue, String tableCaption) {
+        step.should_see_row_is_expanded(columnName, cellValue, tableCaption);
+    }
 
     @Then("the user should see that row with '$columnName' column and '$cellValue' value is collapsed in {'$tableCaption'|$tableCaption} table")
     @Alias("the user should see that row with '$columnName' column and '$cellValue' value is collapsed in <tableCaption> table")
-    public void thenTheUserShouldSeeRowIsCollapsedInTable(String columnName, String cellValue, String tableCaption) {}
+    public void thenTheUserShouldSeeRowIsCollapsedInTable(@Named("columnName") String columnName,
+                                                          @Named("cellValue")  String cellValue,
+                                                          @Named("tableCaption") String tableCaption) {
+        step.should_see_row_is_collapsed(columnName, cellValue, tableCaption);
+    }
 
     @Then("the user should see '$rowsNumber' rows in {'$tableCaption'|$tableCaption} table")
     @Alias("the user should see '$rowsNumber' rows in <tableCaption> table")
