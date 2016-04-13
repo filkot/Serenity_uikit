@@ -188,7 +188,7 @@ public class TableMappingStepsThen {
 
     @Then("the user should see the empty value in a textfield in '$columnName' column in the first row in {'$tableCaption'|$tableCaption} table")
     public void thenTheUserShouldSeeEmptyValueInTextFieldInColumnInFirstRow(String columnName, String tableCaption) {
-        step.should_see_text_in_cell_in_row_number(tableCaption, columnName, 2, "");
+        step.should_see_text_in_cell_in_row_number(tableCaption, columnName, 1, "");
     }
 
     @Then("the user should see that rows in '$columnName' column contain the values from '$startValue' to '$endValue' in {'$tableCaption'|$tableCaption} table")
