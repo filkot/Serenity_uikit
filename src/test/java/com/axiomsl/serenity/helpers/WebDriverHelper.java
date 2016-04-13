@@ -1,7 +1,7 @@
 package com.axiomsl.serenity.helpers;
 
+import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.openqa.selenium.WebDriver;
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 /**
  * Created by mzhelezko on 21-Mar-16.
@@ -10,9 +10,9 @@ final public class WebDriverHelper {
 
     //region Public Static Methods
 
-    public WebDriver GetGlobalWebDriver()
+    public WebDriver getDriver()
     {
-        return getDriver();
+        return ThucydidesWebDriverSupport.getDriver();
     }
 
     //endregion Public Methods

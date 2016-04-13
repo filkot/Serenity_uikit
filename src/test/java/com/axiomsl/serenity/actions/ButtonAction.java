@@ -25,7 +25,7 @@ public class ButtonAction extends BasePage {
     public void click_url_button_by_name(String buttonName) {
         Button button = new Button(find(By.xpath(String.format(buttonWithTextLocator, buttonName))));
         button.click();
-        HelperManager.WebDriver.GetGlobalWebDriver().switchTo().alert().accept();
+        HelperManager.WebDriver.getDriver().switchTo().alert().accept();
     }
 
     public void right_click_button_by_name(String buttonName) {

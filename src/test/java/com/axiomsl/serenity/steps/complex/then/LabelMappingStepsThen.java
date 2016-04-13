@@ -26,5 +26,10 @@ public class LabelMappingStepsThen {
         step.should_not_see_label_with_text(text);
     }
 
+    @Then("the user should see that 'Sum Value' is '$sumValue'")
+    public void thenTheUserShouldSeeSumValuelsInLabel(int sumValue) {
+        step.should_see_sum_value_is_in_label(sumValue);
+    }
+
     //endregion @Then
 }

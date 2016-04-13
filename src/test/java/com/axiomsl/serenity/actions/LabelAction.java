@@ -27,5 +27,10 @@ public class LabelAction extends BasePage {
         return false;
     }
 
+    public int get_sum_value() {
+        String expSum = find(By.xpath("//div[contains(@class,'v-label')]//span[not(contains(text(), 'Change random row to random value'))]")).getText();
+        return Integer.parseInt(expSum);
+    }
+
     //endregion Public Methods
 }

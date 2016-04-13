@@ -19,8 +19,8 @@ public class WindowsHelperSteps extends ScenarioSteps {
      */
     @Step(callNestedMethods = false)
     public void switchOnOldWindow() {
-        HelperManager.WebDriver.GetGlobalWebDriver().close();
-        HelperManager.WebDriver.GetGlobalWebDriver().switchTo().window((String) Serenity.getCurrentSession().get("mainWindow"));
+        HelperManager.WebDriver.getDriver().close();
+        HelperManager.WebDriver.getDriver().switchTo().window((String) Serenity.getCurrentSession().get("mainWindow"));
     }
 
     /**
@@ -32,14 +32,14 @@ public class WindowsHelperSteps extends ScenarioSteps {
         Set<String> windowsList = (Set<String>) Serenity.getCurrentSession().get("allWindow");
         for (String window : windowsList) {
             if (!window.equals(Serenity.getCurrentSession().get("mainWindow"))) {
-                HelperManager.WebDriver.GetGlobalWebDriver().switchTo().window(window);
+                HelperManager.WebDriver.getDriver().switchTo().window(window);
             }
         }
     }
 
     @Step(callNestedMethods = false)
     public boolean waitForNewWindow() {
-        Set<String> windowsList = HelperManager.WebDriver.GetGlobalWebDriver().getWindowHandles();
+        Set<String> windowsList = HelperManager.WebDriver.getDriver().getWindowHandles();
         long timeout = 10000;
         long finish = System.currentTimeMillis() + timeout;
         while (System.currentTimeMillis() < finish) {
@@ -48,7 +48,7 @@ public class WindowsHelperSteps extends ScenarioSteps {
                 return true;
             }
             waitABit(1000);
-            windowsList = HelperManager.WebDriver.GetGlobalWebDriver().getWindowHandles();
+            windowsList = HelperManager.WebDriver.getDriver().getWindowHandles();
         }
         return false;
     }

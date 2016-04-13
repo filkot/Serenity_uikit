@@ -13,7 +13,7 @@ public class BasePage extends PageObject {
 
     //region Private Fields
 
-    protected final WebDriver driver = HelperManager.WebDriver.GetGlobalWebDriver();
+    protected final WebDriver driver = HelperManager.WebDriver.getDriver();
     private String itemInTreeLocator = "//div[contains (@class, 'v-tree')]//span[text() = '%s']";
     private String buttonLocator = "//div[@role = 'button']//span";
     private String textFieldLocator = "//input[@type = 'text']";
@@ -91,47 +91,47 @@ public class BasePage extends PageObject {
     }
 
     public void clickByCoordinate(WebElementFacade element, int x, int y) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element, x, y).click().build().perform();
     }
 
     public void click(WebElementFacade element) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).click().build().perform();
     }
 
     public void doubleClick(WebElementFacade element) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).doubleClick().build().perform();
     }
 
     public void moveToElement(WebElementFacade element) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).build().perform();
     }
 
     public void clickWithKey(WebElementFacade element){
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL).build().perform();
     }
 
     public void rightClick(WebElementFacade element) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).contextClick().build().perform();
     }
 
     public void controlDown(WebElementFacade element) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveToElement(element).keyDown(Keys.CONTROL).build().perform();
     }
 
     public void dragAndDropByOffset(WebElementFacade element, int offsetX, int offsetY) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.dragAndDropBy(element, offsetX, offsetY).build().perform();
     }
 
     public void moveMouseByOffset(int offsetX, int offsetY) {
-        Actions actions = new Actions(HelperManager.WebDriver.GetGlobalWebDriver());
+        Actions actions = new Actions(HelperManager.WebDriver.getDriver());
         actions.moveByOffset(offsetX, offsetY).build().perform();
     }
 

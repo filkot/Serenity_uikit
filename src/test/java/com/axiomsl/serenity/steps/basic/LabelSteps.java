@@ -23,5 +23,10 @@ public class LabelSteps extends ScenarioSteps {
         assertThat(action.is_label_with_text(text), is(false));
     }
 
+    @Step
+    public void should_see_sum_value_is_in_label(int sumValue) {
+        assertThat(action.get_sum_value(), is(sumValue));
+    }
+
     //endregion Assertions
 }

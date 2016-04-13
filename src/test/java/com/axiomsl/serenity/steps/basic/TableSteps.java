@@ -98,6 +98,11 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
+    public void should_see_text_in_cell_in_row_number(String tableCaption, String columnName, int rowNumber, String inputText) {
+        assertThat(action.getTable(tableCaption).getTextInCellByRowNumber(columnName, rowNumber), is(inputText));
+    }
+
+    @Step
     public void should_not_see_columns(String tableCaption) {
         assertThat(action.getTable(tableCaption).getHeadings().size(), is(0));
     }
@@ -125,6 +130,16 @@ public class TableSteps extends ScenarioSteps {
         List<String> sortedValues = action.getTable(tableCaption).getValuesFromColumn(columnName);
         String[] expectedValues = HelperManager.Conversions.convertListToStringArray(HelperManager.Sorting.sortDescending(sortedValues));
         assertThat(HelperManager.Conversions.convertListToStringArray(sortedValues), arrayContaining(expectedValues));
+    }
+
+    @Step
+    public void should_see_rows_number_in_table(int rowsNumber, String tableCaption) {
+        assertThat(action.getTable(tableCaption).getRowsList().size(), is(rowsNumber));
+    }
+
+    @Step
+    public void should_see_sum_value_equals_in_label(String tableCaption) {
+        assertThat(action.getTable(tableCaption).isSumEqualLabel(), is(true));
     }
 
     @Step
@@ -203,6 +218,11 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
+    public void input_text_in_row_number_in_cell_in_table(String tableCaption, String columnName, int rowNumber, String inputText) {
+        action.getTable(tableCaption).inputTextInCellByRowNumber(columnName, rowNumber, inputText);
+    }
+
+    @Step
     public void undo_text_in_cell_in_table(String tableCaption, String columnKey, String cellValue, String columnName) {
         action.getTable(tableCaption).undoTextInCell(columnKey, cellValue, columnName);
     }
@@ -252,5 +272,9 @@ public class TableSteps extends ScenarioSteps {
         action.getTable(tableCaption).collapseRow(columnName, cellValue);
     }
 
+    @Step
+    public void remove_all_row_in_table_by_pressing_button(String buttonName, String tableCaption) {
+        action.getTable(tableCaption).remove_all_rows_by_button(buttonName);
+    }
     //endregion Conditions
 }

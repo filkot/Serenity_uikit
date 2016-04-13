@@ -34,6 +34,7 @@ public class Table extends BasePage {
     private String textInputLocator = ".//input[@type = 'text']";
     private String datePickerLocator = ".//div[contains(@class, 'v-datefield-popupcalendar')]";
     private String doubleDatePickerLocator = ".//div[contains(@class, 'v-customcomponent-datefilterpopup')]";
+    private String buttonWithTextLocator = "//div//span[text() = '%s']";
 
     //endregion Private Fields
 
@@ -82,6 +83,10 @@ public class Table extends BasePage {
             rows.add(rowElement.thenFindAll(By.xpath(cellLocator)));
         }
         return rows;
+    }
+
+    public List<WebElementFacade> getRowsList(){
+        return wrappedElement.thenFindAll(By.xpath(rowLocator));
     }
 
     /**
@@ -310,7 +315,7 @@ public class Table extends BasePage {
      * Get map with
      * @param columnName
      * @param cellValue
-     * @return
+     * @return row map: where key = header, value = cell in row
      */
     public Map<String, WebElementFacade> getRowMapByCellValue(String columnName, String cellValue){
         List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
@@ -602,6 +607,17 @@ public class Table extends BasePage {
         textInput.type(inputText);
     }
 
+    public void inputTextInCellByRowNumber(String columnName, int rowNumber, String inputText) {
+        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+        if(rowNumber > list.size()){
+            throw new IllegalArgumentException("rowNumber out of bounds");
+        }
+        Map<String, WebElementFacade> rowMap = list.get(rowNumber-1);
+        WebElementFacade cell = rowMap.get(columnName);
+        TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
+        textInput.type(inputText);
+    }
+
     /**
      * Get text from cell
      * @param columnKey - name of column for find needed row
@@ -614,6 +630,17 @@ public class Table extends BasePage {
         if(rowMap == null){
             throw new IllegalArgumentException("No cell values are found in the selected table");
         }
+        WebElementFacade cell = rowMap.get(columnName);
+        TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
+        return textInput.getText();
+    }
+
+    public String getTextInCellByRowNumber(String columnName, int rowNumber){
+        List<Map<String, WebElementFacade>> list = this.getRowsMappedToHeadings();
+        if(rowNumber > list.size()){
+            throw new IllegalArgumentException("rowNumber out of bounds");
+        }
+        Map<String, WebElementFacade> rowMap = list.get(rowNumber - 1);
         WebElementFacade cell = rowMap.get(columnName);
         TextInput textInput = new TextInput(cell.then(By.xpath(textInputLocator)));
         return textInput.getText();
@@ -736,15 +763,14 @@ public class Table extends BasePage {
     public List<String> getValuesFromColumn(String columnName) {
         List<String> values = new ArrayList<>();
         List<Map<String, WebElementFacade>> rowMap = this.getRowsMappedToHeadings();
-        boolean isTableEditable = isRowEditable(rowMap.get(0), columnName);
+        boolean isTableEditable = this.isRowEditable(rowMap.get(0), columnName);
 
         for (Map<String, WebElementFacade> map : rowMap)
         {
             if (isTableEditable) {
                 values.add(map.get(columnName).findElement(By.xpath(".//input")).getAttribute("value"));
             }
-            else
-            {
+            else {
                 values.add(map.get(columnName).getAttribute("textContent"));
             }
         }
@@ -755,6 +781,24 @@ public class Table extends BasePage {
     public boolean isRowEditable(Map<String, WebElementFacade> list, String columnName)
     {
         return (list.get(columnName).thenFindAll(By.xpath(".//input[contains(@class, 'v-textfield')]")).size() > 0);
+    }
+
+    public void remove_all_rows_by_button(String buttonName) {
+        List<WebElementFacade> rowElements = this.getRowsList();
+        Button button = new Button(wrappedElement.then(By.xpath(String.format(buttonWithTextLocator, buttonName))));
+        for(int i = 0; i<rowElements.size(); i++){
+            button.click();
+        }
+    }
+
+    public boolean isSumEqualLabel() {
+        List<String> values = this.getValuesFromColumn("Value");
+        String expSum = wrappedElement.then(By.xpath("//div[contains(@class,'v-label')]//span[not(contains(text(), 'Change random row to random value'))]")).getText();
+        int actSum = 0;
+        for(String cell:values){
+            actSum = actSum + Integer.parseInt(cell);
+        }
+        return actSum == Integer.parseInt(expSum);
     }
 
     public List<String> getCountedValuesFromColumn(String columnName, List<String> expectedMask){
@@ -810,6 +854,8 @@ public class Table extends BasePage {
             }
         }
     }
+
+
 
     //endregion Public Methods
 }

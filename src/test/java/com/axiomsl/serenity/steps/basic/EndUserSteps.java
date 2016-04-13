@@ -44,8 +44,8 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void refresh_example_page() {
-        HelperManager.WebDriver.GetGlobalWebDriver().navigate().refresh();
-        HelperManager.WebDriver.GetGlobalWebDriver().switchTo().alert().accept();
+        HelperManager.WebDriver.getDriver().navigate().refresh();
+        HelperManager.WebDriver.getDriver().switchTo().alert().accept();
     }
 
     @Step
