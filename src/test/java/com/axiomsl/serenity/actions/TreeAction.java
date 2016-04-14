@@ -8,24 +8,30 @@ public class TreeAction extends BasePage {
 
     //region Private Fields
 
-    private String treeLocator = "//div[@role='tree']";
-    private String itemWithTextLocator = "//div//span[text() = '%s']";
+    private String treeNavigationLocator = "//div[@role='tree']";
+    private String treeLocator = "//div[contains(@class, 'v-tree-checkboxed')]";
 
+    private String itemWithTextLocator = "//div//span[text() = '%s']";
     //endregion Private Fields
 
     //region Public Methods
 
-    public void select_item_in_tree(String item) {
-        Tree tree = new Tree(find(By.xpath(treeLocator)));
-        tree.selectItem(item);
-    }
-
-    public Boolean is_tree_item_available(String item) {
+    public Boolean isTreeItemAvailable(String item) {
         String itemColor = find(By.xpath(String.format(itemWithTextLocator, item))).getCssValue("color");
         find(By.xpath(String.format(itemWithTextLocator, item))).click();
         String itemColor2 = find(By.xpath(String.format(itemWithTextLocator, item))).getCssValue("color");
 
         return (!itemColor2.equals(itemColor)) ? true : false;
+    }
+
+    public Tree getNavigationTree() {
+        Tree tree = new Tree(find(By.xpath(treeNavigationLocator)));
+        return tree;
+    }
+
+    public Tree getExampleTree() {
+        Tree tree = new Tree(find(By.xpath(treeLocator)));
+        return tree;
     }
 
     //endregion Public Methods

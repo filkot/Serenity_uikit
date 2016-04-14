@@ -27,5 +27,5 @@ public class SplitPanelMappingStepsThen {
         step.check_v_splitter_offset(container);
     }
 
-//    //endregion @Then
+    //endregion @Then
 }
