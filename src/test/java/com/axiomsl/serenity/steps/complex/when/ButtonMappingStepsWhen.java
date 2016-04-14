@@ -2,6 +2,7 @@ package com.axiomsl.serenity.steps.complex.when;
 
 import com.axiomsl.serenity.steps.basic.ButtonSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.When;
 
 public class ButtonMappingStepsWhen {
@@ -16,6 +17,7 @@ public class ButtonMappingStepsWhen {
     //region @When
 
     @When("the user {clicks|presses} on '$buttonName' button")
+    @Alias("the user {clicks|presses} on '$itemName' item")
     public void whenTheUserClicksOnTheButton(String buttonName) {
         step.click_button_by_name(buttonName);
     }
