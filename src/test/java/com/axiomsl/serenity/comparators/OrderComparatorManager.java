@@ -35,16 +35,17 @@ public class OrderComparatorManager {
             Collections.sort(integerList, comparatorInteger);
             for(Integer intValue : integerList) expectedList.add(String.valueOf(intValue));
         }
-        if(targetListHasDate)
-        {
-            for(String strValue : actualList) dateList.add(HelperManager.Conversions.convertStringToDate(strValue));
-            Collections.sort(dateList, comparatorDate);
-            for(Date dateValue : dateList) expectedList.add(HelperManager.Conversions.convertDateToString(dateValue));
-        }
-        else
-        {
-            for(String strValue : actualList) expectedList.add(strValue);
-            Collections.sort(expectedList, comparatorString);
+        else {
+            if (targetListHasDate) {
+                for (String strValue : actualList)
+                    dateList.add(HelperManager.Conversions.convertStringToDate(strValue));
+                Collections.sort(dateList, comparatorDate);
+                for (Date dateValue : dateList)
+                    expectedList.add(HelperManager.Conversions.convertDateToString(dateValue));
+            } else {
+                for (String strValue : actualList) expectedList.add(strValue);
+                Collections.sort(expectedList, comparatorString);
+            }
         }
         return expectedList;
     }

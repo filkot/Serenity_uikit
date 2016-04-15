@@ -192,14 +192,6 @@ public class TableMappingStepsWhen {
         step.click_n_times_at_header_in_table(tableCaption, columnKey, n);
     }
 
-    @When("the user waits until data is loaded in {'$tableCaption'|$tableCaption} table")
-    @Alias("the user waits until data is loaded in <tableCaption> table")
-    public void whenTheUserWaitsUntilDataIsLoadedInTable(String tableCaption) {}
-
-    @When("the user waits until '$numberOfRows' row is loaded into {'$tableCaption'|$tableCaption} table")
-    @Alias("the user waits until '$numberOfRows' row is loaded into <tableCaption> table")
-    public void whenTheUserWaitsUntilRowIsLoadedInTable(String numberOfRows, String tableCaption) {}
-
     @When("the user expands the row with '$columnName' column and '$cellValue' value in {'$tableCaption'|$tableCaption} table")
     @Alias("the user expands the row with '$columnName' column and '$cellValue' value in <tableCaption> table")
     public void whenTheUserExpandsTheRowInTreeTable(@Named("$columnName") String columnName,
