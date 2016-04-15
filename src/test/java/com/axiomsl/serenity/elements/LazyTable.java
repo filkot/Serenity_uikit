@@ -12,6 +12,7 @@ public class LazyTable extends Table {
     //region Private Fields
 
     private final WebElementFacade wrappedElement;
+    private String progressBarLocator = "//parent::div/preceding-sibling::div[contains(@class, 'wrapper-components-inside')]/following-sibling::div/descendant::div[@class='v-progressbar-progress']";
 
     //endregion Private Fields
 
@@ -32,12 +33,13 @@ public class LazyTable extends Table {
      */
     public boolean waitUntilProgressBarIsHidden()
     {
-        ProgressBar progressBar = new ProgressBar(find(By.xpath("./div/div[contains(concat(' ', normalize-space(@class), ' '), concat(' ', 'v-progressbar', ' '))]")));
-        while(progressBar.isDisplayed())
-        {
-            if(!progressBar.isDisplayed())
-                return true;
-        }
+        try {
+            ProgressBar progressBar = new ProgressBar(wrappedElement.then(By.xpath(progressBarLocator)));
+            while (progressBar.isDisplayed()) {
+                if (!progressBar.isDisplayed())
+                    return true;
+            }
+        } catch (Exception e) { return true; }
         return false;
     }
 
