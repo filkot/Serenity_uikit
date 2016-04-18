@@ -26,5 +26,10 @@ public class DashboardStepsThen {
         endUser.check_current_page_url(currentPageURL);
     }
 
+    @Then("the user should see '$loginInvitation' text on a page")
+    public void thenTheUserShouldSeeLoginPage(String loginInvitation) {
+        endUser.check_login_page(loginInvitation);
+    }
+
     //endregion @Then
 }

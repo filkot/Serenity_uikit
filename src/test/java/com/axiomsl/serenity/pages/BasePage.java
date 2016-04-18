@@ -20,6 +20,7 @@ public class BasePage extends PageObject {
     private String treeNodeLocator = "//div[@class = 'v-tree-node-caption']//span[text() = '%s']";
     private String exampleClassPathLocator = "//div[contains@class, 'v-splitpanel-second-container']";
     private String exampleClassPathSplitterLocator = "//div[@class = 'v-splitpanel-hsplitter']";
+    private String loginPageTextLocator = "//span[contains(@class, 'v-captiontext') and text() = '%s']";
 
     //endregion Private Fields
 
@@ -88,6 +89,10 @@ public class BasePage extends PageObject {
     public void open_dashboard(String dashboardName) {
         WebElementFacade dashboard = find(By.xpath(String.format(itemInTreeLocator, dashboardName)));
         dashboard.click();
+    }
+
+    public Boolean check_login_page(String loginInvitation) {
+        return find(By.xpath(String.format(loginPageTextLocator, loginInvitation))).isPresent();
     }
 
     public void clickByCoordinate(WebElementFacade element, int x, int y) {

@@ -78,5 +78,10 @@ public class EndUserSteps extends ScenarioSteps {
         basePage.switch_to_old_window();
     }
 
+    @Step
+    public void check_login_page(String loginInvitation) {
+        assertThat(basePage.check_login_page(loginInvitation), is(true));
+    }
+
     //endregion Conditions
 }
