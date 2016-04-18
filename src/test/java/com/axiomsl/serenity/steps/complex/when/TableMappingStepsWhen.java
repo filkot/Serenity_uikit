@@ -43,8 +43,8 @@ public class TableMappingStepsWhen {
         step.scroll_vertically_table(tableCaption, "up");
     }
 
-    @When("the user scrolls vertically down to the end in {'$tableCaption'|$tableCaption} table")
-    @Alias("the user scrolls vertically down to the end in <tableCaption> table")
+    @When("the user scrolls down vertically to the end in {'$tableCaption'|$tableCaption} table")
+    @Alias("the user scrolls down vertically to the end in <tableCaption> table")
     public void whenTheUserScrollsDownVerticallyTable(@Named("tableCaption") String tableCaption) {
         step.scroll_vertically_table(tableCaption, "down");
     }

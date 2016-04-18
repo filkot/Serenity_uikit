@@ -158,6 +158,16 @@ public class TableSteps extends ScenarioSteps {
         assertThat(action.getTable(tableCaption).isRowExpanded(columnName, cellValue), is(false));
     }
 
+    @Step
+    public void should_see_table_is_not_scrolled_to_beginning(String tableCaption) {
+        assertThat(action.getTable(tableCaption).isScrolledToTop(), is(true));
+    }
+
+    @Step
+    public void should_see_table_is_not_scrolled_to_end(String tableCaption) {
+        assertThat(action.getTable(tableCaption).isScrolledToBottom(), is(true));
+    }
+
     //endregion Assertions
 
     //region Conditions

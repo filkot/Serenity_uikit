@@ -144,14 +144,14 @@ public class TableMappingStepsThen {
 
     @Then("the user should see that '$table' table is scrolled to the beginning")
     @Alias("the user should see that <tableCaption> table is scrolled to the beginning")
-    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(String tableCaption) {
-
+    public void thenTheUserShouldSeeIsTableScrolledToTheBeginning(@Named("tableCaption") String tableCaption) {
+        step.should_see_table_is_not_scrolled_to_beginning(tableCaption);
     }
 
     @Then("the user should see that '$table' table is scrolled to the end")
     @Alias("the user should see that <tableCaption> table is scrolled to the end")
-    public void thenTheUserShouldSeeTableIsNotScrolledToTheEnd(String tableCaption) {
-
+    public void thenTheUserShouldSeeTableIsNotScrolledToTheEnd(@Named("tableCaption") String tableCaption) {
+            step.should_see_table_is_not_scrolled_to_end(tableCaption);
     }
 
     @Then("the user should see '$inputDate' date in '$columnName' column for row with '$columnKey' column and '$cellValue' value in {'$tableCaption'|$tableCaption} table")

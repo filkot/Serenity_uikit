@@ -2,6 +2,7 @@ package com.axiomsl.serenity.elements;
 
 import ch.lambdaj.Lambda;
 import com.axiomsl.serenity.helpers.ConversionsHelper;
+import com.axiomsl.serenity.helpers.HelperManager;
 import com.axiomsl.serenity.pages.BasePage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
@@ -894,6 +895,33 @@ public class Table extends BasePage {
         if(map != null){
             WebElementFacade selectedRowSpacer = map.get(columnName).find(By.xpath(treeSpacer));
             return selectedRowSpacer.hasClass("v-treetable-node-open");
+        }
+        return false;
+    }
+
+    public boolean isScrolledToTop()
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
+        Long currentHeight = (Long) js.executeScript("return arguments[0].scrollTop", element);
+
+        if(currentHeight == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isScrolledToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElementFacade element = wrappedElement.then(By.xpath(scrollLocator));
+        Long currentHeight = (Long) js.executeScript("return arguments[0].scrollTop", element);
+        Long offsetHeight = (Long) js.executeScript("return arguments[0].offsetHeight", element);
+        Long maxHeight = (Long) js.executeScript("return arguments[0].scrollHeight", element);
+
+        if(currentHeight == maxHeight - offsetHeight)
+        {
+            return true;
         }
         return false;
     }
